@@ -1,0 +1,382 @@
+% !TeX root = ../thesis.tex
+\chapter{Long-Time stability of small FPUT solitary waves}
+\label{chp:long-time-stability}
+\pagestyle{myheadings}
+
+\section{Introductionf}
+
+As shown in earlier work, there exists a wave solution of the FPUT lattice whose profile is well approximated by that of the kink solution to the (defocusing) mKdV. We are now interested in studying the stability of this wave solution on the FPUT lattice. The equations of motion on the lattice are given by 
+\begin{equation}\label{fput-lattice-equations}
+	\ddot x_n = V'(x_{n+1} - x_n) - V'(x_n - x_{n-1}), \quad n \in \Z.
+\end{equation}
+where \(V\) is the interaction potential between neighboring particles and \(\dot{\hspace{0.5em}}\) denotes the derivative with respect to the time \(t\in \mathbb{R}\). \Cref{fput-lattice-equations} can be rewritten in the strain variables \(u_n := x_{n+1} - x_n\) as follows
+\begin{equation}\label{fput-lattice-equations-strain-variables}
+	\ddot{u}_n = V'(u_{n+1}) - 2 V'(u_n) + V'(u_{n-1}), \quad n \in \Z
+\end{equation}
+The moving wave solution in \cref{fput-lattice-equations} corresponds to a kink solution in \cref{fput-lattice-equations-strain-variables}.
+
+For the case where \(V\) is of the form \(V(u) = \frac 1 2 u^2 + \frac{\epsilon^2}{p+1} u^{p+1}\) for \(p\geq 2\), the generalized KdV equation given by 
+\begin{equation}\label{generalized-KdV}
+	2 \partial_TW + \frac 1 {12} \partial_X^3 W + \partial_X(W^p) = 0,\quad X\in\R
+\end{equation} 
+serves as a modulation equation for solutions of \cref{fput-lattice-equations-strain-variables} \cite{bambusi2006metastability,friesecke1999solitary,schneider2000counter}. That is, for a local solution \(W\in C([-\tau_0,\tau_0],H^s(\R))\) of \cref{generalized-KdV} there exist positive constants \(\epsilon_0\) and \(C_0\) such that, for all \(\epsilon \in (0,\epsilon_0)\), when initial data \((u_{\mathrm{in} }, \dot u_{\mathrm{in}})\in\ell^2(\R)\) satisfy
+\begin{equation}
+	\|u_{\mathrm{in}} - W(\epsilon\cdot, 0) \|_{\ell^2} + \| \dot u_{\mathrm{in}} + \epsilon \partial_X W(\epsilon\cdot, 0) \|_{\ell^2} \leq \epsilon^{3/2},
+\end{equation}
+the unique solution to \cref{fput-lattice-equations-strain-variables} with initial data \((u_{\mathrm{in} }, \dot u_{\mathrm{in}})\) belongs to \(C^1([-\tau_0\epsilon^{-3}, \tau_0 \epsilon^{-3}];\allowbreak \ell^2(\Z))\) and satisfies 
+\begin{multline}
+	\|u(t) - W(\epsilon (\cdot - t),\epsilon^3 t)\|_{\ell^2(\Z)} + \| \dot u(t) + \epsilon \partial_X W(\epsilon(\cdot - t), \epsilon^3 t) \|_{\ell^2(\Z)} \leq C_0 \epsilon^{3/2}, \\ t\in[-\tau_0 \epsilon^{-3},\tau_0 \epsilon^{-3}].
+\end{multline}
+
+This approximation was extended to longer time scales on the order of \(\epsilon^{-3}|\log(\epsilon)|\) by Khan and Pelinovsky in order to deduce the nonlinear metastability of small FPUT solitary waves from the orbital stability of the corresponding KdV solitary waves \cite{khan2017long}.
+
+The potential for the FPUT in our case is given by
+\begin{equation}\label{truncated-potential}
+	V(u) = \frac 1 2 u^2 - \frac{\epsilon^2} {24} u^4
+\end{equation}
+and we wish to study the stability of the moving wave solution. The analysis found in \cite{khan2017long} is no longer directly applicable. In particular, since we are focusing on kink solutions to \cref{fput-lattice-equations-strain-variables}, we no longer have functions which decay in space as we approach infinity. We can proceed in an analogous way to \cite{khan2017long}, but we adapt the method to make estimates with bounded functions. 
+
+\section{Setup of Lattice Equations}
+
+The scalar second-order differential equation \cref{fput-lattice-equations-strain-variables} with potential \(V\) given by \cref{truncated-potential} can be rewritten as the following first-order system:
+\begin{equation}\label{first-order-lattice-eqns}
+	\left\{\begin{aligned}\dot u _n &= q_{n+1} - q_n, \\
+	\dot q_n &= u_n - u_{n-1} - \frac{\epsilon^2} 6 ( u_n^3 - u^3_{n-1}),\end{aligned} \right. \quad n \in \Z.
+\end{equation}
+Since our solution to \cref{fput-lattice-equations-strain-variables} is a kink solution with wave speed given by \(c\) where \(c^2 = 1- \frac{\epsilon^2}{12}\), we use the decomposition 
+\begin{equation}\label{lattice-decompositions}
+	u_n(t) = W(\epsilon(n-ct), \epsilon^3t) + \mathcal U_n(t), \quad q_n(t) = P_\epsilon(\epsilon(n-ct), \epsilon^3t) + \mathcal Q_n(t), \quad n \in \Z
+\end{equation}
+where \(W(X,T)\) is a suitable solution to 
+\begin{equation}\label{modulating-eqn-defocusing-mkdv}
+	2\partial_T W + \frac 1 {12} \partial_X W - \frac 12 W^2 \partial_X W + \frac 1 {12} \partial_X^3 W = 0, \quad X\in \R
+\end{equation}
+and \(P_\epsilon(X,T)\) is found by formally satisfying 
+\begin{equation}\label{p-epsilon-formal-equation}
+	P_\epsilon(X+\epsilon, T) - P_\epsilon(X,T) = - \epsilon c \partial_X W(X,T) + \epsilon^3 \partial_T W(X,T).
+\end{equation}
+To define \(P_\epsilon\), we assume that it has the form
+\begin{equation}
+	P_\epsilon = P^{(0)} + \epsilon P^{(1)} + \epsilon^2 P^{(2)} + \epsilon^3 P^{(3)}
+\end{equation}
+and plug this into \cref{p-epsilon-formal-equation}. After using Taylor series and collecting terms of equal orders of \(\epsilon\), we obtain 
+\begin{equation}\label{p-epsilon-definition}
+	P_\epsilon := - W +  \frac  12 \epsilon\partial_X W +  \frac 1 {12} \epsilon^2 W^3  -  \frac 1 8 \epsilon^2 \partial_X^2 W +  \frac 1 {48} \epsilon^3\partial_X^3 W -  \frac 1 8 \epsilon^3 W^2 \partial_X W.
+\end{equation}
+
+Plugging \cref{lattice-decompositions,p-epsilon-definition} into \cref{first-order-lattice-eqns} gives the following differential equations for the error terms
+\begin{equation}\label{error-lattice-eqns}
+\left\{\begin{aligned}
+		\dot{\mathcal U}_n(t) &= \mathcal Q_{n+1}(t) - \mathcal Q_n(t) + \mathrm{Res}_n^{(1)}(t),  \\
+		\dot{\mathcal Q}_n(t) &= \mathcal U_{n} - \mathcal U_{n-1} \\ &\quad - \frac{\epsilon^2} 2 W^2(\epsilon(n-ct),\epsilon^3t) \mathcal{U}_n + \frac{\epsilon^2} 2 W^2(\epsilon(n-1-ct),\epsilon^3t)\mathcal{U}_{n-1} \\ &\quad +\mathrm{Res}_n^{(2)}(t)+ \mathcal R_n(W, \mathcal U),
+\end{aligned} \right.\quad  n\in\Z
+\end{equation}
+where the residual and nonlinear terms are given by 
+\begin{equation}
+	\begin{aligned}
+		\mathrm{Res}^{(1)}_n(t)&:= \epsilon c \partial_X W(\epsilon(n-ct),\epsilon^3t) - \epsilon^3 \partial_T W(\epsilon(n-ct), \epsilon^3 t) \\ 
+		&\qquad+ P_\epsilon(\epsilon(n+1 - ct), \epsilon^3t) - P_\epsilon(\epsilon(n-ct), \epsilon^3t) \\
+		\mathrm{Res}^{(2)}_n(t)&:= \epsilon c \partial_X P_\epsilon(\epsilon(n-ct),\epsilon^3t) - \epsilon^3\partial_T P_\epsilon (\epsilon(n-ct), \epsilon^3t) \\ 
+		&\qquad + W(\epsilon(n-ct),\epsilon^3t) - W(\epsilon(n-1-ct), \epsilon^3t) \\ 
+		&\qquad- \frac{\epsilon^2} 6 \left[ W^3(\epsilon (n-ct), \epsilon^3t) - W^3(\epsilon(n-1-ct), \epsilon^3t) \right]
+	\end{aligned}
+\end{equation}
+and 
+\begin{equation}
+\begin{aligned}
+	\mathcal R_n(W,\mathcal U)(t) &:= - \frac{\epsilon^2} 6 \Big[ 3W(\epsilon(n-ct),\epsilon^3t)\mathcal{U}^2_n(t) - 3 W(\epsilon(n-1-ct), \epsilon^3t)\mathcal U^2_{n-1}(t)  \\ 
+	&\qquad+ \mathcal U^3_n(t) - \mathcal U^3_{n-1}(t)\Big].
+\end{aligned}
+\end{equation}
+
+One may note that we do not know if there are always local solutions to \cref{error-lattice-eqns} for a given set of initial conditions. Although we will be assuming that \((u_n)_{n\in\Z} \in \ell^\infty(\Z)\) and \(W \in C([-\tau_0, \tau_0]; L^\infty(\R))\), the error terms \(\mathcal U\) and \(\mathcal Q\) are assumed to be in \(\ell^2(\Z)\). Thus the equations for the error terms can be written as an evolution equation over \(\ell^2(\Z)\). \Cref{error-lattice-eqns} is equivalent to 
+\begin{equation}\label{error-evolution-equation}
+	\begin{aligned}
+		\dot X(t) &= \mathcal A (t) X + \mathcal N(X, t) \\
+		X(t_0) &= x_0
+	\end{aligned}
+\end{equation}
+where \(X(t) = (\mathcal U(t), \mathcal Q(t))\) and \(x_0 = (\mathcal U(0), \mathcal Q(0))\),
+\begin{equation}
+	\mathcal A(t) := \begin{bmatrix}
+		0 & e^\partial - 1 \\
+		1 - e^{-\partial} & 0
+	\end{bmatrix} \begin{bmatrix}
+		1 - \frac{\epsilon^2} 2 W^2(\epsilon(\cdot - ct), \epsilon^3t) & 0 \\ 
+		0  & 1
+	\end{bmatrix}
+\end{equation}
+and 
+\begin{equation}
+	\mathcal N(X,t) := \begin{bmatrix}
+		\mathrm{Res}^{(1)}(t) \\
+		\mathcal R(W, \mathcal U) + \mathrm{Res}^{(2)}(t)
+	\end{bmatrix}.
+\end{equation}
+Each linear operator \(\mathcal A(t)\) is bounded for any \(t\in[-\tau_0,\tau_0]\) and \(t\mapsto \mathcal A(t)\) is continuous in norm. Also, \(\mathcal N(X,t)\) is locally Lipschitz in \(X\) and the Lipschitz constants are uniformly bounded in time. Thus by the results in sections 5 and 6 of \cite{pazy2012semigroups}, there are \(C^1\) local solutions of \cref{error-evolution-equation}. This shows that local solutions of \cref{error-lattice-eqns} exist in \(\ell^2(\Z)\) whenever \(W\in C([-\tau_0, \tau_0]; L^\infty(\R))\).
+
+\section{Preparatory Estimates}
+To make estimates on the error terms \(\mathcal U\) and \(\mathcal Q\), we require an appropriate choice of \(W\). Based on the above discussion, \(W\) must be at least be a continuous solution in \(L^\infty(\R)\) space. Further regularity is required to make sense of \cref{p-epsilon-definition} as well as further derivatives of \(P_\epsilon\). So \(W\) must be bounded but have spatial derivatives that decay at infinity. The solution of \cref{modulating-eqn-defocusing-mkdv} must then be continuous in the following normed space.
+\begin{defn}
+	For \(s\geq 1\), the normed space \(\mathcal X_s\) is the set of functions
+	\begin{equation}
+		\mathcal X_s := \{u \in L^\infty(\R) : u'(x) \in H^{s-1}(\R)\}
+	\end{equation}
+	with a norm defined by 
+	\begin{equation}
+		\| u \|_{X_s} := \| u \|_{L^\infty(\R)} + \|u'\|_{H^{s-1}(\R)}.
+	\end{equation}
+\end{defn}
+In fact, \(\mathcal X_s\) is a Banach space.
+\begin{prop}
+	For \(s\geq 1\), the normed vector space \(\mathcal X_s\) is a Banach space.
+\end{prop}
+\begin{proof}
+	Suppose that \(\{u_n\}\subset \mathcal X_s\) is a Cauchy sequence. Then for any \(\epsilon > 0\) there exists \(N\in\mathbb N\) such that for any \(n,m\geq N\)
+	\begin{equation}
+		\| u_n - u_m \|_{\mathcal X_s} = \|u_n - u_m\|_{L^\infty(\R)} + \|u_n'-u_m'\|_{H^{s-1}(\R)} < \epsilon.
+	\end{equation}
+	Clearly, we have that \(\{u_n\}\) is a Cauchy sequence in \(L^\infty(\R)\) and \(\{u_n'\}\) is a Cauchy sequence in \(H^{s-1}(\R)\). Since \(L^\infty\) and \(H^{s-1}\) are Banach spaces, we have \(u \in L^\infty\) and \(v \in H^{s-1}\) such that 
+	\begin{equation}
+		\begin{aligned}
+			u_n &\rightarrow u \quad \text{in } L^\infty(\R) \\
+			u_n' &\rightarrow v \quad \text{in } H^{s-1}(\R).
+		\end{aligned}
+	\end{equation}
+	To show that \(u_n \to u\) in \(\mathcal X_s\), we must demonstrate that \(v = u'\) (where \('\) denotes a distributional derivative which is \emph{a priori} defined). One can show that \(H^{s-1}(\R) \hookrightarrow L^2(\R)\): for \(w \in H^{s-1}(\R)\) we have
+	\begin{equation}
+	\begin{aligned}
+		\|w \|_{L^2} &= \| \hat w \|_{L^2} \\
+		&= \left( \int_\R |\hat w(\xi)|^2 \, d \xi \right)^{1/2} \\
+		&\leq \left( \int_\R |\hat w(\xi)|^2 ( 1+ |\xi|^{2s})\, d \xi \right)^{1/2} \\
+		&= \| w\|_{H^{s-1}}.
+	\end{aligned}
+	\end{equation}
+	Thus we also have \(u_n' \to v\) in \(L^2(\R)\).
+	
+	Let \(\phi \in C_c^\infty(\R)\) be a test function. By \(L^2\) convergence, we have that 
+	\begin{equation}
+		\int_\R v \phi \, dx = \lim_{n\to\infty} \int_\R u_n' \phi \, dx.
+	\end{equation}
+	Also, by applying the dominated convergence theorem (and possibly taking a subsequence to get almost everywhere pointwise convergence), we have that
+	\begin{equation}
+		\int_\R u \phi' \, dx = \lim_{n\to\infty} \int_\R u_n \phi' \, dx.
+	\end{equation}
+	Therefore, we get that 
+	\begin{equation}
+	\begin{aligned}
+		\int_\R v \phi \, dx &= \lim_{n\to\infty} \int_\R u_n' \phi \, dx \\
+		&= \lim_{n\to\infty} - \int_\R u_n \phi' \, dx \\
+		&= -\int_\R u\phi'\, dx .
+	\end{aligned}
+	\end{equation}
+	Hence, \(u' = v\) and \(\mathcal X_s\) is a Banach space.
+\end{proof}
+
+For our case, we will need at least six spatial derivatives of \(W\) and so \(W\) should belong to \(C([-\tau_0,\tau_0];\mathcal X_6)\). Note that the kink solutions of \cref{modulating-eqn-defocusing-mkdv} are in this space; for instance, if \(W(X,T) = \phi(X)\) with 
+\begin{equation}
+	\phi(X) = \frac 1 {\sqrt 2} \tanh\left( \frac X {\sqrt{2}} \right),
+\end{equation}
+then \(W\) is a solution to the mKdV equation and \(W \in C(\R ; \mathcal X_s)\) for any \(s\geq 1\).
+
+In order to prove long-time stability, we must get estimates of the \(\ell^2(\Z)\) norms of the residual terms and the nonlinearity. The following lemma proved in \cite{dumas2014justification} will be useful in bounding \(\ell^2(\Z)\) norms by Sobolev norms of \(W\).
+
+\begin{lem}
+	There exists \(C>0\) such that for all \(X \in H^1(\R)\) and \(\epsilon \in (0,1)\), \[\|x\|_{\ell^2} \leq C \epsilon^{-1/2} \|X\|_{H^1},\] where \(x_n := X(\epsilon n)\), \(n\in \mathbb Z\).
+\end{lem}
+
+We can then show the following estimates.
+
+\begin{lem}\label{residual-nonlinear-estimates}
+	Let \(W\in C([-\tau_0,\tau_0];\mathcal X_6)\) be a solution of the modified KdV equation \cref{modulating-eqn-defocusing-mkdv} and \(\tau_0>0\). Define
+	\begin{equation}\label{delta-0-defn}
+		\delta:= \sup_{\tau\in[-\tau_0,\tau_0]} \| W(\tau)\|_{\mathcal X_s}.
+	\end{equation}
+	There exists a positive \(\delta\)-independent constant \(C\) such that the residual and nonlinear terms satisfy
+	\begin{equation}
+		\| \mathrm{Res}^{(1)}(t) \|_{\ell^2} + \|\mathrm{Res}^{(2)}(t) \|_{\ell^2} \leq C \epsilon^{9/2} (\delta + \delta^5)
+	\end{equation}
+	and 
+	\begin{equation}
+		\|\mathcal R(W,\mathcal U)(t) \|_{\ell^2} \leq C \epsilon^2(\delta + \| \mathcal U(t) \|_{\ell^2}) \|\mathcal U (t)\|_{\ell^2}^2
+	\end{equation}
+	for every \(t \in [-\tau_0\epsilon^{-3}, \tau_0\epsilon^{-3}]\) and \(\epsilon \in (0,1).\)
+\end{lem}
+	
+\begin{proof}
+	Plugging \(P_\epsilon\) into \(\mathrm{Res}^{(1)}(t)\) and using the Taylor remainder theorem, we get that the terms of order \(\epsilon^4\) or lower cancel out and we are left with
+	\begin{equation}
+		\begin{aligned}
+			\mathrm{Res}^{(1)}(t) = \epsilon^5 \Biggl[ &\quad\epsilon\left(c-1+\frac{\epsilon^2}{24}\right) \partial_X W(\epsilon(n-ct),\epsilon^3 t)\\
+			&-\frac 1 {24} \int_0^1 \partial_X^5 W(\epsilon(n-ct+r), \epsilon^3 t)(1-r)^4 \, dr  \\ 
+			&+ \frac 1 {12}  \int_0^1 \partial_X^5 W(\epsilon(n-ct+r), \epsilon^3 t)(1-r)^3 \, dr \\
+			&- \frac 1 {16}  \int_0^1 \partial_X^5 W(\epsilon(n-ct+r), \epsilon^3 t)(1-r)^2 \, dr \\
+			&+ \frac 1 {48}  \int_0^1 \partial_X^5 W(\epsilon(n-ct+r), \epsilon^3 t)(1-r) \, dr. \Biggr]
+		\end{aligned}
+	\end{equation}
+	Each of these terms can be bounded by the \(\mathcal X_6\) norm. Thus we get that
+	\begin{equation}
+		\| \mathrm{Res}^{(1)}(t) \|_{\ell^2}  \leq C \epsilon^{9/2} \| W(\cdot, \epsilon t^3)\|_{\mathcal X_6} \leq C \epsilon^{9/2} \delta \quad \text{ for } t\in [-\tau_0\epsilon^{-3}, \tau_0\epsilon^{-3}].
+	\end{equation}
+	
+	Plugging in \(P_\epsilon\) into \(\mathrm{Res}^{(2)}(t)\) similarly gives 
+	\begin{equation}
+	\begin{aligned}
+		\mathrm{Res}^{(2)}(t) &= \epsilon\left(c-1 + \frac {\epsilon^2}{24} \right)\left( \partial_XP_\epsilon(\epsilon(n-ct),\epsilon^3 t) \right) \\
+		&\qquad- \frac {\epsilon^3}{24} \left(\epsilon^2 \partial_X P_2(\epsilon(n-ct),\epsilon^3 t) + \epsilon^3 \partial_X P_3(\epsilon(n-ct),\epsilon^3 t) \right) \\
+		&\qquad-\epsilon^3(\epsilon^2 \partial_TP_2(\epsilon(n-ct),\epsilon^3 t) + \epsilon^3 \partial_T P_3(\epsilon(n-ct),\epsilon^3 t)) \\
+		&\qquad+ \frac{\epsilon^5}{24} \int_0^1 \partial_X^5 W(\epsilon(n-ct-r),\epsilon^3t)(r-1)^4 \, d r \\
+		&\qquad- \frac {\epsilon^5}{12} \int_0^1 \partial^3_X(W^3)(\epsilon(n-ct-r), \epsilon^3 t)(r-1)^2 \, d r.
+	\end{aligned}
+	\end{equation}
+	The terms with order less than \(\epsilon^5\) cancel out. The integral terms can easily be bounded by the \(\mathcal X_6\) norm For the first three terms, we can compute the expansion exactly:
+	\begin{equation}
+	\begin{aligned}
+		\partial_X P_\epsilon &= - \partial_X^ {} W + \frac \epsilon 2 \partial_X^ 2 W + \frac{\epsilon^2} 4 W^2 \partial_X^ {} W - \frac{\epsilon^2} 8 \partial_X^ 3 W + \frac{\epsilon^3}{48} \partial_X^ 4 W - \frac{\epsilon^3}{24} \partial_X^ 2 (W^3) \\
+		\partial_X^ {} P_2 &= \frac 1 4 W^2 \partial_X^ {} W - \frac 1 8 \partial_X^ 3 W \\
+		\partial_X^ {} P_3 &= \frac 1 {48} \partial_X^ 4 W - \frac 1 4 W (\partial_X^ {} W)^2 - \frac 1 8 W^2 \partial_X^ 2 W \\
+		\partial_T P_2 &= \frac{-1}{96} W^2 \partial_X^ {} W + \frac 1 {16} W^4 \partial_X^ {} W - \frac 1 {16} (\partial_X^ {} W)^3 - \frac 3 {16} W \partial_X^ {} W \partial_X^ 2 W \\
+		&\qquad +\frac 1 {192} \partial_X^ 3 W - \frac 1 {24} W^2 \partial_X^ 3 W + \frac 1 {192} \partial_X^ 5 W \\
+		\partial_T P_3 &= \frac 1 {192} W^2 \partial_X^ {} W - \frac 1 {32} W^4 \partial_X^ {} W + \frac 1 {96} W (\partial_X^ {} W)^2 - \frac 1 {16} W^3 (\partial_X^ {} W)^2 \\
+		&\qquad+ \frac 1 {16} (\partial_X^ {} W)^2\partial_X^ 2 W + \frac 1 {32} W (\partial_X^ 2 W)^2 +\frac 1 {192} W^2 \partial_X^ 3 W + \frac 5 {96} W \partial_X^ {} W \partial_X^ 3 W \\
+		&\qquad- \frac 1 {1152} \partial_X^ 4 W + \frac 1 {92} W^2 \partial_X^ 4 W - \frac 1 {1152} \partial_X^ 6 W
+	\end{aligned}
+	\end{equation}
+	Notice that the \(L^2\) norm of each term can be bounded by a term of the form
+	\begin{equation}
+		\| W \|_{L^\infty}^k \| \partial_X W \|_{H^5}^\ell, \quad \text{ where } 1\leq k+\ell \leq 5.
+	\end{equation}
+	The above term can then in turn be bounded by \(C(\delta + \delta^5)\). Thus we get that 
+	\begin{equation}
+		\|\mathrm{Res}^{(2)}(t)\|_{\ell^2} = C\epsilon^{9/2} \left(\delta + \delta^5 \right)
+	\end{equation}
+	for \(t\in [-\tau_0\epsilon^{-3}, \tau\epsilon^{-3}]\).
+	
+	For the nonlinear term \(\mathcal R(W,\mathcal U)\), we immediately get that
+	\begin{equation}
+	\begin{aligned}
+		\|\mathcal R(W,\mathcal U)(t) \|_{\ell^2} &\leq C \epsilon^2 \left[ \|W(\epsilon^3t)\|_{L^\infty} \|\mathcal U^2(t) \|_{\ell^2}  + \| \mathcal U^3(t) \|_{\ell^2} \right] \\
+		&\leq C\epsilon^2\left[ \|W(\epsilon^3 t)\|_{L^\infty}  \|\mathcal U(t)\|_{\ell^\infty} \|\mathcal U(t)\|_{\ell^2} + \|\mathcal U(t)\|_{\ell^\infty}^2 \|\mathcal{U}(t)\|_{\ell^2}\right] \\
+		&\leq C \epsilon^2 \left[ \delta \|\mathcal U(t) \|_{\ell^2}^2 + \|\mathcal U(t)\|_{\ell^2}^3\right].
+	\end{aligned}
+	\end{equation}
+\end{proof}
+
+The main result of this section will be proved using a Gr\"onwall type estimate using an energy function defined by 
+\begin{equation}\label{energy-function}
+	\mathcal E(t) := \frac 1 2 \sum_{n\in\Z} \mathcal Q_n^2(t) + \mathcal U_n^2(t) - \frac{\epsilon^2} 2 W^2(\epsilon(n-ct),\epsilon^3t)\mathcal U_n^2(t).
+\end{equation}
+The above will be nonnegative for \(W\) fixed and \(\epsilon \) sufficiently small.
+
+\begin{lem}
+	Let \(W\in C([-\tau_0,\tau_0],\mathcal X_6)\) be a solution to the mKdV equation \cref{modulating-eqn-defocusing-mkdv} and \(\tau_0 > 0\). Define \(\epsilon_0>0\) to be
+	\begin{equation}\label{epsilon-0-defn}
+		\epsilon_0 := \min\left\{1, \left( \sup_{\tau\in[-\tau_0, \tau_0]} \|W(\tau)\|_{L_\infty}\right)^{-1} \right\}.
+	\end{equation}
+	For every \(\epsilon \in (0,\epsilon_0)\) and for every local solution \((\mathcal U, \mathcal Q) \in C^1([-\tau_0\epsilon^{-3}, \tau_0\epsilon^{-3}], \ell^2(\mathbb Z))\) of \cref{error-lattice-eqns}, the energy-type quantity given in \cref{energy-function} is coercive with the bound
+	\begin{equation}\label{coercive-bound}
+		\|\mathcal Q(t) \|_{\ell^2}^2 + \| \mathcal U (t) \|_{\ell^2}^2 \leq  4 \mathcal E(t), \quad \text{for } t\in(-\tau_0\epsilon^{-3}, \tau_0\epsilon^{-3}).
+	\end{equation}
+	Moreover, when \(\delta\) is given by \cref{delta-0-defn}, there exists \(C> 0\) independent of \(\epsilon\) and \(\delta\) such that 
+	\begin{equation}
+		\left|\frac{d\mathcal E}{dt} \right| \leq C \mathcal E^{1/2}\left[ \epsilon^{9/2} (\delta + \delta^5)  + \epsilon^3(\delta^2 + \delta^4) \mathcal E^{1/2} + \epsilon^2(\delta + \mathcal{E}^{1/2})\mathcal E\right]
+	\end{equation}
+	for every \(t\in [-\tau_0\epsilon^{-3}, \tau_0\epsilon^{-3}]\) and \(\epsilon \in (0,\epsilon_0)\).
+\end{lem}
+\begin{proof}
+	By the choice of \(\epsilon_0\), we have for \(\epsilon\in(0,\epsilon_0)\) that 
+	\begin{equation}
+		1 - \frac{\epsilon^2} 2 \| W \|_{L^\infty}^2 \geq \frac 12.
+	\end{equation}
+	Hence
+	\begin{equation}
+		\mathcal E(t) \geq \frac 1 2 \| \mathcal Q \|_{\ell^2}^2 + \frac 1 4 \| \mathcal U\|_{\ell^2}^2 \geq \frac 1 4\| \mathcal Q \|_{\ell^2}^2 + \frac 1 4 \| \mathcal U\|_{\ell^2}^2
+	\end{equation}
+	and \cref{coercive-bound} follows.
+	
+	Taking the time derivative of \(\mathcal E(t)\) and using that \((\mathcal U, \mathcal Q)\) solve \cref{error-lattice-eqns} gives us 
+	\begin{equation}
+	\begin{aligned}
+		\frac{d \mathcal E}{dt} &= \sum_{n\in \mathbb{Z}} \Bigg[ \mathcal Q_n(t) \mathcal R_n(W,\mathcal U)(t) + \mathcal Q_n(t) \mathrm{Res}^{(2)}(t) \\
+		&\qquad+ \mathcal U_n(t) \mathrm{Res}^{(1)}(t) \left( 1 - \frac{\epsilon^2} 2 W^2(\epsilon(n-ct),\epsilon^3 t) \right) \\
+		&\qquad+\frac{\epsilon^3} 2 W(\epsilon(n-ct), \epsilon^3t) \mathcal U_n^2 (t) \left( c\partial_X W(\epsilon(n-ct),\epsilon^3 t) - \epsilon^2 \partial_TW(\epsilon(n-ct), \epsilon^3 t) \right) \Bigg]
+	\end{aligned}	
+	\end{equation}
+	Using the Cauchy-Schwarz inequality, the estimates found in \cref{residual-nonlinear-estimates}, and coercivity of \(\mathcal E(t)\), we get that 
+	\begin{equation}
+	\begin{aligned}
+		\left|\frac{d\mathcal E}{dt} \right| &\leq \|\mathcal Q\|_{\ell^2} \|\mathcal R(W,\mathcal U)\|_{\ell^2} + \|\mathcal Q\|_{\ell^2} \|\mathrm{Res}^{(2)}\|_{\ell^2} + \| \mathcal U \|_{\ell^2} \|\mathrm{Res}^{(1)}\|_{\ell^2} \\
+		&\qquad+ \frac 1 2 \epsilon^3 \| W \|_{L^\infty} \|\mathcal U\|_{\ell^2}^2 ( c \|\partial_X W\|_{L^\infty} + \epsilon^2 \|\partial_T W\|_{L^\infty}) \\
+		&\leq C \mathcal E^{1/2}\left[ \epsilon^{9/2} (\delta + \delta^5)  + \epsilon^3(\delta^2 + \delta^4) \mathcal E^{1/2} + \epsilon^2(\delta + \mathcal{E}^{1/2})\mathcal E\right]
+	\end{aligned}
+	\end{equation}
+\end{proof}
+
+\section{Proof of Long-Time Stability}
+
+Now with the setup complete, the main result of this section can be shown. The result and proof are analogous to those of \cite[Thm.~1]{khan2017long}.
+
+\begin{theorem}
+	Let \(W \in C(\mathbb R; \mathcal X_6)\) be a global solution of the mKdV equation \cref{modulating-eqn-defocusing-mkdv} with \(\sup_{\tau\in \mathbb R} \| W(\tau)\|_{\mathcal X_6} \leq \delta\). For fixed \(r\in (0,1/2)\), there exist positive constants \(\epsilon_0\), \(C\), and \(K\) such that for all \(\epsilon \in (0,\epsilon_0)\), when initial data \((u_{\mathrm{in}}, q _{\mathrm{in}}) \in \ell^\infty(\Z)\times \ell^\infty(\Z)\) satisfy 
+	\begin{equation}\label{initial-conditions}
+		\|u_{\mathrm{in}} - W(\epsilon \cdot, 0) \|_{\ell^2} + \| q _{\mathrm{in}} + \epsilon \partial_XW(\epsilon \cdot, 0) \|_{\ell^2} \leq \epsilon^{3/2},
+	\end{equation}
+	the unique solution \((u,q)\) to the FPU equation \cref{first-order-lattice-eqns} belongs to 
+	\begin{equation}
+		C^1([-t_0(\epsilon), t_0(\epsilon)], \ell^\infty(\mathbb Z))
+	\end{equation}
+	with \(t_0(\epsilon):= r K^{-1} \epsilon^{-3} | \log (\epsilon) | \) and satisfies
+	\begin{equation}
+		\| u(t) - W(\epsilon(\cdot -ct), \epsilon^3 t) \|_{\ell^2} + \| q(t) + \epsilon \partial_X W(\epsilon (\cdot - ct), \epsilon^3 t) \|_{\ell^2} \leq C \epsilon^{3/2 - r}, \quad t\in[-t_0(\epsilon), t_0(\epsilon)].
+	\end{equation}
+\end{theorem}
+
+\begin{proof}
+	From the initial conditions satisfying \cref{initial-conditions}, we have at least local solutions to the error equations. That is, there is a unique local solution to \cref{error-evolution-equation} where \((\mathcal U, \mathcal Q) \in C^1((-t_0,t_0);\ell^2(\Z) \times \ell^2(\Z))\) for some \(t_0 > 0.\)
+	
+	Set \(\mathcal S := \mathcal E ^{1/2}\) where \(\mathcal E\) is defined in \cref{energy-function}. From the bound on the initial conditions in \cref{initial-conditions}, we get that \(\mathcal S(0) \leq C_0 \epsilon^{3/2}\) for some constant \(C_0 > 0\) and \(\epsilon_0\) chosen by \cref{epsilon-0-defn}. For fixed constants \(r\in(0,1/2)\), \(C> C_0\), and \(K > 0\), define the maximal continuation time by 
+	\begin{equation}
+		T_{C,K,r} := \sup \left\{T_0 \in (0, r K^{-1} \epsilon^{-3} |\log(\epsilon)|]: \mathcal S(t) \leq C \epsilon^{3/2 -r}, t\in [-T_0, T_0]\right\}.
+	\end{equation} 
+	We also define the maximal evolution time of the mKdV equation as \(\tau_0(\epsilon) = rK^{-1}|\log(\epsilon)|\). The goal is then to pick \(C\) and \(K\) so that \(T_{C,K,r} = \epsilon^{-3} \tau_0(\epsilon)\).
+	
+	We have that
+	\begin{equation}
+	\begin{aligned}
+		\left | \frac d {dt} \mathcal S(t) \right | &= \frac 1 {2 \mathcal E ^{1/2}} \left | \frac d {dt} \mathcal E(t) \right| \\
+		&\leq C_1(\delta + \delta^5) \epsilon^{9/2} + C_2 \epsilon^3\left[ (\delta^2 + \delta^4) + \epsilon^{-1}(\delta + \mathcal S) \mathcal S \right]\mathcal S
+	\end{aligned}
+	\end{equation}
+	where \(C_1, C_2 > 0\) are independent of \(\delta\) and \(\epsilon\). While \(|t| \leq T_{C,K,r}\),
+	\begin{equation}
+		C_2 \left[ (\delta^2 + \delta^4) + \epsilon^{-1}(\delta + \mathcal S) \mathcal S \right] \leq C_2 \left[ (\delta^2 + \delta^4) + \epsilon^{-1}(\delta +  C\epsilon^{3/2-r}) C \epsilon^{3/2-r} \right],
+	\end{equation}
+	where the right-hand side is continuous in \(\epsilon \) for \(\epsilon \in [0,\epsilon_0]\). Thus the right-hand side can be uniformly bounded by a constant independent of \(\epsilon\). Choose \(K>0\) (dependent on \(C\)) sufficiently large so that 
+	\begin{equation}\label{K-def}
+		C_2 \left[ (\delta^2 + \delta^4) + \epsilon^{-1}(\delta +  C\epsilon^{3/2-r}) C \epsilon^{3/2-r} \right] \leq K.
+	\end{equation}
+	Hence, we can get that for \(t \in [-T_{C,K,r}, T_{C,K,r}]\) 
+	\begin{equation}
+	\begin{aligned}
+		\frac d {dt} e^{-\epsilon^3 K t} \mathcal S(t) &= - \epsilon^3 K e^{-\epsilon^3 K t} \mathcal S  + e^{-\epsilon^3 K t} \frac d {dt} \mathcal S \\
+		&\leq - \epsilon^3 K e^{-\epsilon^3 K t} \mathcal S  + e^{-\epsilon^3 K t}C_1(\delta + \delta^5) \epsilon^{9/2} \\
+		&\qquad+ e^{-\epsilon^3 K t}C_2 \epsilon^3\left[ (\delta^2 + \delta^4) + \epsilon^{-1}(\delta + \mathcal S) \mathcal S \right]\mathcal S \\
+		&\leq - \epsilon^3 K e^{-\epsilon^3 K t} \mathcal S  +  e^{-\epsilon^3 K t}C_1(\delta + \delta^5) \epsilon^{9/2} + \epsilon^3 K e^{-\epsilon^3 K t}\mathcal S \\
+		&= e^{-\epsilon^3 K t}C_1(\delta + \delta^5) \epsilon^{9/2}.
+	\end{aligned}
+	\end{equation}
+	Integrating gives
+	\begin{equation} 
+	\begin{aligned}
+		\mathcal S(t) &\leq \left( \mathcal S(0) + K^{-1} C_1 (\delta+\delta^5) \epsilon^{3/2} \right) e^{\epsilon^3 K t} - \epsilon^{-3} K^{-1} C_1 (\delta + \delta^5) \\
+		&\leq \left( \mathcal S(0) + K^{-1} C_1 (\delta+\delta^5) \epsilon^{3/2} \right) e^{\epsilon^3 K t} \\
+		&\leq \left( \mathcal S(0) + K^{-1} C_1 (\delta+\delta^5) \epsilon^{3/2} \right) e^{ K \tau_0(\epsilon)} \\
+		&\leq \left( C_0 + K^{-1} C_1 (\delta+\delta^5) \epsilon^{3/2} \right) \epsilon^{3/2 -r}
+	\end{aligned}
+	\end{equation}
+	for \(t \in [-T_{C,K,r}, T_{C,K,r}]\), where the last line follows in part from the definition of \(\tau_0(\epsilon)\). Now choose \(C> C_0\) sufficiently large so that 
+	\begin{equation}
+		C_0 + K^{-1} C_1(\delta + \delta^5) \leq C.
+	\end{equation}
+	Note that our earlier choice of \(K\) can be enlarged so that \cref{K-def} still holds as well as the above inequality. Therefore, with these choices of \(C\) and \(K\), the maximal interval can be extended to \(T_{C,K,r} = \epsilon^{-3} \tau_0(\epsilon) \). 
+\end{proof}

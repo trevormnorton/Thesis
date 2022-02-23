@@ -1,0 +1,38 @@
+\begin{thebibliography}{}
+
+\bibitem[Bambusi and Ponno, 2006]{bambusi2006metastability}
+Bambusi, D. and Ponno, A. (2006).
+\newblock On metastability in {FPU}.
+\newblock {\em Communications in mathematical physics}, 264(2):539--561.
+
+\bibitem[Dumas and Pelinovsky, 2014]{dumas2014justification}
+Dumas, E. and Pelinovsky, D. (2014).
+\newblock Justification of the log--{KdV} equation in granular chains: The case
+  of precompression.
+\newblock {\em SIAM Journal on Mathematical Analysis}, 46(6):4075--4103.
+
+\bibitem[Friesecke and Pego, 1999]{friesecke1999solitary}
+Friesecke, G. and Pego, R.~L. (1999).
+\newblock Solitary waves on {FPU} lattices: I. qualitative properties,
+  renormalization and continuum limit.
+\newblock {\em Nonlinearity}, 12(6):1601.
+
+\bibitem[Khan and Pelinovsky, 2017]{khan2017long}
+Khan, A. and Pelinovsky, D.~E. (2017).
+\newblock Long-time stability of small {FPU} solitary waves.
+\newblock {\em Discrete \& Continuous Dynamical Systems}, 37(4):2065.
+
+\bibitem[Pazy, 2012]{pazy2012semigroups}
+Pazy, A. (2012).
+\newblock {\em Semigroups of linear operators and applications to partial
+  differential equations}, volume~44.
+\newblock Springer Science \& Business Media.
+
+\bibitem[Schneider and Wayne, 2000]{schneider2000counter}
+Schneider, G. and Wayne, C.~E. (2000).
+\newblock Counter-propagating waves on fluid surfaces and the continuum limit
+  of the {Fermi-Pasta-Ulam} model.
+\newblock In {\em Equadiff 99: (In 2 Volumes)}, pages 390--404. World
+  Scientific.
+
+\end{thebibliography}
