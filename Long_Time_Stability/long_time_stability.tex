@@ -19,7 +19,7 @@ For the case where \(V\) is of the form \(V(u) = \frac 1 2 u^2 + \frac{\epsilon^
 \begin{equation}\label{generalized-KdV}
 	2 \partial_TW + \frac 1 {12} \partial_X^3 W + \partial_X(W^p) = 0,\quad X\in\R
 \end{equation} 
-serves as a modulation equation for solutions of \cref{fput-lattice-equations-strain-variables} \cite{bambusi2006metastability,friesecke1999solitary,schneider2000counter}. That is, for a local solution \(W\in C([-\tau_0,\tau_0],H^s(\R))\) of \cref{generalized-KdV} there exist positive constants \(\epsilon_0\) and \(C_0\) such that, for all \(\epsilon \in (0,\epsilon_0)\), when initial data \((u_{\mathrm{in} }, \dot u_{\mathrm{in}})\in\ell^2(\R)\) satisfy
+serves as a modulation equation for solutions of \cref{fput-lattice-equations-strain-variables} \cite{bambusi2006metastability,friesecke1999solitary}. That is, for a local solution \(W\in C([-\tau_0,\tau_0],H^s(\R))\) of \cref{generalized-KdV} there exist positive constants \(\epsilon_0\) and \(C_0\) such that, for all \(\epsilon \in (0,\epsilon_0)\), when initial data \((u_{\mathrm{in} }, \dot u_{\mathrm{in}})\in\ell^2(\R)\) satisfy
 \begin{equation}
 	\|u_{\mathrm{in}} - W(\epsilon\cdot, 0) \|_{\ell^2} + \| \dot u_{\mathrm{in}} + \epsilon \partial_X W(\epsilon\cdot, 0) \|_{\ell^2} \leq \epsilon^{3/2},
 \end{equation}
@@ -27,93 +27,43 @@ the unique solution to \cref{fput-lattice-equations-strain-variables} with initi
 \begin{multline}
 	\|u(t) - W(\epsilon (\cdot - t),\epsilon^3 t)\|_{\ell^2(\Z)} + \| \dot u(t) + \epsilon \partial_X W(\epsilon(\cdot - t), \epsilon^3 t) \|_{\ell^2(\Z)} \leq C_0 \epsilon^{3/2}, \\ t\in[-\tau_0 \epsilon^{-3},\tau_0 \epsilon^{-3}].
 \end{multline}
+Furthermore, the approximation can also be extended to include counter-propagating solutions of the KdV in the case where \(p=2\) \cite{schneider2000counter}.
 
-This approximation was extended to longer time scales on the order of \(\epsilon^{-3}|\log(\epsilon)|\) by Khan and Pelinovsky in order to deduce the nonlinear metastability of small FPUT solitary waves from the orbital stability of the corresponding KdV solitary waves \cite{khan2017long}.
+The KdV approximation was extended to longer time scales on the order of \(\epsilon^{-3}|\log(\epsilon)|\) by Khan and Pelinovsky in order to deduce the nonlinear metastability of small FPUT solitary waves from the orbital stability of the corresponding KdV solitary waves \cite{khan2017long}.
 
-The potential for the FPUT in our case is given by
+We consider the FPUT with potential
 \begin{equation}\label{truncated-potential}
-	V(u) = \frac 1 2 u^2 - \frac{\epsilon^2} {24} u^4
+	V(u) = \frac 1 2 u^2 - \frac{1} {24} u^4.
 \end{equation}
-and we wish to study the stability of the moving wave solution. The analysis found in \cite{khan2017long} is no longer directly applicable. In particular, since we are focusing on kink solutions to \cref{fput-lattice-equations-strain-variables}, we no longer have functions which decay in space as we approach infinity. We can proceed in an analogous way to \cite{khan2017long}, but we adapt the method to make estimates with bounded functions. 
+We will introduce an ansatz that solutions of the FPUT with this potential can be well-approximated by counter-propagating solutions of mKdV equations.
 
+\section{Counter-propagating ansatz}
+
+%Write out counter-propagting ansatz for solution 
+
+%Write out the PDEs for f, g, phi
+%% explain that we want f to have non-zero limits at plus or minus infinity
+
+%Introduce unweighted Banach spaces and give lemmas for products (put proofs in appendix)
+%% explain that we require localization of f and g so that phi remains bounded for all time
+%% introduce weighted Banach spaces (perhaps add proof that \mcX^k_m is actually a Banach space)
+%% right/left limit spaces lead to general space
+
+%Prove that phi,psi remain bounded for all time
 \section{Setup of Lattice Equations}
 
 The scalar second-order differential equation \cref{fput-lattice-equations-strain-variables} with potential \(V\) given by \cref{truncated-potential} can be rewritten as the following first-order system:
 \begin{equation}\label{first-order-lattice-eqns}
 	\left\{\begin{aligned}\dot u _n &= q_{n+1} - q_n, \\
-	\dot q_n &= u_n - u_{n-1} - \frac{\epsilon^2} 6 ( u_n^3 - u^3_{n-1}),\end{aligned} \right. \quad n \in \Z.
-\end{equation}
-Since our solution to \cref{fput-lattice-equations-strain-variables} is a kink solution with wave speed given by \(c\) where \(c^2 = 1- \frac{\epsilon^2}{12}\), we use the decomposition 
-\begin{equation}\label{lattice-decompositions}
-	u_n(t) = W(\epsilon(n-ct), \epsilon^3t) + \mathcal U_n(t), \quad q_n(t) = P_\epsilon(\epsilon(n-ct), \epsilon^3t) + \mathcal Q_n(t), \quad n \in \Z
-\end{equation}
-where \(W(X,T)\) is a suitable solution to 
-\begin{equation}\label{modulating-eqn-defocusing-mkdv}
-	2\partial_T W + \frac 1 {12} \partial_X W - \frac 12 W^2 \partial_X W + \frac 1 {12} \partial_X^3 W = 0, \quad X\in \R
-\end{equation}
-and \(P_\epsilon(X,T)\) is found by formally satisfying 
-\begin{equation}\label{p-epsilon-formal-equation}
-	P_\epsilon(X+\epsilon, T) - P_\epsilon(X,T) = - \epsilon c \partial_X W(X,T) + \epsilon^3 \partial_T W(X,T).
-\end{equation}
-To define \(P_\epsilon\), we assume that it has the form
-\begin{equation}
-	P_\epsilon = P^{(0)} + \epsilon P^{(1)} + \epsilon^2 P^{(2)} + \epsilon^3 P^{(3)}
-\end{equation}
-and plug this into \cref{p-epsilon-formal-equation}. After using Taylor series and collecting terms of equal orders of \(\epsilon\), we obtain 
-\begin{equation}\label{p-epsilon-definition}
-	P_\epsilon := - W +  \frac  12 \epsilon\partial_X W +  \frac 1 {12} \epsilon^2 W^3  -  \frac 1 8 \epsilon^2 \partial_X^2 W +  \frac 1 {48} \epsilon^3\partial_X^3 W -  \frac 1 8 \epsilon^3 W^2 \partial_X W.
+	\dot q_n &= u_n - u_{n-1} - \frac{1} 6 ( u_n^3 - u^3_{n-1}),\end{aligned} \right. \quad n \in \Z.
 \end{equation}
 
-Plugging \cref{lattice-decompositions,p-epsilon-definition} into \cref{first-order-lattice-eqns} gives the following differential equations for the error terms
-\begin{equation}\label{error-lattice-eqns}
-\left\{\begin{aligned}
-		\dot{\mathcal U}_n(t) &= \mathcal Q_{n+1}(t) - \mathcal Q_n(t) + \mathrm{Res}_n^{(1)}(t),  \\
-		\dot{\mathcal Q}_n(t) &= \mathcal U_{n} - \mathcal U_{n-1} \\ &\quad - \frac{\epsilon^2} 2 W^2(\epsilon(n-ct),\epsilon^3t) \mathcal{U}_n + \frac{\epsilon^2} 2 W^2(\epsilon(n-1-ct),\epsilon^3t)\mathcal{U}_{n-1} \\ &\quad +\mathrm{Res}_n^{(2)}(t)+ \mathcal R_n(W, \mathcal U),
-\end{aligned} \right.\quad  n\in\Z
-\end{equation}
-where the residual and nonlinear terms are given by 
-\begin{equation}
-	\begin{aligned}
-		\mathrm{Res}^{(1)}_n(t)&:= \epsilon c \partial_X W(\epsilon(n-ct),\epsilon^3t) - \epsilon^3 \partial_T W(\epsilon(n-ct), \epsilon^3 t) \\ 
-		&\qquad+ P_\epsilon(\epsilon(n+1 - ct), \epsilon^3t) - P_\epsilon(\epsilon(n-ct), \epsilon^3t) \\
-		\mathrm{Res}^{(2)}_n(t)&:= \epsilon c \partial_X P_\epsilon(\epsilon(n-ct),\epsilon^3t) - \epsilon^3\partial_T P_\epsilon (\epsilon(n-ct), \epsilon^3t) \\ 
-		&\qquad + W(\epsilon(n-ct),\epsilon^3t) - W(\epsilon(n-1-ct), \epsilon^3t) \\ 
-		&\qquad- \frac{\epsilon^2} 6 \left[ W^3(\epsilon (n-ct), \epsilon^3t) - W^3(\epsilon(n-1-ct), \epsilon^3t) \right]
-	\end{aligned}
-\end{equation}
-and 
-\begin{equation}
-\begin{aligned}
-	\mathcal R_n(W,\mathcal U)(t) &:= - \frac{\epsilon^2} 6 \Big[ 3W(\epsilon(n-ct),\epsilon^3t)\mathcal{U}^2_n(t) - 3 W(\epsilon(n-1-ct), \epsilon^3t)\mathcal U^2_{n-1}(t)  \\ 
-	&\qquad+ \mathcal U^3_n(t) - \mathcal U^3_{n-1}(t)\Big].
-\end{aligned}
-\end{equation}
 
-One may note that we do not know if there are always local solutions to \cref{error-lattice-eqns} for a given set of initial conditions. Although we will be assuming that \((u_n)_{n\in\Z} \in \ell^\infty(\Z)\) and \(W \in C([-\tau_0, \tau_0]; L^\infty(\R))\), the error terms \(\mathcal U\) and \(\mathcal Q\) are assumed to be in \(\ell^2(\Z)\). Thus the equations for the error terms can be written as an evolution equation over \(\ell^2(\Z)\). \Cref{error-lattice-eqns} is equivalent to 
-\begin{equation}\label{error-evolution-equation}
-	\begin{aligned}
-		\dot X(t) &= \mathcal A (t) X + \mathcal N(X, t) \\
-		X(t_0) &= x_0
-	\end{aligned}
-\end{equation}
-where \(X(t) = (\mathcal U(t), \mathcal Q(t))\) and \(x_0 = (\mathcal U(0), \mathcal Q(0))\),
-\begin{equation}
-	\mathcal A(t) := \begin{bmatrix}
-		0 & e^\partial - 1 \\
-		1 - e^{-\partial} & 0
-	\end{bmatrix} \begin{bmatrix}
-		1 - \frac{\epsilon^2} 2 W^2(\epsilon(\cdot - ct), \epsilon^3t) & 0 \\ 
-		0  & 1
-	\end{bmatrix}
-\end{equation}
-and 
-\begin{equation}
-	\mathcal N(X,t) := \begin{bmatrix}
-		\mathrm{Res}^{(1)}(t) \\
-		\mathcal R(W, \mathcal U) + \mathrm{Res}^{(2)}(t)
-	\end{bmatrix}.
-\end{equation}
-Each linear operator \(\mathcal A(t)\) is bounded for any \(t\in[-\tau_0,\tau_0]\) and \(t\mapsto \mathcal A(t)\) is continuous in norm. Also, \(\mathcal N(X,t)\) is locally Lipschitz in \(X\) and the Lipschitz constants are uniformly bounded in time. Thus by the results in sections 5 and 6 of \cite{pazy2012semigroups}, there are \(C^1\) local solutions of \cref{error-evolution-equation}. This shows that local solutions of \cref{error-lattice-eqns} exist in \(\ell^2(\Z)\) whenever \(W\in C([-\tau_0, \tau_0]; L^\infty(\R))\).
+
+
+%Write the resulting equations for 
+
+
 
 \section{Preparatory Estimates}
 To make estimates on the error terms \(\mathcal U\) and \(\mathcal Q\), we require an appropriate choice of \(W\). Based on the above discussion, \(W\) must be at least be a continuous solution in \(L^\infty(\R)\) space. Further regularity is required to make sense of \cref{p-epsilon-definition} as well as further derivatives of \(P_\epsilon\). So \(W\) must be bounded but have spatial derivatives that decay at infinity. The solution of \cref{modulating-eqn-defocusing-mkdv} must then be continuous in the following normed space.
