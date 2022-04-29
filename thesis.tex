@@ -50,10 +50,12 @@
 \usepackage{cleveref}
 %==========================================================================%
 % customized commands can be placed here
+\input{custom.tex}
 
 % Common sets
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
 
 % Environements
 \newtheorem{defn}{Definition}
@@ -78,10 +80,10 @@
 	\cleardoublepage
 
 	
-	%\appendix
-	%\begin{appendices}
-	%	\include{Appendix/Appendix}
-	%\end{appendices}
+	\appendix
+	\begin{appendices}
+		\include{Appendix/Appendix}
+	\end{appendices}
 	%==========================================================================%
 	% Bibliography
 	\newpage

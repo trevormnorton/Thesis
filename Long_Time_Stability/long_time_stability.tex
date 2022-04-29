@@ -37,15 +37,71 @@ We consider the FPUT with potential
 \end{equation}
 We will introduce an ansatz that solutions of the FPUT with this potential can be well-approximated by counter-propagating solutions of mKdV equations.
 
-\section{Counter-propagating ansatz}
+\section{Counter-Propagating Waves Ansatz}
 
 %Write out counter-propagting ansatz for solution 
+We make the assumption that solutions of \cref{fput-lattice-equations-strain-variables} can be expressed as a sum of two counter-propagating small-amplitude waves, i.e., 
+\begin{equation}\label{ansatz}
+	u_n(t) \approx \epsilon f(\epsilon(n+t), \epsilon^3t) + \epsilon g(\epsilon(n-ct), \epsilon^3 t) + \epsilon^3\phi(\epsilon n, \epsilon t)
+\end{equation}
+where we allow \(f\) to have a fixed non-zero limit, \(f_\infty\), at positive infinity and \(\phi\) captures the interaction effects between \(f\) and \(g\). The wave speed of \(g\) is given by
+\begin{equation}
+	c = c(\epsilon, f_\infty) = 1 - \frac{\epsilon^2 f_\infty^2}{4}.
+\end{equation}
+Plugging in the ansatz in \cref{ansatz} back into \cref{fput-lattice-equations-strain-variables} and doing formal calculations gives that the approximation holds up to order \(\epsilon^6\) terms if the the functions \(f\) and \(g\) satisfy
+\begin{equation}\label{f-mKdV}
+	2 \partial_2 f = - \frac 1 6 \partial_1(f^3) + \frac 1 {12} \partial_1^3 f
+\end{equation}
+and 
+\begin{equation}\label{g-gKdV}
+	-2 \partial_2 g = - \frac 1 6 \partial_1 (g^3 + 3f_\infty g^2) + \frac 1 {12}\partial_1^3 g,
+\end{equation}
+and \(\phi\) satisfies
+\begin{equation}\label{phi-pde}
+	\begin{aligned}
+		\partial_2^2 \phi(\xi, \tau) = \partial_1^2\phi(\xi, \tau)- \frac 1 6 \partial_1^2 \big[& 3(f^2(\xi+\tau,\epsilon^2\tau)-f_\infty^2)g(\xi-c\tau,\epsilon^2\tau) \\&+ 3 (f(\xi+\tau,\epsilon^2\tau)-f_\infty)g^2(\xi-c\tau,\epsilon^2\tau) \big ]
+	\end{aligned}
+\end{equation}
+Note that \cref{f-mKdV} is the defocusing mKdV equation and \cref{g-gKdV} is a type of generalized KdV equation.
 
-%Write out the PDEs for f, g, phi
-%% explain that we want f to have non-zero limits at plus or minus infinity
+A natural choice of function space for \(g\) is a Sobolev space like \(H^k(\R)\). However, for \(f\), we want to allow the possibility of the function approaching a non-zero limit at positive and negative infinity while also having sufficient regularity. 
+\begin{defn}
+	For \(k\in\N\), let \(\mcX^k(\R)\) be the Banach space 
+	\begin{equation}
+		\mcX^k(\R) := \{f \in L^\infty(\R) \mid f'\in H^{k-1}(\R)\}
+	\end{equation}
+	with norm
+	\begin{equation}
+		\| f \|_{\mcX^k(\R)} := \| f \|_{L^\infty(\R)} + \| f' \|_{H^{k-1}(\R)}.
+	\end{equation}
+\end{defn}
+Then \(\mcX^k\) is the set of \(L^\infty\) functions which are \(k\) times weakly differentiable and whose derivatives are in \(L^2\). That this is a Banach space follows from the Banach space isomorphism
+\begin{equation}
+	\mcX^k(\R) \cong L^\infty(\R) \cap \dot H^1(R) \cap \dot H^k(\R),
+\end{equation}
+where \(\dot H^k(\R)\) denotes the homogeneous Sobolev spaces. For convenience, we let \(\mcX^0(\R)\) denote \(L^\infty(\R)\)
 
-%Introduce unweighted Banach spaces and give lemmas for products (put proofs in appendix)
-%% explain that we require localization of f and g so that phi remains bounded for all time
+The space \(\mcX^k\) is a natural one for \(f\), and allows \(f\) to be kink solutions of \cref{f-mKdV}. We also have the following inequalities for products of functions in \(\mcX^k\) and \(H^k\) that will be useful. 
+
+	
+\begin{lem}
+	For non-negative integers \(k\), there is a \(C>0\) such that
+	\begin{equation}\label{prod_rule}
+		\| fg \|_{H^k} \leq C \| f \|_{\mathcal X^k} \| g \|_{H^k}
+	\end{equation}
+	for any \(f\in \mcX^k(\mathbb R)\) and \(g \in H^k(\mathbb R)\).
+\end{lem}
+
+\begin{lem}
+	For non-negative integers \(k\), there is a \(C>0\) such that
+	\begin{equation}
+		\| fg \|_{\mcX^k} \leq C \| f \|_{\mcX^k} \| h \|_{\mcX^k}
+	\end{equation}
+	for any \(f,g\in \mcX^k(\mathbb R)\).
+\end{lem}
+See \cref{lemma-appendix} for proofs.
+
+However, for our main result, we require that \(\phi\), the term which captures the interaction effects, remains uniformly bounded for all time. Intuitively, if \(f\) and \(g\) localized, the inhomogeneous term in \cref{phi-pde} will quickly go to zero and \(\phi\) will no longer experience growth in time. Thus we require that \(f\) and \(g\) quickly decay to their respective limits at infinity. 
 %% introduce weighted Banach spaces (perhaps add proof that \mcX^k_m is actually a Banach space)
 %% right/left limit spaces lead to general space
 
@@ -59,10 +115,11 @@ The scalar second-order differential equation \cref{fput-lattice-equations-strai
 \end{equation}
 
 
+%Define the ansatz and F and G
 
+%Give assumptions on f,g and \dot{u}_n 
 
-%Write the resulting equations for 
-
+%Write the resulting equations for \mathcal{U} and \mathcal{Q}
 
 
 \section{Preparatory Estimates}

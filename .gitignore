@@ -2,10 +2,6 @@
 *.log
 *.aux
 *.gz
-*.gz
-thesis.log
-*.log
 thesis.bbl
 thesis.blg
 thesis.toc
-Long_Time_Stability/long_time_stability.aux

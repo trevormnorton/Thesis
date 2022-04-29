@@ -1,0 +1,25 @@
+% !TeX root = ../thesis.tex
+\chapter{Proofs of lemmas}\label{lemma-appendix}
+\begin{proof}
+	The result follows from induction on \(k\).
+	
+	For \(k = 0\), we have
+	\begin{equation}
+		\| f g \|_{H^0} \leq \| f \|_{L^\infty} \| g\|_{H^0}.
+	\end{equation}
+	
+	Assuming \cref{prod_rule} holds for \(k\geq 0\), we have that 
+	\begin{align*}
+		\| f g \|_{H^{k+1}} \leq C \left( \| f g \|_{H^k} + \| \partial^{k+1}(fg) \|_{L^2}\right) \\
+		\leq C \left( \| f\|_{\mathcal X^k} \| g \|_{H^k} + \| \partial^{k+1}(fg) \|_{L^2} \right),
+	\end{align*}
+	where the second term can be bounded by 
+	\begin{align*}
+		\| \partial^{k+1}(fg) \|_{L^2} &\leq \| \partial^k(\partial^1 f g ) \|_{L^2} + \| \partial^k(f \partial^1 g) \|_{L^2} \\
+		&\leq \| \partial^1 f  g \|_{H^k} + \| f \partial^1 g \|_{H^k} \\
+		&\leq \| \partial^1 f \|_{H^k} \|g\|_{H^k} + \|f\|_{\mathcal X^k} \|\partial^1 g\|_{H^k} \\
+		&\leq \| f \|_{\mathcal X^{k+1}} \| g\|_{H^{k+1}} + \|f \|_{\mathcal X^{k+1}} \|g\|_{H^{k+1}} \\
+		&= 2  \| f \|_{\mathcal X^{k+1}} \| g\|_{H^{k+1}}.
+	\end{align*}
+	This completes the induction.
+\end{proof}
