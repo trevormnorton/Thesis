@@ -101,11 +101,69 @@ The space \(\mcX^k\) is a natural one for \(f\), and allows \(f\) to be kink sol
 \end{lem}
 See \cref{lemma-appendix} for proofs.
 
-However, for our main result, we require that \(\phi\), the term which captures the interaction effects, remains uniformly bounded for all time. Intuitively, if \(f\) and \(g\) localized, the inhomogeneous term in \cref{phi-pde} will quickly go to zero and \(\phi\) will no longer experience growth in time. Thus we require that \(f\) and \(g\) quickly decay to their respective limits at infinity. 
-%% introduce weighted Banach spaces (perhaps add proof that \mcX^k_m is actually a Banach space)
-%% right/left limit spaces lead to general space
+However, for our main result, we require that \(\phi\), the term which captures the interaction effects, remains uniformly bounded for all time. Intuitively, if \(f\) and \(g\) localized, the inhomogeneous term in \cref{phi-pde} will quickly go to zero and \(\phi\) will no longer experience growth in time. Thus we require that \(f\) and \(g\) quickly decay to their respective limits at infinity. This is enforced by assuming the functions belong to appropriate weighted Banach spaces.
+
+A suitable choice of space for \(g\) is the weighted Sobolev spaces \(H^k_n(\R)\). Here, \(H^k_n\) for \(k,n\in\mathbb N\cup \{0\}\)
+\begin{equation}
+	H^k_n(\R) := \{ g\in H^k(\R) \mid   g\langle \cdot \rangle^n \in H^k \}
+\end{equation}
+where \(\langle x \rangle = \sqrt{1+x^2}\). The norm on this space is
+\begin{equation}
+	\| g \|_{H^k_n(\R)} := \|  g \langle \cdot \rangle^n\|_{H^k(\R)}.
+\end{equation}
+This space has the useful property that if \(g \in H^k_n\), then its Fourier transform, \(\hat g \), is in \(H^n_k\) and 
+\begin{equation}
+	c \| \hat g \|_{H^n_k} \leq \| g \|_{H^k_n} \leq C \| \hat g \|_{H^n_k}
+\end{equation}
+for \(c,C>0\) and independent on \(g\).
+
+We want an analogous space for \(f\), but allowing for non-zero limits at infinity. Let \(\langle\cdot \rangle_+ :\R \to \R\) be a smooth function such that
+\begin{equation}
+	\langle x \rangle_+ = \begin{cases} \langle x \rangle, & x>1 \\ 1, & x<0\end{cases}
+\end{equation}
+and \(\langle \cdot \rangle_+\) continued smoothly between \(0\) and \(1\) such that it is always greater than or equal to \(1\). Thus \(\langle \cdot \rangle_+\) is a function that only acts like \(\langle \cdot \rangle\) for positive numbers. The function \(\langle \cdot \rangle_-\) is similarly defined but for the negative numbers.
+
+\begin{defn}
+	Define \(\mcX^k_{n^+} (\R)\) to be the Banach space of functions where 
+	\begin{equation}
+		\mcX^k_{n^+} (\R) := \{ f \in \mcX^k(\R) \mid \lim_{x\to\infty} f(x) = f_\infty\text{ and } (f-f_\infty)\langle\cdot\rangle_+^n \in \mcX^k(\R)\}
+	\end{equation}
+	with norm given by
+	\begin{equation}
+		\| f \|_{\mcX^k_{n^+}(\R)} := |f_\infty| + \|(f-f_\infty) \langle \cdot \rangle_+^n \|_{\mathcal X^k(\R)}
+	\end{equation}
+	Similarly, 
+	\begin{equation}
+		\mcX^k_{n^-} (\R) := \{ f \in \mcX^k(\R) \mid \lim_{x\to-\infty} f(x) = f_{-\infty}\text{ and } (f-f_{-\infty})\langle\cdot\rangle_-^n \in \mcX^k(\R)\}
+	\end{equation}
+	and 
+	\begin{equation}
+		\| f \|_{\mcX^k_{n^-}(\R)} := |f_{-\infty}| + \|(f-f_{-\infty}) \langle \cdot \rangle_-^n \|_{\mathcal X^k(\R)}
+	\end{equation}
+	Define \(\mcX^k_n(\R)\) to be the intersection of these Banach spaces. That is,
+	\begin{equation}
+		\mcX^k_n(\R) := \mcX^k_{n^+} (\R) \cap \mcX^k_{n^-} (\R), \quad \| f \|_{\mcX^k_{n} (\R)} := \|f\|_{\mcX^k_{n^+} (\R)} + \|f\|_{\mcX^k_{n^-} (\R)}.
+	\end{equation}
+\end{defn}
+	That \(\mcX^k_{n^\pm}\) are Banach spaces follows from the fact that there exists a linear isomorphism between the Banach space \(\R\times \mcX^k\) and these spaces, which is given by
+\begin{equation}
+	(\alpha, f) \mapsto \alpha + f \langle \cdot \rangle^{-n}_{\pm}.
+\end{equation}
 
 %Prove that phi,psi remain bounded for all time
+The definitions above prove that \(\phi\) remains bounded for all time. The idea behind the proof is similar to that of \cite[Lemma~3.1]{schneider2000counter}; if \(f\) and \(g\) are localized solutions, then the interaction terms of \cref{phi-pde} will decay quickly and so \(\phi\) will remain bounded. This decay can be quantified by the following lemma.
+\begin{lem}
+	For each \(k\geq 0\), there exists \(C> 0\) depending only on \(k\) such that 
+	\begin{equation}\label{Ck-bound}
+		\left \| \frac 1 {\langle \cdot +\tau\rangle_+^2 \langle \cdot - \tau \rangle^2} \right \|_{C^k} \leq C\, \sup_{x\in\mathbb R} \frac 1 {\langle x +\tau\rangle_+^2 \langle x - \tau \rangle^2}.
+	\end{equation}
+	Furthermore,
+	\begin{equation}
+		\int_0^\infty \sup_{x\in\mathbb R} \frac 1 {\langle x +\tau\rangle_+^2 \langle x - \tau \rangle^2}\, d\tau <\infty.
+	\end{equation}
+\end{lem}
+See \cref{lemma-appendix} for proof. 
+
 \section{Setup of Lattice Equations}
 
 The scalar second-order differential equation \cref{fput-lattice-equations-strain-variables} with potential \(V\) given by \cref{truncated-potential} can be rewritten as the following first-order system:
