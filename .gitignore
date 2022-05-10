@@ -6,5 +6,4 @@ thesis.bbl
 thesis.blg
 thesis.toc
 *.aux
-Prelim/.DS_Store
-.DS_Store
+*.DS_Store
