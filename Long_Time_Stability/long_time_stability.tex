@@ -45,7 +45,7 @@ We make the assumption that solutions of \cref{fput-lattice-equations-strain-var
 	u_n(t) \approx \epsilon f(\epsilon(n+t), \epsilon^3t) + \epsilon g(\epsilon(n-ct), \epsilon^3 t) + \epsilon^3\phi(\epsilon n, \epsilon t)
 \end{equation}
 where we allow \(f\) to have a fixed non-zero limit, \(f_\infty\), at positive infinity and \(\phi\) captures the interaction effects between \(f\) and \(g\). The wave speed of \(g\) is given by
-\begin{equation}
+\begin{equation}\label{ansatz-wave-speed}
 	c = c(\epsilon, f_\infty) = 1 - \frac{\epsilon^2 f_\infty^2}{4}.
 \end{equation}
 Plugging in the ansatz in \cref{ansatz} back into \cref{fput-lattice-equations-strain-variables} and doing formal calculations gives that the approximation holds up to order \(\epsilon^6\) terms if the the functions \(f\) and \(g\) satisfy
@@ -153,7 +153,7 @@ and \(\langle \cdot \rangle_+\) continued smoothly between \(0\) and \(1\) such 
 %Prove that phi,psi remain bounded for all time
 The definitions above are used to prove that \(\phi\) remains bounded for all time. The idea behind the proof is similar to that of \cite[Lemma~3.1]{schneider2000counter}; if \(f\) and \(g\) are localized solutions, then the interaction terms of \cref{phi-pde} will decay quickly and so \(\phi\) will remain bounded. This decay can be quantified by the following lemma.
 \begin{lem}
-	For each \(k\geq 0\), there exists \(C> 0\) depending only on \(k\) such that 
+	For each \(k\geq 0\) and \(c\geq c_0 > 0\), there exists \(C> 0\) depending only on \(k\) such that 
 	\begin{equation}\label{Ck-bound}
 		\left \| \frac 1 {\langle \cdot +\tau\rangle_+^2 \langle \cdot - c\tau \rangle^2} \right \|_{C^k} \leq C\, \sup_{x\in\mathbb R} \frac 1 {\langle x +\tau\rangle_+^2 \langle x -c \tau \rangle^2}.
 	\end{equation}
@@ -193,7 +193,7 @@ See \cref{lemma-appendix} for proof.
 	\end{aligned}
 	\end{equation}
 	and 
-	\begin{equation}
+	\begin{equation}\label{psi-fourier-transform}
 	\begin{aligned}
 		&\hat  \psi(k,T) = \frac 1 2 \int_0^Tk^2\cos(k(T-\tau)) \times\\
 		&\quad\mathcal F[ (f^2(\cdot+\tau),\epsilon^2\tau)-f_\infty^2)g(\cdot-c\tau,\epsilon^2\tau) +(f(\cdot+\tau,\epsilon^2\tau)-f_\infty)g^2(\cdot-c\tau,\epsilon^2\tau)](k)\, d\tau
@@ -201,11 +201,12 @@ See \cref{lemma-appendix} for proof.
 	\end{equation}
 	Hence we can get that 
 	\begin{align*}
-		\|\phi(\cdot, T) \|_{H^k} \leq& C \| \hat\phi(\cdot, T) \|_{H^0_k} \\
-		\leq& C \int_0^T \| \partial_1 ((f^2(\cdot+\tau)-f_\infty^2)g(\cdot-c\tau)) \|_{H^k} + \| \partial_1( (f(\cdot+\tau)-f_\infty)g^2(\cdot-c\tau)) \|_{H^k} \, \mathrm d \tau \\
-		\leq& C \int_0^T \| f(\cdot+\tau)\partial_1 f(\cdot + \tau)g(\cdot-c\tau) \|_{H^k} + \|(f^2(\cdot+\tau) -f_\infty^2) \partial_1 g(\cdot - c\tau) \|_{H^k}  \\
-		&\qquad + \|\partial_1f(\cdot+\tau) g^2(\cdot - c\tau) \|_{H^k} + \| (f(\cdot + \tau) -f_\infty) \partial_1 g(\cdot - c\tau) \|_{H^k} \\ 
-		&\leq C \int_0^T \sup_{x\in\R} \frac 1 {\langle x + \tau\rangle_+^2 \langle x - c\tau\rangle^2} \times \Bigg( \|f\|^2_{\mathcal X^{k+1}_{2}} \| g \|_{H^{k+1}_2} + \|f\|_{\mathcal X^{k+1}_{2}} \| g \|^2_{H^{k+1}_2} \Bigg) \, \mathrm d \tau, 
+		&\|\phi(\cdot, T) \|_{H^k} \\
+		&\quad\leq C \| \hat\phi(\cdot, T) \|_{H^0_k} \\
+		&\quad\leq C \int_0^T \| \partial_1 ((f^2(\cdot+\tau)-f_\infty^2)g(\cdot-c\tau)) \|_{H^k} + \| \partial_1( (f(\cdot+\tau)-f_\infty)g^2(\cdot-c\tau)) \|_{H^k} \, \mathrm d \tau \\
+		&\quad\leq C \int_0^T \| f(\cdot+\tau)\partial_1 f(\cdot + \tau)g(\cdot-c\tau) \|_{H^k} + \|(f^2(\cdot+\tau) -f_\infty^2) \partial_1 g(\cdot - c\tau) \|_{H^k}  \\
+		&\qquad + \|\partial_1f(\cdot+\tau) g^2(\cdot - c\tau) \|_{H^k} + \| (f(\cdot + \tau) -f_\infty) \partial_1 g(\cdot - c\tau) \|_{H^k}\, \mathrm{d}\tau \\ 
+		&\quad\leq C \int_0^T \sup_{x\in\R} \frac 1 {\langle x + \tau\rangle_+^2 \langle x - c\tau\rangle^2} \times \Bigg( \|f\|^2_{\mathcal X^{k+1}_{2}} \| g \|_{H^{k+1}_2} + \|f\|_{\mathcal X^{k+1}_{2}} \| g \|^2_{H^{k+1}_2} \Bigg) \, \mathrm d \tau, 
 	\end{align*} 
 	whence \cref{phi-bound} follows. The proof for \cref{psi-bound} is analogous.
 \end{proof}
@@ -218,11 +219,32 @@ The scalar second-order differential equation \cref{fput-lattice-equations-strai
 	\dot q_n &= u_n - u_{n-1} - \frac{1} 6 ( u_n^3 - u^3_{n-1}),\end{aligned} \right. \quad n \in \Z.
 \end{equation}
 
+We will now introduce the traveling wave ansatz for the system in \cref{first-order-lattice-eqns}, but we first must assume certain regularity and decay of \(f\) and \(g\).
+\begin{assum}\label{assumption-1}
+	Let \(f\) and \(g\) be solutions of \cref{f-mKdV,g-gKdV}, respectively. Assume that \[f\in C_b(\R, \mcX_2^6(\R)) \quad \text{ and } \quad g\in C_b(\R,H_2^6(\R)).\] Furthermore, assume that \(f\) has fixed limits in its spatial variable at \(\pm \infty\) given by \(f_{\pm \infty}\).
+\end{assum}
 
-%Define the ansatz and F and G
+The traveling wave ansatz for \(u_n\) and \(q_n\) is then given by
+\begin{equation}
+	u_n(t) = \epsilon f(\epsilon(n+t), \epsilon^3t) + \epsilon g(\epsilon(n-ct), \epsilon^3 t) + \epsilon^3 \phi(\epsilon n , \epsilon t) + \mcU_n(t)
+\end{equation}
+and 
+\begin{equation}
+	q_n(t) = \epsilon F(\epsilon(n+t), \epsilon^3 t) + \epsilon G(\epsilon(n-ct), \epsilon^3 t) + \epsilon^3 \Phi(\epsilon n, \epsilon t) - \epsilon F_{-\infty} + \mcQ_n(t).
+\end{equation}
+The wave speed \(c\) is again given by \cref{ansatz-wave-speed}. The functions \(F\), \(G\), an \(\Phi\) are chosen to minimize the remainder terms from plugging in the ansatz back into \cref{first-order-lattice-eqns} and are given explicitly below:
+\begin{align}
+	F &:= f - \frac{\epsilon} 2 \partial_1 f + \frac{\epsilon^2} 8 \partial_1^2 f - \frac{\epsilon^2}{12} f^3  - \frac{\epsilon^3}{48} \partial_1^3 f + \frac{\epsilon^3} 8 f^2 \partial_1 f\\
+	G &:= - g + \frac{\epsilon}{2}\partial_1 g + \frac{\epsilon^2 L^2} 4  g + \frac{\epsilon^2}{12}(g^3 + 3Lg^2) -\frac{ \epsilon^2} 8 \partial_1^2 g  + \frac{\epsilon^3}{48} \partial_1^3 g - \frac{\epsilon^3}{24} \partial_1(g^3 + 3Lg^2) - \frac{\epsilon^3 L^2} 8 \partial_1 g \\
+	\Phi &:=  \partial_1^{-1}\psi - \frac{\epsilon} 2 \psi.
+\end{align}
+Here \(\psi = \partial_2 \phi\) and \(\partial_1^{-1}\) is defined as a Fourier multiplier. That \(\partial_1^{-1}\psi\) is well-defined and in \(H^5(\R)\) follows from \cref{psi-fourier-transform}. \Cref{assumption-1} implies that \(F\) has fixed limits in its spatial variable at \(\pm \infty\) given by \(F_{\pm\infty} = f_{\pm\infty} -\frac{\epsilon^2}{12} f^3_{\pm\infty}\).
 
-%Give assumptions on f,g and \dot{u}_n 
-
+We want \(\mcU(t)\) and \(\mcQ(t)\) to be elements of \(\ell^2(\Z)\) (at least locally in time). However, to satisfy \(\mcQ(0)\in\ell^2(\Z)\) and \(\dot u_n(0) = q_{n+1}(0) - q_n(0)\), a compatibility condition must hold.
+\begin{assum}\label{assumption-2}
+	Assume that \[\sum_{n=-\infty}^\infty \dot u_n(0) = \epsilon F_{+\infty} - \epsilon F_{-\infty}.\]
+\end{assum}
+Note that if this did not hold, then \(\mcQ_n(0)\not\to 0\) as \(n\to\infty\) and \(\mcQ(0)\notin \ell^2(\Z)\).
 %Write the resulting equations for \mathcal{U} and \mathcal{Q}
 
 
