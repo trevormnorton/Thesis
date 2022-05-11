@@ -225,11 +225,11 @@ We will now introduce the traveling wave ansatz for the system in \cref{first-or
 \end{assum}
 
 The traveling wave ansatz for \(u_n\) and \(q_n\) is then given by
-\begin{equation}
+\begin{equation}\label{u-ansatz}
 	u_n(t) = \epsilon f(\epsilon(n+t), \epsilon^3t) + \epsilon g(\epsilon(n-ct), \epsilon^3 t) + \epsilon^3 \phi(\epsilon n , \epsilon t) + \mcU_n(t)
 \end{equation}
 and 
-\begin{equation}
+\begin{equation}\label{q-ansatz}
 	q_n(t) = \epsilon F(\epsilon(n+t), \epsilon^3 t) + \epsilon G(\epsilon(n-ct), \epsilon^3 t) + \epsilon^3 \Phi(\epsilon n, \epsilon t) - \epsilon F_{-\infty} + \mcQ_n(t).
 \end{equation}
 The wave speed \(c\) is again given by \cref{ansatz-wave-speed}. The functions \(F\), \(G\), an \(\Phi\) are chosen to minimize the remainder terms from plugging in the ansatz back into \cref{first-order-lattice-eqns} and are given explicitly below:
@@ -244,206 +244,52 @@ We want \(\mcU(t)\) and \(\mcQ(t)\) to be elements of \(\ell^2(\Z)\) (at least l
 \begin{assum}\label{assumption-2}
 	Assume that \[\sum_{n=-\infty}^\infty \dot u_n(0) = \epsilon F_{+\infty} - \epsilon F_{-\infty}.\]
 \end{assum}
-Note that if this did not hold, then \(\mcQ_n(0)\not\to 0\) as \(n\to\infty\) and \(\mcQ(0)\notin \ell^2(\Z)\).
-%Write the resulting equations for \mathcal{U} and \mathcal{Q}
+Note that if this did not hold, then \(\mcQ_n(0)\not\to 0\) as \(n\to\infty\) and \(\mcQ(0)\notin \ell^2(\Z)\). That \(\mcQ(0_n \to 0)\) as \(n\to-\infty\) follows directly from the ansatz. The introduction of the constant \(\epsilon F_{-\infty}\) in \cref{q-ansatz} does not affect the dynamics of \(q\) in \cref{first-order-lattice-eqns}
 
+An equivalent set of equations to \cref{first-order-lattice-eqns} are given by
+\begin{equation}\label{error-lattice-eqns}
+	\left\{\begin{aligned}
+			\dot{\mathcal U}_n(t) =& \mathcal Q_{n+1}(t) - \mathcal Q_n(t) +\ResnI \\
+\dot{\mathcal Q}_n(t) =& \mathcal U_n(t) - \mathcal U_{n-1}(t)  \\
+&\quad - \frac 1 2 (\epsilon f(\epsilon(n+t)) + \epsilon g(\epsilon(n-ct)) + \epsilon^3\phi(\epsilon n))^2 \mathcal U_{n}(t) \\
+&\quad + \frac 12  (\epsilon f(\epsilon(n-1+t)) + \epsilon g(\epsilon(n-1-ct)) + \epsilon^3\phi(\epsilon (n-1)))^2 \mathcal U_{n-1}(t) \\
+&\quad +\ResnII + \mathcal B_n(\epsilon f + \epsilon g + \epsilon^3 \phi,  \mathcal U) 
+	\end{aligned} \right.\quad  n\in\Z
+\end{equation}
+where
+\begin{align*}
+	\ResnI =& \epsilon F(\epsilon(n+1+t)) - \epsilon F(\epsilon(n+t)) \\
+	&\quad + \epsilon G(\epsilon(n+1-c t) - \epsilon G(\epsilon(n-c t) + \epsilon^3 \Phi(\epsilon (n+1))   - \epsilon^3 \Phi(\epsilon n) \\
+	&\quad - \epsilon^2 \partial_1 f(\epsilon(n+t)) - \epsilon^4 \partial_2
+	f(\epsilon(n+t)) \\
+	&\quad + \epsilon^2 c \partial_1 g(\epsilon(n-ct)) - \epsilon^4 \partial_2 g(\epsilon(n-ct)) - \epsilon^4 \partial_2 \phi(\epsilon n) \\
+	\ResnII =& \epsilon f(\epsilon(n+t)) - \epsilon f(\epsilon(n-1+t)) \\
+	&\quad+ \epsilon g(\epsilon(n-c t) - \epsilon g(\epsilon(n-1-c t) + \epsilon^3 \phi(\epsilon n) - \epsilon^3 \phi(\epsilon (n-1)) \\
+	&\quad - \epsilon^2 \partial_1 F(\epsilon(n+t)) - \epsilon^4 \partial_2
+	F(\epsilon(n+t)) \\
+	&\quad + \epsilon^2 c \partial_1 G(\epsilon(n-ct)) - \epsilon^4 \partial_2 G(\epsilon(n-ct)) - \epsilon^4 \partial_2 \Phi(\epsilon n) \\
+	&\quad - \frac 1 6 \Big( (\epsilon f(\epsilon(n+t)) + \epsilon g(\epsilon(n-c t)) + \epsilon^3 \phi(\epsilon n))^3 \\
+	&\hspace{6em} - (\epsilon f(\epsilon(n-1+t)) + \epsilon g(\epsilon(n-1-c t)) + \epsilon^3 \phi(\epsilon (n-1)))^3 \Big) 
+\end{align*}
+and 
+\begin{align*}
+	\mathcal B_n(\epsilon f + \epsilon g + \epsilon^3 \phi, \mathcal U) =& -\frac 1 6 \Big( 3(\epsilon f(\epsilon(n+t) + \epsilon g(\epsilon(n-ct)) + \epsilon^3 \phi(\epsilon n))  \mathcal U^2_n(t) \\
+	&\qquad - 3(\epsilon f(\epsilon(n-1+t) + \epsilon g(\epsilon(n-1-ct)) + \epsilon^3 \phi(\epsilon (n-1)))  \mathcal U^2_{n-1}(t) \\
+	&\qquad + \mathcal U_n^3(t)  - \mathcal U_{n-1}^3(t)\Big).
+\end{align*}
+
+The terms \(\mcU\) and \(\mcQ\) control the error associated with the ansatz in \cref{u-ansatz,q-ansatz}. Thus if these terms remain small in the \(\ell^2(\Z)\) norm, then the traveling wave ansatz will remain valid.
 
 \section{Preparatory Estimates}
-To make estimates on the error terms \(\mathcal U\) and \(\mathcal Q\), we require an appropriate choice of \(W\). Based on the above discussion, \(W\) must be at least be a continuous solution in \(L^\infty(\R)\) space. Further regularity is required to make sense of \cref{p-epsilon-definition} as well as further derivatives of \(P_\epsilon\). So \(W\) must be bounded but have spatial derivatives that decay at infinity. The solution of \cref{modulating-eqn-defocusing-mkdv} must then be continuous in the following normed space.
-\begin{defn}
-	For \(s\geq 1\), the normed space \(\mathcal X_s\) is the set of functions
-	\begin{equation}
-		\mathcal X_s := \{u \in L^\infty(\R) : u'(x) \in H^{s-1}(\R)\}
-	\end{equation}
-	with a norm defined by 
-	\begin{equation}
-		\| u \|_{X_s} := \| u \|_{L^\infty(\R)} + \|u'\|_{H^{s-1}(\R)}.
-	\end{equation}
-\end{defn}
-In fact, \(\mathcal X_s\) is a Banach space.
-\begin{prop}
-	For \(s\geq 1\), the normed vector space \(\mathcal X_s\) is a Banach space.
-\end{prop}
-\begin{proof}
-	Suppose that \(\{u_n\}\subset \mathcal X_s\) is a Cauchy sequence. Then for any \(\epsilon > 0\) there exists \(N\in\mathbb N\) such that for any \(n,m\geq N\)
-	\begin{equation}
-		\| u_n - u_m \|_{\mathcal X_s} = \|u_n - u_m\|_{L^\infty(\R)} + \|u_n'-u_m'\|_{H^{s-1}(\R)} < \epsilon.
-	\end{equation}
-	Clearly, we have that \(\{u_n\}\) is a Cauchy sequence in \(L^\infty(\R)\) and \(\{u_n'\}\) is a Cauchy sequence in \(H^{s-1}(\R)\). Since \(L^\infty\) and \(H^{s-1}\) are Banach spaces, we have \(u \in L^\infty\) and \(v \in H^{s-1}\) such that 
-	\begin{equation}
-		\begin{aligned}
-			u_n &\rightarrow u \quad \text{in } L^\infty(\R) \\
-			u_n' &\rightarrow v \quad \text{in } H^{s-1}(\R).
-		\end{aligned}
-	\end{equation}
-	To show that \(u_n \to u\) in \(\mathcal X_s\), we must demonstrate that \(v = u'\) (where \('\) denotes a distributional derivative which is \emph{a priori} defined). One can show that \(H^{s-1}(\R) \hookrightarrow L^2(\R)\): for \(w \in H^{s-1}(\R)\) we have
-	\begin{equation}
-	\begin{aligned}
-		\|w \|_{L^2} &= \| \hat w \|_{L^2} \\
-		&= \left( \int_\R |\hat w(\xi)|^2 \, d \xi \right)^{1/2} \\
-		&\leq \left( \int_\R |\hat w(\xi)|^2 ( 1+ |\xi|^{2s})\, d \xi \right)^{1/2} \\
-		&= \| w\|_{H^{s-1}}.
-	\end{aligned}
-	\end{equation}
-	Thus we also have \(u_n' \to v\) in \(L^2(\R)\).
-	
-	Let \(\phi \in C_c^\infty(\R)\) be a test function. By \(L^2\) convergence, we have that 
-	\begin{equation}
-		\int_\R v \phi \, dx = \lim_{n\to\infty} \int_\R u_n' \phi \, dx.
-	\end{equation}
-	Also, by applying the dominated convergence theorem (and possibly taking a subsequence to get almost everywhere pointwise convergence), we have that
-	\begin{equation}
-		\int_\R u \phi' \, dx = \lim_{n\to\infty} \int_\R u_n \phi' \, dx.
-	\end{equation}
-	Therefore, we get that 
-	\begin{equation}
-	\begin{aligned}
-		\int_\R v \phi \, dx &= \lim_{n\to\infty} \int_\R u_n' \phi \, dx \\
-		&= \lim_{n\to\infty} - \int_\R u_n \phi' \, dx \\
-		&= -\int_\R u\phi'\, dx .
-	\end{aligned}
-	\end{equation}
-	Hence, \(u' = v\) and \(\mathcal X_s\) is a Banach space.
-\end{proof}
-
-For our case, we will need at least six spatial derivatives of \(W\) and so \(W\) should belong to \(C([-\tau_0,\tau_0];\mathcal X_6)\). Note that the kink solutions of \cref{modulating-eqn-defocusing-mkdv} are in this space; for instance, if \(W(X,T) = \phi(X)\) with 
-\begin{equation}
-	\phi(X) = \frac 1 {\sqrt 2} \tanh\left( \frac X {\sqrt{2}} \right),
-\end{equation}
-then \(W\) is a solution to the mKdV equation and \(W \in C(\R ; \mathcal X_s)\) for any \(s\geq 1\).
-
-In order to prove long-time stability, we must get estimates of the \(\ell^2(\Z)\) norms of the residual terms and the nonlinearity. The following lemma proved in \cite{dumas2014justification} will be useful in bounding \(\ell^2(\Z)\) norms by Sobolev norms of \(W\).
-
+ 
+To control the dynamics of \(\mcU\) and \(\mcQ\), we need estimates of the residuals and the nonlinearity. It will frequently normal to bound the \(\ell^2(\Z)\) of a term by the \(H^1(\R)\) norm of a function. To this end the following lemma proved in \cite{dumas2014justification} is useful.
 \begin{lem}
 	There exists \(C>0\) such that for all \(X \in H^1(\R)\) and \(\epsilon \in (0,1)\), \[\|x\|_{\ell^2} \leq C \epsilon^{-1/2} \|X\|_{H^1},\] where \(x_n := X(\epsilon n)\), \(n\in \mathbb Z\).
 \end{lem}
 
-We can then show the following estimates.
+%Proof residual terms and nonlinear terms remain small
 
-\begin{lem}\label{residual-nonlinear-estimates}
-	Let \(W\in C([-\tau_0,\tau_0];\mathcal X_6)\) be a solution of the modified KdV equation \cref{modulating-eqn-defocusing-mkdv} and \(\tau_0>0\). Define
-	\begin{equation}\label{delta-0-defn}
-		\delta:= \sup_{\tau\in[-\tau_0,\tau_0]} \| W(\tau)\|_{\mathcal X_s}.
-	\end{equation}
-	There exists a positive \(\delta\)-independent constant \(C\) such that the residual and nonlinear terms satisfy
-	\begin{equation}
-		\| \mathrm{Res}^{(1)}(t) \|_{\ell^2} + \|\mathrm{Res}^{(2)}(t) \|_{\ell^2} \leq C \epsilon^{9/2} (\delta + \delta^5)
-	\end{equation}
-	and 
-	\begin{equation}
-		\|\mathcal R(W,\mathcal U)(t) \|_{\ell^2} \leq C \epsilon^2(\delta + \| \mathcal U(t) \|_{\ell^2}) \|\mathcal U (t)\|_{\ell^2}^2
-	\end{equation}
-	for every \(t \in [-\tau_0\epsilon^{-3}, \tau_0\epsilon^{-3}]\) and \(\epsilon \in (0,1).\)
-\end{lem}
-	
-\begin{proof}
-	Plugging \(P_\epsilon\) into \(\mathrm{Res}^{(1)}(t)\) and using the Taylor remainder theorem, we get that the terms of order \(\epsilon^4\) or lower cancel out and we are left with
-	\begin{equation}
-		\begin{aligned}
-			\mathrm{Res}^{(1)}(t) = \epsilon^5 \Biggl[ &\quad\epsilon\left(c-1+\frac{\epsilon^2}{24}\right) \partial_X W(\epsilon(n-ct),\epsilon^3 t)\\
-			&-\frac 1 {24} \int_0^1 \partial_X^5 W(\epsilon(n-ct+r), \epsilon^3 t)(1-r)^4 \, dr  \\ 
-			&+ \frac 1 {12}  \int_0^1 \partial_X^5 W(\epsilon(n-ct+r), \epsilon^3 t)(1-r)^3 \, dr \\
-			&- \frac 1 {16}  \int_0^1 \partial_X^5 W(\epsilon(n-ct+r), \epsilon^3 t)(1-r)^2 \, dr \\
-			&+ \frac 1 {48}  \int_0^1 \partial_X^5 W(\epsilon(n-ct+r), \epsilon^3 t)(1-r) \, dr. \Biggr]
-		\end{aligned}
-	\end{equation}
-	Each of these terms can be bounded by the \(\mathcal X_6\) norm. Thus we get that
-	\begin{equation}
-		\| \mathrm{Res}^{(1)}(t) \|_{\ell^2}  \leq C \epsilon^{9/2} \| W(\cdot, \epsilon t^3)\|_{\mathcal X_6} \leq C \epsilon^{9/2} \delta \quad \text{ for } t\in [-\tau_0\epsilon^{-3}, \tau_0\epsilon^{-3}].
-	\end{equation}
-	
-	Plugging in \(P_\epsilon\) into \(\mathrm{Res}^{(2)}(t)\) similarly gives 
-	\begin{equation}
-	\begin{aligned}
-		\mathrm{Res}^{(2)}(t) &= \epsilon\left(c-1 + \frac {\epsilon^2}{24} \right)\left( \partial_XP_\epsilon(\epsilon(n-ct),\epsilon^3 t) \right) \\
-		&\qquad- \frac {\epsilon^3}{24} \left(\epsilon^2 \partial_X P_2(\epsilon(n-ct),\epsilon^3 t) + \epsilon^3 \partial_X P_3(\epsilon(n-ct),\epsilon^3 t) \right) \\
-		&\qquad-\epsilon^3(\epsilon^2 \partial_TP_2(\epsilon(n-ct),\epsilon^3 t) + \epsilon^3 \partial_T P_3(\epsilon(n-ct),\epsilon^3 t)) \\
-		&\qquad+ \frac{\epsilon^5}{24} \int_0^1 \partial_X^5 W(\epsilon(n-ct-r),\epsilon^3t)(r-1)^4 \, d r \\
-		&\qquad- \frac {\epsilon^5}{12} \int_0^1 \partial^3_X(W^3)(\epsilon(n-ct-r), \epsilon^3 t)(r-1)^2 \, d r.
-	\end{aligned}
-	\end{equation}
-	The terms with order less than \(\epsilon^5\) cancel out. The integral terms can easily be bounded by the \(\mathcal X_6\) norm For the first three terms, we can compute the expansion exactly:
-	\begin{equation}
-	\begin{aligned}
-		\partial_X P_\epsilon &= - \partial_X^ {} W + \frac \epsilon 2 \partial_X^ 2 W + \frac{\epsilon^2} 4 W^2 \partial_X^ {} W - \frac{\epsilon^2} 8 \partial_X^ 3 W + \frac{\epsilon^3}{48} \partial_X^ 4 W - \frac{\epsilon^3}{24} \partial_X^ 2 (W^3) \\
-		\partial_X^ {} P_2 &= \frac 1 4 W^2 \partial_X^ {} W - \frac 1 8 \partial_X^ 3 W \\
-		\partial_X^ {} P_3 &= \frac 1 {48} \partial_X^ 4 W - \frac 1 4 W (\partial_X^ {} W)^2 - \frac 1 8 W^2 \partial_X^ 2 W \\
-		\partial_T P_2 &= \frac{-1}{96} W^2 \partial_X^ {} W + \frac 1 {16} W^4 \partial_X^ {} W - \frac 1 {16} (\partial_X^ {} W)^3 - \frac 3 {16} W \partial_X^ {} W \partial_X^ 2 W \\
-		&\qquad +\frac 1 {192} \partial_X^ 3 W - \frac 1 {24} W^2 \partial_X^ 3 W + \frac 1 {192} \partial_X^ 5 W \\
-		\partial_T P_3 &= \frac 1 {192} W^2 \partial_X^ {} W - \frac 1 {32} W^4 \partial_X^ {} W + \frac 1 {96} W (\partial_X^ {} W)^2 - \frac 1 {16} W^3 (\partial_X^ {} W)^2 \\
-		&\qquad+ \frac 1 {16} (\partial_X^ {} W)^2\partial_X^ 2 W + \frac 1 {32} W (\partial_X^ 2 W)^2 +\frac 1 {192} W^2 \partial_X^ 3 W + \frac 5 {96} W \partial_X^ {} W \partial_X^ 3 W \\
-		&\qquad- \frac 1 {1152} \partial_X^ 4 W + \frac 1 {92} W^2 \partial_X^ 4 W - \frac 1 {1152} \partial_X^ 6 W
-	\end{aligned}
-	\end{equation}
-	Notice that the \(L^2\) norm of each term can be bounded by a term of the form
-	\begin{equation}
-		\| W \|_{L^\infty}^k \| \partial_X W \|_{H^5}^\ell, \quad \text{ where } 1\leq k+\ell \leq 5.
-	\end{equation}
-	The above term can then in turn be bounded by \(C(\delta + \delta^5)\). Thus we get that 
-	\begin{equation}
-		\|\mathrm{Res}^{(2)}(t)\|_{\ell^2} = C\epsilon^{9/2} \left(\delta + \delta^5 \right)
-	\end{equation}
-	for \(t\in [-\tau_0\epsilon^{-3}, \tau\epsilon^{-3}]\).
-	
-	For the nonlinear term \(\mathcal R(W,\mathcal U)\), we immediately get that
-	\begin{equation}
-	\begin{aligned}
-		\|\mathcal R(W,\mathcal U)(t) \|_{\ell^2} &\leq C \epsilon^2 \left[ \|W(\epsilon^3t)\|_{L^\infty} \|\mathcal U^2(t) \|_{\ell^2}  + \| \mathcal U^3(t) \|_{\ell^2} \right] \\
-		&\leq C\epsilon^2\left[ \|W(\epsilon^3 t)\|_{L^\infty}  \|\mathcal U(t)\|_{\ell^\infty} \|\mathcal U(t)\|_{\ell^2} + \|\mathcal U(t)\|_{\ell^\infty}^2 \|\mathcal{U}(t)\|_{\ell^2}\right] \\
-		&\leq C \epsilon^2 \left[ \delta \|\mathcal U(t) \|_{\ell^2}^2 + \|\mathcal U(t)\|_{\ell^2}^3\right].
-	\end{aligned}
-	\end{equation}
-\end{proof}
-
-The main result of this section will be proved using a Gr\"onwall type estimate using an energy function defined by 
-\begin{equation}\label{energy-function}
-	\mathcal E(t) := \frac 1 2 \sum_{n\in\Z} \mathcal Q_n^2(t) + \mathcal U_n^2(t) - \frac{\epsilon^2} 2 W^2(\epsilon(n-ct),\epsilon^3t)\mathcal U_n^2(t).
-\end{equation}
-The above will be nonnegative for \(W\) fixed and \(\epsilon \) sufficiently small.
-
-\begin{lem}
-	Let \(W\in C([-\tau_0,\tau_0],\mathcal X_6)\) be a solution to the mKdV equation \cref{modulating-eqn-defocusing-mkdv} and \(\tau_0 > 0\). Define \(\epsilon_0>0\) to be
-	\begin{equation}\label{epsilon-0-defn}
-		\epsilon_0 := \min\left\{1, \left( \sup_{\tau\in[-\tau_0, \tau_0]} \|W(\tau)\|_{L_\infty}\right)^{-1} \right\}.
-	\end{equation}
-	For every \(\epsilon \in (0,\epsilon_0)\) and for every local solution \((\mathcal U, \mathcal Q) \in C^1([-\tau_0\epsilon^{-3}, \tau_0\epsilon^{-3}], \ell^2(\mathbb Z))\) of \cref{error-lattice-eqns}, the energy-type quantity given in \cref{energy-function} is coercive with the bound
-	\begin{equation}\label{coercive-bound}
-		\|\mathcal Q(t) \|_{\ell^2}^2 + \| \mathcal U (t) \|_{\ell^2}^2 \leq  4 \mathcal E(t), \quad \text{for } t\in(-\tau_0\epsilon^{-3}, \tau_0\epsilon^{-3}).
-	\end{equation}
-	Moreover, when \(\delta\) is given by \cref{delta-0-defn}, there exists \(C> 0\) independent of \(\epsilon\) and \(\delta\) such that 
-	\begin{equation}
-		\left|\frac{d\mathcal E}{dt} \right| \leq C \mathcal E^{1/2}\left[ \epsilon^{9/2} (\delta + \delta^5)  + \epsilon^3(\delta^2 + \delta^4) \mathcal E^{1/2} + \epsilon^2(\delta + \mathcal{E}^{1/2})\mathcal E\right]
-	\end{equation}
-	for every \(t\in [-\tau_0\epsilon^{-3}, \tau_0\epsilon^{-3}]\) and \(\epsilon \in (0,\epsilon_0)\).
-\end{lem}
-\begin{proof}
-	By the choice of \(\epsilon_0\), we have for \(\epsilon\in(0,\epsilon_0)\) that 
-	\begin{equation}
-		1 - \frac{\epsilon^2} 2 \| W \|_{L^\infty}^2 \geq \frac 12.
-	\end{equation}
-	Hence
-	\begin{equation}
-		\mathcal E(t) \geq \frac 1 2 \| \mathcal Q \|_{\ell^2}^2 + \frac 1 4 \| \mathcal U\|_{\ell^2}^2 \geq \frac 1 4\| \mathcal Q \|_{\ell^2}^2 + \frac 1 4 \| \mathcal U\|_{\ell^2}^2
-	\end{equation}
-	and \cref{coercive-bound} follows.
-	
-	Taking the time derivative of \(\mathcal E(t)\) and using that \((\mathcal U, \mathcal Q)\) solve \cref{error-lattice-eqns} gives us 
-	\begin{equation}
-	\begin{aligned}
-		\frac{d \mathcal E}{dt} &= \sum_{n\in \mathbb{Z}} \Bigg[ \mathcal Q_n(t) \mathcal R_n(W,\mathcal U)(t) + \mathcal Q_n(t) \mathrm{Res}^{(2)}(t) \\
-		&\qquad+ \mathcal U_n(t) \mathrm{Res}^{(1)}(t) \left( 1 - \frac{\epsilon^2} 2 W^2(\epsilon(n-ct),\epsilon^3 t) \right) \\
-		&\qquad+\frac{\epsilon^3} 2 W(\epsilon(n-ct), \epsilon^3t) \mathcal U_n^2 (t) \left( c\partial_X W(\epsilon(n-ct),\epsilon^3 t) - \epsilon^2 \partial_TW(\epsilon(n-ct), \epsilon^3 t) \right) \Bigg]
-	\end{aligned}	
-	\end{equation}
-	Using the Cauchy-Schwarz inequality, the estimates found in \cref{residual-nonlinear-estimates}, and coercivity of \(\mathcal E(t)\), we get that 
-	\begin{equation}
-	\begin{aligned}
-		\left|\frac{d\mathcal E}{dt} \right| &\leq \|\mathcal Q\|_{\ell^2} \|\mathcal R(W,\mathcal U)\|_{\ell^2} + \|\mathcal Q\|_{\ell^2} \|\mathrm{Res}^{(2)}\|_{\ell^2} + \| \mathcal U \|_{\ell^2} \|\mathrm{Res}^{(1)}\|_{\ell^2} \\
-		&\qquad+ \frac 1 2 \epsilon^3 \| W \|_{L^\infty} \|\mathcal U\|_{\ell^2}^2 ( c \|\partial_X W\|_{L^\infty} + \epsilon^2 \|\partial_T W\|_{L^\infty}) \\
-		&\leq C \mathcal E^{1/2}\left[ \epsilon^{9/2} (\delta + \delta^5)  + \epsilon^3(\delta^2 + \delta^4) \mathcal E^{1/2} + \epsilon^2(\delta + \mathcal{E}^{1/2})\mathcal E\right]
-	\end{aligned}
-	\end{equation}
-\end{proof}
+%Show energy is coercive and its derivative remains bounded
 
 \section{Proof of Long-Time Stability}
 
