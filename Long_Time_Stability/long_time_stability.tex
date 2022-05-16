@@ -59,7 +59,8 @@ and
 and \(\phi\) satisfies
 \begin{equation}\label{phi-pde}
 	\begin{aligned}
-		\partial_2^2 \phi(\xi, \tau) = \partial_1^2\phi(\xi, \tau)- \frac 1 6 \partial_1^2 \big[& 3(f^2(\xi+\tau,\epsilon^2\tau)-f_\infty^2)g(\xi-c\tau,\epsilon^2\tau) \\&+ 3 (f(\xi+\tau,\epsilon^2\tau)-f_\infty)g^2(\xi-c\tau,\epsilon^2\tau) \big ]
+		\partial_2^2 \phi(\xi, \tau) = \partial_1^2\phi(\xi, \tau)- \frac 1 6 \partial_1^2 \big[& 3(f^2(\xi+\tau,\epsilon^2\tau)-f_\infty^2)g(\xi-c\tau,\epsilon^2\tau) \\&+ 3 (f(\xi+\tau,\epsilon^2\tau)-f_\infty)g^2(\xi-c\tau,\epsilon^2\tau) \big ] \\
+		\phi(\xi,0) = \partial_1 \phi(\xi, 0) = 0.
 	\end{aligned}
 \end{equation}
 Note that \cref{f-mKdV} is the defocusing mKdV equation and \cref{g-gKdV} is a type of generalized KdV equation.
@@ -84,7 +85,7 @@ where \(\dot H^k(\R)\) denotes the homogeneous Sobolev spaces. For convenience, 
 The space \(\mcX^k\) is a natural one for \(f\), and allows \(f\) to be kink solutions of \cref{f-mKdV}. We also have the following inequalities for products of functions in \(\mcX^k\) and \(H^k\) that will be useful. 
 
 	
-\begin{lem}
+\begin{lem}\label{prod-rule-1-lem}
 	For non-negative integers \(k\), there is a \(C>0\) such that
 	\begin{equation}\label{prod_rule}
 		\| fg \|_{H^k} \leq C \| f \|_{\mathcal X^k} \| g \|_{H^k}
@@ -92,9 +93,9 @@ The space \(\mcX^k\) is a natural one for \(f\), and allows \(f\) to be kink sol
 	for any \(f\in \mcX^k(\mathbb R)\) and \(g \in H^k(\mathbb R)\).
 \end{lem}
 
-\begin{lem}
+\begin{lem}\label{prod-rule-2-lem}
 	For non-negative integers \(k\), there is a \(C>0\) such that
-	\begin{equation}
+	\begin{equation}\label{prod_rule_2}
 		\| fg \|_{\mcX^k} \leq C \| f \|_{\mcX^k} \| h \|_{\mcX^k}
 	\end{equation}
 	for any \(f,g\in \mcX^k(\mathbb R)\).
@@ -165,13 +166,13 @@ The definitions above are used to prove that \(\phi\) remains bounded for all ti
 See \cref{lemma-appendix} for proof. 
 
 \begin{prop}
-	Fix \(T_0> 0\) and suppose that \(f \in C([0,T_0], \mcX_2^{k+1}(\R))\) and \(g \in C([0,T_0], H^{k+1}_2(\R)) \), with \(k>2\) an integer. Also, suppose that \(f(X,T)\to f_\infty\) as \(X\to \infty\) for any \(T\in[0,T_0]\). Then there exists a constant \(C>0\) such that 
+	Fix \(T_0> 0\) and suppose that \(f \in C([-T_0,T_0], \mcX_2^{k+1}(\R))\) and \(g \in C([-T_0,T_0], H^{k+1}_2(\R)) \), with \(k>2\) an integer. Also, suppose that \(f(X,T)\to f_\infty\) as \(X\to \infty\) for any \(T\in[-T_0,T_0]\). Then there exists a constant \(C>0\) such that 
 	\begin{equation}\label{phi-bound}
-		\sup_{t\in[0,T_0/\epsilon^3]} \|\phi(\cdot,\epsilon t)\|_{H^k} \leq C \Bigg( \sup_{t\in[0,T_0/\epsilon^3]} \left\{\| f(\cdot, \epsilon^3t) \|_{\mathcal X^{k+1}_{2}},  \| g(\cdot, \epsilon^3t) \|_{H^{k+1}_2} \right\}\Bigg)^3
+		\sup_{t\in[-\epsilon^{-3}T_0,\epsilon^{-3}T_0]} \|\phi(\cdot,\epsilon t)\|_{H^k} \leq C \Bigg( \sup_{t\in[-\epsilon^{-3}T_0,\epsilon^{-3}T_0]} \left\{\| f(\cdot, \epsilon^3t) \|_{\mathcal X^{k+1}_{2}},  \| g(\cdot, \epsilon^3t) \|_{H^{k+1}_2} \right\}\Bigg)^3
 	\end{equation}
 	and
 	\begin{equation}\label{psi-bound}
-		\sup_{t\in[0,T_0/\epsilon^3]} \|\psi(\cdot,\epsilon t)\|_{H^{k-1}} \leq C \Bigg( \sup_{t\in[0,T_0/\epsilon^3]} \left\{\| f(\cdot, \epsilon^3t) \|_{\mathcal X^{k+1}_{2}},  \| g(\cdot, \epsilon^3t) \|_{H^{k+1}_2} \right\}\Bigg)^3,
+		\sup_{t\in[-\epsilon^{-3}T_0,\epsilon^{-3}T_0]} \|\psi(\cdot,\epsilon t)\|_{H^{k-1}} \leq C \Bigg( \sup_{t\in[-\epsilon^{-3}T_0,\epsilon^{-3}T_0]} \left\{\| f(\cdot, \epsilon^3t) \|_{\mathcal X^{k+1}_{2}},  \| g(\cdot, \epsilon^3t) \|_{H^{k+1}_2} \right\}\Bigg)^3,
 	\end{equation}
 	where \(\psi = \partial_2 \phi\).
 \end{prop}
@@ -283,39 +284,287 @@ The terms \(\mcU\) and \(\mcQ\) control the error associated with the ansatz in 
 \section{Preparatory Estimates}
  
 To control the dynamics of \(\mcU\) and \(\mcQ\), we need estimates of the residuals and the nonlinearity. It will frequently normal to bound the \(\ell^2(\Z)\) of a term by the \(H^1(\R)\) norm of a function. To this end the following lemma proved in \cite{dumas2014justification} is useful.
-\begin{lem}
+\begin{lem}\label{h1-ell2-ineq}
 	There exists \(C>0\) such that for all \(X \in H^1(\R)\) and \(\epsilon \in (0,1)\), \[\|x\|_{\ell^2} \leq C \epsilon^{-1/2} \|X\|_{H^1},\] where \(x_n := X(\epsilon n)\), \(n\in \mathbb Z\).
 \end{lem}
 
+
 %Proof residual terms and nonlinear terms remain small
+\begin{lem}\label{residual-nonlinearity-bounds}
+	Let \(f\) and \(g\) be solutions of \cref{f-mKdV,g-gKdV}, respectively, such that \(f\in C([-\tau_0, \tau_0] , \mcX^6_2)\) and \(g\in C([-\tau_0,\tau_0], H^6_2)\). Let \(\tau_0 > 0\) be fixed and \(\delta>0\) be as \begin{equation}\label{delta-defn}
+		\delta := \max \left\{\sup_{\tau\in[-\tau_0, \tau_0]}\|f(\cdot,\tau)\|_{\mcX^6_2},\ \sup_{\tau\in[-\tau_0, \tau_0]} \|g(\cdot, \tau)\|_{H^6_2} \right\}
+	\end{equation}
+ 	Then there exists a \(\delta\)-independent constant \(C>0\) such that the residual and nonlinear terms satisfy
+	\begin{equation}\label{res-ineq}
+		\| \ResI \|_{\ell^2} + \|\ResII \|_{\ell^2} \leq C \epsilon^{11/2} (\delta + \delta^5)
+	\end{equation}
+	and 
+	\begin{equation}\label{nonlinear-ineq}
+		\| \mathcal B_n(\epsilon f + \epsilon g + \epsilon^3 \phi, \mathcal U) \|_{\ell^2} \leq C\epsilon [ (\delta+\epsilon^2\delta^3) \|\mcU\|_{\ell^2} ^2 + \|\mcU\|_{\ell^2}^3]
+	\end{equation}
+	for every \(t\in[-\epsilon^{-3} \tau_0, \epsilon^{-3} \tau_0]\) and \(\epsilon \in (0,1).\)
+\end{lem}
+
+\begin{proof}
+	We first focus on bounding \(\ResI\). Looking first at the terms in \(\ResI\) involving \(f\) and \(F\) and using Taylor expansions and \cref{f-mKdV}, we get the following:
+	\begin{equation}\label{F-res1}
+		\begin{aligned}
+			&\epsilon F(\cdot + \epsilon) - \epsilon F - \epsilon^2 \partial_1 f - \epsilon^4 \partial_2 f = \\
+			&\begin{aligned}
+				&\epsilon^2 \partial_1 f + & & \frac{\epsilon^3} 2 \partial_1^2 f +& &\frac{\epsilon^4} 6 \partial_1^3 f   & + &\frac{\epsilon^5}{24} \partial_1^4 f & + &\frac{\epsilon^6} {24} \int_0^1 \partial_1^5 f(\epsilon(n+t+s))(1-s)^4\, ds\\
+				& & - &\frac{\epsilon^3} 2 \partial_1^2 f & - &\frac{\epsilon^4} 4 \partial_1^3 f & - & \frac{\epsilon^5} {12} \partial_1^4 f& - & \frac{\epsilon^6} {12} \int_0^1 \partial_1^5 f(\epsilon(n+t+s))(1-s)^3\, ds \\
+				& & & & + &\frac {\epsilon^4} 8 \partial_1^3 f & + & \frac{\epsilon^5}{16} \partial_1^4 f  & + & \frac{\epsilon^6} {16} \int_0^1 \partial_1^5 f(\epsilon(n+t+s))(1-s)^2\, ds \\
+				& & & & - &\frac {\epsilon^4} {12} \partial_1 (f^3) & - & \frac{\epsilon^5}{24} \partial_1^2(f^3) & - & \frac{\epsilon^6} {24} \int_0^1 \partial_1^3 (f^3)(\epsilon(n+t+s))(1-s)^2\, ds \\
+				& & & & & & - & \frac{\epsilon^5}{48} \partial_1^4 f & - & \frac{\epsilon^6}{48} \int_0^1 \partial_1^5f(\epsilon(n+t+s))(1-s)\, ds \\
+				& & & & & & + & \frac{\epsilon^5}{24} \partial_1^2 (f^3) & + & \frac{\epsilon^6}{24} \int_0^1 \partial_1^3 (f^3)(\epsilon(n+t+s)) (1-s)\, ds\\
+				-&\epsilon^2 \partial_1 f \\
+				& & & & + &\frac{\epsilon^4}{12}\partial_1(f^3) \\
+				& & & & - &\frac{\epsilon^4}{24}\partial^3 f .
+			\end{aligned}
+		\end{aligned}
+	\end{equation}
+	Note that the terms involving lower orders of \(\epsilon\) cancel, and so we are only left with the integral terms of order \(\epsilon^6\). Applying \cref{h1-ell2-ineq} (and \cref{prod-rule-1-lem,prod-rule-2-lem} when needed) to the remaining terms gives that the \(\ell^2\) norm on the left-hand side of the above inequality can be bounded by \[C(\epsilon^{11/2}(\delta + \delta^3))\] for some choice of constant \(C>0\).
+	
+	Doing the same Taylor expansion for the \(g\) and \(G\) terms in \(\ResI\) along with \cref{g-gKdV} gives similar results. In particular, the terms of order \(\epsilon^5\) cancel out, and we are left terms of order \(\epsilon^6\) like
+	\begin{equation}
+		\int_0^1 \partial_1^3(g^3)(\epsilon(n - ct + s)) (1-s)^2 \, ds \quad \text{and} \quad \int_0^1 \partial_1^3(3f_\infty g^2)(\epsilon(n - ct + s)) (1-s)^2 \, ds
+	\end{equation}
+	that can be controled with \cref{h1-ell2-ineq}.
+	%Comment this out for now
+	\iffalse
+	\begin{equation}
+		\begin{aligned}
+			&\epsilon G(\cdot + \epsilon) - \epsilon G + \epsilon^2c \partial_1 g - \epsilon^4 \partial_2 g  = \\
+			&\begin{aligned}
+				- & \epsilon^2 \partial_1 g & -&\frac{\epsilon^3} 2 \partial_1^2 g & - &\frac{\epsilon^4} 6 \partial_1^3 g & - & \frac{\epsilon^5}{24} \partial_1^4 g & -&\frac{\epsilon^6} {24} \int_0^1 \partial_1^5 g(\epsilon(n - ct + s)) (1-s)^4 \, ds \\
+				& & +&\frac{\epsilon^3} 2 \partial_1^2 g & + &\frac{\epsilon^4} 4\partial_1^3 g &+ & \frac{\epsilon^5}{12} \partial_1^4 g & +&\frac{\epsilon^6} {12} \int_0^1 \partial_1^5 g(\epsilon(n - ct + s)) (1-s)^3 \, ds \\
+				& & & & + &\frac{\epsilon^4 f_\infty^2} 4\partial_1 g & + & \frac{\epsilon^5f_\infty^2} 8 \partial_1^2 g & +&\frac{\epsilon^6 f_\infty^2} 8 \int_0^1 \partial_1^3 g(\epsilon(n - ct + s)) (1-s)^2 \, ds \\
+				& & & & + &\frac{\epsilon^4} {12}\partial_1 (g^3) & + & \frac{\epsilon^5}{24} \partial_1^2(g^3) & +&\frac{\epsilon^5} {24} \int_0^1 \partial_1^3(g^3)(\epsilon(n - ct + s)) (1-s)^2 \, ds \\
+				& & & & + &\frac{\epsilon^4} {12}\partial_1 (3f_\infty g^2) & + & \frac{\epsilon^5}{24}\partial_1^2(3f_\infty g^2) & +&\frac{\epsilon^6} {24} \int_0^1 \partial_1^3(3f_\infty g^2)(\epsilon(n - ct + s)) (1-s)^2 \, ds \\
+				& & & & - &\frac{\epsilon^4} {8}\partial_1^3 g & - &  \frac{\epsilon^5}{16} \partial_1^4 g & -&\frac{\epsilon^6} {16} \int_0^1 \partial_1^5g(\epsilon(n - ct + s)) (1-s)^2 \, ds \\ 
+				& & & & & & + & \frac{\epsilon^5}{48} \partial_1^4 g & + & \frac{\epsilon^6}{48}\int_0^1 \partial_1^5 g(\epsilon(n-ct+s))(1-s)\, ds \\
+				& & & & & & - & \frac{\epsilon^5}{24} \partial_1^2(g^3) & - & \frac{\epsilon^6}{24} \int_0^1 \partial_1^3(g^3)(\epsilon(n-ct+s))(1-s)\, ds \\
+				& & & & & & - & \frac{\epsilon^5}{24} \partial_1^2(3f_\infty g^2) & - & \frac{\epsilon^6}{24} \int_0^1 \partial_1^3(3f_\infty g^2)(\epsilon(n-ct+s))(1-s)\, ds \\
+				& & & & & & - & \frac{\epsilon^5 f_\infty ^2} 8 \partial_1^2 g & - & \frac{\epsilon^6f_\infty ^2}{8} \int_0^1 \partial_1^3 g(\epsilon(n-ct+s)) (1-s) \, ds \\
+				+&\epsilon^2 \partial_1g \\
+				& & & & - & \frac{\epsilon^4f_\infty ^2}{4} \partial_1 g \\
+				& & & & - &\frac{\epsilon^4} {12}\partial_1 (g^3) \\
+				& & & & - &\frac{\epsilon^4} {12}\partial_1 (3f_\infty g^2) \\ 
+				& & & & + & \frac{\epsilon^4}{24} \partial_1^3 g,
+			\end{aligned}
+		\end{aligned}
+	\end{equation}
+	where all terms except those of order \(\epsilon^6\) cancel and the integral terms can be controlled by \cref{h1-ell2-ineq}. 
+	\fi
+	%end comment
+	
+	Similarly we have
+	\begin{equation}
+		\epsilon^3 \Phi(\epsilon(n+1), \epsilon t) - \epsilon^3\Phi(\epsilon n , \epsilon t) - \epsilon^4 \partial_2 \phi_2(\epsilon n, \epsilon t) =  \frac{\epsilon^6} 2 \int_0^1 \partial_1^2 \psi(\epsilon(n+s),\epsilon t)(1-s)^2\, ds,
+	\end{equation}
+	whose \(\ell^2\) norm can also be controlled.
+	
+	Therefore we have 
+	\begin{equation}
+		\| \ResI \|_{\ell^2} \leq C \epsilon^{11/2}(\delta + \delta^3)
+	\end{equation}
+
+	The bound on \(\ResII\) can be approached similarly. Focusing first on the terms with \(f\) and \(F\) in \(\ResII\), we have that all terms of order \(\epsilon^5\) or lower cancel. We are again left with \(\epsilon^6\) order terms that are integral remainders from Taylor expansion that are controlled and a term of the form 
+	\begin{equation}
+		\partial_2\left(\frac{1} 8 \partial_1^2 f - \frac{1}{12} f^3  - \frac{\epsilon}{48} \partial_1^3 f + \frac{\epsilon} 8 f^2 \partial_1 f\right),
+	\end{equation}
+  	which can also be controlled by \cref{h1-ell2-ineq}.
+  	
+  	% Comment this out
+	\iffalse
+	\begin{equation}
+		\begin{aligned}
+			&\epsilon f(\cdot) - \epsilon f(\cdot - \epsilon) - \epsilon^2 \partial_1 F -\epsilon^4\partial_2 F - \frac{\epsilon^3} 6 (f^3(\cdot) - f^3(\cdot - \epsilon)) =\\
+			&\begin{aligned}
+				&\epsilon^2\partial_1 f &- &\frac{\epsilon^3} 2 \partial_1 f &+ &\frac{\epsilon^4} 6 \partial_1^3f & - & \frac{\epsilon^5}{24} \partial_1^4 f &- & \frac{\epsilon^6} {24} \int_{-1}^0 \partial_1^5 f (\epsilon(n+t+s))(s+1)^4\, ds \\
+				-&\epsilon^2\partial_1 f & + & \frac{\epsilon^3} 2 \partial_1^2 f &+& \frac{\epsilon^4}{12} \partial_1(f^3) - \frac{\epsilon^4} 8 \partial_1^3 f & + &  \frac{\epsilon^5}{48} \partial_1^4 f - \frac{\epsilon^5}{24}\partial_1^2(f^3)\\
+				&&&& -&\epsilon^4 \partial_2 f & + & \frac{\epsilon^5} 2 \partial_1 \partial_2 f & + & \epsilon^6\partial_2\left(\frac{1} 8 \partial_1^2 f - \frac{1}{12} f^3  - \frac{\epsilon}{48} \partial_1^3 f + \frac{\epsilon} 8 f^2 \partial_1 f\right)\\
+				&&&& -&\frac{\epsilon^4} 6 \partial_1(f^3) & + & \frac{\epsilon^5}{12} \partial_1(f^3) & + & \frac{\epsilon^6} {12} \int_{-1}^0 \partial_1^2(f^3)(\epsilon(n+t+s))(s+1)^2\, ds.
+			\end{aligned}
+		\end{aligned}
+	\end{equation}
+	All the above terms except the for those of order \(\epsilon^6\).
+	\fi
+	%end comment  
+	
+	%\epsilon^6\partial_2(G_2+ \epsilon G_3)
+	%\frac{\epsilon^6 L^2}{4}\partial_1(G_2 + \epsilon G_3)
+	For the remaining terms, we have that terms of order \(\epsilon^3\) or lower cancel out. The terms of order \(\epsilon^4\) are equal to 
+	\begin{equation}
+		-\partial_2 \partial_1^{-1} \psi+ \partial_1 \phi  - \frac 1 6 \partial_1(3(f^2 - L^2) g + 3(f-L) g^2).
+	\end{equation}
+	Formally applying \(\partial_1\) implies that the above terms should be constant in space (taking a derivative with respect to the rescaled \(\epsilon x = \epsilon n\) shows that this is the case). Since all the terms decay to zero at spatial infinity, they are exactly zero.
+	
+	The terms of order \(\epsilon^5\) can be rewritten as
+	\begin{equation}
+		\frac 1 4 \partial_1( - 2 \partial_2 g - \frac 1 {12} \partial_1^3 g + \frac 1 6 (g^3 + 3f_\infty g^2)) + \frac 1 2 (\partial_2^2\phi - \partial_1^2\phi + \frac 1 6 \partial_1^2(3(f-f_\infty )g^2 + 3 (f^2-f_\infty^2)g))
+	\end{equation}
+	which is equal to zero. The remaining terms are all of order of \(\epsilon^6\) or above are integral remainders from Taylor expansion and terms of the form 
+	\begin{equation}
+		\partial_2(G_2+ \epsilon G_3) \quad \text{and} \quad f_\infty^2 \partial_1(G_2 + \epsilon G_3).
+	\end{equation}
+	We can the get the following bound: \[\| \mathrm{Res}^{(2)}(t) \|_{\ell^2} \leq C \epsilon^{11/2} (\delta + \delta^5).\] Interpolating between powers of \(\delta\) gives the desired inequality \cref{res-ineq}.
+	
+	The proof of \cref{nonlinear-ineq} follows immediately.
+\end{proof}
 
 %Show energy is coercive and its derivative remains bounded
 
+Define 
+\begin{equation}\label{energy-function}
+	\mathcal E(t) = \frac 1 2 \sum_{n\in \mathbb Z} \mathcal Q_n^2(t) + \mathcal U_n^2(t) - \frac 1 2 \left(\epsilon f(\epsilon(n+t), \epsilon^3 t) + \epsilon g(\epsilon(n-ct, \epsilon^3t) + \epsilon^3 \phi(\epsilon n, \epsilon t)\right)^2 \mathcal U_n^2(t)
+\end{equation}
+\begin{lem}\label{energy-coercive-bounds-lem}
+	Fix \(\tau_0>0 \) and let \(\delta\) be given by \cref{delta-defn} . There exists \(\epsilon_0 = \epsilon_0(\delta) >0\) sufficiently small such that for every \(\epsilon \in (0,\epsilon_0)\) and for every local solution \((\mathcal U, \mathcal Q) \in C^1([-\tau_0\epsilon^{-3}, \tau_0\epsilon^{-3}], \ell^2(\mathbb Z))\) of \cref{error-lattice-eqns}, the energy-type quantity given in \cref{energy-function} is coercive with the bound
+	\begin{equation}\label{coercive-bound}
+		\|\mathcal Q(t) \|_{\ell^2}^2 + \| \mathcal U (t) \|_{\ell^2}^2 \leq  4 \mathcal E(t), \quad \text{for } t\in(-\tau_0\epsilon^{-3}, \tau_0\epsilon^{-3}).
+	\end{equation}
+	Moreover, there exists \(C> 0\) independent of \(\epsilon\) and \(\delta\) such that 
+	\begin{equation}
+		\left|\frac{d\mathcal E}{dt} \right| \leq C \mathcal E^{1/2}\left[ \epsilon^{11/2} (\delta + \delta^5)  + \epsilon^3\delta^2\mathcal E^{1/2} + \epsilon(\delta + \mathcal{E}^{1/2})\mathcal E\right]
+	\end{equation}
+	for every \(t\in [-\tau_0\epsilon^{-3}, \tau_0\epsilon^{-3}]\) and \(\epsilon \in (0,\epsilon_0)\). 	  
+\end{lem}
+\begin{proof}
+	Note that \(\delta>0\) can be used to control the \(L^\infty(\R)\) norms of \(f\), \(g\), and \(\psi\). Thus we can choose \(\epsilon_0\) small enough so that for \(\epsilon \in (0,\epsilon_0)\) we have 
+	\begin{equation}
+		1 - \frac 12 \left( \epsilon \| f\|_{L^\infty} + \epsilon \|g\|_{L^\infty} + \epsilon^3 \| \phi \|_{L^\infty} \right)^2 \geq \frac 12,
+	\end{equation}
+	independent on the particular choices of \(f\) and \(g\). 	Hence
+	\begin{equation}
+		\mathcal E(t) \geq \frac 1 2 \| \mathcal Q \|_{\ell^2}^2 + \frac 1 4 \| \mathcal U\|_{\ell^2}^2 \geq \frac 1 4\| \mathcal Q \|_{\ell^2}^2 + \frac 1 4 \| \mathcal U\|_{\ell^2}^2
+	\end{equation}
+	and \cref{coercive-bound} follows.
+	
+	Now we take the time derivative of \(\mathcal E\) to get that 
+	\begin{align*}
+		\frac{d\mathcal E}{dt} = \sum_{n \in \Z} &\mathcal Q_n(t) \ResnII + \mathcal Q_n(t) 	\mathcal B_n(\epsilon f + \epsilon g + \epsilon^3 \phi, \mathcal U(t) \\
+		&+ \mathcal U_n(t) \ResnI \left( 1 - \frac 12 (\epsilon f+ \epsilon g + \epsilon^3 \phi)^2  \right) \\
+		&+ \mathcal U_n^2(t)(\epsilon f + \epsilon g + \epsilon^3 \phi) \times (\epsilon^2\partial_1 f + \epsilon^4\partial_2 f -\epsilon^2 c \partial_1 g + \epsilon^4 \partial_2 g + \epsilon^4 \partial_2 \phi).
+	\end{align*}
+	Then using the Cauchy inequality, taking \(\ell^\infty\) norms, and applying \cref{res-ineq,nonlinear-ineq}, we get that
+	\begin{align*}
+		\left| \frac{d\mathcal E}{dt} \right| &\leq & &\| \mathcal Q \|_\ell^2 \times \|\ResII \|_{\ell^2} + \| \mathcal Q \|_{\ell^2} \times \| \mathcal B \|_{\ell^2}  + \|\mathcal U \|_{\ell^2} \times \| \ResnI \|_{\ell^2}\\
+		&& &+ \|\mathcal U \|_{\ell^2}^2 (\epsilon\delta + \epsilon \delta + \epsilon^3 \delta^3)\times (\epsilon^2\delta + \epsilon^4\delta + \epsilon^2 c \delta + \epsilon^4 \delta + \epsilon^4 \delta^3) \\
+		&\leq & &C\left[\mathcal E^{1/2} \epsilon^{11/2}(\delta + \delta^5) + \mathcal E^{1/2}\epsilon [(\delta + \epsilon^2 \delta^3)\mathcal E + \mathcal E^{3/2}]  + \mathcal E(\epsilon^3 \delta^2 + \epsilon^5\delta^2 + \epsilon^5 \delta^4 + \epsilon^7\delta^4 + \epsilon^7 \delta^6) \right],
+	\end{align*}
+	with \(C>0\) independent of \(\epsilon\) and \(\delta\). The right-hand side of the above inequality can be simplified by taking \(\epsilon_0\) smaller; taking \(\epsilon_0\) sufficiently small (dependent on \(\delta\)), we can absorb higher orders of \(\epsilon\) into lower orders. For example, \(\epsilon^3 \delta^2 + \epsilon^5\delta^2 \leq 2 \epsilon^3 \delta^2\) for \(\epsilon\) small enough. Thus we arrive at  		
+	\begin{equation*}
+		\left|\frac{d\mathcal E}{dt} \right| \leq C \mathcal E^{1/2}\left[ \epsilon^{11/2} (\delta + \delta^5)  + \epsilon^3\delta^2\mathcal E^{1/2} + \epsilon(\delta + \mathcal{E}^{1/2})\mathcal E\right]
+	\end{equation*}
+	as desired.
+\end{proof}
+
+
+Lastly, before we can prove our main result, we must show that for appropriate initial conditions that \(\mcU(0)\) and \(\mcQ(0)\) are suitably small. In particular, we want our initial conditions to be ``close to" the traveling wave ansatz in the sense that 
+\begin{equation}
+	u_n(0) \approx \epsilon f(\epsilon n , 0) + \epsilon g(\epsilon n , 0)
+\end{equation}
+and 
+\begin{equation}
+	\dot u_n(0) \approx \epsilon \partial_1 f(\epsilon n , 0) -\epsilon^2 g(\epsilon n,0)
+\end{equation}
+where the higher-order \(\epsilon\) terms are dropped. Recall that we assume \(\phi,\partial_1\phi\) to have initial conditions exactly equal to zero, so those terms drop. A seemingly appropriate notion of ``closeness" would be in the \(\ell^2\) norm, as used in \cite{khan2017long,schneider2000counter}. However, since \(q_n(0) = \sum_{k=-\infty}^{n-1} \dot u_{k}(0)\), we may lose some decay due to the summation and and \(\mcQ(0)\) will not be in \(\ell^2\). To counter this, we need some extra localization assumptions on \(\dot u_n(0)\).
+
+\begin{assum}\label{assumption-3}
+	Suppose that the initial conditions for \(u\) satisfy
+	\begin{equation}
+		\| u(0) - \epsilon f(\epsilon \cdot, 0) - \epsilon g(\epsilon \cdot, 0) \|_{\ell^2} + \| \dot u(0) - \epsilon^2 \partial_1 f(\epsilon \cdot, 0) + \epsilon^2 \partial g (\epsilon \cdot , 0) \|_{\ell^2_2} \leq \epsilon^{5/2}
+	\end{equation}
+	and that \(f(\cdot, 0) \in \mcX^6_2\) and \(g(\cdot, 0) \in H^6_2\)
+\end{assum}
+
+The \(\ell^2_2\) norm will be sufficient to get that the partial summation is in \(\ell^2\) based on the following lemma.
+\begin{lem}\label{ell22-lemma}
+	If \(a\in \ell^2_2(\Z)\) and 
+	\begin{equation}
+		\sum_{k=-\infty}^n a_k = 0,
+	\end{equation}
+	then \(b_n = \sum_{k=-\infty}^n a_k\) is in \(\ell^2(\Z)\) and 
+	\begin{equation}
+		\|b\|_{\ell^2} \leq C \|a\|_{\ell^2_2}
+	\end{equation}
+	for some \(C> 0\) independent of \(a\).
+\end{lem}
+\begin{proof}
+	See \cref{lemma-appendix} for proof.
+\end{proof}
+
+We can now show the following.
+\begin{lem}\label{initial-conditions-lem}
+	Let \cref{assumption-2,assumption-3} hold. Then \(\mcU(0),\mcQ(0) \in \ell^2(\Z)\) satisfy
+	\begin{equation}\label{diff-eqn}
+		\dot u_n(0) = q_{n+1}(0) - q_n(0)
+	\end{equation}
+	and 
+	\begin{equation}\label{initial-condition-ineq}
+		\| \mcU(0) \|_{\ell^2} + \|\mcQ(0)\|_{\ell^2} \leq C \epsilon^{5/2}
+	\end{equation}
+	with \(C>0\) independent of \(\epsilon\).
+\end{lem}
+
+\begin{proof}
+	That \(\|\mcU(0)\|_{\ell^2}\leq C \epsilon^{5/2}\) follows immediately from applying \cref{assumption-3} to \cref{u-ansatz}.
+	
+	For \(q_n(0)\) to satisfy \cref{diff-eqn}, it must equal \(\sum_{k=-\infty}^{n-1} \dot u_k(0)\) (modulo a constant which we assume without loss of generality to be zero). Thus we have
+	\begin{equation}\label{q0-summation}
+	\begin{aligned}	
+		q_n(0) =& \sum_{k=-\infty}^{n-1} \dot u_n(0)\\
+		=& \sum_{k=-\infty}^{n-1}\left[ \dot u_k(0) - \epsilon^2 \partial_1 f(\epsilon k,0) - \epsilon^4 \partial_1 f(\epsilon k,0) + \epsilon^2 c \partial_1 g(\epsilon k,0) - \epsilon^4 \partial_2g(\epsilon k,0)\right] \\
+		&+\sum_{k=-\infty}^{n-1}\left[  \epsilon^2 \partial_1 f(\epsilon k,0) +\epsilon^4 \partial_1 f(\epsilon k,0) - \epsilon F(\epsilon(k+1),0) +\epsilon F(\epsilon k ,0)  \right] \\
+		&+ \sum_{k=-\infty}^{n-1}\left[ - \epsilon^2 c\partial_1 g(\epsilon k,0) +\epsilon^4 \partial_1 g(\epsilon k,0) - \epsilon G(\epsilon(k+1),0) +\epsilon G(\epsilon k ,0)  \right] \\
+		&+ \epsilon F(\epsilon n, 0) - \epsilon F_{-\infty} + \epsilon G(\epsilon n, 0).
+	\end{aligned}
+	\end{equation}
+	Comparing \cref{q0-summation} to \cref{q-ansatz}, we have that 
+	 \begin{equation}\label{mcq-zero}
+	 \begin{aligned}
+		\mcQ_n(0) =& \sum_{k=-\infty}^{n-1}\left[ \dot u_k(0) - \epsilon^2 \partial_1 f(\epsilon k,0) - \epsilon^4 \partial_1 f(\epsilon k,0) + \epsilon^2 c \partial_1 g(\epsilon k,0) - \epsilon^4 \partial_2g(\epsilon k,0)\right] \\
+		&+\sum_{k=-\infty}^{n-1}\left[  \epsilon^2 \partial_1 f(\epsilon k,0) +\epsilon^4 \partial_1 f(\epsilon k,0) - \epsilon F(\epsilon(k+1),0) +\epsilon F(\epsilon k ,0)  \right] \\
+		&+ \sum_{k=-\infty}^{n-1}\left[ - \epsilon^2 c\partial_1 g(\epsilon k,0) +\epsilon^4 \partial_1 g(\epsilon k,0) - \epsilon G(\epsilon(k+1),0) +\epsilon G(\epsilon k ,0)  \right].
+	\end{aligned}
+	\end{equation}
+	That \(\mcQ_n(0)\to 0\) as \(n\to\infty\) is guaranteed by \cref{assumption-2}. Now \cref{ell22-lemma} can be applied to get the result if the summands are in \(\ell^2_2\) and of order \(\epsilon^5/2\). The first summand satisfies this condition because of \cref{assumption-3}. The latter summands also satisfy this condition based on earlier calculations on the residuals. For example, referencing \cref{F-res1}, the second summand is equal to a sum of integral terms of the form
+	\begin{equation}
+		\frac{\epsilon^6}{24} \int_0^1 \partial_1^5 f(\epsilon(n+s), 0)(1-s)^4\, ds
+	\end{equation}
+	which are elements of \(\ell^2_2\) since \(f(\cdot, 0) \in \mcX_2^6\) and are of order \(\epsilon^{5/2}\). A similar conclusion holds for the third summand relying on \(g\in H^6_2\).
+	
+	Thus we have \cref{initial-condition-ineq} where the \(C>0\) can be chosen based on the norms of \(f\) and \(g\).
+\end{proof}
 \section{Proof of Long-Time Stability}
 
 Now with the setup complete, the main result of this section can be shown. The result and proof are analogous to those of \cite[Thm.~1]{khan2017long}.
 
 \begin{theorem}
-	Let \(W \in C(\mathbb R; \mathcal X_6)\) be a global solution of the mKdV equation \cref{modulating-eqn-defocusing-mkdv} with \(\sup_{\tau\in \mathbb R} \| W(\tau)\|_{\mathcal X_6} \leq \delta\). For fixed \(r\in (0,1/2)\), there exist positive constants \(\epsilon_0\), \(C\), and \(K\) such that for all \(\epsilon \in (0,\epsilon_0)\), when initial data \((u_{\mathrm{in}}, q _{\mathrm{in}}) \in \ell^\infty(\Z)\times \ell^\infty(\Z)\) satisfy 
-	\begin{equation}\label{initial-conditions}
-		\|u_{\mathrm{in}} - W(\epsilon \cdot, 0) \|_{\ell^2} + \| q _{\mathrm{in}} + \epsilon \partial_XW(\epsilon \cdot, 0) \|_{\ell^2} \leq \epsilon^{3/2},
+	Let \cref{assumption-1} hold and set 
+	\begin{equation}
+		\delta = \max \left\{\sup_{\tau\in\R}\|f(\cdot,\tau)\|_{\mcX^6_2},\ \sup_{\tau\in \R} \|g(\cdot, \tau)\|_{H^6_2} \right\}
 	\end{equation}
-	the unique solution \((u,q)\) to the FPU equation \cref{first-order-lattice-eqns} belongs to 
+	For fixed \(r\in(0,1/2)\), there exists positive constants \(\epsilon_0\), \(C\), and \(K\) such that for all \(\epsilon \in(0,\epsilon_0)\), when initial data \((u(0), \dot u(0))\) satisfy \cref{assumption-2,assumption-3}, the unique solution \((u,q)\) to the FPU equation \cref{first-order-lattice-eqns} belongs to 
 	\begin{equation}
 		C^1([-t_0(\epsilon), t_0(\epsilon)], \ell^\infty(\mathbb Z))
 	\end{equation}
 	with \(t_0(\epsilon):= r K^{-1} \epsilon^{-3} | \log (\epsilon) | \) and satisfies
 	\begin{equation}
-		\| u(t) - W(\epsilon(\cdot -ct), \epsilon^3 t) \|_{\ell^2} + \| q(t) + \epsilon \partial_X W(\epsilon (\cdot - ct), \epsilon^3 t) \|_{\ell^2} \leq C \epsilon^{3/2 - r}, \quad t\in[-t_0(\epsilon), t_0(\epsilon)].
+	\begin{aligned}
+		&\| u(t) - \epsilon f(\epsilon(\cdot+t), \epsilon^3 t) -\epsilon g(\epsilon(\cdot -ct) ,\epsilon^3 t) \|_{\ell^2} \\
+		&\quad + \| \dot u(t) - \epsilon \partial_1 f(\epsilon (\cdot +t),\epsilon^3t)  +\epsilon^2 \partial_1 g(\epsilon(\cdot - ct), \epsilon^3t)\|_{\ell^2} \leq C \epsilon^{5/2 - r}, \quad t\in[-t_0(\epsilon), t_0(\epsilon)].
+	\end{aligned}
 	\end{equation}
 \end{theorem}
 
 \begin{proof}
-	From the initial conditions satisfying \cref{initial-conditions}, we have at least local solutions to the error equations. That is, there is a unique local solution to \cref{error-evolution-equation} where \((\mathcal U, \mathcal Q) \in C^1((-t_0,t_0);\ell^2(\Z) \times \ell^2(\Z))\) for some \(t_0 > 0.\)
+	%Need to show local existence of solutions
 	
-	Set \(\mathcal S := \mathcal E ^{1/2}\) where \(\mathcal E\) is defined in \cref{energy-function}. From the bound on the initial conditions in \cref{initial-conditions}, we get that \(\mathcal S(0) \leq C_0 \epsilon^{3/2}\) for some constant \(C_0 > 0\) and \(\epsilon_0\) chosen by \cref{epsilon-0-defn}. For fixed constants \(r\in(0,1/2)\), \(C> C_0\), and \(K > 0\), define the maximal continuation time by 
+	Set \(\mathcal S := \mathcal E ^{1/2}\) where \(\mathcal E\) is defined in \cref{energy-function}. From the results in \cref{initial-conditions-lem}, we get that \(\mathcal S(0) \leq C_0 \epsilon^{3/2}\) for some constant \(C_0 > 0\) and \(\epsilon_0\) as chosen in \cref{energy-coercive-bounds-lem}. For fixed constants \(r\in(0,1/2)\), \(C> C_0\), and \(K > 0\), define the maximal continuation time by 
 	\begin{equation}
-		T_{C,K,r} := \sup \left\{T_0 \in (0, r K^{-1} \epsilon^{-3} |\log(\epsilon)|]: \mathcal S(t) \leq C \epsilon^{3/2 -r}, t\in [-T_0, T_0]\right\}.
+		T_{C,K,r} := \sup \left\{T_0 \in (0, r K^{-1} \epsilon^{-3} |\log(\epsilon)|]: \mathcal S(t) \leq C \epsilon^{5/2 -r}, t\in [-T_0, T_0]\right\}.
 	\end{equation} 
 	We also define the maximal evolution time of the mKdV equation as \(\tau_0(\epsilon) = rK^{-1}|\log(\epsilon)|\). The goal is then to pick \(C\) and \(K\) so that \(T_{C,K,r} = \epsilon^{-3} \tau_0(\epsilon)\).
 	
@@ -323,17 +572,21 @@ Now with the setup complete, the main result of this section can be shown. The r
 	\begin{equation}
 	\begin{aligned}
 		\left | \frac d {dt} \mathcal S(t) \right | &= \frac 1 {2 \mathcal E ^{1/2}} \left | \frac d {dt} \mathcal E(t) \right| \\
-		&\leq C_1(\delta + \delta^5) \epsilon^{9/2} + C_2 \epsilon^3\left[ (\delta^2 + \delta^4) + \epsilon^{-1}(\delta + \mathcal S) \mathcal S \right]\mathcal S
+		&\leq C_1(\delta + \delta^5) \epsilon^{11/2} + C_2 \epsilon^3\left[ \delta^2 + \epsilon^{-2}(\delta + \mathcal S) \mathcal S \right]\mathcal S
 	\end{aligned}
 	\end{equation}
 	where \(C_1, C_2 > 0\) are independent of \(\delta\) and \(\epsilon\). While \(|t| \leq T_{C,K,r}\),
 	\begin{equation}
-		C_2 \left[ (\delta^2 + \delta^4) + \epsilon^{-1}(\delta + \mathcal S) \mathcal S \right] \leq C_2 \left[ (\delta^2 + \delta^4) + \epsilon^{-1}(\delta +  C\epsilon^{3/2-r}) C \epsilon^{3/2-r} \right],
+		C_2 \left[ \delta^2 + \epsilon^{-2}(\delta + \mathcal S) \mathcal S \right] \leq C_2 \left[ \delta^2  + \epsilon^{-2}(\delta +  C\epsilon^{11/2-r}) C \epsilon^{11/2-r} \right],
 	\end{equation}
 	where the right-hand side is continuous in \(\epsilon \) for \(\epsilon \in [0,\epsilon_0]\). Thus the right-hand side can be uniformly bounded by a constant independent of \(\epsilon\). Choose \(K>0\) (dependent on \(C\)) sufficiently large so that 
 	\begin{equation}\label{K-def}
-		C_2 \left[ (\delta^2 + \delta^4) + \epsilon^{-1}(\delta +  C\epsilon^{3/2-r}) C \epsilon^{3/2-r} \right] \leq K.
+		C_2 \left[ \delta^2  + \epsilon^{-2}(\delta +  C\epsilon^{11/2-r}) C \epsilon^{11/2-r} \right] \leq K.
 	\end{equation}
+
+%% edit from here %%
+
+
 	Hence, we can get that for \(t \in [-T_{C,K,r}, T_{C,K,r}]\) 
 	\begin{equation}
 	\begin{aligned}
