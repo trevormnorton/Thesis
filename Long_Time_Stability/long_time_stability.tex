@@ -584,26 +584,23 @@ Now with the setup complete, the main result of this section can be shown. The r
 		C_2 \left[ \delta^2  + \epsilon^{-2}(\delta +  C\epsilon^{11/2-r}) C \epsilon^{11/2-r} \right] \leq K.
 	\end{equation}
 
-%% edit from here %%
-
-
 	Hence, we can get that for \(t \in [-T_{C,K,r}, T_{C,K,r}]\) 
 	\begin{equation}
 	\begin{aligned}
 		\frac d {dt} e^{-\epsilon^3 K t} \mathcal S(t) &= - \epsilon^3 K e^{-\epsilon^3 K t} \mathcal S  + e^{-\epsilon^3 K t} \frac d {dt} \mathcal S \\
-		&\leq - \epsilon^3 K e^{-\epsilon^3 K t} \mathcal S  + e^{-\epsilon^3 K t}C_1(\delta + \delta^5) \epsilon^{9/2} \\
-		&\qquad+ e^{-\epsilon^3 K t}C_2 \epsilon^3\left[ (\delta^2 + \delta^4) + \epsilon^{-1}(\delta + \mathcal S) \mathcal S \right]\mathcal S \\
-		&\leq - \epsilon^3 K e^{-\epsilon^3 K t} \mathcal S  +  e^{-\epsilon^3 K t}C_1(\delta + \delta^5) \epsilon^{9/2} + \epsilon^3 K e^{-\epsilon^3 K t}\mathcal S \\
-		&= e^{-\epsilon^3 K t}C_1(\delta + \delta^5) \epsilon^{9/2}.
+		&\leq - \epsilon^3 K e^{-\epsilon^3 K t} \mathcal S  + e^{-\epsilon^3 K t}C_1(\delta + \delta^5) \epsilon^{11/2} \\
+		&\qquad+ e^{-\epsilon^3 K t}C_2 \epsilon^3\left[ \delta^2 + \epsilon^{-2}(\delta + \mathcal S) \mathcal S \right]\mathcal S \\
+		&\leq - \epsilon^3 K e^{-\epsilon^3 K t} \mathcal S  +  e^{-\epsilon^3 K t}C_1(\delta + \delta^5) \epsilon^{11/2} + \epsilon^3 K e^{-\epsilon^3 K t}\mathcal S \\
+		&= e^{-\epsilon^3 K t}C_1(\delta + \delta^5) \epsilon^{11/2}.
 	\end{aligned}
 	\end{equation}
 	Integrating gives
 	\begin{equation} 
 	\begin{aligned}
-		\mathcal S(t) &\leq \left( \mathcal S(0) + K^{-1} C_1 (\delta+\delta^5) \epsilon^{3/2} \right) e^{\epsilon^3 K t} - \epsilon^{-3} K^{-1} C_1 (\delta + \delta^5) \\
-		&\leq \left( \mathcal S(0) + K^{-1} C_1 (\delta+\delta^5) \epsilon^{3/2} \right) e^{\epsilon^3 K t} \\
-		&\leq \left( \mathcal S(0) + K^{-1} C_1 (\delta+\delta^5) \epsilon^{3/2} \right) e^{ K \tau_0(\epsilon)} \\
-		&\leq \left( C_0 + K^{-1} C_1 (\delta+\delta^5) \epsilon^{3/2} \right) \epsilon^{3/2 -r}
+		\mathcal S(t) &\leq \left( \mathcal S(0) + K^{-1} C_1 (\delta+\delta^5) \epsilon^{5/2} \right) e^{\epsilon^3 K t} - \epsilon^{5/2} K^{-1} C_1 (\delta + \delta^5) \\
+		&\leq \left( \mathcal S(0) + K^{-1} C_1 (\delta+\delta^5) \epsilon^{5/2} \right) e^{\epsilon^3 K t} \\
+		&\leq \left( \mathcal S(0) + K^{-1} C_1 (\delta+\delta^5) \epsilon^{5/2} \right) e^{ K \tau_0(\epsilon)} \\
+		&\leq \left( C_0 + K^{-1} C_1 (\delta+\delta^5)  \right) \epsilon^{5/2 -r}
 	\end{aligned}
 	\end{equation}
 	for \(t \in [-T_{C,K,r}, T_{C,K,r}]\), where the last line follows in part from the definition of \(\tau_0(\epsilon)\). Now choose \(C> C_0\) sufficiently large so that 
