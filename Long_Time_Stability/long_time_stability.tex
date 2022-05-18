@@ -44,11 +44,24 @@ We make the assumption that solutions of \cref{fput-lattice-equations-strain-var
 \begin{equation}\label{ansatz}
 	u_n(t) \approx \epsilon f(\epsilon(n+t), \epsilon^3t) + \epsilon g(\epsilon(n-ct), \epsilon^3 t) + \epsilon^3\phi(\epsilon n, \epsilon t)
 \end{equation}
-where we allow \(f\) to have a fixed non-zero limit, \(f_\infty\), at positive infinity and \(\phi\) captures the interaction effects between \(f\) and \(g\). The wave speed of \(g\) is given by
+where we allow \(f\) to have a fixed non-zero limits, \(f_{\pm\infty}\), at positive and negative infinity and \(\phi\) captures the interaction effects between \(f\) and \(g\). The wave speed of \(g\) is given by
 \begin{equation}\label{ansatz-wave-speed}
 	c = c(\epsilon, f_\infty) = 1 - \frac{\epsilon^2 f_\infty^2}{4}.
 \end{equation}
-Plugging in the ansatz in \cref{ansatz} back into \cref{fput-lattice-equations-strain-variables} and doing formal calculations gives that the approximation holds up to order \(\epsilon^6\) terms if the the functions \(f\) and \(g\) satisfy
+Plugging in the ansatz in \cref{ansatz} back into \cref{fput-lattice-equations-strain-variables} and grouping terms of the same order \(\epsilon\) together gives
+\begin{equation}
+	\begin{aligned}
+		&\epsilon^3 \Big(\partial_1^2 f(\cdot, \epsilon^3 t) + \partial_1^2 g(\cdot, \epsilon^3 t)\Big) \\
+		&+ \epsilon^5 \Big( 2 \partial_1\partial_2 f(\cdot, \epsilon^3t) - 2 \partial_1\partial_2 g(\cdot, \epsilon^3 t) - \frac{f_\infty^2} 2 \partial_1^2 g + \partial_2^2 \phi(\epsilon x, \epsilon t)\Big) \\
+		&+ \mathcal O(\epsilon^6)\\
+		&\qquad = \quad \epsilon^3 \Big(\partial_1^2 f(\cdot, \epsilon^3 t) + \partial_1^2 g(\cdot, \epsilon^3 t)\Big) \\
+		&\qquad\qquad + \epsilon^5\Big(\partial_1^2  \phi(\epsilon x, \epsilon t) \\
+		&\qquad\qquad\qquad - \frac 1 6 \partial_1^2 \big[f^3(\cdot, \epsilon^3 t ) + 3 f^2(\cdot,\epsilon^3)g(\cdot, \epsilon^3t) + 3 f(\cdot, \epsilon t) g^2(\cdot,\epsilon^3 t) + g^3(\cdot, \epsilon^3 t)\big] \\
+		&\qquad\qquad\qquad+ \frac 1 {12} \partial_1^4 f(\cdot, \epsilon^3 t) + \frac 1 {12} \partial_1^4 g(\cdot, \epsilon^3 t)\Big) \\
+		&\qquad\qquad+ \mathcal O(\epsilon^6).
+	\end{aligned}
+\end{equation}
+Clearly the equation will hold up to order \(\epsilon^3\). For the order \(\epsilon^5\) terms, the equation will again hold if \(f\), \(g\), and \(\phi\) satisfy
 \begin{equation}\label{f-mKdV}
 	2 \partial_2 f = - \frac 1 6 \partial_1(f^3) + \frac 1 {12} \partial_1^3 f
 \end{equation}
@@ -63,7 +76,7 @@ and \(\phi\) satisfies
 		\phi(\xi,0) = \partial_1 \phi(\xi, 0) = 0.
 	\end{aligned}
 \end{equation}
-Note that \cref{f-mKdV} is the defocusing mKdV equation and \cref{g-gKdV} is a type of generalized KdV equation.
+Note that \cref{f-mKdV} is the defocusing mKdV equation and \cref{g-gKdV} is a type of generalized KdV equation. This formal calculation shows that the mKdV can serve as a modulation equation. That is, for \(\epsilon\) sufficiently small, one would expect the ansatz in \cref{ansatz} to hold for time on the order of \(\epsilon^{-3}\). We make precise this notion, but we must first make decisions for the function spaces in which the functions \(f\), \(g\), and \(\phi\) must live.
 
 A natural choice of function space for \(g\) is a Sobolev space like \(H^k(\R)\). However, for \(f\), we want to allow the possibility of the function approaching a non-zero limit at positive and negative infinity while also having sufficient regularity. 
 \begin{defn}
@@ -85,21 +98,23 @@ where \(\dot H^k(\R)\) denotes the homogeneous Sobolev spaces. For convenience, 
 The space \(\mcX^k\) is a natural one for \(f\), and allows \(f\) to be kink solutions of \cref{f-mKdV}. We also have the following inequalities for products of functions in \(\mcX^k\) and \(H^k\) that will be useful. 
 
 	
-\begin{lem}\label{prod-rule-1-lem}
+\begin{restatable}{lem}{prodruleone}
+	\label{prod-rule-1-lem}
 	For non-negative integers \(k\), there is a \(C>0\) such that
 	\begin{equation}\label{prod_rule}
 		\| fg \|_{H^k} \leq C \| f \|_{\mathcal X^k} \| g \|_{H^k}
 	\end{equation}
 	for any \(f\in \mcX^k(\mathbb R)\) and \(g \in H^k(\mathbb R)\).
-\end{lem}
+\end{restatable}
 
-\begin{lem}\label{prod-rule-2-lem}
+\begin{restatable}{lem}{prodruletwo}
+	\label{prod-rule-2-lem}
 	For non-negative integers \(k\), there is a \(C>0\) such that
 	\begin{equation}\label{prod_rule_2}
 		\| fg \|_{\mcX^k} \leq C \| f \|_{\mcX^k} \| h \|_{\mcX^k}
 	\end{equation}
 	for any \(f,g\in \mcX^k(\mathbb R)\).
-\end{lem}
+\end{restatable}
 See \cref{lemma-appendix} for proofs.
 
 However, for our main result, we require that \(\phi\), the term which captures the interaction effects, remains uniformly bounded for all time. Intuitively, if \(f\) and \(g\) localized, the inhomogeneous term in \cref{phi-pde} will quickly go to zero and \(\phi\) will no longer experience growth in time. Thus we require that \(f\) and \(g\) quickly decay to their respective limits at infinity. This is enforced by assuming the functions belong to appropriate weighted Banach spaces.
@@ -151,18 +166,17 @@ and \(\langle \cdot \rangle_+\) continued smoothly between \(0\) and \(1\) such 
 	(\alpha, f) \mapsto \alpha + f \langle \cdot \rangle^{-n}_{\pm}.
 \end{equation}
 
-%Prove that phi,psi remain bounded for all time
 The definitions above are used to prove that \(\phi\) remains bounded for all time. The idea behind the proof is similar to that of \cite[Lemma~3.1]{schneider2000counter}; if \(f\) and \(g\) are localized solutions, then the interaction terms of \cref{phi-pde} will decay quickly and so \(\phi\) will remain bounded. This decay can be quantified by the following lemma.
-\begin{lem}
-	For each \(k\geq 0\) and \(c\geq c_0 > 0\), there exists \(C> 0\) depending only on \(k\) such that 
+\begin{restatable}{lem}{cknormbound}
+	For each \(k\geq 0\) and \(c > 0\), there exists \(C> 0\) depending only on \(k\) such that 
 	\begin{equation}\label{Ck-bound}
 		\left \| \frac 1 {\langle \cdot +\tau\rangle_+^2 \langle \cdot - c\tau \rangle^2} \right \|_{C^k} \leq C\, \sup_{x\in\mathbb R} \frac 1 {\langle x +\tau\rangle_+^2 \langle x -c \tau \rangle^2}.
 	\end{equation}
 	Furthermore,
-	\begin{equation}
+	\begin{equation}\label{sup-integrable}
 		\int_0^\infty \sup_{x\in\mathbb R} \frac 1 {\langle x +\tau\rangle_+^2 \langle x -c \tau \rangle^2}\, d\tau <\infty.
 	\end{equation}
-\end{lem}
+\end{restatable}
 See \cref{lemma-appendix} for proof. 
 
 \begin{prop}
@@ -480,7 +494,8 @@ where the higher-order \(\epsilon\) terms are dropped. Recall that we assume \(\
 \end{assum}
 
 The \(\ell^2_2\) norm will be sufficient to get that the partial summation is in \(\ell^2\) based on the following lemma.
-\begin{lem}\label{ell22-lemma}
+\begin{restatable}{lem}{elltwo}
+\label{ell22-lemma}
 	If \(a\in \ell^2_2(\Z)\) and 
 	\begin{equation}
 		\sum_{k=-\infty}^n a_k = 0,
@@ -490,7 +505,7 @@ The \(\ell^2_2\) norm will be sufficient to get that the partial summation is in
 		\|b\|_{\ell^2} \leq C \|a\|_{\ell^2_2}
 	\end{equation}
 	for some \(C> 0\) independent of \(a\).
-\end{lem}
+\end{restatable}
 \begin{proof}
 	See \cref{lemma-appendix} for proof.
 \end{proof}
