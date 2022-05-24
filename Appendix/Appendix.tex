@@ -27,7 +27,15 @@
 
 \prodruletwo*
 \begin{proof}
-	content...
+	Using the result from \cref{prod-rule-1-lem}, we have 
+	\begin{equation}
+	\begin{aligned}
+		\| f g \|_{\mcX^k} &\leq \| f g\|_{L^\infty} + \| (fg)' \|_{H^{k-1}} \\
+		&\leq \|f \|_{L^\infty} \| g \|_{L^\infty} + \|f'g \|_{H^{k-1}} + \| fg' \|_{H^{k-1}} \\
+		&\leq \|f \|_{L^\infty} \| g \|_{L^\infty} + C\|f'\|_{H^{k-1}} \|g \|_{\mcX^{k-1}} + \| f \|_{\mcX^{k-1}} \|g'\|_H^{k-1} \\
+		&\leq C \|f \|_{\mcX^k} \|g\|_{\mcX^k} .
+	\end{aligned}
+	\end{equation}
 \end{proof}
 
 \cknormbound*
