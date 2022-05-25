@@ -250,7 +250,8 @@ and
 The wave speed \(c\) is again given by \cref{ansatz-wave-speed}. The functions \(F\), \(G\), an \(\Phi\) are chosen to minimize the remainder terms from plugging in the ansatz back into \cref{first-order-lattice-eqns} and are given explicitly below:
 \begin{align}
 	F &:= f - \frac{\epsilon} 2 \partial_1 f + \frac{\epsilon^2} 8 \partial_1^2 f - \frac{\epsilon^2}{12} f^3  - \frac{\epsilon^3}{48} \partial_1^3 f + \frac{\epsilon^3} 8 f^2 \partial_1 f\\
-	G &:= - g + \frac{\epsilon}{2}\partial_1 g + \frac{\epsilon^2 f_\infty^2} 4  g + \frac{\epsilon^2}{12}(g^3 + 3f_\infty g^2) -\frac{ \epsilon^2} 8 \partial_1^2 g  + \frac{\epsilon^3}{48} \partial_1^3 g - \frac{\epsilon^3}{24} \partial_1(g^3 + 3f_\infty g^2) - \frac{\epsilon^3 f_\infty^2} 8 \partial_1 g \\
+	G &:= - g + \frac{\epsilon}{2}\partial_1 g + \frac{\epsilon^2 f_\infty^2} 4  g + \frac{\epsilon^2}{12}(g^3 + 3f_\infty g^2) -\frac{ \epsilon^2} 8 \partial_1^2 g  + \frac{\epsilon^3}{48} \partial_1^3 g \\
+	&\qquad - \frac{\epsilon^3}{24} \partial_1(g^3 + 3f_\infty g^2) - \frac{\epsilon^3 f_\infty^2} 8 \partial_1 g \nonumber \\
 	\Phi &:=  \partial_1^{-1}\psi - \frac{\epsilon} 2 \psi.
 \end{align}
 Here \(\psi = \partial_2 \phi\) and \(\partial_1^{-1}\) is defined as a Fourier multiplier. That \(\partial_1^{-1}\psi\) is well-defined and in \(H^5(\R)\) follows from \cref{psi-fourier-transform}. \Cref{assumption-1} implies that \(F\) has fixed limits in its spatial variable at \(\pm \infty\) given by \(F_{\pm\infty} = f_{\pm\infty} -\frac{\epsilon^2}{12} f^3_{\pm\infty}\).
@@ -264,35 +265,43 @@ Note that if this did not hold, then \(\mcQ_n(0)\not\to 0\) as \(n\to\infty\) an
 An equivalent set of equations to \cref{first-order-lattice-eqns} are given by
 \begin{equation}\label{error-lattice-eqns}
 	\left\{\begin{aligned}
-			\dot{\mathcal U}_n(t) =& \mathcal Q_{n+1}(t) - \mathcal Q_n(t) +\ResnI \\
-\dot{\mathcal Q}_n(t) =& \mathcal U_n(t) - \mathcal U_{n-1}(t)  \\
+			\dot{\mathcal U}_n(t) =& \, \mathcal Q_{n+1}(t) - \mathcal Q_n(t) +\ResnI \\
+\dot{\mathcal Q}_n(t) =& \, \mathcal U_n(t) - \mathcal U_{n-1}(t)  \\
 &\quad - \frac 1 2 (\epsilon f(\epsilon(n+t)) + \epsilon g(\epsilon(n-ct)) + \epsilon^3\phi(\epsilon n))^2 \mathcal U_{n}(t) \\
 &\quad + \frac 12  (\epsilon f(\epsilon(n-1+t)) + \epsilon g(\epsilon(n-1-ct)) + \epsilon^3\phi(\epsilon (n-1)))^2 \mathcal U_{n-1}(t) \\
 &\quad +\ResnII + \mathcal B_n(\epsilon f + \epsilon g + \epsilon^3 \phi,  \mathcal U) 
-	\end{aligned} \right.\quad  n\in\Z
+	\end{aligned} \right. \hspace{-0.5em}n\in\Z,
 \end{equation}
 where
-\begin{align*}
+\begin{equation}
+\begin{aligned}
 	\ResnI =& \epsilon F(\epsilon(n+1+t)) - \epsilon F(\epsilon(n+t)) \\
 	&\quad + \epsilon G(\epsilon(n+1-c t) - \epsilon G(\epsilon(n-c t) + \epsilon^3 \Phi(\epsilon (n+1))   - \epsilon^3 \Phi(\epsilon n) \\
 	&\quad - \epsilon^2 \partial_1 f(\epsilon(n+t)) - \epsilon^4 \partial_2
 	f(\epsilon(n+t)) \\
-	&\quad + \epsilon^2 c \partial_1 g(\epsilon(n-ct)) - \epsilon^4 \partial_2 g(\epsilon(n-ct)) - \epsilon^4 \partial_2 \phi(\epsilon n) \\
+	&\quad + \epsilon^2 c \partial_1 g(\epsilon(n-ct)) - \epsilon^4 \partial_2 g(\epsilon(n-ct)) - \epsilon^4 \partial_2 \phi(\epsilon n) ,
+\end{aligned}
+\end{equation}
+\begin{equation}
+\begin{aligned}
 	\ResnII =& \epsilon f(\epsilon(n+t)) - \epsilon f(\epsilon(n-1+t)) \\
 	&\quad+ \epsilon g(\epsilon(n-c t) - \epsilon g(\epsilon(n-1-c t) + \epsilon^3 \phi(\epsilon n) - \epsilon^3 \phi(\epsilon (n-1)) \\
 	&\quad - \epsilon^2 \partial_1 F(\epsilon(n+t)) - \epsilon^4 \partial_2
 	F(\epsilon(n+t)) \\
 	&\quad + \epsilon^2 c \partial_1 G(\epsilon(n-ct)) - \epsilon^4 \partial_2 G(\epsilon(n-ct)) - \epsilon^4 \partial_2 \Phi(\epsilon n) \\
 	&\quad - \frac 1 6 \Big( (\epsilon f(\epsilon(n+t)) + \epsilon g(\epsilon(n-c t)) + \epsilon^3 \phi(\epsilon n))^3 \\
-	&\hspace{6em} - (\epsilon f(\epsilon(n-1+t)) + \epsilon g(\epsilon(n-1-c t)) + \epsilon^3 \phi(\epsilon (n-1)))^3 \Big) 
-\end{align*}
+	&\hspace{6em} - (\epsilon f(\epsilon(n-1+t)) + \epsilon g(\epsilon(n-1-c t)) + \epsilon^3 \phi(\epsilon (n-1)))^3 \Big),
+\end{aligned}
+\end{equation}
 and 
-\begin{align*}
-	\mathcal B_n(\epsilon f + \epsilon g + \epsilon^3 \phi, \mathcal U) =& -\frac 1 6 \Big( 3(\epsilon f(\epsilon(n+t) + \epsilon g(\epsilon(n-ct)) + \epsilon^3 \phi(\epsilon n))  \mathcal U^2_n(t) \\
-	&\qquad - 3(\epsilon f(\epsilon(n-1+t) + \epsilon g(\epsilon(n-1-ct)) + \epsilon^3 \phi(\epsilon (n-1)))  \mathcal U^2_{n-1}(t) \\
-	&\qquad + \mathcal U_n^3(t)  - \mathcal U_{n-1}^3(t)\Big).
-\end{align*}
-
+\begin{equation}
+\begin{aligned}
+	&\mathcal B_n(\epsilon f + \epsilon g + \epsilon^3 \phi, \mathcal U) \\
+	&\quad= -\frac 1 6 \Big( 3(\epsilon f(\epsilon(n+t) + \epsilon g(\epsilon(n-ct)) + \epsilon^3 \phi(\epsilon n))  \mathcal U^2_n(t) \\
+	&\quad \qquad - 3(\epsilon f(\epsilon(n-1+t) + \epsilon g(\epsilon(n-1-ct)) + \epsilon^3 \phi(\epsilon (n-1)))  \mathcal U^2_{n-1}(t) \\
+	&\quad\qquad + \mathcal U_n^3(t)  - \mathcal U_{n-1}^3(t)\Big).
+\end{aligned}
+\end{equation}
 The terms \(\mcU\) and \(\mcQ\) control the error associated with the ansatz in \cref{u-ansatz,q-ansatz}. Thus if these terms remain small in the \(\ell^2(\Z)\) norm, then the traveling wave ansatz will remain valid.
 
 \section{Preparatory Estimates}
@@ -456,21 +465,26 @@ Define
 	and \cref{coercive-bound} follows.
 	
 	Now we take the time derivative of \(\mathcal E\) to get that 
-	\begin{align*}
+	\begin{equation}
+	\begin{aligned}
 		\frac{d\mathcal E}{dt} = \sum_{n \in \Z} &\mathcal Q_n(t) \ResnII + \mathcal Q_n(t) 	\mathcal B_n(\epsilon f + \epsilon g + \epsilon^3 \phi, \mathcal U(t) \\
 		&+ \mathcal U_n(t) \ResnI \left( 1 - \frac 12 (\epsilon f+ \epsilon g + \epsilon^3 \phi)^2  \right) \\
 		&+ \mathcal U_n^2(t)(\epsilon f + \epsilon g + \epsilon^3 \phi) \times (\epsilon^2\partial_1 f + \epsilon^4\partial_2 f -\epsilon^2 c \partial_1 g + \epsilon^4 \partial_2 g + \epsilon^4 \partial_2 \phi).
-	\end{align*}
+	\end{aligned}
+	\end{equation}
 	Then using the Cauchy inequality, taking \(\ell^\infty\) norms, and applying \cref{res-ineq,nonlinear-ineq}, we get that
-	\begin{align*}
-		\left| \frac{d\mathcal E}{dt} \right| &\leq & &\| \mathcal Q \|_\ell^2 \times \|\ResII \|_{\ell^2} + \| \mathcal Q \|_{\ell^2} \times \| \mathcal B \|_{\ell^2}  + \|\mathcal U \|_{\ell^2} \times \| \ResnI \|_{\ell^2}\\
-		&& &+ \|\mathcal U \|_{\ell^2}^2 (\epsilon\delta + \epsilon \delta + \epsilon^3 \delta^3)\times (\epsilon^2\delta + \epsilon^4\delta + \epsilon^2 c \delta + \epsilon^4 \delta + \epsilon^4 \delta^3) \\
-		&\leq & &C\left[\mathcal E^{1/2} \epsilon^{11/2}(\delta + \delta^5) + \mathcal E^{1/2}\epsilon [(\delta + \epsilon^2 \delta^3)\mathcal E + \mathcal E^{3/2}]  + \mathcal E(\epsilon^3 \delta^2 + \epsilon^5\delta^2 + \epsilon^5 \delta^4 + \epsilon^7\delta^4 + \epsilon^7 \delta^6) \right],
-	\end{align*}
+	\begin{equation}
+	\begin{aligned}
+		\left| \frac{d\mathcal E}{dt} \right| \leq& \| \mathcal Q \|_\ell^2 \times \|\ResII \|_{\ell^2} + \| \mathcal Q \|_{\ell^2} \times \| \mathcal B \|_{\ell^2}  + \|\mathcal U \|_{\ell^2} \times \| \ResnI \|_{\ell^2}\\
+		&\quad + \|\mathcal U \|_{\ell^2}^2 \times  (\epsilon\delta + \epsilon \delta + \epsilon^3 \delta^3)\times (\epsilon^2\delta + \epsilon^4\delta + \epsilon^2 c \delta + \epsilon^4 \delta + \epsilon^4 \delta^3) \\
+		\leq& C\Big[\mathcal E^{1/2} \epsilon^{11/2}(\delta + \delta^5) + \mathcal E^{1/2}\epsilon [(\delta + \epsilon^2 \delta^3)\mathcal E + \mathcal E^{3/2}]  \\
+		&\quad + \mathcal E(\epsilon^3 \delta^2 + \epsilon^5\delta^2 + \epsilon^5 \delta^4 + \epsilon^7\delta^4 + \epsilon^7 \delta^6) \Big],
+	\end{aligned}
+	\end{equation}
 	with \(C>0\) independent of \(\epsilon\) and \(\delta\). The right-hand side of the above inequality can be simplified by taking \(\epsilon_0\) smaller. That is, taking \(\epsilon_0\) sufficiently small (dependent on \(\delta\)), we can absorb higher orders of \(\epsilon\) into lower orders. For example, \(\epsilon^3 \delta^2 + \epsilon^5\delta^2 \leq 2 \epsilon^3 \delta^2\) for \(\epsilon\) small enough. Thus we arrive at  		
-	\begin{equation*}
+	\begin{equation}
 		\left|\frac{d\mathcal E}{dt} \right| \leq C \mathcal E^{1/2}\left[ \epsilon^{11/2} (\delta + \delta^5)  + \epsilon^3\delta^2\mathcal E^{1/2} + \epsilon(\delta + \mathcal{E}^{1/2})\mathcal E\right]
-	\end{equation*}
+	\end{equation}
 	as desired.
 \end{proof}
 
