@@ -199,6 +199,47 @@ The definitions above are used to prove that \(\phi\) remains bounded for all ti
 \end{restatable}
 See \cref{lemma-appendix} for proof. 
 
+Since \(f(\epsilon(x+t)) -f_\infty\) and \(g(\epsilon(x-ct))\) are localized in space, the interaction terms in \cref{phi-pde} given by the product of these functions will quickly decay. \Cref{fig-counter-propogating-interaction} demonstrates this. Thus the dynamics governing \(\phi\) will in the long run look like the homogeneous wave equation, for which Sobolev norms remain bounded globally.
+\begin{figure}[h]
+\center
+\begin{tikzpicture}[
+	scale=2,
+	declare function={sech(\x) = 2/(exp(\x) + exp(-\x));
+					  fun1(\x,\c) = 1.5 * sech((\x-\c)*3;
+					  fun2(\x,\c) = sech((\x-\c)*3);
+	},
+	]
+	%axis
+    \draw[->, very thick] (-0.1,0) -- (3,0) {};
+    \draw[->, very thick] (0,-0.1) -- (0,2) {};
+    
+    %functions
+    \draw[domain=-.1:3, samples = 200, color=blue] plot (\x, {fun1(\x, 1.25)} );
+    \draw[domain=-.1:3, samples = 200, color=orange] plot (\x, {fun2(\x, 1.75)} );
+    \draw[domain=-.1:3, samples = 200, thick, dotted] plot (\x, {2* fun1(\x,1.25) * fun2(\x,1.75)});
+    
+    %arrows
+    \draw[->,line width=0.20mm,color=blue] (.9, 1) -- (0.1,1) {} node[above right] {\scriptsize $f(\epsilon(x+t))$};
+    \draw[->,line width=0.20mm,color=orange] (2.12, .66) -- (2.92,.66) {} node[above left] {\scriptsize $g(\epsilon(x-ct))$};
+    
+    \begin{scope}[xshift=3.7cm]
+	%axis
+	\draw[->, very thick] (-0.1,0) -- (3,0) {};
+	\draw[->, very thick] (0,-0.1) -- (0,2) {};
+	
+	%functions
+	\draw[domain=-.1:3, samples = 200, color=blue] plot (\x, {fun1(\x, .75)} );
+	\draw[domain=-.1:3, samples = 200, color=orange] plot (\x, {fun2(\x, 2.25)} );
+	\draw[domain=-.1:3, samples = 200, thick, dotted] plot (\x, {0.3 * sech((\x - 1.4)*2});
+	
+	%arrows
+	\draw[->,line width=0.20mm,color=blue] (.4, 1) -- (-0.4,1) {} node[above right] {\scriptsize $f(\epsilon(x+t))$};
+	\draw[->,line width=0.20mm,color=orange] (2.62, .66) -- (3.42,.66) {} node[above left] {\scriptsize $g(\epsilon(x-ct))$};
+    \end{scope}
+\end{tikzpicture}
+\caption{\label{fig-counter-propogating-interaction} The function \(f(\epsilon(x+t)) -f_\infty\) (shown in blue) moves to the left while \(g(\epsilon(x-ct))\) (shown in orange) moves to the right. Since they are localized, the product (shown by the dotted line) will quickly decay in time.}
+\end{figure}
+
 \begin{prop}
 	Fix \(T_0> 0\) and suppose that \(f \in C([-T_0,T_0], \mcX_2^{k+1}(\R))\) and \(g \in C([-T_0,T_0], H^{k+1}_2(\R)) \), with \(k>2\) an integer. Also, suppose that \(f(X,T)\to f_\infty\) as \(X\to \infty\) for any \(T\in[-T_0,T_0]\). Then there exists a constant \(C>0\) such that 
 	\begin{equation}\label{phi-bound}
@@ -231,18 +272,20 @@ See \cref{lemma-appendix} for proof.
 	\begin{equation}\label{psi-fourier-transform}
 	\begin{aligned}
 		&\hat  \psi(k,T) = \frac 1 2 \int_0^Tk^2\cos(k(T-\tau)) \times\\
-		&\quad\mathcal F[ (f^2(\cdot+\tau),\epsilon^2\tau)-f_\infty^2)g(\cdot-c\tau,\epsilon^2\tau) +(f(\cdot+\tau,\epsilon^2\tau)-f_\infty)g^2(\cdot-c\tau,\epsilon^2\tau)](k)\, d\tau
+		&\quad\mathcal F[ (f^2(\cdot+\tau,\epsilon^2\tau)-f_\infty^2)g(\cdot-c\tau,\epsilon^2\tau) +(f(\cdot+\tau,\epsilon^2\tau)-f_\infty)g^2(\cdot-c\tau,\epsilon^2\tau)](k)\, d\tau
 	\end{aligned}
 	\end{equation}
 	Hence we can get that 
-	\begin{align*}
+	\begin{equation}\label{phi-sobolev-bound}
+	\begin{aligned}
 		&\|\phi(\cdot, T) \|_{H^k} \\
 		&\quad\leq C \| \hat\phi(\cdot, T) \|_{H^0_k} \\
 		&\quad\leq C \int_0^T \| \partial_1 ((f^2(\cdot+\tau)-f_\infty^2)g(\cdot-c\tau)) \|_{H^k} + \| \partial_1( (f(\cdot+\tau)-f_\infty)g^2(\cdot-c\tau)) \|_{H^k} \, \mathrm d \tau \\
 		&\quad\leq C \int_0^T \| f(\cdot+\tau)\partial_1 f(\cdot + \tau)g(\cdot-c\tau) \|_{H^k} + \|(f^2(\cdot+\tau) -f_\infty^2) \partial_1 g(\cdot - c\tau) \|_{H^k}  \\
 		&\qquad + \|\partial_1f(\cdot+\tau) g^2(\cdot - c\tau) \|_{H^k} + \| (f(\cdot + \tau) -f_\infty) \partial_1 g(\cdot - c\tau) \|_{H^k}\, \mathrm{d}\tau \\ 
 		&\quad\leq C \int_0^T \sup_{x\in\R} \frac 1 {\langle x + \tau\rangle_+^2 \langle x - c\tau\rangle^2} \times \Bigg( \|f\|^2_{\mathcal X^{k+1}_{2}} \| g \|_{H^{k+1}_2} + \|f\|_{\mathcal X^{k+1}_{2}} \| g \|^2_{H^{k+1}_2} \Bigg) \, \mathrm d \tau, 
-	\end{align*} 
+	\end{aligned}
+	\end{equation}
 	whence \cref{phi-bound} follows. The proof for \cref{psi-bound} is analogous.
 \end{proof}
 
@@ -274,7 +317,17 @@ The wave speed \(c\) is again given by \cref{ansatz-wave-speed}. The functions \
 	&\qquad - \frac{\epsilon^3}{24} \partial_1(g^3 + 3f_\infty g^2) - \frac{\epsilon^3 f_\infty^2} 8 \partial_1 g \nonumber \\
 	\Phi &:=  \partial_1^{-1}\psi - \frac{\epsilon} 2 \psi.
 \end{align}
-Here \(\psi = \partial_2 \phi\) and \(\partial_1^{-1}\) is defined as a Fourier multiplier. That \(\partial_1^{-1}\psi\) is well-defined and in \(H^5(\R)\) follows from \cref{psi-fourier-transform}. \Cref{assumption-1} implies that \(F\) has fixed limits in its spatial variable at \(\pm \infty\) given by \(F_{\pm\infty} = f_{\pm\infty} -\frac{\epsilon^2}{12} f^3_{\pm\infty}\).
+Here \(\psi = \partial_2 \phi\) and \(\partial_1^{-1}\) is defined as a Fourier multiplier. That \(\partial_1^{-1}\psi\) is well-defined and in \(H^5(\R)\) follows from \cref{psi-fourier-transform}. Namely, we have that 
+\begin{equation}
+\begin{aligned}
+	&\mcF[\partial_1^{-1} \psi(\cdot, T)](k) = (ik)^{-1} \hat\psi(k,T) \\
+	&\quad = \frac{-i} 2 \int_0^T k \cos(k(T-\tau)) \times \\ &\quad \mcF[(f^2(\cdot+\tau,\epsilon^2\tau)-f_\infty^2)g(\cdot-c\tau,\epsilon^2\tau) +(f(\cdot+\tau,\epsilon^2\tau)-f_\infty)g^2(\cdot-c\tau,\epsilon^2\tau)](k) \, d\tau
+\end{aligned}
+\end{equation}
+and (following the same calculations in \cref{phi-sobolev-bound}) 
+\begin{equation}
+	\| \partial_1^{-1}\psi(\cdot,T) \|_{H^5} \leq C \int_0^T \sup_{x\in\R} \frac 1 {\langle x + \tau\rangle_+^2 \langle x - c\tau\rangle^2} \times \Bigg( \|f\|^2_{\mathcal X^{6}_{2}} \| g \|_{H^{6}_2} + \|f\|_{\mathcal X^{6}_{2}} \| g \|^2_{H^{6}_2} \Bigg) \, \mathrm d \tau. 
+\end{equation}\Cref{assumption-1} implies that \(F\) has fixed limits in its spatial variable at \(\pm \infty\) given by \(F_{\pm\infty} = f_{\pm\infty} -\frac{\epsilon^2}{12} f^3_{\pm\infty}\).
 
 We want \(\mcU(t)\) and \(\mcQ(t)\) to be elements of \(\ell^2(\Z)\) (at least locally in time). However, to satisfy \(\mcQ(0)\in\ell^2(\Z)\) and \(\dot u_n(0) = q_{n+1}(0) - q_n(0)\), a compatibility condition must hold.
 \begin{assum}\label{assumption-2}
@@ -353,18 +406,27 @@ To control the dynamics of \(\mcU\) and \(\mcQ\), we need estimates of the resid
 	\begin{equation}\label{F-res1}
 		\begin{aligned}
 			&\epsilon F(\cdot + \epsilon) - \epsilon F - \epsilon^2 \partial_1 f - \epsilon^4 \partial_2 f = \\
-			&\begin{aligned}
-				&\epsilon^2 \partial_1 f + & & \frac{\epsilon^3} 2 \partial_1^2 f +& &\frac{\epsilon^4} 6 \partial_1^3 f   & + &\frac{\epsilon^5}{24} \partial_1^4 f & + &\frac{\epsilon^6} {24} \int_0^1 \partial_1^5 f(\epsilon(n+t+s))(1-s)^4\, ds\\
-				& & - &\frac{\epsilon^3} 2 \partial_1^2 f & - &\frac{\epsilon^4} 4 \partial_1^3 f & - & \frac{\epsilon^5} {12} \partial_1^4 f& - & \frac{\epsilon^6} {12} \int_0^1 \partial_1^5 f(\epsilon(n+t+s))(1-s)^3\, ds \\
-				& & & & + &\frac {\epsilon^4} 8 \partial_1^3 f & + & \frac{\epsilon^5}{16} \partial_1^4 f  & + & \frac{\epsilon^6} {16} \int_0^1 \partial_1^5 f(\epsilon(n+t+s))(1-s)^2\, ds \\
-				& & & & - &\frac {\epsilon^4} {12} \partial_1 (f^3) & - & \frac{\epsilon^5}{24} \partial_1^2(f^3) & - & \frac{\epsilon^6} {24} \int_0^1 \partial_1^3 (f^3)(\epsilon(n+t+s))(1-s)^2\, ds \\
-				& & & & & & - & \frac{\epsilon^5}{48} \partial_1^4 f & - & \frac{\epsilon^6}{48} \int_0^1 \partial_1^5f(\epsilon(n+t+s))(1-s)\, ds \\
-				& & & & & & + & \frac{\epsilon^5}{24} \partial_1^2 (f^3) & + & \frac{\epsilon^6}{24} \int_0^1 \partial_1^3 (f^3)(\epsilon(n+t+s)) (1-s)\, ds\\
+			&\quad\begin{aligned}
+				&\epsilon^2 \partial_1 f + & & \frac{\epsilon^3} 2 \partial_1^2 f +& &\frac{\epsilon^4} 6 \partial_1^3 f   & + &\frac{\epsilon^5}{24} \partial_1^4 f  \\
+				& & - &\frac{\epsilon^3} 2 \partial_1^2 f & - &\frac{\epsilon^4} 4 \partial_1^3 f & - & \frac{\epsilon^5} {12} \partial_1^4 f \\
+				& & & & + &\frac {\epsilon^4} 8 \partial_1^3 f & + & \frac{\epsilon^5}{16} \partial_1^4 f   \\
+				& & & & - &\frac {\epsilon^4} {12} \partial_1 (f^3) & - & \frac{\epsilon^5}{24} \partial_1^2(f^3)\\
+				& & & & & & - & \frac{\epsilon^5}{48} \partial_1^4 f \\
+				& & & & & & + & \frac{\epsilon^5}{24} \partial_1^2 (f^3) \\
 				-&\epsilon^2 \partial_1 f \\
 				& & & & + &\frac{\epsilon^4}{12}\partial_1(f^3) \\
-				& & & & - &\frac{\epsilon^4}{24}\partial^3 f .
+				& & & & - &\frac{\epsilon^4}{24}\partial^3 f & & & + I_{f,1}(n,t)
 			\end{aligned}
 		\end{aligned}
+	\end{equation}
+	
+
+	\begin{equation}
+	\begin{aligned}
+		I_{f,1}(n,t) := \ &\frac{\epsilon^6} {24} \int_0^1 \partial_1^5 f(\epsilon(n+t+s))(1-s)^4\, ds - \frac{\epsilon^6} {12} \int_0^1 \partial_1^5 f(\epsilon(n+t+s))(1-s)^3\, ds \\
+		+ & \frac{\epsilon^6} {16} \int_0^1 \partial_1^5 f(\epsilon(n+t+s))(1-s)^2\, ds -  \frac{\epsilon^6} {24} \int_0^1 \partial_1^3 (f^3)(\epsilon(n+t+s))(1-s)^2\, ds \\
+		- & \frac{\epsilon^6}{48} \int_0^1 \partial_1^5f(\epsilon(n+t+s))(1-s)\, ds +  \frac{\epsilon^6}{24} \int_0^1 \partial_1^3 (f^3)(\epsilon(n+t+s)) (1-s)\, ds
+	\end{aligned}
 	\end{equation}
 	Note that the terms involving lower orders of \(\epsilon\) cancel, and so we are only left with the integral terms of order \(\epsilon^6\). Applying \cref{h1-ell2-ineq} (and \cref{prod-rule-1-lem,prod-rule-2-lem} when needed) to the remaining terms gives that the \(\ell^2\) norm on the left-hand side of the above inequality can be bounded by \[C(\epsilon^{11/2}(\delta + \delta^3))\] for some choice of constant \(C>0\).
 	
