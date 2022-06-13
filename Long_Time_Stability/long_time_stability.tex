@@ -358,7 +358,7 @@ where
 \begin{equation}
 \begin{aligned}
 	\ResnII =& \epsilon f(\epsilon(n+t)) - \epsilon f(\epsilon(n-1+t)) \\
-	&\quad+ \epsilon g(\epsilon(n-c t) - \epsilon g(\epsilon(n-1-c t) + \epsilon^3 \phi(\epsilon n) - \epsilon^3 \phi(\epsilon (n-1)) \\
+	&\quad+ \epsilon g(\epsilon(n-c t)) - \epsilon g(\epsilon(n-1-c t) + \epsilon^3 \phi(\epsilon n) - \epsilon^3 \phi(\epsilon (n-1)) \\
 	&\quad - \epsilon^2 \partial_1 F(\epsilon(n+t)) - \epsilon^4 \partial_2
 	F(\epsilon(n+t)) \\
 	&\quad + \epsilon^2 c \partial_1 G(\epsilon(n-ct)) - \epsilon^4 \partial_2 G(\epsilon(n-ct)) - \epsilon^4 \partial_2 \Phi(\epsilon n) \\
@@ -406,7 +406,7 @@ To control the dynamics of \(\mcU\) and \(\mcQ\), we need estimates of the resid
 	\begin{equation}\label{F-res1}
 		\begin{aligned}
 			&\epsilon F(\cdot + \epsilon) - \epsilon F - \epsilon^2 \partial_1 f - \epsilon^4 \partial_2 f = \\
-			&\quad\begin{aligned}
+			&\hspace{10em}\begin{aligned}
 				&\epsilon^2 \partial_1 f + & & \frac{\epsilon^3} 2 \partial_1^2 f +& &\frac{\epsilon^4} 6 \partial_1^3 f   & + &\frac{\epsilon^5}{24} \partial_1^4 f  \\
 				& & - &\frac{\epsilon^3} 2 \partial_1^2 f & - &\frac{\epsilon^4} 4 \partial_1^3 f & - & \frac{\epsilon^5} {12} \partial_1^4 f \\
 				& & & & + &\frac {\epsilon^4} 8 \partial_1^3 f & + & \frac{\epsilon^5}{16} \partial_1^4 f   \\
@@ -415,53 +415,56 @@ To control the dynamics of \(\mcU\) and \(\mcQ\), we need estimates of the resid
 				& & & & & & + & \frac{\epsilon^5}{24} \partial_1^2 (f^3) \\
 				-&\epsilon^2 \partial_1 f \\
 				& & & & + &\frac{\epsilon^4}{12}\partial_1(f^3) \\
-				& & & & - &\frac{\epsilon^4}{24}\partial^3 f & & & + I_{f,1}(n,t)
+				& & & & - &\frac{\epsilon^4}{24}\partial^3 f & & & + I_{f,1}(n,t),
 			\end{aligned}
 		\end{aligned}
 	\end{equation}
-	
-
-	\begin{equation}
+	where \(I_{f,1}\) contains the integral remainder terms:
+	\begin{equation}\label{If1}
 	\begin{aligned}
 		I_{f,1}(n,t) := \ &\frac{\epsilon^6} {24} \int_0^1 \partial_1^5 f(\epsilon(n+t+s))(1-s)^4\, ds - \frac{\epsilon^6} {12} \int_0^1 \partial_1^5 f(\epsilon(n+t+s))(1-s)^3\, ds \\
 		+ & \frac{\epsilon^6} {16} \int_0^1 \partial_1^5 f(\epsilon(n+t+s))(1-s)^2\, ds -  \frac{\epsilon^6} {24} \int_0^1 \partial_1^3 (f^3)(\epsilon(n+t+s))(1-s)^2\, ds \\
-		- & \frac{\epsilon^6}{48} \int_0^1 \partial_1^5f(\epsilon(n+t+s))(1-s)\, ds +  \frac{\epsilon^6}{24} \int_0^1 \partial_1^3 (f^3)(\epsilon(n+t+s)) (1-s)\, ds
+		- & \frac{\epsilon^6}{48} \int_0^1 \partial_1^5f(\epsilon(n+t+s))(1-s)\, ds +  \frac{\epsilon^6}{24} \int_0^1 \partial_1^3 (f^3)(\epsilon(n+t+s)) (1-s)\, ds.
 	\end{aligned}
 	\end{equation}
-	Note that the terms involving lower orders of \(\epsilon\) cancel, and so we are only left with the integral terms of order \(\epsilon^6\). Applying \cref{h1-ell2-ineq} (and \cref{prod-rule-1-lem,prod-rule-2-lem} when needed) to the remaining terms gives that the \(\ell^2\) norm on the left-hand side of the above inequality can be bounded by \[C(\epsilon^{11/2}(\delta + \delta^3))\] for some choice of constant \(C>0\).
+	Note that the terms involving lower orders of \(\epsilon\) cancel, and so we are only left with \(I_{f,1}\) which is of order \(\epsilon^6\). Applying \cref{h1-ell2-ineq} (and \cref{prod-rule-1-lem,prod-rule-2-lem} when needed) to the terms in \cref{If1} gives that the \(\ell^2\) norm on the left-hand side of the above inequality can be bounded by \[C(\epsilon^{11/2}(\delta + \delta^3))\] for some choice of constant \(C>0\).
 	
-	Doing the same Taylor expansion for the \(g\) and \(G\) terms in \(\ResI\) along with \cref{g-gKdV} gives similar results. In particular, the terms of order \(\epsilon^5\) cancel out, and we are left terms of order \(\epsilon^6\) like
-	\begin{equation}
-		\int_0^1 \partial_1^3(g^3)(\epsilon(n - ct + s)) (1-s)^2 \, ds \quad \text{and} \quad \int_0^1 \partial_1^3(3f_\infty g^2)(\epsilon(n - ct + s)) (1-s)^2 \, ds
-	\end{equation}
-	that can be controled with \cref{h1-ell2-ineq}.
-	%Comment this out for now
-	\iffalse
+	Doing the same Taylor expansion for the \(g\) and \(G\) gives
 	\begin{equation}
 		\begin{aligned}
 			&\epsilon G(\cdot + \epsilon) - \epsilon G + \epsilon^2c \partial_1 g - \epsilon^4 \partial_2 g  = \\
-			&\begin{aligned}
-				- & \epsilon^2 \partial_1 g & -&\frac{\epsilon^3} 2 \partial_1^2 g & - &\frac{\epsilon^4} 6 \partial_1^3 g & - & \frac{\epsilon^5}{24} \partial_1^4 g & -&\frac{\epsilon^6} {24} \int_0^1 \partial_1^5 g(\epsilon(n - ct + s)) (1-s)^4 \, ds \\
-				& & +&\frac{\epsilon^3} 2 \partial_1^2 g & + &\frac{\epsilon^4} 4\partial_1^3 g &+ & \frac{\epsilon^5}{12} \partial_1^4 g & +&\frac{\epsilon^6} {12} \int_0^1 \partial_1^5 g(\epsilon(n - ct + s)) (1-s)^3 \, ds \\
-				& & & & + &\frac{\epsilon^4 f_\infty^2} 4\partial_1 g & + & \frac{\epsilon^5f_\infty^2} 8 \partial_1^2 g & +&\frac{\epsilon^6 f_\infty^2} 8 \int_0^1 \partial_1^3 g(\epsilon(n - ct + s)) (1-s)^2 \, ds \\
-				& & & & + &\frac{\epsilon^4} {12}\partial_1 (g^3) & + & \frac{\epsilon^5}{24} \partial_1^2(g^3) & +&\frac{\epsilon^5} {24} \int_0^1 \partial_1^3(g^3)(\epsilon(n - ct + s)) (1-s)^2 \, ds \\
-				& & & & + &\frac{\epsilon^4} {12}\partial_1 (3f_\infty g^2) & + & \frac{\epsilon^5}{24}\partial_1^2(3f_\infty g^2) & +&\frac{\epsilon^6} {24} \int_0^1 \partial_1^3(3f_\infty g^2)(\epsilon(n - ct + s)) (1-s)^2 \, ds \\
-				& & & & - &\frac{\epsilon^4} {8}\partial_1^3 g & - &  \frac{\epsilon^5}{16} \partial_1^4 g & -&\frac{\epsilon^6} {16} \int_0^1 \partial_1^5g(\epsilon(n - ct + s)) (1-s)^2 \, ds \\ 
-				& & & & & & + & \frac{\epsilon^5}{48} \partial_1^4 g & + & \frac{\epsilon^6}{48}\int_0^1 \partial_1^5 g(\epsilon(n-ct+s))(1-s)\, ds \\
-				& & & & & & - & \frac{\epsilon^5}{24} \partial_1^2(g^3) & - & \frac{\epsilon^6}{24} \int_0^1 \partial_1^3(g^3)(\epsilon(n-ct+s))(1-s)\, ds \\
-				& & & & & & - & \frac{\epsilon^5}{24} \partial_1^2(3f_\infty g^2) & - & \frac{\epsilon^6}{24} \int_0^1 \partial_1^3(3f_\infty g^2)(\epsilon(n-ct+s))(1-s)\, ds \\
-				& & & & & & - & \frac{\epsilon^5 f_\infty ^2} 8 \partial_1^2 g & - & \frac{\epsilon^6f_\infty ^2}{8} \int_0^1 \partial_1^3 g(\epsilon(n-ct+s)) (1-s) \, ds \\
+			&\hspace{10em}\begin{aligned}
+				- & \epsilon^2 \partial_1 g & -&\frac{\epsilon^3} 2 \partial_1^2 g & - &\frac{\epsilon^4} 6 \partial_1^3 g & - & \frac{\epsilon^5}{24} \partial_1^4 g \\
+				& & +&\frac{\epsilon^3} 2 \partial_1^2 g & + &\frac{\epsilon^4} 4\partial_1^3 g &+ & \frac{\epsilon^5}{12} \partial_1^4 g \\
+				& & & & + &\frac{\epsilon^4 f_\infty^2} 4\partial_1 g & + & \frac{\epsilon^5f_\infty^2} 8 \partial_1^2 g  \\
+				& & & & + &\frac{\epsilon^4} {12}\partial_1 (g^3) & + & \frac{\epsilon^5}{24} \partial_1^2(g^3) \\
+				& & & & + &\frac{\epsilon^4} {12}\partial_1 (3f_\infty g^2) & + & \frac{\epsilon^5}{24}\partial_1^2(3f_\infty g^2)  \\
+				& & & & - &\frac{\epsilon^4} {8}\partial_1^3 g & - &  \frac{\epsilon^5}{16} \partial_1^4 g  \\ 
+				& & & & & & + & \frac{\epsilon^5}{48} \partial_1^4 g  \\
+				& & & & & & - & \frac{\epsilon^5}{24} \partial_1^2(g^3) \\
+				& & & & & & - & \frac{\epsilon^5}{24} \partial_1^2(3f_\infty g^2) \\
+				& & & & & & - & \frac{\epsilon^5 f_\infty ^2} 8 \partial_1^2 g  \\
 				+&\epsilon^2 \partial_1g \\
 				& & & & - & \frac{\epsilon^4f_\infty ^2}{4} \partial_1 g \\
 				& & & & - &\frac{\epsilon^4} {12}\partial_1 (g^3) \\
 				& & & & - &\frac{\epsilon^4} {12}\partial_1 (3f_\infty g^2) \\ 
-				& & & & + & \frac{\epsilon^4}{24} \partial_1^3 g,
+				& & & & + & \frac{\epsilon^4}{24} \partial_1^3 g && &+ I_{g,1}(nt),
 			\end{aligned}
 		\end{aligned}
 	\end{equation}
-	where all terms except those of order \(\epsilon^6\) cancel and the integral terms can be controlled by \cref{h1-ell2-ineq}. 
-	\fi
-	%end comment
+	where \(I_{g,1}\) contains the integral remainder terms.
+	\begin{equation}\label{Ig1}
+	\begin{aligned}
+		&I_{g,1}(n,t) := \\
+		-&\frac{\epsilon^6} {24} \int_0^1 \partial_1^5 g(\epsilon(n - ct + s)) (1-s)^4 \, ds +\frac{\epsilon^6} {12} \int_0^1 \partial_1^5 g(\epsilon(n - ct + s)) (1-s)^3 \, ds \\
+		+&\frac{\epsilon^6 f_\infty^2} 8 \int_0^1 \partial_1^3 g(\epsilon(n - ct + s)) (1-s)^2 \, ds +\frac{\epsilon^6} {24} \int_0^1 \partial_1^3(g^3)(\epsilon(n - ct + s)) (1-s)^2 \, ds \\
+		+&\frac{\epsilon^6} {24} \int_0^1 \partial_1^3(3f_\infty g^2)(\epsilon(n - ct + s)) (1-s)^2 \, ds - \frac{\epsilon^6} {16} \int_0^1 \partial_1^5g(\epsilon(n - ct + s)) (1-s)^2 \, ds \\
+		+ & \frac{\epsilon^6}{48}\int_0^1 \partial_1^5 g(\epsilon(n-ct+s))(1-s)\, ds -  \frac{\epsilon^6}{24} \int_0^1 \partial_1^3(g^3)(\epsilon(n-ct+s))(1-s)\, ds \\
+		- & \frac{\epsilon^6}{24} \int_0^1 \partial_1^3(3f_\infty g^2)(\epsilon(n-ct+s))(1-s)\, ds - \frac{\epsilon^6f_\infty ^2}{8} \int_0^1 \partial_1^3 g(\epsilon(n-ct+s)) (1-s) \, ds
+	\end{aligned}
+	\end{equation}
+	All terms except those of order \(\epsilon^6\) cancel and the terms in \cref{Ig1} can be controlled by \cref{h1-ell2-ineq}. 
+
 	
 	Similarly we have
 	\begin{equation}
@@ -478,24 +481,53 @@ To control the dynamics of \(\mcU\) and \(\mcQ\), we need estimates of the resid
 	\begin{equation}
 		\partial_2\left(\frac{1} 8 \partial_1^2 f - \frac{1}{12} f^3  - \frac{\epsilon}{48} \partial_1^3 f + \frac{\epsilon} 8 f^2 \partial_1 f\right),
 	\end{equation}
-  	which can also be controlled by \cref{h1-ell2-ineq}.
+  	which can also be controlled by using the PDE for \(f\) \cref{f-mKdV} to get rid of the derivatives in time and then using \cref{h1-ell2-ineq}.
   	
-  	% Comment this out
-	\iffalse
+  
 	\begin{equation}
 		\begin{aligned}
 			&\epsilon f(\cdot) - \epsilon f(\cdot - \epsilon) - \epsilon^2 \partial_1 F -\epsilon^4\partial_2 F - \frac{\epsilon^3} 6 (f^3(\cdot) - f^3(\cdot - \epsilon)) =\\
-			&\begin{aligned}
-				&\epsilon^2\partial_1 f &- &\frac{\epsilon^3} 2 \partial_1 f &+ &\frac{\epsilon^4} 6 \partial_1^3f & - & \frac{\epsilon^5}{24} \partial_1^4 f &- & \frac{\epsilon^6} {24} \int_{-1}^0 \partial_1^5 f (\epsilon(n+t+s))(s+1)^4\, ds \\
+			&\quad \begin{aligned}
+				&\epsilon^2\partial_1 f &- &\frac{\epsilon^3} 2 \partial_1 f &+ &\frac{\epsilon^4} 6 \partial_1^3f & - & \frac{\epsilon^5}{24} \partial_1^4 f\\
 				-&\epsilon^2\partial_1 f & + & \frac{\epsilon^3} 2 \partial_1^2 f &+& \frac{\epsilon^4}{12} \partial_1(f^3) - \frac{\epsilon^4} 8 \partial_1^3 f & + &  \frac{\epsilon^5}{48} \partial_1^4 f - \frac{\epsilon^5}{24}\partial_1^2(f^3)\\
-				&&&& -&\epsilon^4 \partial_2 f & + & \frac{\epsilon^5} 2 \partial_1 \partial_2 f & + & \epsilon^6\partial_2\left(\frac{1} 8 \partial_1^2 f - \frac{1}{12} f^3  - \frac{\epsilon}{48} \partial_1^3 f + \frac{\epsilon} 8 f^2 \partial_1 f\right)\\
-				&&&& -&\frac{\epsilon^4} 6 \partial_1(f^3) & + & \frac{\epsilon^5}{12} \partial_1(f^3) & + & \frac{\epsilon^6} {12} \int_{-1}^0 \partial_1^2(f^3)(\epsilon(n+t+s))(s+1)^2\, ds.
+				&&&& -&\epsilon^4 \partial_2 f & + & \frac{\epsilon^5} 2 \partial_1 \partial_2 f\\
+				&&&& -&\frac{\epsilon^4} 6 \partial_1(f^3) & + & \frac{\epsilon^5}{12} \partial_1(f^3) & &+ I_{f,2}(n,t).
 			\end{aligned}
 		\end{aligned}
 	\end{equation}
+	\begin{equation}
+	\begin{aligned}
+		I_{f,2}(n,t) := - & \frac{\epsilon^6} {24} \int_{-1}^0 \partial_1^5 f (\epsilon(n+t+s))(s+1)^4\, ds \\
+		+ & \frac{\epsilon^6} {12} \int_{-1}^0 \partial_1^2(f^3)(\epsilon(n+t+s))(s+1)^2\, ds \\
+		+ & \epsilon^6\partial_2\left(\frac{1} 8 \partial_1^2 f - \frac{1}{12} f^3  - \frac{\epsilon}{48} \partial_1^3 f + \frac{\epsilon} 8 f^2 \partial_1 f\right)
+	\end{aligned}
+	\end{equation}
 	All the above terms except the for those of order \(\epsilon^6\).
-	\fi
-	%end comment  
+
+
+	\begin{equation}
+	\begin{aligned}
+			&\epsilon^2 \partial_1 g & - & \frac{\epsilon^3} 2 \partial_1^2g & + & \frac{\epsilon^4} 6 \partial_1^3 g & - & \frac{\epsilon^5}{24} \partial_1^4 g  \\
+			&&&&+&\epsilon^4 \partial_1 \phi & - & \frac{\epsilon^5} 2 \partial_1^2  \phi \\
+			-&\epsilon^2\partial_1 g & + & \frac{\epsilon^3} 2 \partial_1^2 g & - & \frac{\epsilon^4} 8 \partial_1^3 g  + \frac{\epsilon^4 L^2} 4 \partial_1 g & + & \frac{\epsilon^5}{48} \partial_1^4 g \\
+			&&&&+ & \frac{\epsilon^4}{12} \partial_1(g^3 + 3Lg^2) & - & \frac{\epsilon^5}{24} \partial_1^2(g^3 + 3Lg^2)\\
+			&&&&&& - & \frac{\epsilon^5L^2} 8 \partial_1^2 g \\
+			&&&&+&\frac{\epsilon^4L^2} 4 \partial_1g  & - & \frac{\epsilon^5L^2} 8 \partial_1^2 g \\
+			&&&& +&\epsilon^4 \partial_2 g & - & \frac{\epsilon^5} 2 \partial_1 \partial_2 g \\ 
+			&&&&-&\epsilon^4 \partial_2 \partial_1^{-1} \psi & + & \frac{\epsilon^5} 2 \partial_2 \psi\\
+			&&&&-&\frac{\epsilon^4} 6 \partial_1(g^3 + 3g^2 f + 3gf^2) & + & \frac{\epsilon^5}{12}\partial_1^2(g^3 + 3g^2 f + 3gf^2)
+	\end{aligned}
+	\end{equation} 
+
+	\begin{equation}
+	\begin{aligned}
+		&I_{g,2}(n,t) = \\
+		- & \frac{\epsilon^6} {24} \int_{0}^1 \partial_1^5 g(\epsilon(n-s-ct))  (s-1)^4 \, ds -  \frac{\epsilon^6}2 \int_{-1}^0\cdots \, ds \\
+		- & \frac{\epsilon^6 f_\infty^2}{4}\partial_1\left( \frac{f_\infty^2} 4  g + \frac{1}{12}(g^3 + 3f_\infty g^2) -\frac{ 1} 8 \partial_1^2 g  + \frac{\epsilon}{48} \partial_1^3 g - \frac{\epsilon}{24} \partial_1(g^3 + 3f_\infty g^2) - \frac{\epsilon f_\infty^2} 8 \partial_1 g\right) \\
+		-&  \epsilon^6\partial_2\left( \frac{f_\infty^2} 4  g + \frac{1}{12}(g^3 + 3f_\infty g^2) -\frac{ 1} 8 \partial_1^2 g  + \frac{\epsilon}{48} \partial_1^3 g - \frac{\epsilon}{24} \partial_1(g^3 + 3f_\infty g^2) - \frac{\epsilon f_\infty^2} 8 \partial_1 g\right) \\
+		+ & \frac{\epsilon^6} {12} \int_{-1}^0 \cdots ds 
+	\end{aligned}
+	\end{equation}
 	
 	%\epsilon^6\partial_2(G_2+ \epsilon G_3)
 	%\frac{\epsilon^6 L^2}{4}\partial_1(G_2 + \epsilon G_3)
