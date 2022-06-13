@@ -402,7 +402,7 @@ To control the dynamics of \(\mcU\) and \(\mcQ\), we need estimates of the resid
 \end{lem}
 
 \begin{proof}
-	We first focus on bounding \(\ResI\). Looking first at the terms in \(\ResI\) involving \(f\) and \(F\) and using Taylor expansions and \cref{f-mKdV}, we get the following:
+	We first focus on bounding \(\ResI\). Looking at the terms in \(\ResI\) involving \(f\) and \(F\) and using Taylor expansions and \cref{f-mKdV}, we get the following:
 	\begin{equation}\label{F-res1}
 		\begin{aligned}
 			&\epsilon F(\cdot + \epsilon) - \epsilon F - \epsilon^2 \partial_1 f - \epsilon^4 \partial_2 f = \\
@@ -427,7 +427,7 @@ To control the dynamics of \(\mcU\) and \(\mcQ\), we need estimates of the resid
 		- & \frac{\epsilon^6}{48} \int_0^1 \partial_1^5f(\epsilon(n+t+s))(1-s)\, ds +  \frac{\epsilon^6}{24} \int_0^1 \partial_1^3 (f^3)(\epsilon(n+t+s)) (1-s)\, ds.
 	\end{aligned}
 	\end{equation}
-	Note that the terms involving lower orders of \(\epsilon\) cancel, and so we are only left with \(I_{f,1}\) which is of order \(\epsilon^6\). Applying \cref{h1-ell2-ineq} (and \cref{prod-rule-1-lem,prod-rule-2-lem} when needed) to the terms in \cref{If1} gives that the \(\ell^2\) norm on the left-hand side of the above inequality can be bounded by \[C(\epsilon^{11/2}(\delta + \delta^3))\] for some choice of constant \(C>0\).
+	Note that all the terms in \cref{F-res1} cancel except \(I_{f,1}\), and so we are only left with terms of order \(\epsilon^6\). Applying \cref{h1-ell2-ineq} (and \cref{prod-rule-1-lem,prod-rule-2-lem} when needed) to the terms in \cref{If1} gives that the \(\ell^2\) norm on the left-hand side of \cref{F-res1} can be bounded by \[C(\epsilon^{11/2}(\delta + \delta^3))\] for some choice of constant \(C>0\).
 	
 	Doing the same Taylor expansion for the \(g\) and \(G\) gives
 	\begin{equation}
@@ -470,21 +470,15 @@ To control the dynamics of \(\mcU\) and \(\mcQ\), we need estimates of the resid
 	\begin{equation}
 		\epsilon^3 \Phi(\epsilon(n+1), \epsilon t) - \epsilon^3\Phi(\epsilon n , \epsilon t) - \epsilon^4 \partial_2 \phi_2(\epsilon n, \epsilon t) =  \frac{\epsilon^6} 2 \int_0^1 \partial_1^2 \psi(\epsilon(n+s),\epsilon t)(1-s)^2\, ds,
 	\end{equation}
-	whose \(\ell^2\) norm can also be controlled.
+    so the \(\ell^2\) norm can also be controlled.
 	
 	Therefore we have 
 	\begin{equation}
 		\| \ResI \|_{\ell^2} \leq C \epsilon^{11/2}(\delta + \delta^3)
 	\end{equation}
 
-	The bound on \(\ResII\) can be approached similarly. Focusing first on the terms with \(f\) and \(F\) in \(\ResII\), we have that all terms of order \(\epsilon^5\) or lower cancel. We are again left with \(\epsilon^6\) order terms that are integral remainders from Taylor expansion that are controlled and a term of the form 
-	\begin{equation}
-		\partial_2\left(\frac{1} 8 \partial_1^2 f - \frac{1}{12} f^3  - \frac{\epsilon}{48} \partial_1^3 f + \frac{\epsilon} 8 f^2 \partial_1 f\right),
-	\end{equation}
-  	which can also be controlled by using the PDE for \(f\) \cref{f-mKdV} to get rid of the derivatives in time and then using \cref{h1-ell2-ineq}.
-  	
-  
-	\begin{equation}
+	The bound on \(\ResII\) can be approached similarly. Focusing on the terms with \(f\) and \(F\) in \(\ResII\), we have 
+	\begin{equation}\label{F-res2}
 		\begin{aligned}
 			&\epsilon f(\cdot) - \epsilon f(\cdot - \epsilon) - \epsilon^2 \partial_1 F -\epsilon^4\partial_2 F - \frac{\epsilon^3} 6 (f^3(\cdot) - f^3(\cdot - \epsilon)) =\\
 			&\quad \begin{aligned}
@@ -495,17 +489,18 @@ To control the dynamics of \(\mcU\) and \(\mcQ\), we need estimates of the resid
 			\end{aligned}
 		\end{aligned}
 	\end{equation}
-	\begin{equation}
+	where the integral remainder terms and the other terms of order \(\epsilon^6\) are contained in \(I_{f,2}\):
+	\begin{equation}\label{If2}
 	\begin{aligned}
-		I_{f,2}(n,t) := - & \frac{\epsilon^6} {24} \int_{-1}^0 \partial_1^5 f (\epsilon(n+t+s))(s+1)^4\, ds \\
-		+ & \frac{\epsilon^6} {12} \int_{-1}^0 \partial_1^2(f^3)(\epsilon(n+t+s))(s+1)^2\, ds \\
+		I_{f,2}(n,t) := - & \frac{\epsilon^6} {24} \int_{0}^1 \partial_1^5 f (\epsilon(n+t+s))(s-1)^4\, ds \\
+		+ & \frac{\epsilon^6} {12} \int_0^1 \partial_1^2(f^3)(\epsilon(n+t+s))(s-1)^2\, ds \\
 		+ & \epsilon^6\partial_2\left(\frac{1} 8 \partial_1^2 f - \frac{1}{12} f^3  - \frac{\epsilon}{48} \partial_1^3 f + \frac{\epsilon} 8 f^2 \partial_1 f\right)
 	\end{aligned}
 	\end{equation}
-	All the above terms except the for those of order \(\epsilon^6\).
+	All the above terms in \cref{F-res2} cancel except for \(I_{f,2}(n,t)\). The integral terms in \cref{If2} can be controlled like before. The non-integral term can be controlled by first evaluating the derivative in time, \(\partial_2\), and replacing the terms \(\partial_2 f\) using \cref{f-mKdV}; then the terms can be controlled by \cref{h1-ell2-ineq}. Then the left-hand side of \cref{F-res2} can be bounded by a term of the form \[ C \epsilon^{11/2}(\delta + \delta^3).\]
 
-
-	\begin{equation}
+	Taylor expanding the remaining terms in \(\ResII\) leads to 
+	\begin{equation}\label{G-res2}
 	\begin{aligned}
 			&\epsilon^2 \partial_1 g & - & \frac{\epsilon^3} 2 \partial_1^2g & + & \frac{\epsilon^4} 6 \partial_1^3 g & - & \frac{\epsilon^5}{24} \partial_1^4 g  \\
 			&&&&+&\epsilon^4 \partial_1 \phi & - & \frac{\epsilon^5} 2 \partial_1^2  \phi \\
@@ -515,47 +510,44 @@ To control the dynamics of \(\mcU\) and \(\mcQ\), we need estimates of the resid
 			&&&&+&\frac{\epsilon^4L^2} 4 \partial_1g  & - & \frac{\epsilon^5L^2} 8 \partial_1^2 g \\
 			&&&& +&\epsilon^4 \partial_2 g & - & \frac{\epsilon^5} 2 \partial_1 \partial_2 g \\ 
 			&&&&-&\epsilon^4 \partial_2 \partial_1^{-1} \psi & + & \frac{\epsilon^5} 2 \partial_2 \psi\\
-			&&&&-&\frac{\epsilon^4} 6 \partial_1(g^3 + 3g^2 f + 3gf^2) & + & \frac{\epsilon^5}{12}\partial_1^2(g^3 + 3g^2 f + 3gf^2)
+			&&&&-&\frac{\epsilon^4} 6 \partial_1(g^3 + 3g^2 f + 3gf^2) & + & \frac{\epsilon^5}{12}\partial_1^2(g^3 + 3g^2 f + 3gf^2),
 	\end{aligned}
 	\end{equation} 
-
-	\begin{equation}
+	where the integral remainder terms and other terms of order \(\epsilon^6\) are contained in \(I_{g,2}\):
+	\begin{equation}\label{Ig2}
 	\begin{aligned}
 		&I_{g,2}(n,t) = \\
-		- & \frac{\epsilon^6} {24} \int_{0}^1 \partial_1^5 g(\epsilon(n-s-ct))  (s-1)^4 \, ds -  \frac{\epsilon^6}2 \int_{-1}^0\cdots \, ds \\
+		- & \frac{\epsilon^6} {24} \int_{0}^1 \partial_1^5 g(\epsilon(n-s-ct))  (s-1)^4 \, ds -  \frac{\epsilon^6}2 \int_0^1 \partial_1^3 \phi(\epsilon (n-s)) (s-1)^2\, ds \\
 		- & \frac{\epsilon^6 f_\infty^2}{4}\partial_1\left( \frac{f_\infty^2} 4  g + \frac{1}{12}(g^3 + 3f_\infty g^2) -\frac{ 1} 8 \partial_1^2 g  + \frac{\epsilon}{48} \partial_1^3 g - \frac{\epsilon}{24} \partial_1(g^3 + 3f_\infty g^2) - \frac{\epsilon f_\infty^2} 8 \partial_1 g\right) \\
 		-&  \epsilon^6\partial_2\left( \frac{f_\infty^2} 4  g + \frac{1}{12}(g^3 + 3f_\infty g^2) -\frac{ 1} 8 \partial_1^2 g  + \frac{\epsilon}{48} \partial_1^3 g - \frac{\epsilon}{24} \partial_1(g^3 + 3f_\infty g^2) - \frac{\epsilon f_\infty^2} 8 \partial_1 g\right) \\
-		+ & \frac{\epsilon^6} {12} \int_{-1}^0 \cdots ds 
+		+ & \frac{\epsilon^6} {12} \int_0^1 \partial_1^3(g^3(\epsilon(n-s-ct))) (s-1)^2 ds  \\
+		+ & \frac{\epsilon^6} {12} \int_0^1 \partial_1^3( 3g^2(\epsilon(n-s-ct))f(\epsilon(n-s+t))) (s-1)^2\, ds \\
+		+ & \frac{\epsilon^6} {12} \int_0^1 \partial_1^3 (3g(\epsilon(n-s-ct))f^2(\epsilon(n-s+t))) (s-1)^2 \, ds
 	\end{aligned}
 	\end{equation}
 	
 	%\epsilon^6\partial_2(G_2+ \epsilon G_3)
 	%\frac{\epsilon^6 L^2}{4}\partial_1(G_2 + \epsilon G_3)
-	For the remaining terms, we have that terms of order \(\epsilon^3\) or lower cancel out. The terms of order \(\epsilon^4\) are equal to 
-	\begin{equation}
+	The terms in \cref{G-res2} of order \(\epsilon^3\) or lower cancel out. The terms of order \(\epsilon^4\) are equal to 
+	\begin{equation}\label{psi-phi-remainder}
 		-\partial_2 \partial_1^{-1} \psi+ \partial_1 \phi  - \frac 1 6 \partial_1(3(f^2 - f_\infty^2) g + 3(f-f_\infty) g^2).
 	\end{equation}
-	Formally applying \(\partial_1\) implies that the above terms should be constant in space (taking a derivative with respect to the rescaled \(\epsilon x = \epsilon n\) shows that this is the case). Since all the terms decay to zero at spatial infinity, they are exactly zero.
+	Formally applying \(\partial_1\) implies that the above terms should be constant in space since \(\partial_2 \psi = \partial_2^2 \phi\) satisfies \cref{phi-pde}. However, one should be careful with this calculation due to the differences in scaling of the spatial variables: for example, \(\phi\) and \(\psi\)'s spatial variable is rescaled to \(\epsilon n\) while \(f\)'s is rescaled to \(\epsilon(n+t)\). Taking a derivative with respect to \(\xi = \epsilon x\) gives that \cref{psi-phi-remainder} must be constant. Since all the terms decay to zero at spatial infinity, \cref{psi-phi-remainder} is exactly zero.
 	
 	The terms of order \(\epsilon^5\) can be rewritten as
 	\begin{equation}
 		\frac 1 4 \partial_1( - 2 \partial_2 g - \frac 1 {12} \partial_1^3 g + \frac 1 6 (g^3 + 3f_\infty g^2)) + \frac 1 2 (\partial_2^2\phi - \partial_1^2\phi + \frac 1 6 \partial_1^2(3(f-f_\infty )g^2 + 3 (f^2-f_\infty^2)g))
 	\end{equation}
-	which is equal to zero. The remaining terms are all of order of \(\epsilon^6\) or above are integral remainders from Taylor expansion and terms of the form 
-	\begin{equation}
-		\partial_2(G_2+ \epsilon G_3) \quad \text{and} \quad f_\infty^2 \partial_1(G_2 + \epsilon G_3).
-	\end{equation}
-	We can the get the following bound: \[\| \mathrm{Res}^{(2)}(t) \|_{\ell^2} \leq C \epsilon^{11/2} (\delta + \delta^5).\] Interpolating between powers of \(\delta\) gives the desired inequality \cref{res-ineq}.
+	which is equal to zero since \(g\) and \(\phi\) satisfy the PDEs in \cref{g-gKdV,phi-pde}. Thus the right-hand side of \cref{G-res2} is equal to \(I_{g,2}\). The integral terms in \cref{Ig2} are bounded as before. The remaining terms in \cref{Ig2} can be bounded by evaluating \(\partial_2 g\) using \cref{g-gKdV} and then applying \cref{h1-ell2-ineq}. We can the get the following bound: \[\| \mathrm{Res}^{(2)}(t) \|_{\ell^2} \leq C \epsilon^{11/2} (\delta + \delta^3 + \delta^5).\] Interpolating between powers of \(\delta\) gives the desired inequality \cref{res-ineq}.
 	
 	The proof of \cref{nonlinear-ineq} follows immediately.
 \end{proof}
 
-%Show energy is coercive and its derivative remains bounded
-
-Define 
+To proceed, we construct and energy function for \cref{error-lattice-eqns} to control the \(\ell^2\) norms of \(\mcU\) and \(\mcQ\). \Cref{residual-nonlinearity-bounds} essentially states that \(\ResI\), \(\ResII\), and \(\mathcal B\) remain appropriately small. If one drops the residual and nonlinear terms from \cref{error-lattice-eqns}, then we are left with a linear (non-autonomous) Hamiltonian system. Hence, an appropriate choice of an energy function would simply be the Hamiltonian for this reduced system (as suggested in our earlier proof sketch). Define 
 \begin{equation}\label{energy-function}
-	\mathcal E(t) = \frac 1 2 \sum_{n\in \mathbb Z} \mathcal Q_n^2(t) + \mathcal U_n^2(t) - \frac 1 2 \left(\epsilon f(\epsilon(n+t), \epsilon^3 t) + \epsilon g(\epsilon(n-ct, \epsilon^3t) + \epsilon^3 \phi(\epsilon n, \epsilon t)\right)^2 \mathcal U_n^2(t)
+	\mcE(t) = \frac 1 2 \sum_{n\in \mathbb Z} \mathcal Q_n^2(t) + \mathcal U_n^2(t) - \frac 1 2 \left(\epsilon f(\epsilon(n+t), \epsilon^3 t) + \epsilon g(\epsilon(n-ct, \epsilon^3t) + \epsilon^3 \phi(\epsilon n, \epsilon t)\right)^2 \mathcal U_n^2(t)
 \end{equation}
+The following lemma gives us that \(\mcE\) can be used to control \(\mcU\) and \(\mcQ\).
 \begin{lem}\label{energy-coercive-bounds-lem}
 	Fix \(\tau_0>0 \) and let \(\delta\) be given by \cref{delta-defn} . There exists \(\epsilon_0 = \epsilon_0(\delta) >0\) sufficiently small such that for every \(\epsilon \in (0,\epsilon_0)\) and for every local solution \((\mathcal U, \mathcal Q) \in C^1([-\tau_0\epsilon^{-3}, \tau_0\epsilon^{-3}], \ell^2(\mathbb Z))\) of \cref{error-lattice-eqns}, the energy-type quantity given in \cref{energy-function} is coercive with the bound
 	\begin{equation}\label{coercive-bound}
@@ -581,21 +573,26 @@ Define
 	Now we take the time derivative of \(\mathcal E\) to get that 
 	\begin{equation}
 	\begin{aligned}
-		\frac{d\mathcal E}{dt} = \sum_{n \in \Z} &\mathcal Q_n(t) \ResnII + \mathcal Q_n(t) 	\mathcal B_n(\epsilon f + \epsilon g + \epsilon^3 \phi, \mathcal U(t) \\
+		\frac{d\mcE}{dt} = \sum_{n \in \Z} &\mathcal Q_n(t) \ResnII + \mathcal Q_n(t) 	\mathcal B_n(\epsilon f + \epsilon g + \epsilon^3 \phi, \mathcal U(t)) \\
 		&+ \mathcal U_n(t) \ResnI \left( 1 - \frac 12 (\epsilon f+ \epsilon g + \epsilon^3 \phi)^2  \right) \\
 		&+ \mathcal U_n^2(t)(\epsilon f + \epsilon g + \epsilon^3 \phi) \times (\epsilon^2\partial_1 f + \epsilon^4\partial_2 f -\epsilon^2 c \partial_1 g + \epsilon^4 \partial_2 g + \epsilon^4 \partial_2 \phi).
 	\end{aligned}
 	\end{equation}
-	Then using the Cauchy inequality, taking \(\ell^\infty\) norms, and applying \cref{res-ineq,nonlinear-ineq}, we get that
+	Then using the Cauchy inequality and the H\"older inequality for \(p=1\) and \(q=\infty\) we get that
 	\begin{equation}
 	\begin{aligned}
 		\left| \frac{d\mathcal E}{dt} \right| \leq& \| \mathcal Q \|_{\ell^2 }\times \|\ResII \|_{\ell^2} + \| \mathcal Q \|_{\ell^2} \times \| \mathcal B \|_{\ell^2}  + \|\mathcal U \|_{\ell^2} \times \| \ResnI \|_{\ell^2}\\
-		&\quad + \|\mathcal U \|_{\ell^2}^2 \times  (\epsilon\delta + \epsilon \delta + \epsilon^3 \delta^3)\times (\epsilon^2\delta + \epsilon^4\delta + \epsilon^2 c \delta + \epsilon^4 \delta + \epsilon^4 \delta^3) \\
-		\leq& C\Big[\mathcal E^{1/2} \epsilon^{11/2}(\delta + \delta^5) + \mathcal E^{1/2}\epsilon [(\delta + \epsilon^2 \delta^3)\mathcal E + \mathcal E^{3/2}]  \\
+		& + \|\mathcal U^2 \|_{\ell^1} \times  \| (\epsilon f+ \epsilon g + \epsilon^3 \phi)  \times  (\epsilon^2\partial_1 f + \epsilon^4\partial_2 f -\epsilon^2 c \partial_1 g + \epsilon^4 \partial_2 g + \epsilon^4 \partial_2 \phi )\|_{\ell^\infty} .
+	\end{aligned}
+	\end{equation}
+	Note that if \(a \in \ell^2\), then \(a\in \ell^\infty\) and \(\|a\|_{\ell^\infty} \leq \|a \|_{\ell^2}\). Thus we can replace the \(\ell^\infty\) norms above with \(\ell^2\) norms. Using the results in \cref{residual-nonlinearity-bounds}, we thus have 
+	\begin{equation}
+	\begin{aligned}
+		\left| \frac{d\mathcal E}{dt} \right| \leq& C\Big[\mathcal E^{1/2} \epsilon^{11/2}(\delta + \delta^5) + \mathcal E^{1/2}\epsilon [(\delta + \epsilon^2 \delta^3)\mathcal E + \mathcal E^{3/2}]  \\
 		&\quad + \mathcal E(\epsilon^3 \delta^2 + \epsilon^5\delta^2 + \epsilon^5 \delta^4 + \epsilon^7\delta^4 + \epsilon^7 \delta^6) \Big],
 	\end{aligned}
 	\end{equation}
-	with \(C>0\) independent of \(\epsilon\) and \(\delta\). The right-hand side of the above inequality can be simplified by taking \(\epsilon_0\) smaller. That is, taking \(\epsilon_0\) sufficiently small (dependent on \(\delta\)), we can absorb higher orders of \(\epsilon\) into lower orders. For example, \(\epsilon^3 \delta^2 + \epsilon^5\delta^2 \leq 2 \epsilon^3 \delta^2\) for \(\epsilon\) small enough. Thus we arrive at  		
+ 	where the \(C>0\) is independent of \(\epsilon\) and \(\delta\). The right-hand side of the above inequality can be simplified by taking \(\epsilon_0\) smaller. That is, taking \(\epsilon_0\) sufficiently small (dependent on \(\delta\)), we can absorb higher orders of \(\epsilon\) into lower orders. For example, \(\epsilon^3 \delta^2 + \epsilon^5\delta^2 \leq 2 \epsilon^3 \delta^2\) for \(\epsilon\) small enough. Thus we arrive at  		
 	\begin{equation}
 		\left|\frac{d\mathcal E}{dt} \right| \leq C \mathcal E^{1/2}\left[ \epsilon^{11/2} (\delta + \delta^5)  + \epsilon^3\delta^2\mathcal E^{1/2} + \epsilon(\delta + \mathcal{E}^{1/2})\mathcal E\right]
 	\end{equation}
@@ -671,11 +668,7 @@ We can now show the following.
 		&+ \sum_{k=-\infty}^{n-1}\left[ - \epsilon^2 c\partial_1 g(\epsilon k,0) +\epsilon^4 \partial_1 g(\epsilon k,0) - \epsilon G(\epsilon(k+1),0) +\epsilon G(\epsilon k ,0)  \right].
 	\end{aligned}
 	\end{equation}
-	That \(\mcQ_n(0)\to 0\) as \(n\to\infty\) is guaranteed by \cref{assumption-2}. Now \cref{ell22-lemma} can be applied to get the result if the summands are in \(\ell^2_2\) and of order \(\epsilon^{5/2}\). The first summand satisfies this condition because of \cref{assumption-3}. The latter summands also satisfy this condition based on earlier calculations on the residuals. For example, referencing \cref{F-res1}, the second summand is equal to a sum of integral terms of the form
-	\begin{equation}
-		\frac{\epsilon^6}{24} \int_0^1 \partial_1^5 f(\epsilon(n+s), 0)(1-s)^4\, ds
-	\end{equation}
-	which are elements of \(\ell^2_2\) (since \(f(\cdot, 0) \in \mcX_2^6\)) and are of order \(\epsilon^{5/2}\). A similar conclusion holds for the third summand relying on \(g\in H^6_2\).
+	That \(\mcQ_n(0)\to 0\) as \(n\to\infty\) is guaranteed by \cref{assumption-2}. Now \cref{ell22-lemma} can be applied to get the result if the summands are in \(\ell^2_2\) and of order \(\epsilon^{5/2}\). The first summand satisfies this condition because of \cref{assumption-3}.  Note that the latter summands are equal to \(-I_{f,1}(k,0)\) and \(-I_{g,1}(k,0)\), as defined in \cref{If1,Ig1}. This follows from the earlier calculations in \cref{residual-nonlinearity-bounds}. That \(I_{f,1}(k,0)\) and \(I_{g,2}(k,0)\) are elements of \(\ell^2_2\) follows from \(f(\cdot, 0) \in \mcX^6_2\) and \(g(\cdot, 0) \in H^6_2\) and an application of \cref{h1-ell2-ineq}.
 	
 	Thus we have \cref{initial-condition-ineq} where the \(C>0\) can be chosen based on the norms of \(f\) and \(g\).
 \end{proof}
