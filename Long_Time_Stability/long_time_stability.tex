@@ -1,11 +1,11 @@
 % !TeX root = ../thesis.tex
-\chapter{Long-Time stability of small FPUT solitary waves}
+\chapter{Long-Time approximations of small-amplitude, long-wavelength  FPUT solutions}
 \label{chp:long-time-stability}
 \pagestyle{myheadings}
 
 \section{Introduction}
 
-As shown in earlier work, there exists a wave solution of the FPUT lattice whose profile is well approximated by that of the kink solution to the (defocusing) mKdV. We are now interested in studying the stability of this wave solution on the FPUT lattice. The equations of motion on the lattice are given by 
+As shown in earlier work, there exists a wave solution of the FPUT lattice whose profile is well approximated by that of the kink solution to the (defocusing) mKdV. This approximation holds globally in time, but is restricted to one special solution of the FPUT. We are now interested in studying more general solutions of the FPUT which can be approximated by solutions of the mKdV for long (but finite) time. The equations of motion on the lattice are given by 
 \begin{equation}\label{fput-lattice-equations}
 	\ddot x_n = V'(x_{n+1} - x_n) - V'(x_n - x_{n-1}), \quad n \in \Z.
 \end{equation}
@@ -27,7 +27,7 @@ the unique solution to \cref{fput-lattice-equations-strain-variables} with initi
 \begin{multline}
 	\|u(t) - W(\epsilon (\cdot - t),\epsilon^3 t)\|_{\ell^2(\Z)} + \| \dot u(t) + \epsilon \partial_X W(\epsilon(\cdot - t), \epsilon^3 t) \|_{\ell^2(\Z)} \leq C_0 \epsilon^{3/2}, \\ t\in[-\tau_0 \epsilon^{-3},\tau_0 \epsilon^{-3}].
 \end{multline}
-Furthermore, the approximation can also be extended to include counter-propagating solutions of the KdV in the case where \(p=2\) \cite{schneider2000counter}.
+Furthermore, the approximation can also be extended to include counter-propagating solutions of the KdV in the case where \(p=2\) \cite{schneider2000counter,hong2021korteweg}.
 
 The KdV approximation was extended to longer time scales on the order of \(\epsilon^{-3}|\log(\epsilon)|\) by Khan and Pelinovsky in order to deduce the nonlinear metastability of small FPUT solitary waves from the orbital stability of the corresponding KdV solitary waves \cite{khan2017long}.
 
@@ -35,13 +35,13 @@ We consider the FPUT with potential
 \begin{equation}\label{truncated-potential}
 	V(u) = \frac 1 2 u^2 - \frac{1} {24} u^4.
 \end{equation}
-We will introduce an ansatz that solutions of the FPUT with this potential can be well-approximated by counter-propagating solutions of mKdV equations.
+This potential differs from those studied in \cite{khan2017long} in that it admits kink solutions. Numerical experiments show that these kink solutions play an important role in the FPUT recurrence for lattices with potential give in \cref{truncated-potential} \cite{pace2019beta}. We will introduce an ansatz that solutions of the FPUT with this potential can be well-approximated by counter-propagating solutions of mKdV equations.
 
 The technique of the proof follows roughly from \cite{schneider2000counter,khan2017long} and is roughly sketched out as follows. First the system is rewritten into a Hamiltonian system on a Hilbert space, \(H\):
 \begin{equation}\label{hamiltonian-system}
 	\dot X(t) = J \mcH'(X)
 \end{equation}
-where \(J:H\to H\) is a skew symmetric operator and \(\mcH\) is the Hamiltonian, where we take \(\mcH'(X) = LX + N(X)\) with \(L:= \mcH'(0)\). We introduce some ansatz \(\tilde X_\epsilon\) which is an approximate solution to \cref{hamiltonian-system} in the sense that 
+where \(J:H\to H\) is a skew symmetric operator and \(\mcH\) is the Hamiltonian such that \(\mcH'(X) = LX + N(X)\) with \(L:= \mcH'(0)\). We introduce some ansatz \(\tilde X_\epsilon\) which is an approximate solution to \cref{hamiltonian-system} in the sense that 
 \begin{equation}
 	\mathrm{Res}(t) := J[L\tilde X_\epsilon(t)  + N(\tilde X_\epsilon(t))] - \dot{\tilde {X_\epsilon}}(t) 
 \end{equation}
@@ -296,6 +296,12 @@ The scalar second-order differential equation \cref{fput-lattice-equations-strai
 	\left\{\begin{aligned}\dot u _n &= q_{n+1} - q_n, \\
 	\dot q_n &= u_n - u_{n-1} - \frac{1} 6 ( u_n^3 - u^3_{n-1}),\end{aligned} \right. \quad n \in \Z.
 \end{equation}
+
+Recall that \(u_{n} = x_{n+1} - x_n\), so we have that \(u_n\) physically represents the displacement between two neighbors on the lattice and \(q_n\) is equal to 
+\begin{equation}
+	q_n(t) = \sum_{k=-\infty}^{n-1} \dot u_k(t) = \sum_{k=-\infty}^{n-1} [\dot x_{k+1}(t) - \dot x_k(t)] = \dot x_n(t)
+\end{equation}
+and so represents the velocity at a lattice point (assuming that \(\dot x_k(t) \to 0\) as \(k\to-\infty\)). Note that we have the flexibility to add or subtract a constant from \(q\) without changing the dynamics on \(u\) (a fact that we use later to adjust the approximation and guarantee the error terms are in \(\ell^2(\Z)\)).
 
 We will now introduce the traveling wave ansatz for the system in \cref{first-order-lattice-eqns}, but we first must assume certain regularity and decay of \(f\) and \(g\).
 \begin{assum}\label{assumption-1}
@@ -653,7 +659,7 @@ We can now show the following.
 	For \(q_n(0)\) to satisfy \cref{diff-eqn}, it must equal \(\sum_{k=-\infty}^{n-1} \dot u_k(0)\) (modulo a constant which we assume without loss of generality to be zero). Thus we have
 	\begin{equation}\label{q0-summation}
 	\begin{aligned}	
-		q_n(0) =& \sum_{k=-\infty}^{n-1} \dot u_n(0)\\
+		q_n(0) =& \sum_{k=-\infty}^{n-1} \dot u_k(0)\\
 		=& \sum_{k=-\infty}^{n-1}\left[ \dot u_k(0) - \epsilon^2 \partial_1 f(\epsilon k,0) - \epsilon^4 \partial_1 f(\epsilon k,0) + \epsilon^2 c \partial_1 g(\epsilon k,0) - \epsilon^4 \partial_2g(\epsilon k,0)\right] \\
 		&+\sum_{k=-\infty}^{n-1}\left[  \epsilon^2 \partial_1 f(\epsilon k,0) +\epsilon^4 \partial_1 f(\epsilon k,0) - \epsilon F(\epsilon(k+1),0) +\epsilon F(\epsilon k ,0)  \right] \\
 		&+ \sum_{k=-\infty}^{n-1}\left[ - \epsilon^2 c\partial_1 g(\epsilon k,0) +\epsilon^4 \partial_1 g(\epsilon k,0) - \epsilon G(\epsilon(k+1),0) +\epsilon G(\epsilon k ,0)  \right] \\
