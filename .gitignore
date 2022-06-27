@@ -7,3 +7,4 @@ thesis.blg
 thesis.toc
 *.aux
 *.DS_Store
+*.synctex(busy)
