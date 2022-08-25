@@ -1,7 +1,10 @@
 
-.DS_Store
-thesis.aux
-*.aux
-thesis.aux
 *.log
+*.aux
 *.gz
+thesis.bbl
+thesis.blg
+thesis.toc
+*.aux
+*.DS_Store
+*.synctex(busy)

@@ -6,7 +6,7 @@
 \documentclass[12pt,letterpaper]{report}          % Single-sided printing for the library
 %\documentclass[12pt,twoside]{report} % Double-sided printing
 \usepackage[intlimits]{amsmath}
-\usepackage{amsfonts,amssymb,amsthm}
+\usepackage{amsfonts,amssymb,amsthm,mathtools}
 \DeclareSymbolFontAlphabet{\mathbb}{AMSb}
 %\usepackage{natbib}
 \usepackage{apalike}
@@ -28,6 +28,9 @@
 %%% graphicx and pdf creation
 \usepackage{graphicx}
 \usepackage{appendix}
+\usepackage{tikz}
+\usetikzlibrary{arrows,calc}
+\usepackage{pgfplots}
 %\usepackage{psfrag}
 %\DeclareGraphicsExtensions{.eps}   % extension for included graphics
 %\usepackage{thumbpdf}              % thumbnails for ps2pdf
@@ -48,18 +51,29 @@
 %  pdfproducer = {dvips + ps2pdf}
 %}
 \usepackage{cleveref}
+
+\usepackage{thmtools}
+\usepackage{thm-restate}
 %==========================================================================%
 % customized commands can be placed here
+\input{custom.tex}
 
 % Common sets
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
 
 % Environements
 \newtheorem{defn}{Definition}
 \newtheorem{prop}{Proposition}
 \newtheorem{lem}{Lemma}
 \newtheorem{theorem}{Theorem}
+\newtheorem{assum}{Assumption}
+
+\crefname{lem}{lemma}{lemmas}
+\Crefname{lem}{Lemma}{Lemmas}
+\crefname{assum}{assumption}{assumptions}
+\Crefname{assum}{Assumption}{Assumptions}
 %==========================================================================%
 
 %==========================================================================%
@@ -72,16 +86,22 @@
 	\cleardoublepage
 	
 	% -------------------------------------
+	% CHAPTER ?: EXISTENCE OF KINK-LIKE TRAVELLING WAVE SOLUTIONS
+	% -------------------------------------
+	\include{Existence/existence}
+	\cleardoublepage
+	
+	% -------------------------------------
 	% CHAPTER ?: LONG-TIME STABILITY OF SMALL FPU SOLITARY WAVES
 	% -------------------------------------
 	\include{Long_Time_Stability/long_time_stability}
-	\cleardoublepage
+	%\cleardoublepage
 
 	
-	%\appendix
-	%\begin{appendices}
-	%	\include{Appendix/Appendix}
-	%\end{appendices}
+	\appendix
+	\begin{appendices}
+		\include{Appendix/proofs_of_lemmas}
+	\end{appendices}
 	%==========================================================================%
 	% Bibliography
 	\newpage

@@ -1,0 +1,121 @@
+% !TeX root = ../thesis.tex
+\chapter{Proofs of lemmas}\label{lemma-appendix}
+\prodruleone*
+\begin{proof}
+	The result follows from induction on \(k\).
+	
+	For \(k = 0\), we have
+	\begin{equation}
+		\| f g \|_{H^0} \leq \| f \|_{L^\infty} \| g\|_{H^0}.
+	\end{equation}
+	
+	Assuming \cref{prod_rule} holds for \(k\geq 0\), we have that 
+	\begin{align*}
+		\| f g \|_{H^{k+1}} \leq C \left( \| f g \|_{H^k} + \| \partial^{k+1}(fg) \|_{L^2}\right) \\
+		\leq C \left( \| f\|_{\mathcal X^k} \| g \|_{H^k} + \| \partial^{k+1}(fg) \|_{L^2} \right),
+	\end{align*}
+	where the second term can be bounded by 
+	\begin{align*}
+		\| \partial^{k+1}(fg) \|_{L^2} &\leq \| \partial^k(\partial^1 f g ) \|_{L^2} + \| \partial^k(f \partial^1 g) \|_{L^2} \\
+		&\leq \| \partial^1 f  g \|_{H^k} + \| f \partial^1 g \|_{H^k} \\
+		&\leq \| \partial^1 f \|_{H^k} \|g\|_{H^k} + \|f\|_{\mathcal X^k} \|\partial^1 g\|_{H^k} \\
+		&\leq \| f \|_{\mathcal X^{k+1}} \| g\|_{H^{k+1}} + \|f \|_{\mathcal X^{k+1}} \|g\|_{H^{k+1}} \\
+		&= 2  \| f \|_{\mathcal X^{k+1}} \| g\|_{H^{k+1}}.
+	\end{align*}
+	This completes the induction.
+\end{proof}
+
+\prodruletwo*
+\begin{proof}
+	Using the result from \cref{prod-rule-1-lem}, we have 
+	\begin{equation}
+	\begin{aligned}
+		\| f g \|_{\mcX^k} &\leq \| f g\|_{L^\infty} + \| (fg)' \|_{H^{k-1}} \\
+		&\leq \|f \|_{L^\infty} \| g \|_{L^\infty} + \|f'g \|_{H^{k-1}} + \| fg' \|_{H^{k-1}} \\
+		&\leq \|f \|_{L^\infty} \| g \|_{L^\infty} + C\|f'\|_{H^{k-1}} \|g \|_{\mcX^{k-1}} + \| f \|_{\mcX^{k-1}} \|g'\|_H^{k-1} \\
+		&\leq C \|f \|_{\mcX^k} \|g\|_{\mcX^k} .
+	\end{aligned}
+	\end{equation}
+\end{proof}
+
+\cknormbound*
+\begin{proof}
+	The main argument of the proof is given by showing the following claim holds:
+	
+	\emph{Claim}: For each integer \(k\geq 0\), \[\frac{\partial^k}{\partial x^k} \left[\frac 1 {\langle x+\tau\rangle_+^2 \langle x -c\tau \rangle^2}\right]\] is a sum of terms of the form 
+	\begin{equation}\label{term}
+		\frac C {\langle x +\tau\rangle_+^{2+m} \langle x -c\tau \rangle^{2+m}}\langle x + \tau \rangle_+^{m_1}\langle x-c\tau\rangle^{m_2} F(x,\tau),
+	\end{equation} where \(C\neq 0\) is a constant, \(m,m_1,m_2\) are integers, \(0\leq m_1, m_2 \leq m\), and \(F\in C^n_b(\R\times\R)\) for every \(n\in \mathbb N\).
+	
+	This can be proved inductively. We have the \(k = 0\) case immediately by setting \(C = 1\), \(m=m_1=m_2 = 0\), and \(F(x) = 1\). Now we assume that the claim holds for \(k\geq 0\). To get the form of the \((k+1)^\text{st}\) derivative, we can use linearity and look at the derivative of each term of the form \cref{term}. That is, the \((k+1)^\text{st}\) derivative is a sum of terms of the form 
+	\begin{equation}\label{term2}
+		\frac{\partial}{\partial x}\left[\frac C {\langle x +\tau\rangle_+^{2+m} \langle x -c\tau \rangle^{2+m}}\langle x + \tau \rangle_+^{m_1}\langle x-c\tau\rangle^{m_2} F(x,\tau)\right].
+	\end{equation}
+	Applying the product rule to \cref{term2} gives us 
+	\begin{align*}
+		\frac{\partial}{\partial x}\Bigg[&\frac C {\langle x +\tau\rangle_+^{2+m} \langle x -c\tau \rangle^{2+m}} \langle x + \tau \rangle_+^{m_1}\langle x-c\tau\rangle^{m_2} F(x,\tau)\Bigg] = \\
+		&\qquad\quad \underbrace{\frac{\partial}{\partial x}\left[\frac C {\langle x +\tau\rangle_+^{2+m} \langle x -c\tau \rangle^{2+m}}\right]\langle x + \tau \rangle_+^{m_1}\langle x-c\tau\rangle^{m_2} F(x,\tau)}_{I} \\
+		&\qquad+ \underbrace{\frac C {\langle x +\tau\rangle_+^{2+m} \langle x -c\tau \rangle^{2+m}}\frac{\partial}{\partial x}\left[\langle x + \tau \rangle_+^{m_1}\right]\langle x-c\tau\rangle^{m_2} F(x,\tau)}_{II} \\
+		&\qquad+ \underbrace{\frac C {\langle x +\tau\rangle_+^{2+m} \langle x -c\tau \rangle^{2+m}}\langle x + \tau \rangle_+^{m_1}\frac{\partial}{\partial x}\left[\langle x-c\tau\rangle^{m_2}\right] F(x,\tau)}_{III} \\
+		&\qquad+ \underbrace{\frac C {\langle x +\tau\rangle_+^{2+m} \langle x -c\tau \rangle^{2+m}}\langle x + \tau \rangle_+^{m_1}\langle x-c\tau\rangle^{m_2} \frac{\partial}{\partial x}\left[F(x,\tau)\right] }_{IV}.
+	\end{align*}
+	
+	We now go term-by-term. For the first term, we have
+	\begin{align*}
+		I =& \frac {-(2+m)C} {\langle x +\tau\rangle_+^{2+(m+1)} \langle x -c\tau \rangle^{2+(m+1)}}\langle x + \tau \rangle_+^{m_1+1}\langle x+\tau\rangle^{m_2} \Big(\langle x-c\tau\rangle_+'F(x,\tau)\Big) \\
+		&\quad-\frac {(2+m)C} {\langle x +\tau\rangle_+^{2+(m+1)} \langle x -c\tau \rangle^{2+(m+1)}}\langle x + \tau \rangle_+^{m_1}\langle x-c\tau\rangle^{m_2+1} \Big(\langle x-c\tau\rangle'F(x,\tau)\Big),
+	\end{align*}
+	where \(\langle \cdot \rangle'\) denotes the derivative of \(\langle \cdot \rangle\). It's clear that both of these are of the form in \cref{term}.
+	
+	Also, we have 
+	\begin{align*}
+		II = \frac {Cm_1} {\langle x +\tau\rangle_+^{2+m} \langle x -c\tau \rangle^{2+m}}\langle x + \tau \rangle_+^{m_1-1}\langle x-c\tau\rangle^{m_2} \Big( \langle x+\tau\rangle_+'F(x,\tau)\Big).
+	\end{align*}
+	The above is again of the form in \cref{term} (and a similar result holds for \(III\)). Finally,
+	\begin{equation}
+		IV = \frac C {\langle x +\tau\rangle_+^{2+m} \langle x -c\tau \rangle^{2+m}}\langle x + \tau \rangle_+^{m_1}\langle x-c\tau\rangle^{m_2} \frac{\partial F}{\partial x}(x,\tau),
+	\end{equation}
+	which of the form in \cref{term}.
+	
+	This shows that the \((k+1)^\text{st}\) derivative is a sum of terms of the form in \cref{term} and proves the claim.
+	
+	Now the proposition can be proved fairly straight-forwardly from the claim. The \(k^\text{th}\) derivative is a sum of terms of the form in \cref{term}, each of which can be bounded as
+	\begin{align*}
+		\left|\frac C {\langle x +\tau\rangle_+^{2+m} \langle x -c\tau \rangle^{2+m}}\langle x + \tau \rangle_+^{m_1}\langle x-c\tau\rangle^{m_2} F(x,\tau)\right| \\
+		\leq C \| F \|_{C^0(\R\times \R)} \sup_{x\in\mathbb R} \frac 1 {\langle x+\tau\rangle_+^2 \langle x -c\tau \rangle^2}.
+	\end{align*}
+	The constant in \cref{Ck-bound} can be chosen to be the sum of the constants in the above inequality. Note that there is no \(\tau\) dependence since we are taking the supremum of \(F\) over all \(x\) and \(\tau\).
+	
+	The result in \cref{sup-integrable} follows from 
+	\begin{equation}
+		\sup_{x\in\R} \frac 1 {\langle x+\tau\rangle_+^2 \langle x -c\tau \rangle^2} = \mathcal O (1/\tau^2)
+	\end{equation}
+	as \(\tau\to \infty\).
+\end{proof}
+
+
+\elltwo*
+\begin{proof}
+	Let \(E_n := \{k \in \Z \mid k \leq n\}\) so that the characteristic function \(\chi_{E_n}\) satisfies
+	\begin{equation}
+		\chi_{E_n}(k) = \begin{cases}1, & k \leq n \\ 0, & k > 0\end{cases}.
+	\end{equation}
+	Then applying the Cauchy-Schwarz inequality, we get that
+	\begin{align*}
+		\left| \sum_{k=-\infty}^n a_k \right| &= \left| \sum_{k=-\infty}^\infty \langle k\rangle ^2a_k \frac{\chi_{E_n}(k)}{\langle k \rangle^2} \right|  \\
+		&\leq \| a\|_{\ell^2_2} \left( \sum_{k=-\infty}^\infty \frac{\chi_{E_n}(k)}{\langle k \rangle^4}\right)^{1/2} \\
+		&= \| a\|_{\ell^2_2} \left( \sum_{k=-\infty}^n \frac{1}{\langle k \rangle^4}\right)^{1/2}.
+	\end{align*}
+	By comparing the final sum to the integral \(\int_{-\infty}^n 1/ \langle x\rangle^4 \, dx\), we have that there is a constant \(C>0\) independent of \(a\) such that
+	\begin{equation}
+		\left| \sum_{k=-\infty}^n a_k \right|  \leq C \| a\|_{\ell^2_2} \times \frac 1 {\langle n\rangle^{3/2}}
+	\end{equation}
+	for \(n\leq 0\). By noting that \(\sum_{k=-\infty}^n a_k = -\sum_{k=n+1}^\infty a_k\), an identical argument can be applied to get that 
+	\begin{equation}
+		\left| \sum_{k=n}^\infty a_k \right|  \leq C \| a\|_{\ell^2_2} \times \frac 1 {\langle n\rangle ^{3/2}}
+	\end{equation}
+	for \(n \geq 0\). Therefore,
+	\begin{equation}
+		\|b \|_{\ell^2} \leq C \left( \sum_{n=-\infty}^\infty \frac{1}{\langle n\rangle^{3}}\right)^{1/2} \| a \|_{\ell^2_2}.
+	\end{equation}
+\end{proof}
