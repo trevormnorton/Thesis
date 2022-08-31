@@ -6,23 +6,128 @@
 \section{Introduction}
 % Talk about the problem
 %Friesecke/Pego method. Why doesn't it work here?
+The goal of this chapter is to show the existence of the travelling wave solution for the FPUT lattice and describe its profile. From formal calculations and the numerical experiments carried out in \cite{pace2019beta}, one expects that the travelling wave solution has a profile given by the kink solution to the mKdV; that is, for \(\phi(\xi) = \frac 1 {\sqrt 2} \tanh(\xi/\sqrt 2)\) we expect to have a travelling wave solution \(u\) such that 
+\begin{equation}\label{formal-approximation}
+	u_n(t) = \epsilon \varphi(\epsilon(n + ct)) +\mcO(\epsilon^3)
+\end{equation}
+when \(c\) is slightly smaller than \(V''(0) = 1\).
+
+One would expect that methods used to find the soliton-like solution for the FPUT can also be applied to this case. Notably Friesecke and Pego showed in \cite{friesecke1999solitary} that there exists a solitary wave solution whose profile is described by the KdV soliton using a fixed-point argument. The argument relies on creating a map from \(H^1(\R)\) to itself using Fourier multipliers such that the fixed point of the map is the profile of the solitary wave. However, this argument does not extend to our case since the function \(\phi\) is not in a Sobolev space and its Fourier transform is defined only in a distributional sense. Due to this problem, we neglect the functional approach and focus on techniques from bifurcation theory. 
+
 
 %Use center manifold contruction
 %%Usefule for finding small bounded solutions
 %%Bifurcation parameter will be c<c^*
+One common technique for constructing travelling wave solutions to PDEs is by using the center manifold theorem. For PDEs of one spatial and one temporal variable, the strategy is to assume that the solution is a travelling wave (i.e.\ of the form \(f(x-ct)\)) to eliminate the derivative with respect to \(t\) and reduce the problem to an ODE with respect to the spatial variable \(x\). Finding bounded solutions of this ODE then results in travelling wave solutions of the PDE. The center manifold is an important tool for finding these solutions since (1) it is finite-dimensional, (2) can typically be approximated by Taylor series up to arbitrary order, and (3) contains all bounded solution. If a linear operator has an eigenvalue pass through the line \(\{\lambda\in\mathbb C: \Re \lambda = 0\}\) as a parameter \(\mu\) varies, then one typically has a center manifold containing small bounded parameterized by \(\mu\). Such a construction was carried out in \cite{iooss2000travelling}, in which the existence of several travelling wave solutions were proved. The bifurcation parameter in this paper was given in part by the wave speed. In fact, [Thm.\ 5]\cite{iooss2000travelling} shows the existence of a heteroclinic orbit on the center manifold when \(c\) is slightly smaller than \(1\). This heteroclinic orbit corresponds to the kink-like solution of the FPUT we are interested in. But no description of its wave profile was given, so obtaining an estimate of the form in \cref{formal-approximation} is still an open problem.
+
 
 %Sketch of proof: 
 %%Construct center manifold with epsilon as the bifurcation parameter
 %%Show that (after an appropriate change of coordinates) that the epsilon = 0 system has a solution whose profile matches the kink solution of the  defocusing mKdV.
 %% Then show that this solution persists for epsilon > 0 using Fenichel theory.
 %% Later we reverse our change of coordinates to get an approximation of the solution on the original lattice formulation.
+Our argument for getting such an estimate will proceed as follows. We first follow the procedure in \cite{iooss2000travelling}
+to construct the center manifold parameterized by \(\epsilon\), making sure to explicitly compute the dynamics on the center manifold. Making a suitable change of variables, we look for small-amplitude, long-wavelength solutions for the FPUT on the center manifold and show that formally setting \(\epsilon = 0\) gives a solution related to the kink solution \(\phi\). Next we apply results from Fenichel theory to show that this solution persists for \(\epsilon> 0\). Lastly we convert our results back to the original formulation of the FPUT lattice and prove an estimate of the form \cref{formal-approximation}.
 
 \section{Construction of Center Manifold}
 %Change of coordinates to get into the form of an abstract ODE.
+We follow the construction of the center manifold carried out in \cite{iooss2000travelling}. Recall that the equations for the FPUT lattice are given by
+\begin{equation}
+	\ddot x_n = V'(x_{n+1} - x_n) - V'(x_n - x_{n-1}), \quad n\in\Z.
+\end{equation}
+We assume that \(V(x) = \frac 12 x^2 - \frac 1 {24} x^4 + \mcO(x^5)\) near \(x=0\). We make the ansatz that 
+\begin{equation}
+	x_n(\tilde t) = x(n-c\tilde t),
+\end{equation}
+where the \(x(t)\) on the right is a function from \(\R\) to \(\R\). Hence \(x(t)\) must satisfy the advance-delay differential equation
+\begin{equation}\label{advance-delay-equation}
+	\ddot x (t) = \mu \Big(V'(x(t+1) - x(t)) - V(x(t) - x(t-1)) \Big)
+\end{equation}
+where \(\mu = c^{-2}\). Instead of working directly with \cref{advance-delay-equation}, we rewrite the equation as a first-order differential equation in a Banach space. \Cref{advance-delay-equation} cannot be written as a differential equation in a finite-dimensional phase space, and so we use a Banach space to represent a ``slice'' of the function on the interval \([t-1,t+1]\) for \(t\in\R\). We introduce a new variable \(v\in[-1,1]\) and functions \(X(t,v) = x(t+v)\). We use the notation \(\xi(t) = \dot x(t)\), \(\delta^1X(t,v) = X(t,1)\), and \(\delta^{-1} X(t,v) = X(t,-1)\). Then letting \(U(t) = (x(t), \xi(t), X(t,v))^T\) represent our solution, \cref{advance-delay-equation} can be written as follows:
+\begin{equation}\label{first-order-abstract-ode}
+	\partial_t U = L_\mu U + M_\mu (U)
+\end{equation}
+where \(L_\mu\) is the linear operator
+\begin{equation}
+	L_\mu = \begin{pmatrix}
+		0 & 1 & 0\\
+		-2\mu & 0 & \mu(\delta^1 + \delta^{-1}) \\
+		0 & 0 & \partial_v
+	\end{pmatrix}
+\end{equation}
+and 
+\begin{equation}
+	M_\mu(U) = \mu (0, g(\delta^1X -x) - g(x- \delta^{-1} X), 0)^T
+\end{equation}
+where we define \(g(x)= V'(x) - x\). We will also require that \(X(t,0) = x(t)\), so that \(X(t,v) = x(t+v)\) and solutions of \cref{first-order-abstract-ode} correspond with solutions of \cref{advance-delay-equation}. We introduce the following Banach spaces for \(U\):
+\begin{equation}
+	\begin{aligned}
+		\bbH &= \R^2 \times C[-1,1] \\
+		\bbD &= \{U \in \R^2 \times C^1[-1,1] \mid X(0) = x\}
+	\end{aligned}
+\end{equation}
+where the spaces have the usual maximum norms. The operator \(L_\mu\) is continuous from \(\bbD\) to \(\bbH\). Assuming that \(g\in C^4(I)\) where \(I\) is an open neighborhood around \(0\), we have \(M_\mu \in C^4(\bbD,\bbD)\).
+
+Note that \cref{first-order-abstract-ode} is not well-posed and solutions may not correspond with the requirement that \(X(t,0) = x(t)\). However, we can show that there is a center manifold which contains global solutions and lies in \(\bbD\), and so we will be able to extract the travelling wave solutions that we are interested in.
 
 %The linear operator has a quadruple zero eigenvalue when mu = 1. 
 %Write out the eigenvectors and their corresponding projection operators
+As shown in \cite[Lem.\ 1]{iooss2000travelling}, when \(\mu = \mu_0:= 1\) (i.e.\ when \(c = \sqrt{V''(0)} = 1\)) the linear operator \(L_{\mu_0}\) has a quadruple zero eigenvalue with the rest of the spectrum bounded uniformly away from the imaginary axis. This allows for the construction of a four-dimensional center manifold. This construction is not carried out explicitly in \cite{iooss2000travelling}, but it follows similarly to the calculations carried out in \cite{iooss2000travelling2} which relies on results in \cite{vanderbauwhede1992center}.
 
+The four-dimensional eigenspace for \(\lambda = 0\) is spanned by the following generalized eigenfunctions:
+\begin{equation}
+	\begin{aligned}
+		&\zeta_0 = (1,0,1)^T  &\zeta_1 = (0,1,v)^T \\
+		&\zeta_2 = (0, 0, \frac 12 v^2)^T & \zeta_3 = (0,0,\frac 1 6 v^3)^T
+	\end{aligned}
+\end{equation}
+which satisfy
+\begin{equation}
+	\begin{aligned}
+		L_{\mu_0} \zeta_0 &= 0 \\
+		L_{\mu_0} \zeta_1 &= \zeta_0 \\
+		L_{\mu_0} \zeta_2 &= \zeta_1 \\
+		L_{\mu_0} \zeta_3 &= \zeta_2.
+	\end{aligned}
+\end{equation}
+The spectral projection onto the eigenspace can be found using the Laurent expansion in \(\mcL(\bbH)\) near \(\lambda = 0\)
+\begin{equation}
+	(\lambda \mathrm I - L_{\mu_0} )^{-1} = \frac{D^3}{\lambda^4} + \frac{D^2}{\lambda^2} + \frac{D}{\lambda^2} + \frac P \lambda - \tilde L _{\mu_0} ^{-1} + \lambda \tilde L_{\mu_0} ^{-1} - \cdots
+\end{equation}
+where \(P\) is the spectral projection, \(D = L_{\mu_0} P\), and \(\tilde L _{\mu_0} ^{-1}\) is the pseudo-inverse of \(L_{\mu_0}\) on the subspace \((\mathrm I - P)\bbH\) (see \cite{kato2013perturbation}). The spectral projection satisfies
+\begin{equation}
+\begin{aligned}
+	PW &= ((PW)_x, (PW)_\xi, (PW)_X)^T \\
+	&= (PW)_x \zeta_0 + (DW)_x\zeta_1 + (D^2W)_x\zeta_2 + (D^3W)_x \zeta_3
+\end{aligned}
+\end{equation}
+The projection can be computed by finding the resolvent \((\lambda \mathrm I - L_\mu)^{-1}\) and then determining the residue of a meromorphic function. The resolvent operator is straightforward to compute. For \(F=(f_0,f_1,F_2)^T\in\bbH\), we want to find \(U = (x,\xi, X)^T\in \bbD\) such that
+\begin{equation}
+	(\lambda\mathrm I - L_\mu) U = F.
+\end{equation}
+The operator on the left-hand side when \(N(\lambda ;\mu) \neq 0\) where 
+\begin{equation}
+	N(\lambda;\mu) = - \lambda^2 + 2\mu(\cosh \lambda - 1)
+\end{equation}
+and \(U\) is given by
+\begin{align}
+	x &= -[N(\lambda;\mu)]^{-1}(\lambda f_0 + f_1 + \mu\tilde f_\lambda) \\
+	\xi &= -[N(\lambda;\mu)]^{-1} \Big( [\lambda^2 + N(\lambda;\mu)]f_0 + \lambda f_1 + \mu\lambda \tilde f_\lambda \Big) \\
+	X(v) &= e^{\lambda v}x - \int_0^v e^{\lambda(v-s)} F_2(s)\, ds
+\end{align}
+with 
+\begin{equation}
+	\tilde f_\lambda = \int_0^1 [-e^{\lambda(1-s)} F_2(s) + e^{-\lambda (1-s)} F_s(-s)]\, ds.
+\end{equation}
+Hence, the projection can be computed by standard techniques. For instance, note that 
+\begin{equation}
+	(PF)_x = \mathrm{Res}((\lambda \mathrm I - L_{\mu_0} ^{-1} F)_x, 0) = \mathrm{Res}(-[N(\lambda;\mu)]^{-1}(\lambda f_0 + f_1 + \mu\tilde f_\lambda), 0).
+\end{equation}
+For fixed \(F\in\bbH\), the last can be found by finding the residue of a meromorphic function in \(\bbC\). Proceeding in this way, we can get 
+\begin{align}
+	(PF)_x &= \frac 2 5 \Bigg(  f_0 - \int_0^1[(1-s) - 5(1-s)^3][F_2(s) + F_2(-s)]\, ds \Bigg) \\
+	(DF)_x &= (PF)_\xi = \frac 2 5 \Bigg(  f_1 - \int_0^1[1 - 15(1-s)^2][F_2(s) - F_2(-s)]\, ds \Bigg)
+\end{align}
 %Go through the invariance argument to reduce to three eigenvectors (the invariance is a shift invariance on the original lattice).
 
 % State the center manifold theorem at this point. Should discuss regularity of Phi and that it is in the null space of the spectral projection operators.
