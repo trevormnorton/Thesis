@@ -126,15 +126,58 @@ Hence, the projection can be computed by standard techniques. For instance, note
 For fixed \(F\in\bbH\), the last can be found by finding the residue of a meromorphic function in \(\bbC\). Proceeding in this way, we can get 
 \begin{align}
 	(PF)_x &= \frac 2 5 \Bigg(  f_0 - \int_0^1[(1-s) - 5(1-s)^3][F_2(s) + F_2(-s)]\, ds \Bigg) \\
-	(DF)_x &= (PF)_\xi = \frac 2 5 \Bigg(  f_1 - \int_0^1[1 - 15(1-s)^2][F_2(s) - F_2(-s)]\, ds \Bigg)
+	(DF)_x &= (PF)_\xi = \frac 2 5 \Bigg(  f_1 - \int_0^1[1 - 15(1-s)^2][F_2(s) - F_2(-s)]\, ds \Bigg) \\
+	(D^2F)_x &= (DF)_\xi = -12 \Bigg( f_0 - \int_0^1(1-s)) [F_2(s) + F_2(-s)]\, ds \Bigg) \\
+	(D^3F)_x &= (D^2 F)_\xi = -12 \Bigg(f_1 - \int_0^1 [F_2(s) - F_2(-s)]\, ds \Bigg).
 \end{align}
+We denote by \(\zeta_j^*\) the linear continuous forms on \(\bbH\) given for any \(F\in\bbH\) by
+\begin{equation}
+	\begin{aligned}
+		\zeta_0^*(F)&= (PF)_x \\
+		\zeta_1^*(F) &= (DF)_x  = \zeta_0^*(L_{\mu_0} F) \\
+		\zeta_2^*(F) &= (D^2F)_x  \\
+		\zeta_3^*(F) &= (D^3F)_x 
+	\end{aligned}
+\end{equation}
+and we have that
+\begin{equation}
+	\zeta_k^*(\zeta_j) = \delta_{kj} \quad k,j = 0, 1, 2, 3
+\end{equation}
+where \(\delta_{kj}\) is the Kronecker delta.
+
 %Go through the invariance argument to reduce to three eigenvectors (the invariance is a shift invariance on the original lattice).
+At this point we could start to compute the four-dimensional center manifold parameterized by \(\mu\), but we can do a further simplification. Note that \cref{first-order-abstract-ode} is invariant under 
+\begin{equation}
+	U \mapsto U + q \zeta_0, \quad \forall q \in \R
+\end{equation}
+which corresponds to the shift invariance of \cref{advance-delay-equation}. This invariance allows us to reduce the center manifold to a three-dimensional manifold. We first decompose \(U \in \bbH\) as follows:
+\begin{equation}
+	U = W + q \zeta_0, \quad \zeta_0^*(W) = 0.
+\end{equation}
+Denote by \(\bbH_1\) to codimension-one subspace of \(\bbH\) where \(\zeta_0^*(W) = 0\), and similarly define \(\bbD_1\). Then the system in \cref{first-order-abstract-ode} becomes
+\begin{align}
+	\frac{dq}{dt} &= \zeta_0^*(L_{\mu} W) = \zeta_0^*(L_{\mu_0} W) = \zeta_1^*(W) \\
+	\frac{d W}{dt} &= \widehat{L}_\mu W + M_\mu(W)
+\end{align}
+where \(\widehat{L}_\mu W = L_\mu W - \zeta_1^*(W)\zeta_0\). The operator \(\widehat L_{\mu_0}\) acting on \(\bbH_1\) has the same spectrum as \(L_{\mu_0}\) except that \(0\) is now a triple eigenvalue instead of a quadruple eigenvalue.
 
 % State the center manifold theorem at this point. Should discuss regularity of Phi and that it is in the null space of the spectral projection operators.
+Hence we have a three-dimensional center manifold on which solutions are given by
+\begin{equation}
+	W = A \zeta_1 + B\zeta_2 + C\zeta_3 +\Phi_\mu(A,B,C).
+\end{equation}
+Here \(\Phi_\mu\) takes values in \(\bbD_1\). Note that this implies solutions on the center manifold correspond with solutions of \cref{advance-delay-equation}, as desired. We also have that \(\Phi_\mu\) (1) has the same regularity as \(V'\), (2) satisfies \(\zeta_k^*(\Phi_\mu) = 0\) for \(k=1,2,3\),  and (3) is at least quadratic in its arguments.
+
+It is at this point that our discussion diverges from the work in \cite{iooss2000travelling}. From this point, Iooss uses the reversibility of the vector field and results from normal form theory to study the existence of homoclinic, heteroclinic, and periodic solutions on the center manifold. However, since there is an unspecified change of coordinates, the results in \cite{iooss2000travelling} do not give quantitative estimates but rather qualitative descriptions of the solutions. For our purposes though, we would like to compare the profile of the travelling wave solutions and compare it to the mKdV kink solution, and so we must proceed differently. We shall instead compute the Taylor expansion of \(\Phi_\mu\) up to a certain order and get an explicit representation of the center manifold (up to some specified error).
+
 
 %Compute the taylor expansion of the center manifold function up to a certain order.
 %Again make a change of coordinates to get a system in terms of epsilon.
-
+We assume that \(\Phi_\mu\) can be written as a Taylor series in \(A,B,C\), and \(\mu\):
+\begin{equation}\label{phi-taylor-series}
+	\Phi_\mu(A,B,C) = \sum_{i,j,k,\ell} (\mu - 1)^\ell A^i B^j C^k \Phi^{(\ell)}_{ijk} 
+\end{equation}
+Note that the \(\mu\) terms are centered at \(\mu_0 = 1\). We will only need to compute up to some of the cubic terms, so we do not need \(\Phi_\mu\) is analytic as suggested by \cref{phi-taylor-series}. In fact \(\Phi_\mu \in C^4\) in a neighborhood of \((\mu, A, B, C) = (1,0,0,0)\) is sufficient and is guaranteed by the regularity we assumed for \(V'\) and \(g\).
 \section{Existence of Heteroclinic Orbit}
 
 %Take epsilon = 0. Then the system obviously has a heteroclinic orbit that is the profile for the kink solution for the mKdV. We need to show that 1) this solution exists and 2) it varys continuously wrt epsilon.
