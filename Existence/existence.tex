@@ -157,13 +157,16 @@ which corresponds to the shift invariance of \cref{advance-delay-equation}. This
 Denote by \(\bbH_1\) to codimension-one subspace of \(\bbH\) where \(\zeta_0^*(W) = 0\), and similarly define \(\bbD_1\). Then the system in \cref{first-order-abstract-ode} becomes
 \begin{align}
 	\frac{dq}{dt} &= \zeta_0^*(L_{\mu} W) = \zeta_0^*(L_{\mu_0} W) = \zeta_1^*(W) \\
-	\frac{d W}{dt} &= \widehat{L}_\mu W + M_\mu(W)
+	\frac{d W}{dt} &= \widehat{L}_\mu W + M_\mu(W) \label{reduced-first-order-system}
 \end{align}
-where \(\widehat{L}_\mu W = L_\mu W - \zeta_1^*(W)\zeta_0\). The operator \(\widehat L_{\mu_0}\) acting on \(\bbH_1\) has the same spectrum as \(L_{\mu_0}\) except that \(0\) is now a triple eigenvalue instead of a quadruple eigenvalue.
+where \(\widehat{L}_\mu W = L_\mu W - \zeta_1^*(W)\zeta_0\). The operator \(\widehat L_{\mu_0}\) acting on \(\bbH_1\) has the same spectrum as \(L_{\mu_0}\) except that \(0\) is now a triple eigenvalue instead of a quadruple eigenvalue. One can check that
+\begin{equation}\label{reduced-eigenfunction}
+	\widehat{L}_{\mu_0} \zeta_1 = 0, \quad \widehat{L}_{\mu_0}\zeta_2 = \zeta_1, \quad \widehat{L}_{\mu_0}\zeta_3 = \zeta_2, \quad \zeta_3^*(\widehat{L}_{\mu_0}W) = 0.
+\end{equation}
 
 % State the center manifold theorem at this point. Should discuss regularity of Phi and that it is in the null space of the spectral projection operators.
 Hence we have a three-dimensional center manifold on which solutions are given by
-\begin{equation}
+\begin{equation}\label{W-center-manifold}
 	W = A \zeta_1 + B\zeta_2 + C\zeta_3 +\Phi_\mu(A,B,C).
 \end{equation}
 Here \(\Phi_\mu\) takes values in \(\bbD_1\). Note that this implies solutions on the center manifold correspond with solutions of \cref{advance-delay-equation}, as desired. We also have that \(\Phi_\mu\) (1) has the same regularity as \(V'\), (2) satisfies \(\zeta_k^*(\Phi_\mu) = 0\) for \(k=1,2,3\),  and (3) is at least quadratic in its arguments.
@@ -178,9 +181,92 @@ We assume that \(\Phi_\mu\) can be written as a Taylor series in \(A,B,C\), and 
 	\Phi_\mu(A,B,C) = \sum_{i,j,k,\ell} (\mu - 1)^\ell A^i B^j C^k \Phi^{(\ell)}_{ijk} 
 \end{equation}
 Note that the \(\mu\) terms are centered at \(\mu_0 = 1\). We will only need to compute up to some of the cubic terms, so we do not need \(\Phi_\mu\) is analytic as suggested by \cref{phi-taylor-series}. In fact \(\Phi_\mu \in C^4\) in a neighborhood of \((\mu, A, B, C) = (1,0,0,0)\) is sufficient and is guaranteed by the regularity we assumed for \(V'\) and \(g\).
-\section{Existence of Heteroclinic Orbit}
 
+It is useful to compute \(\widehat L_\mu\) applied to each eigenvector:
+\begin{align}
+	\widehat L_\mu \zeta_1 &= 0 \\
+	\widehat L_\mu \zeta_2 &= \zeta _1  + (\mu-1)\begin{bmatrix}0 \\ 1 \\ 0 \end{bmatrix} \\
+	\widehat L_\mu \zeta_3 &= \zeta_2.
+\end{align}
+Note that these calculations agree with \cref{reduced-eigenfunction} when \(\mu\) is equal to \(\mu_0 = 1\). Now plugging \cref{W-center-manifold} into \cref{reduced-first-order-system} gives
+\begin{multline}
+	\dot A \zeta_1 + \dot B \zeta_2 + \dot C \zeta_3 + D\Phi_\mu(A,B,C) \begin{bmatrix} \dot A \\ \dot B \\ \dot C \end{bmatrix} = \\
+	B \zeta_1 + B(\mu-1) \begin{bmatrix}0 \\ 1 \\ 0 \end{bmatrix} + C \zeta_3 + L_{\mu_0} \Phi_\mu(A,B,C) \\
+	+ \left(2(1-\mu) \Phi_\mu^x + (\mu-1)(\delta^1 \Phi_\mu^X + \delta^{-1} \Phi_\mu^X)\right) \begin{bmatrix}0 \\ 1 \\ 0 \end{bmatrix} \\
+	+ \mu\left( g\big(A + \frac 1 2 B + \frac 1 6 C + (\delta^1 \Phi_\mu^X -\Phi_\mu^x)\big) - g\big(A - \frac 1 2 B + \frac 1 6 C + (\Phi_\mu^x - \delta^{-1} \Phi_\mu^X)\big) \right) \begin{bmatrix}0 \\ 1 \\ 0 \end{bmatrix}
+\end{multline}
+where we represent the components of \(\Phi_\mu\) by \((\Phi_\mu^x, \Phi_\mu^\xi, \Phi_\mu^X)^T\). Now we can group the \(\zeta_1\), \(\zeta_2\) and \(\zeta_3\) together -- as well as the remaining terms -- to get a system of differential equations on the center manifold:
+\begin{align}
+	\dot A =& B + \frac 2 5 \Big[ \cdots \Big] \label{dotA}\\
+	\dot B =& C \label{dotB}\\
+	\dot C =& -12 \Big[\cdots \Big] \label{dotC} \\
+	D\Phi_\mu&(A,B,C) \begin{bmatrix} \dot A \\ \dot B \\ \dot C \end{bmatrix} = L_{\mu_0} \Phi_\mu + \Big[ \cdots \Big] \begin{bmatrix} 0 \\ \frac 35 \\ 2v^3 - \frac 2 5 v \end{bmatrix} \label{perp}.
+\end{align}
+The \(\cdots\) within the brackets are given the following expression
+\begin{equation}
+\begin{aligned}
+	&B (\mu-1) + 2(1-\mu) \Phi_\mu^x + (\mu-1)(\delta^1 \Phi_\mu^X + \delta^{-1} \Phi_\mu^X) \\
+	&+  \mu\left( g\big(A + \frac 1 2 B + \frac 1 6 C + (\delta^1 \Phi_\mu^X -\Phi_\mu^x)\big) - g\big(A - \frac 1 2 B + \frac 1 6 C + (\Phi_\mu^x - \delta^{-1} \Phi_\mu^X)\big) \right),
+\end{aligned}
+\end{equation}
+which we abridged to improve legibility. Now using the expression for the derivatives in \cref{dotA,dotB,dotC} and plugging into \cref{perp} gives the following:
+\begin{equation}\label{final-eq}
+	\frac{\partial\Phi}{\partial A}\left( B + \frac 2 5 [\cdots]\right) + \frac{\partial\Phi}{\partial B}C + \frac{\partial\Phi}{\partial C}\left(-12 [\cdots]\right) = L_{\mu_0} \Phi_\mu + [\cdots] \begin{bmatrix} 0 \\ \frac 35 \\ 2v^3 - \frac 2 5 v \end{bmatrix}.
+\end{equation}
+We will now assume \(\Phi_\mu\) has the form given in \cref{phi-taylor-series}. From the center manifold theorem, we have that the first-order terms and the terms quadratic in just \(A\), \(B\), and \(C\) are zero. Thus we start by first computing the second-order terms where \(\ell = 1\). We get the following set of equations:
+\begin{align}
+	\Phi^{(1)}_{100}  & = L_{\mu_0} \Phi^{(1)}_{010} + \begin{bmatrix} 0 \\ \frac 35 \\ 2v^3 - \frac 2 5 v \end{bmatrix} \label{phi-1-010} \\
+	\Phi^{(1)}_{010}  & = L_{\mu_0} \Phi^{(1)}_{001}  \label{phi-1-001}\\
+	0 & = L_{\mu_0} \Phi^{(1)}_{100} \label{phi-1-100}
+\end{align}
+\Cref{phi-1-100} can be solved by noting that \(\zeta_0\) is the only zero eigenfunction for \(L_{\mu_0}\) and \(\zeta_0^*(\Phi_{100}^{(1)}) = 0\) since \(\Phi_\mu\) takes values in \(\bbD_1\), thus \(\Phi_{100}^{(1)} = 0\). Then \cref{phi-1-010} is reduced to 
+\begin{equation}
+	0 =  L_{\mu_0} \Phi^{(1)}_{010} + \begin{bmatrix} 0 \\ \frac 35 \\ 2v^3 - \frac 2 5 v \end{bmatrix},
+\end{equation}
+which can be solved by integrating to get 
+\begin{equation}
+	\Phi_{010}^{(1)} = \begin{bmatrix}
+		0 \\ 0 \\ - \frac 1 2 v^4 + \frac 1 5 v^2
+	\end{bmatrix} + k  \zeta_0
+\end{equation}
+for some \(k\in \R\). Imposing the constraint that \(\zeta_0^*(\Phi_{010}^{(1)}) = 0\) gives us that \[k = -13/2100.\] Similarly integrating \cref{phi-1-001} gives
+\begin{equation}
+	\Phi_{001}^{(1)} = \begin{bmatrix}
+		0 \\ 0 \\ - \frac 1 {10} v^5 + \frac 1 {15} v^3
+	\end{bmatrix} + k  \zeta_1
+\end{equation}
+with the same value of \(k\).
+
+One can similarly compute the cubic coefficient \(\Phi_{300}^{(0)}\) and get that
+\begin{equation}
+	\Phi_{300}^{(0)} = 0.
+\end{equation}
+
+We will not need to compute any of the other coefficients. As we will soon see, after a change of variables they end up being in the higher order terms to be neglected. Before proceeding, we will need a new parameterization for the center manifold. We let \(\epsilon > 0\) correspond with the amplitude of our travelling wave solution, and look to write \(\mu = c^{-2}\) in terms of \(\epsilon\). As seen in \cite{iooss2000travelling}, the heteroclinic orbits on the center manifold will only exists for \(c^2\) slightly less than \(1\). Based on some formal calculations, it appears \(c^2 = 1 - \epsilon^2/12\) will be the correct scaling. This will be borne out by the coming calculations. Thus we have \[\mu-1 = c^{-2} - 1 = \frac 1 {1-\epsilon^2/12} -1 = \frac {\epsilon^2}{12} +\mcO(\epsilon^4).\] Since we are looking for \(\epsilon\)-amplitude waves with wavelength of order \(\epsilon^{-1}\), we make the following change of variables:
+\begin{equation}
+	A(t) = \epsilon \underline A (\epsilon t), \quad B(t) = \epsilon^2 \underline B(\epsilon t), \quad \epsilon^3 \underline C(\epsilon t).
+\end{equation}
+Then the equations of motion on the center manifold become
+\begin{equation}\label{eqns-center-manifold}
+\begin{aligned}
+	\underline A ' &= \underline B + \mathcal O(\epsilon) \\
+	\underline B ' &= \underline C \\
+	\underline C ' &= - \underline B + 6 \underline A^2 \underline B + \mathcal O(\epsilon).
+\end{aligned}
+\end{equation}
+Here the \(\mcO(\epsilon)\) represents functions that are at least \(C^4\) in \(\underline A\), \(\underline B\), and \(\underline C\) and can be bounded by a constant times \(\epsilon\) when we are on bounded domains and \(\epsilon >0\) sufficiently small. Since we will be looking for bounded solutions on the center manifold, these terms can be controlled. We may upgrade this to \(\mcO(\epsilon^2)\) if we additionally have \(V(x) = \frac 1 2 x^2 - \frac 1 {24} x^4 + \mcO(x^6)\) as \(x\to 0\).
+
+\section{Existence of Heteroclinic Orbit}
 %Take epsilon = 0. Then the system obviously has a heteroclinic orbit that is the profile for the kink solution for the mKdV. We need to show that 1) this solution exists and 2) it varys continuously wrt epsilon.
+At this point, our goal is to show the existence of a heteroclinic orbit for \cref{eqns-center-manifold} for \(\epsilon>0\) sufficiently small and to get estimates of the solution. One might expect that the flow on the center manifold for \(\epsilon>0\) small is well approximated by formally setting \(\epsilon = 0\). Indeed, if we let \(\epsilon = 0\), then the ODEs in \cref{eqns-center-manifold} become equivalent to the third-order differential equation
+\begin{equation}
+	\underline A ''' + \underline A'  - 6 \underline A^2 \underline A' = 0 
+\end{equation}
+which has the solution 
+\begin{equation}
+	\underline A(s) = \frac 1 {\sqrt 2} \tanh\left(\frac s {\sqrt 2}\right).
+\end{equation}
+This solution is the profile for the kink solution of the defocusing mKdV, \(\phi\). This represents a heteroclinic orbit for the system of ODEs since \((\underline A(s), \underline B(s), \underline C(s)) \to (\pm1/\sqrt 2, 0, 0)\) as \(s\to\pm \infty.\) One might expect that for \(\epsilon > 0\) that there is also a heteroclinic orbit that is close to the above solution. Thus we want to show that the heteroclinic orbit at \(\epsilon = 0\) persists for small perturbations of \(\epsilon\), and we want to get estimates of these orbits relative to \(\epsilon\). To get these results, we apply Fenichel theory.
 
 %Use Fenichel theory to get both of these
 
