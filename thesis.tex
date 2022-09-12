@@ -7,6 +7,7 @@
 %\documentclass[12pt,twoside]{report} % Double-sided printing
 \usepackage[intlimits]{amsmath}
 \usepackage{amsfonts,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
 \DeclareSymbolFontAlphabet{\mathbb}{AMSb}
 %\usepackage{natbib}
 \usepackage{apalike}
@@ -84,6 +85,12 @@
 	
 	% The preliminary pages
 	\include{Prelim/prelim}        
+	\cleardoublepage
+	
+	% -------------------------------------
+	% CHAPTER ?: BACKGROUND MATERIAL
+	% -------------------------------------
+	\include{Background/background}
 	\cleardoublepage
 	
 	% -------------------------------------

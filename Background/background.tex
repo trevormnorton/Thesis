@@ -1,2 +1,32 @@
 % !TeX root = ../thesis.tex
+\chapter{Background Material}
+\section{Fenichel Theory}\label{sec:fenichel_theory}
+\cite{wiggins1994normally}
 
+\begin{equation}\label{generic_ode}
+	\dot x = f(x), \quad x \in \R^n
+\end{equation}
+
+\begin{defn}
+	Let \(\overline M = M \cup \partial M\) be a compact, connected \(C^r\) manifold with boundary contained in \(\R^n\). Then \(\overline M\) is said to be \emph{overflowing invariant} under \cref{generic_ode} if for every \(p \in \overline M\), \(\phi_t(p) \in \overline M\) for all \(t\leq 0\) and the vector field \cref{generic_ode} is pointing strictly outward on \(\partial M\).
+\end{defn}
+
+%Wiggins Thm. 4.5.1 originally Fenichel 1971
+\begin{theorem}
+	Suppose \(\dot x = f(x)\) is a \(C^r\) vector field on \(\R^n\), \(r\geq 1\). Let \(\overline M = M \cup \partial M\) be a \(C^r\), compact connected manifold with boundary overflowing invariant under the vector field \(f(x)\). Suppose \(\nu^s(p) < 1\), \(\lambda^u(p) < 1\), and \(\sigma^s(p) < \frac 1 r\) for all \(p\in M\). Then there exists a \(C^r\) overflowing invariant manifold \(W^u(\overline M)\) containing \(\overline M\) and tangent to \(h_u(N'^u_\epsilon )\) along \(\overline M\) with trajectories in \(W^u(\overline M)\) approaching \(\overline M\) as \(t\to -\infty\).
+\end{theorem}
+
+%Wiggins Thm 5.6.1
+\begin{theorem}
+	Suppose \(\dot x = f(x) \) is a \(C^r\) vector field on \(\R^n\), \(r\geq 1\). Let \(\overline M = M \cup \partial M\) be a \(C^r\) compact connected manifold with boundary, overflowing invariant under the vector field \(f(x)\). Suppose \(\lambda^u(p)< 1\), \(\sigma^{cu}(p) < 1\), and \(\sigma^{su}(p) < 1\) for every \(p \in \overline M_1\). Then there exists a \(n-(s+u)\)-parameter family \(\mcF^u = \cup_{p\in M} f^u(p)\) of \(u\)-dimensional surfaces \(f^u(p)\) (with boundary) such that the following hold:
+	\begin{enumerate}
+		\item \(\mcF^u\) is a negatively invariant family, i.e., \(\phi_{-t} (f^u(p)) = f^u(\phi_{-t}(p))\) for any \(t\geq 0\) and \(p\in M\).
+		\item The \(u\)-dimensional surfaces \(f^u(p)\) are \(C^r\).
+		\item \(f^u(p)\) is tangent to \(h_u(N'^u_p)\) at \(p\).
+		\item There exists \(C_u,\lambda_u > 0\) such that if \(q\in f^u(p)\), then \[| \phi_{-t}(q) - \phi_{-t}(p) | < C_u e^{-\lambda_u t}\] for any \(t\geq 0\).
+		\item Suppose \(q\in f^u(p)\) and \(q'\in f^u(p')\). Then \[\frac{|\phi_{-t}(q) - \phi_{-t}(p) |}{| \phi_{-t}('q) - \phi_{-t}(p) |} \to 0 \quad \text{as } t\to\infty\] unless \(p = p'\).
+		\item \(f^u(p) \cap f^u(p') = \emptyset \), unless \(p=p'\).
+		\item If the hypotheses of the unstable manifold theorem hold, i.e., if additionally \(\nu^s(p) < 1\) and \(\sigma^s(p) < \frac 1 r\) for every \(p \in \overline M_1\), then the \(u\)-dimensional surfaces \(f^u(p)\) are \(C^r\) with respect to the basepoint \(p\).
+		\item \(\mcF^u = W_{\mathrm{loc}}^u(M)\).
+	\end{enumerate}
+\end{theorem}
