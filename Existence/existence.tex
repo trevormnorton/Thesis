@@ -262,7 +262,7 @@ We shall consider two cases going:
 	\item \(V(x) = \frac 12 x^2 - \frac 1 {24} x^4 + \mcO(\epsilon^6)\)
 \end{enumerate}
 For (1), we have that the flow on the center manifold is given by
-\begin{equation}
+\begin{equation}\label{epsilon-flow}
 	\begin{aligned}
 		\underline A ' &= \underline B + \epsilon F_1(\underline A, \underline B, \underline C;\epsilon) \\
 		\underline B ' &= \underline C \\
@@ -271,7 +271,7 @@ For (1), we have that the flow on the center manifold is given by
 	\end{aligned}
 \end{equation}
 where \(F_1\) and \(G_1\) will be \(C^4\) for \(\epsilon > 0\) and \(\mcO(1)\) as \(\epsilon \to 0\). The additional equation \(\epsilon' = 0\) is added so that we may use \(\epsilon\) as an additional coordinate in our results. Note that this will not change the flow on the center manifold since \(\epsilon\) remains fixed. For (2), we parameterize based on \(\eta = \epsilon^2\) and the flow is now given by
-\begin{equation}
+\begin{equation}\label{eta-flow}
 	\begin{aligned}
 		\underline A ' &= \underline B + \eta F_2(\underline A, \underline B, \underline C;\sqrt \eta) \\
 		\underline B ' &= \underline C \\
@@ -279,7 +279,7 @@ where \(F_1\) and \(G_1\) will be \(C^4\) for \(\epsilon > 0\) and \(\mcO(1)\) a
 		\eta' &= 0
 	\end{aligned}
 \end{equation}
-where \(F_2\) and \(G_2\) will be \(C^4\) for \(\eta > 0\) and \(\mcO(1)\) as \(\eta \to 0\). Reparameterizing to \(\eta\) will ultimately allow us to improve our error from \(\mcO(\epsilon)\) to \(\mcO(\epsilon^2)\).
+where \(F_2\) and \(G_2\) will be \(C^4\) for \(\eta > 0\) and \(\mcO(1)\) as \(\eta \to 0\). Reparameterizing to \(\eta\) will ultimately allow us to improve our error from \(\mcO(\epsilon)\) to \(\mcO(\epsilon^2)\). The arguments for the persistence of heteroclinic orbits is similar for \cref{epsilon-flow,eta-flow}, so we will focus first on the former system and note where the results differ for the latter system.
 \section{Existence of Heteroclinic Orbit}
 %Take epsilon = 0. Then the system obviously has a heteroclinic orbit that is the profile for the kink solution for the mKdV. We need to show that 1) this solution exists and 2) it varys continuously wrt epsilon.
 
@@ -300,5 +300,38 @@ This solution is the profile for the kink solution of the defocusing mKdV, \(\ph
 
 The idea behind the proof is to show that there is an overflowing invariant set with an unstable manifold and a corresponding inflowing invariant set with a stable manifold. We then show that at \(\epsilon = 0\) these manifolds intersect transversally at a point, and that this intersection is given by the above heteroclinic orbit. From there, we show that this intersection is preserved for \(\epsilon > 0\) and the heteroclinic orbit remains \(\mcO(\epsilon)\) or \(\mcO(\epsilon^2)\) to the original orbit.
 
-We first must find the appropriate overflowing invariant set.\footnote{We need also to find the inflowing invariant set, but we can rely on the symmetry of \cref{eqns-center-manifold} to get this. In fact, we will regularly rely on the symmetry of the flow to get many of the results for the inflowing invariant set after working it out for the overflowing invariant set.} From the heteroclinic orbit found for \(\epsilon = 0\), we know that \((A,B,C, \epsilon) = (-1/\sqrt 2 , 0 ,0, 0)\) should be one point in the set. In fact, for fixed \(\epsilon> 0\) we have that multiples of \(\zeta_1\) are fixed points for \cref{reduced-first-order-system}. From the center manifold theorem in \cite{vanderbauwhede1992center}, bounded solutions sufficiently close to the origin will lie exactly on the center manifold. Thus for \(\epsilon>0\) sufficiently close to zero, any closed interval on the \(\underline A\)-axis is composed entirely of fixed points on the center manifold.
+We first must find the appropriate overflowing invariant set.\footnote{We need also to find the inflowing invariant set, but we can rely on the symmetry of \cref{eqns-center-manifold} to get this. In fact, we will regularly rely on the symmetry of the flow to get many of the results for the inflowing invariant set after working it out for the overflowing invariant set.} From the heteroclinic orbit found for \(\epsilon = 0\), we know that \((A,B,C, \epsilon) = (-1/\sqrt 2 , 0 ,0, 0)\) should be one point in the set. In fact, for fixed \(\epsilon> 0\) we have that multiples of \(\zeta_1\) are fixed points for \cref{reduced-first-order-system}. From the center manifold theorem in \cite{vanderbauwhede1992center}, bounded solutions sufficiently close to the origin will lie exactly on the center manifold. Thus for \(\epsilon>0\) sufficiently close to zero, any closed interval on the \(\underline A\)-axis is composed entirely of fixed points on the center manifold. We will choose \(\epsilon_0> 0\) small enough such that for \(\epsilon \in (0,\epsilon_0]\) the \(\underline A\)-axis from \([-1,1]\) is composed entirely of fixed points. If we fix a small \(\delta > 0\) and set \(A_0 = - 1/ \sqrt 2\), then 
+\begin{equation}
+	\overline M = [A_0 -\delta , A_0+\delta] \times \{0\} \times \{0\} \times [-\epsilon_0, +\epsilon_0]
+\end{equation}
+is an invariant set under the flow in \cref{epsilon-flow}. In fact, \(\overline M\) consists exclusively of fixed points of the flow.
+
+To get apply \cref{unstable-manifold-fenichel} and get an unstable manifold for \(\overline M\) we need that 
+\begin{enumerate}[label=(\roman*)]
+	\item \(\overline M\) is overflowing invariant, and 
+	\item the generalized Lyapunov-type numbers on \(\overline M\) satisfy the inequalities in \cref{unstable-manifold-fenichel}.
+\end{enumerate}
+As written, \(\overline M\) is \emph{not} an overflowing invariant manifold. However, a common trick in Fenichel is to adjust the flow on the boundary of an invariant manifold so that it becomes overflowing invariant (see \cite[\S 6.3]{wiggins1994normally}). This will alter the behavior of our dynamical system at the boundary, but elsewhere the dynamics will remain the same. For our case, we may adjust the flow near \(A_0\pm \delta\) and \(\pm\epsilon_0\) to get \(\overline M\) is overflowing invariant, but this will not affect the dynamics near the heteroclinic orbit. Thus we can still talk about the existence of the heteroclinic orbit in the unaltered system. This adjustment will need to be done in a way to not greatly affect the generalized Lyapunov-type numbers. For now, we set aside point (i) and address (ii), which is more straightforward. 
+
+Since \(\overline M\) consists only of fixed points, the generalized Lyapunov-type numbers can be computed using the linearization of the flow. Note that since each \((\underline A, 0, 0,\epsilon) \in \overline M\) is a fixed point, we have that
+\begin{equation}
+	\begin{aligned}
+		F_1(\underline A, 0, 0, \epsilon) &= 0 \\
+		G_1(\underline A, 0, 0, \epsilon) &= 0 \\
+	\end{aligned}
+\end{equation}
+and the partial derivatives of \(F_1\) and \(G_1\) with respect to \(\underline A\) or \(\epsilon\) will be zero. Thus at a point \((\underline A, 0, 0, \epsilon) \in\overline M\), the linearization of the flow is given by
+\begin{equation}
+	\begin{bmatrix}
+		0 & 1 + \epsilon \frac{\partial F_1}{\partial \underline B}(\underline A, 0, 0; \epsilon) & \epsilon \frac{\partial F_1}{\partial \underline C}(\underline A, 0, 0;\epsilon) & 0 \\
+		0 & 0 & 1 & 0 \\
+		0 & 6{A^*}^2 - 1 + \epsilon \frac{\partial G_1}{\partial \underline B}(\underline A, 0, 0; \epsilon) & \epsilon \frac{\partial G_1}{\partial \underline C}(\underline A, 0, 0; \epsilon) & 0 \\
+		0 & 0 & 0 & 0
+	\end{bmatrix}.
+\end{equation}
+The two eigenvalues \(\lambda_1,\lambda_2=0\) correspond with the flow tangent to the manifold. Fixing \(\underline A = A_0\) and \(\epsilon = 0\), the other eigenvalues are \(\lambda_{3,4} = \pm \sqrt{6A_0^2-1}\), which correspond with the flow along the vector bundles \(N^u\) and \(N^s\), respectively. There at \(p_0 =(A_0, 0, 0, 0)\)  we have the generalized Lyapunov-type numbers given by
+\begin{equation}
+	\lambda^u(p_0) = e^{-\sqrt{6A_0^2-1}}, \quad \nu^s(p_0) = e^{-\sqrt{6A_0^2-1}}, \quad \sigma^s(p_0) = 0.
+\end{equation}
+To have a \(C^1\) unstable manifold, we are required to have \(\lambda^u(p), \nu^s(p), \sigma^s(p)  < 1\)  for each point \(p\in M\). By the continuity of eigenvalues, we can guarantee this by choosing \(\delta\) and \(\epsilon_0\) small enough.
 
