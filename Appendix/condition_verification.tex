@@ -1,2 +1,129 @@
 % !TeX root = ../thesis.tex
 \chapter{Extension of normal vector bundles}\label{condition-verification}
+%See update for 10/14/2020 for more details about this.
+The proofs for these lemmas should be similar to the proofs found in \cite{dieci1997lyapunov}.
+
+\begin{lem}\label{lemma1}
+	Let \(p \in M\) with \(\nu^s(p) < 1\). For \(c > \sigma^s(p)\), we have 
+	\begin{equation}\label{eq1}
+		\| A_t(p) \|\, \|B_t(p) \|^c \to 0 \quad \text{as } t\to\infty.
+	\end{equation}
+	Conversely, if \cref{eq1} holds for some \(c\in \R\), then \(c\geq \sigma^s(p).\)
+\end{lem}
+
+\begin{lem}\label{lemma2}
+	For \(p\in M\) and \(s,t\geq 0\), we have the following:
+	\begin{enumerate}[label=(\roman*)]
+		\item \(A_{s+t}(p) = A_t(\phi_{-s}(p)) A_s(p)\) 
+		\item \(B_{s+t}(p) = B_s(p) B_t(\phi_{-s}(p))\)
+		\item \(C_{s+t}(p) = C_t(\phi_{-s}(p))C_s(p)\).
+	\end{enumerate}
+\end{lem}
+\lyapunovbound*
+\begin{proof}
+	\emph{(i)} Let \(a\in\R\) such that \(\lambda^u(K) < a\). For each \(q\in K\) there is a \(\tau_q>0\) and an open, precompact neighborhood of \(q\), \(U_q\), such that \[\| C_{\tau_q}(q')\| < a^{\tau_q} \quad \text{for all } q'\in U_q.\] Then \(\{ U_q \}_{q\in K}\) is an open cover of \(K\), and so we can take a finite subcover \(\{U_i\}_{i=1}^m\) with associated \(\tau_q\) values denoted by \(\tau_i\) for \(i = 1,\ldots, m\). Let \(U = \bigcup_{i=1}^m U_i\) and assume without loss of generality that \(\tau_1\leq \tau_2\leq\cdots\leq \tau_m\). Since \(\lambda^u(p)\) is constant along trajectories and \(\phi_{-t}(p) \to K\) as \(t\to\infty\), we can assume that \(\phi_{-t}(p) \in U\) for all \(t\geq 0.\) 
+	
+	We can now break up the orbit of \(\phi_{-t}(p)\) into discrete times to keep track of which \(U_i\) the orbit lies in. We shall do this inductively. Set \(t_0 = 0\). Then \(\phi_{-t_0}(p) = p \in U_{i_0}\) for some index \(i_0\in \{1,2,\ldots, m\}\). Then we can define \(t_1 = t_0 + \tau_{i_0}\) and again we have \(\phi_{-t_1}(p) \in U_{i_1}\) for some index \(i_1\). We can continue this process. Suppose we have \(t_k\) and \(\tau_{i_k}\). Then
+	\begin{equation*}
+		t_{k+1} = t_k + \tau_{i_k}, \qquad \phi_{-t_{k+1}}(p) \in U_{i_{k+1}},
+	\end{equation*}
+	and so we have \(t_{k+1}\) and \(\tau_{i_{k+1}}\) defined. Note that \(t_{k+1} - t_k = \tau_{i_k} \leq \tau_{m}\), so the distance between times does not grow too large. Furthermore, we also have \(t_{k+1} - t_k = \tau_{i_k} \geq \tau_1\) and so \(t_k \to \infty\) as \(k\to\infty.\)
+	
+	Now suppose \(t>0\) is fixed and arbitrary. There is some \(\ell\) such that \(t_\ell \leq t < t_{\ell+1}\). Then there is some \(s < \tau_m\) such that 
+	\begin{equation}
+		\begin{aligned}
+			t &= t_\ell + s \\
+			&= \sum_{k=0}^{\ell - 1} \tau_{i_k} +s .
+		\end{aligned}
+	\end{equation}
+	Using this decomposition of \(t\) along with \cref{lemma2}, we get that
+	\begin{equation}
+		\begin{aligned}
+			C_t(p) &= C_{t_\ell+s}(p) \\
+			&= C_s( \phi_{-t_\ell}(p) ) C_{t_\ell} (p) \\
+			&= C_s( \phi_{-t_\ell}(p) ) C_{\tau_{i_{\ell-1}}}(\phi_{-t_{\ell-1}}(p)) C_{\tau_{i_{\ell-2}}}(\phi_{-t_{\ell-2}}(p)) \cdots C_{\tau_{i_0}}(p).
+		\end{aligned}
+	\end{equation}
+	Thus we have
+	\begin{equation}
+		\begin{aligned}
+			\| C_t(p) \| &\leq \| C_s(\phi_{-t_\ell}(p)) \| a^{\tau_{i_{\ell -1}}} \cdot a^{\tau_{i_{\ell-2}}} \cdots a^{\tau_{i_0}} \\
+			&= \| C_s(\phi_{-t_\ell}(p)) \| a^{t_\ell}.
+		\end{aligned}
+	\end{equation}
+	Defining a constant \(C_1\) by 
+	\begin{equation}
+		C_1 = \max\{ a^{-s} \| C_s(q) \| : q\in \overline U , 0 \leq s \leq \tau_m\}
+	\end{equation}
+	we can write
+	\begin{equation}
+		\|C_t(p) \| \leq C_1 a^s a^{t_\ell} = C_1 a^t.
+	\end{equation}
+	Since this \(C_1\) is independent of \(t\), raising both sides to \(1/t\) and taking the limit as \(t\to\infty\) gives us that 
+	\begin{equation}
+		\limsup_{t \to \infty} \| C_t(p) \| ^{1/t} \leq a,
+	\end{equation}
+	and so \(\lambda^u(p) \leq a\) for each \(a > \lambda^u(K).\) This proves \(\lambda^u(p) \leq \lambda^u(K)\).
+	
+	\emph{(ii)} We follow a similar argument for \(\nu^s(p)\). Let \(a\in \R\) such that \(\nu^s(K) < a\). We can find an open cover of \(K\) given by \(\{U_i\}_{i=1}^m\) (with each \(U_i\) precompact) and positive numbers \(\tau_1 \leq \tau_2\leq \cdots \leq \tau_m\) such that
+	\begin{equation}
+		\| B_{\tau_i}(q) \| < a^{\tau_i} \quad \text{for all } q\in U_i.
+	\end{equation}
+	The number \(\nu^s(p)\) is constant on orbits, so assume that \(\phi_{-t}(p) \in U := \cup_{i=1}^m U_i \) for all \(t\geq 0\). We can similarly construct the \(t_k\) and \(\tau_{i_k}\) inductively.
+	
+	Let \(t> 0\). Then there is an \(\ell\) such that \(t_\ell \leq t< t_{\ell +1}\), and we have \(0\leq s < \tau_m\) with 
+	\begin{equation}
+		\begin{aligned}
+			t &= t_\ell + s \\
+			&= \sum_{k=0}^{\ell - 1} \tau_{i_k} +s .
+		\end{aligned}
+	\end{equation}
+	Thus
+	\begin{equation}
+		B_t(p) = B_{\tau_{i_0}}(p) B_{\tau_{i_1}}(\phi_{-t_1}(p)) \cdots B_{\tau_{i_{\ell-1}}}(\phi_{-t_{\ell-1}}(p)) B_s(\phi_{-t_\ell}(p)).
+	\end{equation}
+	We can then get 
+	\begin{equation}
+		\| B_t(p) \| \leq \| B_s(\phi_{-t_\ell}(p)) \| a^{t-s}.
+	\end{equation}
+	Defining a constant \(C_2\) by 
+	\begin{equation}
+		C_2 = \max\{ a^{-s} \| B_s(q) \| : q\in \overline U , 0 \leq s \leq \tau_m\}
+	\end{equation}
+	we can write
+	\begin{equation}
+		\|B_t(p) \| \leq C_2 a^s a^{t_\ell} = C_2 a^t.
+	\end{equation}
+	Taking limits gives us \(\nu^s(p) \leq a\) and thus \(\nu^s(p) \leq \nu^s(K).\)
+	
+	\emph{(iii)} Assume that \(\nu^p(K) < 1\). Let \(c > \sigma^s(K)\) be arbitrary. For each \(q\in K\), there is a \(\tau_q\) and a precompact, open neighborhood of \(q\), \(U_q\), such that 
+	\begin{equation}
+		\|A_{\tau_q} (q')\|\, \|B_{\tau_q}(q')\|^c \leq \frac 12, \quad \text{for all } q'\in U_q.
+	\end{equation}
+	We again take a finite subcover \(\{U_i\}_{i=1}^m\) with corresponding \(\tau_1\leq \tau_2 \leq \cdots \leq \tau_m.\) The number \(\sigma^s(p)\) is constant on orbits so assume that \(\phi_{-t}(p) \in U := \cup_{i=1}^mU_i\) for all \(t\geq 0.\) The \(t_k\) and \(\tau_{i_k}\) values are constructed the same way as in \emph{(i)}.
+	
+	For \(t> 0\), we have \(t_\ell\leq t < t_{\ell+1}\) and we can write \(t\) as
+	\begin{equation}
+		\begin{aligned}
+			t &= t_\ell + s \\
+			&= \sum_{k=0}^{\ell - 1} \tau_{i_k} +s 
+		\end{aligned}
+	\end{equation}
+	with \(0\leq s <\tau_m.\) By our product formulas,
+	\begin{equation}
+		A_t(p) = A_s( \phi_{-t_\ell}(p) ) A_{\tau_{i_{\ell-1}}}(\phi_{-t_{\ell-1}}(p)) A_{\tau_{i_{\ell-2}}}(\phi_{-t_{\ell-2}}(p)) \cdots A_{\tau_{i_0}}(p)
+	\end{equation}
+	and 
+	\begin{equation}
+		B_t(p) = B_{\tau_{i_0}}(p) B_{\tau_{i_1}}(\phi_{-t_1}(p)) \cdots B_{\tau_{i_{\ell-1}}}(\phi_{-t_{\ell-1}}(p)) B_s(\phi_{-t_\ell}(p)).
+	\end{equation}
+	Thus
+	\begin{equation}
+		\| A_t(p) \| \, \| B_t(p)| \|^c \leq C_3 \left( \frac 1 2 \right)^\ell
+	\end{equation}
+	where 
+	\begin{equation}
+		C_3 = \max\{ \| A_s(q) \| \, \| B_s(q) \|^c : q\in \overline U, 0 \leq s \leq \tau_m\}.
+	\end{equation}
+	As \(t\to\infty\), we have \(\ell \to \infty\). Therefore \( \| A_t(p) \| \, \| B_t(p)| \|^c\to 0\) as \(t\to\infty\) and \(\sigma^s(p) \leq c\). We can then conclude that \(\sigma^s(p) \leq \sigma^s(K).\)
+\end{proof}

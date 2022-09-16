@@ -309,6 +309,8 @@ This solution is the profile for the kink solution of the defocusing mKdV, \(\ph
 
 The idea behind the proof is to show that there is an overflowing invariant set with an unstable manifold and a corresponding inflowing invariant set with a stable manifold. We then show that at \(\epsilon = 0\) these manifolds intersect transversally at a point, and that this intersection is given by the above heteroclinic orbit. From there, we show that this intersection is preserved for \(\epsilon > 0\) and the heteroclinic orbit remains \(\mcO(\epsilon)\) or \(\mcO(\epsilon^2)\) to the original orbit.
 
+\subsection{The Unstable and Stable Manifolds}
+
 We first must find the appropriate overflowing invariant set.\footnote{We need also to find the inflowing invariant set, but we can rely on the symmetry of \cref{eqns-center-manifold} to get this. In fact, we will regularly rely on the symmetry of the flow to get many of the results for the inflowing invariant set after working it out for the overflowing invariant set.} From the heteroclinic orbit found for \(\epsilon = 0\), we know that \((A,B,C, \epsilon) = (-1/\sqrt 2 , 0 ,0, 0)\) should be one point in the set. In fact, for fixed \(\epsilon> 0\) we have that multiples of \(\zeta_1\) are fixed points for \cref{reduced-first-order-system}. From the center manifold theorem in \cite{vanderbauwhede1992center}, bounded solutions sufficiently close to the origin will lie exactly on the center manifold. Thus for \(\epsilon>0\) sufficiently close to zero, any closed interval on the \(\underline A\)-axis is composed entirely of fixed points on the center manifold. We will choose \(\epsilon_0> 0\) small enough such that for \(\epsilon \in (0,\epsilon_0]\) the \(\underline A\)-axis from \([-1,1]\) is composed entirely of fixed points. 
 
 
@@ -369,12 +371,20 @@ This change keeps the flow \(C^1\) and makes \(\overline M\) an overflowing inva
 The extension of the normal vector bundles is somewhat technical, but otherwise straightforward. We need \(N^u\) and \(N^s\) invariant under the flow and continuous. In particular, if \(p\) is a point in \(M\) where \(\chi \neq 0\) and \(\xi \in N^u_p\), then \(D\phi_t(p) \xi \in N^u_{\phi_t(p)}\) for all \(t\) such that \(\phi_t(p) \in M\). A similar result should hold for \(N^s\). We also need that the vector bundles are continuous with respect to \(p\). Continuity relies on showing that we can assign the vector bundles in a way so that if \(\phi_t(p) \to p'\) as \(t\to-\infty\) then \(N^u_{\phi_t(p)}\) approaches \(N^u_{p'}\). This can be done and the details are carried out in \cref{condition-verification}.
 
 For the generalized Lyapunov-type numbers, it can be shown that the values on the altered region of \(M\) can be bounded by those on the unaltered region. More generally, we have the following result.
-\begin{prop}
+\begin{restatable}{prop}{lyapunovbound}
 	Let \(K \subset M\) be a compact set. If \(p \in M\) such that \(\phi_{-t}(p) \to K\) as \(t\to\infty\), then 
 \begin{enumerate}[label=(\roman*)]
 	\item \(\lambda^u(p) \leq \lambda^u(K)\), 
 	\item \(\nu^s(p) \leq \nu^s(K)\), and 
 	\item if \(\nu^s(K) < 1\), then \(\sigma^s(p) \leq \sigma^s(K)\).
 \end{enumerate}
-\end{prop}
+\end{restatable}
 The proof is give in \cref{condition-verification} and follows similarly to the arguments found in \cite{dieci1997lyapunov}.
+
+We can therefore conclude that \(W^u_{\mathrm{loc}}(\overline M)\) exists. If we set \(A_\infty = 1/ \sqrt 2\), then an analogous argument holds for showing that
+\begin{equation}
+	\overline N = \{(\underline A, 0, 0, \epsilon) \in \R^4: |(\underline A - A_{\infty},  \epsilon)| \leq \delta\}
+\end{equation}
+has a \emph{stable} manifold, \(W^s_{\mathrm{loc}}(\overline N)\).
+
+\subsection{Transversal intersection at $\epsilon=0$}
