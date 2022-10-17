@@ -1,5 +1,5 @@
 % !TeX root = ../thesis.tex
-\chapter{Existence of Kink-Like Travelling Wave Solutions}
+\chapter{Existence of Kink-Like Traveling Wave Solutions}
 \label{chp:existence}
 \pagestyle{myheadings}
 
@@ -388,3 +388,64 @@ We can therefore conclude that \(W^u_{\mathrm{loc}}(\overline M)\) exists. If we
 has a \emph{stable} manifold, \(W^s_{\mathrm{loc}}(\overline N)\).
 
 \subsection{Transversal intersection at $\epsilon=0$}
+To show a heteroclinic orbit exists for \(\epsilon > 0\), we first show that stable and unstable manifolds described above have a transverse intersection at \(\epsilon = 0\). This intersection then persists for perturbations in \(\epsilon\) (since the manifolds are \(C^1\) with respect to \(\epsilon\)) and thus implies the existence of the heteroclinic orbit.
+
+The heteroclinic orbit at \(\epsilon = 0\) can be found explicitly. The dynamics (away from where we modified the vector field) are given by
+\begin{equation}\label{ep-zero-system}
+	\begin{aligned}
+		\underline A ' &= \underline B \\
+		\underline B' &= \underline C \\
+		\underline C' &= - \underline B + 6 \underline A^2 \underline B.
+	\end{aligned}
+\end{equation}
+The system of ODEs in \cref{ep-zero-system} has two invariants:
+\begin{align}
+	I_1(\underline A, \underline B, \underline C) &= \underline C + \underline A - 2 \underline A^3 \\
+	I_2(\underline A, \underline B, \underline C) &= \frac 1 2 \underline B^2 + \frac 12 \underline A^2 - \frac 1 2 \underline A^4 - \underline A I_1(\underline A, \underline B, \underline C).
+\end{align}
+We then look for solutions on the manifolds given by
+\begin{equation}
+	I_1(A_{-\infty}, 0, 0) = 0 \quad \text{ and } \quad I_2(A_{-\infty}, 0, 0) = \frac 1 8.
+\end{equation}
+The above equations and the fact that \(\underline B = \underline A'\) gives us that \(\underline A\) must satisfy the following first order ODE:
+\begin{equation}
+	(\underline A')^2 = \left(\frac  1 2 - \underline A^2\right)^2,
+\end{equation}
+which can be solved by separation of variables. The solutions are thus
+\begin{equation}
+	\underline A(s) = \pm \frac{1}{\sqrt 2} \tanh\left(\frac s {\sqrt 2} \right)
+\end{equation}
+up to a shift in the variable \(s\). One can check that these are solutions of \cref{ep-zero-system} (taking \(\underline B = \underline A'\) and \(\underline C = \underline A''\)) and define two heteroclinic orbits: one traveling from \(A_{-\infty}\) to \(A_\infty\) and one traveling from \(A_{\infty}\) to \(A_{-\infty}\). The solution corresponding with the choice of \(+\) also lies inside the manifolds \(W^u_{\mathrm{loc}}(\overline M)\) and \(W^s_{\mathrm{loc}}(\overline N)\) since it converges to \(\overline M\) and \(\overline N\) as \(s\to - \infty \) and \(s\to +\infty\), respectively. This does not imply the local manifolds intersect since they are only defined in a neighborhood of \(\overline M\) and \(\overline N\), but we may extend these manifolds under the flow so that they both contain the point \((\epsilon , \underline A, \underline B, \underline C) = (0, 0, 1/2, 0)\) and thus intersect. We shall refer to the manifolds extended under the flow by \(\mathcal M_\epsilon\) and \(\mathcal N_\epsilon\). These extended manifolds are still \(C^1\) with respect to the parameter \(\epsilon\).
+
+Now the goal is to demonstrate that this intersection is transverse. That is for \(p = (0,1/2,0)\) we want to show that \(T_p\mathcal M_0 + T_p \mathcal N_0 = T_p \R^3\). One can explicitly compute each of the tangent spaces at \(p\) and show they span \(T_p\R^3\). This is done by finding the intersection each of these manifolds make with the \(\underline B\underline C\)-plane. Similar to the construction of the heteroclinic orbit, we find the orbit which approaches some asymptotic value on the \(\underline A\)-axis near \(A_{-\infty}\) or \(A_{\infty}\) and find where it intersect the \(\underline B\underline C\)-plane. These orbits lie on the stable and unstable manifolds, and so this shows how the manifolds intersect the plane.
+
+Take \(\omega\) to be a point near \(A_{-\infty} = - 1/\sqrt 2\). The orbit that approaches \((\omega, 0, 0)\) in backwards time lies on the intersection of 
+\begin{equation}
+	\begin{aligned}
+		I_1(\underline A, \underline B, \underline C) &= I_1(\omega, 0, 0) = \omega - 2\omega^3 \\
+		I_2(\underline A, \underline B, \underline C) &= I_2(\omega, 0, 0) = - \frac 1 2 \omega^2 + \frac 3 2 \omega^4.
+	\end{aligned}
+\end{equation}
+Setting \(\underline A = 0\), we can find that \(\mathcal M_0\) hits the \(\underline B \underline C\)- plane at 
+\begin{equation}
+	\mu(\omega) = (0, |\omega| \sqrt{3\omega^2 -1 }, \omega - 2\omega^3)
+\end{equation}
+for \(\omega\) close to \(A_{-\infty}\). In particular, we see that if \(\mu(A_{-\infty}) = p\). Identical reasoning gives that \(\mathcal N_0\) intersects the plane at 
+\begin{equation}\label{intersection-with-plane}
+	\nu(\alpha) = (0, |\alpha| \sqrt{3\alpha^2 -1 }, \alpha - 2\alpha^3)
+\end{equation}
+where \(\alpha\) is near \(A_\infty = 1 / \sqrt 2\) and \(\nu (A_{\infty} ) = p\).
+
+The derivative of the heteroclinic orbit is given by \((1/2, 0, -1/2)\), and this vector lies in both \(T_p\mathcal M_0\) and \(T_p \mathcal N_0\). Since \(\mu(\omega) \in \mathcal M_0\) for \(\omega\) near \(A_{-\infty}\), we have that 
+\begin{equation}
+	\mu'(A_{-\infty}) = \left( 0, 1, \frac  1 {\sqrt 2} \right) \in T_p \mathcal M_0.
+\end{equation}
+Similarly,
+\begin{equation}
+	\nu'(A_{-\infty}) = \left( 0, 1, \frac  {-1} {\sqrt 2} \right) \in T_p \mathcal N_0.
+\end{equation}
+Therefore
+\begin{equation}
+	T_p \mathcal M_0 + T_p \mathcal N_0 = \mathrm{span} \left\{ \left(\frac 1 2 , 0, \frac{-1} 2\right),  \left( 0, 1, \frac  1 {\sqrt 2} \right) ,  \left( 0, 1, \frac  {-1} {\sqrt 2} \right) \right\} = T_p\R^3
+\end{equation}
+and the intersection is transverse. This implies that there is a heteroclinic orbit on the intersection of \(\mathcal M_\epsilon\) and \(\mathcal N_\epsilon\) for \(\epsilon > 0\).
