@@ -415,7 +415,17 @@ which can be solved by separation of variables. The solutions are thus
 \begin{equation}
 	\underline A(s) = \pm \frac{1}{\sqrt 2} \tanh\left(\frac s {\sqrt 2} \right)
 \end{equation}
-up to a shift in the variable \(s\). One can check that these are solutions of \cref{ep-zero-system} (taking \(\underline B = \underline A'\) and \(\underline C = \underline A''\)) and define two heteroclinic orbits: one traveling from \(A_{-\infty}\) to \(A_\infty\) and one traveling from \(A_{\infty}\) to \(A_{-\infty}\). The solution corresponding with the choice of \(+\) also lies inside the manifolds \(W^u_{\mathrm{loc}}(\overline M)\) and \(W^s_{\mathrm{loc}}(\overline N)\) since it converges to \(\overline M\) and \(\overline N\) as \(s\to - \infty \) and \(s\to +\infty\), respectively. This does not imply the local manifolds intersect since they are only defined in a neighborhood of \(\overline M\) and \(\overline N\), but we may extend these manifolds under the flow so that they both contain the point \((\epsilon , \underline A, \underline B, \underline C) = (0, 0, 1/2, 0)\) and thus intersect. We shall refer to the manifolds extended under the flow by \(\mathcal M_\epsilon\) and \(\mathcal N_\epsilon\). These extended manifolds are still \(C^1\) with respect to the parameter \(\epsilon\).
+up to a shift in the variable \(s\). One can check that these are solutions of \cref{ep-zero-system} (taking \(\underline B = \underline A'\) and \(\underline C = \underline A''\)) and define two heteroclinic orbits: one traveling from \(A_{-\infty}\) to \(A_\infty\) and one traveling from \(A_{\infty}\) to \(A_{-\infty}\). Let
+\begin{equation}
+	\gamma_{\pm} (t) = \begin{bmatrix}
+		 \pm\frac 1 {\sqrt 2} \tanh\left(\frac s {\sqrt 2}\right) \\
+		 \pm\frac 1 2 \mathrm{sech}^2\left( \frac s {\sqrt 2}\right) \\
+		 \mp\frac{1}{\sqrt 2 }\tanh\left(\frac s {\sqrt 2 }\right)\mathrm{sech}^2\left(\frac {s}{\sqrt 2}\right)
+	\end{bmatrix}
+\end{equation}
+denote the two heteroclinic orbits.
+
+The solution corresponding with the choice of \(+\) also lies inside the manifolds \(W^u_{\mathrm{loc}}(\overline M)\) and \(W^s_{\mathrm{loc}}(\overline N)\) since it converges to \(\overline M\) and \(\overline N\) as \(s\to - \infty \) and \(s\to +\infty\), respectively. This does not imply the local manifolds intersect since they are only defined in a neighborhood of \(\overline M\) and \(\overline N\), but we may extend these manifolds under the flow so that they both contain the point \((\epsilon , \underline A, \underline B, \underline C) = (0, 0, 1/2, 0)\) and thus intersect. We shall refer to the manifolds extended under the flow by \(\mathcal M_\epsilon\) and \(\mathcal N_\epsilon\). These extended manifolds are still \(C^1\) with respect to the parameter \(\epsilon\).
 
 Now the goal is to demonstrate that this intersection is transverse. That is for \(p = (0,1/2,0)\) we want to show that \(T_p\mathcal M_0 + T_p \mathcal N_0 = T_p \R^3\). One can explicitly compute each of the tangent spaces at \(p\) and show they span \(T_p\R^3\). This is done by finding the intersection each of these manifolds make with the \(\underline B\underline C\)-plane. Similar to the construction of the heteroclinic orbit, we find the orbit which approaches some asymptotic value on the \(\underline A\)-axis near \(A_{-\infty}\) or \(A_{\infty}\) and find where it intersect the \(\underline B\underline C\)-plane. These orbits lie on the stable and unstable manifolds, and so this shows how the manifolds intersect the plane.
 
@@ -449,3 +459,4 @@ Therefore
 	T_p \mathcal M_0 + T_p \mathcal N_0 = \mathrm{span} \left\{ \left(\frac 1 2 , 0, \frac{-1} 2\right),  \left( 0, 1, \frac  1 {\sqrt 2} \right) ,  \left( 0, 1, \frac  {-1} {\sqrt 2} \right) \right\} = T_p\R^3
 \end{equation}
 and the intersection is transverse. This implies that there is a heteroclinic orbit on the intersection of \(\mathcal M_\epsilon\) and \(\mathcal N_\epsilon\) for \(\epsilon > 0\).
+
