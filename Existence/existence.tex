@@ -8,7 +8,7 @@
 %Friesecke/Pego method. Why doesn't it work here?
 The goal of this chapter is to show the existence of the travelling wave solution for the FPUT lattice and describe its profile. From formal calculations and the numerical experiments carried out in \cite{pace2019beta}, one expects that the travelling wave solution has a profile given by the kink solution to the mKdV; that is, for \(\phi(\xi) = \frac 1 {\sqrt 2} \tanh(\xi/\sqrt 2)\) we expect to have a travelling wave solution \(u\) such that 
 \begin{equation}\label{formal-approximation}
-	u_n(t) = \epsilon \varphi(\epsilon(n + ct)) +\mcO(\epsilon^3)
+	u_n(t) = \epsilon \phi(\epsilon(n + ct)) +\mcO(\epsilon^3)
 \end{equation}
 when \(c\) is slightly smaller than \(V''(0) = 1\).
 
@@ -156,7 +156,7 @@ which corresponds to the shift invariance of \cref{advance-delay-equation}. This
 \end{equation}
 Denote by \(\bbH_1\) to codimension-one subspace of \(\bbH\) where \(\zeta_0^*(W) = 0\), and similarly define \(\bbD_1\). Then the system in \cref{first-order-abstract-ode} becomes
 \begin{align}
-	\frac{dq}{dt} &= \zeta_0^*(L_{\mu} W) = \zeta_0^*(L_{\mu_0} W) = \zeta_1^*(W) \\
+	\frac{dq}{dt} &= \zeta_0^*(L_{\mu} W) = \zeta_0^*(L_{\mu_0} W) = \zeta_1^*(W) \label{ode-for-q} \\
 	\frac{d W}{dt} &= \widehat{L}_\mu W + M_\mu(W) \label{reduced-first-order-system}
 \end{align}
 where \(\widehat{L}_\mu W = L_\mu W - \zeta_1^*(W)\zeta_0\). The operator \(\widehat L_{\mu_0}\) acting on \(\bbH_1\) has the same spectrum as \(L_{\mu_0}\) except that \(0\) is now a triple eigenvalue instead of a quadruple eigenvalue. One can check that
@@ -311,7 +311,7 @@ The idea behind the proof is to show that there is an overflowing invariant set 
 
 \subsection{The Unstable and Stable Manifolds}
 
-We first must find the appropriate overflowing invariant set.\footnote{We need also to find the inflowing invariant set, but we can rely on the symmetry of \cref{eqns-center-manifold} to get this. In fact, we will regularly rely on the symmetry of the flow to get many of the results for the inflowing invariant set after working it out for the overflowing invariant set.} From the heteroclinic orbit found for \(\epsilon = 0\), we know that \((A,B,C, \epsilon) = (-1/\sqrt 2 , 0 ,0, 0)\) should be one point in the set. In fact, for fixed \(\epsilon> 0\) we have that multiples of \(\zeta_1\) are fixed points for \cref{reduced-first-order-system}. From the center manifold theorem in \cite{vanderbauwhede1992center}, bounded solutions sufficiently close to the origin will lie exactly on the center manifold. Thus for \(\epsilon>0\) sufficiently close to zero, any closed interval on the \(\underline A\)-axis is composed entirely of fixed points on the center manifold. We will choose \(\epsilon_0> 0\) small enough such that for \(\epsilon \in (0,\epsilon_0]\) the \(\underline A\)-axis from \([-1,1]\) is composed entirely of fixed points. 
+We first must find the appropriate overflowing invariant set.\footnote{We need also to find the inflowing invariant set, but we can rely on the symmetry of \cref{eqns-center-manifold} to get this. In fact, we will regularly rely on the symmetry of the flow to get many of the results for the inflowing invariant set after working it out for the overflowing invariant set.} From the heteroclinic orbit found for \(\epsilon = 0\), we know that \((\underline A,\underline B,\underline C, \epsilon) = (-1/\sqrt 2 , 0 ,0, 0)\) should be one point in the set. In fact, for fixed \(\epsilon> 0\) we have that multiples of \(\zeta_1\) are fixed points for \cref{reduced-first-order-system}. From the center manifold theorem in \cite{vanderbauwhede1992center}, bounded solutions sufficiently close to the origin will lie exactly on the center manifold. Thus for \(\epsilon>0\) sufficiently close to zero, any closed interval on the \(\underline A\)-axis is composed entirely of fixed points on the center manifold. We will choose \(\epsilon_0> 0\) small enough such that for \(\epsilon \in (0,\epsilon_0]\) the \(\underline A\)-axis from \([-1,1]\) is composed entirely of fixed points. 
 
 
 
@@ -416,12 +416,16 @@ which can be solved by separation of variables. The solutions are thus
 	\underline A(s) = \pm \frac{1}{\sqrt 2} \tanh\left(\frac s {\sqrt 2} \right)
 \end{equation}
 up to a shift in the variable \(s\). One can check that these are solutions of \cref{ep-zero-system} (taking \(\underline B = \underline A'\) and \(\underline C = \underline A''\)) and define two heteroclinic orbits: one traveling from \(A_{-\infty}\) to \(A_\infty\) and one traveling from \(A_{\infty}\) to \(A_{-\infty}\). Let
-\begin{equation}
+\begin{equation}\label{heteroclinic-orbit-at-zero}
 	\gamma_{\pm} (t) = \begin{bmatrix}
 		 \pm\frac 1 {\sqrt 2} \tanh\left(\frac s {\sqrt 2}\right) \\
 		 \pm\frac 1 2 \mathrm{sech}^2\left( \frac s {\sqrt 2}\right) \\
 		 \mp\frac{1}{\sqrt 2 }\tanh\left(\frac s {\sqrt 2 }\right)\mathrm{sech}^2\left(\frac {s}{\sqrt 2}\right)
-	\end{bmatrix}
+	\end{bmatrix} = \begin{bmatrix}
+	\pm \phi(s)\\
+	\pm \phi'(s) \\
+	\pm \phi''(s) \
+\end{bmatrix}
 \end{equation}
 denote the two heteroclinic orbits.
 
@@ -458,5 +462,39 @@ Therefore
 \begin{equation}
 	T_p \mathcal M_0 + T_p \mathcal N_0 = \mathrm{span} \left\{ \left(\frac 1 2 , 0, \frac{-1} 2\right),  \left( 0, 1, \frac  1 {\sqrt 2} \right) ,  \left( 0, 1, \frac  {-1} {\sqrt 2} \right) \right\} = T_p\R^3
 \end{equation}
-and the intersection is transverse. This implies that there is a heteroclinic orbit on the intersection of \(\mathcal M_\epsilon\) and \(\mathcal N_\epsilon\) for \(\epsilon > 0\).
+and the intersection is transverse. This implies that there is a heteroclinic orbit on the intersection of \(\mathcal M_\epsilon\) and \(\mathcal N_\epsilon\) for \(\epsilon > 0\). 
 
+\subsection{Estimates on the heteroclinic orbit}
+
+From the previous section, we have the existence of heteroclinic orbits that are perturbation of \(\gamma_\pm\) at \(\epsilon = 0\). From the \(C^1\) regularity of the manifolds with respect to the coordinates, we expect that the orbits remain \(\mcO(\epsilon)\) close to the unperturbed orbits in some sense. There are some subtleties to be addressed. The manifolds remain \(\mcO(\epsilon)\) close in Hausdorff distance, but this does not imply the orbits on the manifolds remain \(\mcO(\epsilon)\) close for all time. The dynamics on the manifolds might change causing orbits on the perturbed manifold to diverge asymptotically despite remaining close initially.
+
+First, let us introduce notation for the perturbed heteroclinic orbits. We shall denote by \(\gamma_{\pm, \epsilon}\) to be the perturbations of \(\gamma_{\pm}\) for \(\epsilon > 0\), where we set \(\gamma_{\pm,\epsilon}(0)\) to be the point where the orbits cross the \(\underline{B}\underline{C}\)-plane. From the continuity of the manifolds with respect to \(\epsilon\), we have that \(|\gamma_{\pm, \epsilon}(0) - \gamma_\pm(0)| = \mcO(\epsilon)\) for small \(\epsilon\). We can extend this estimate onto arbitrarily large time scales by applying an argument using the Gr\"owall inequality. That is, for every \(T> 0\) we have for sufficiently small \(\epsilon\) that \(|\gamma_{\pm, \epsilon}(s) - \gamma_\pm(s)| = C\epsilon\) for all \(s\in[-T,T]\), where \(C>0\) is independent of \(s\). 
+
+This argument is insufficient for extending the estimate to all time. To get that the orbits remain close as \(s\to\pm\infty\), we can rely on part 7 of \cref{foliation-of-unstable-manifold}. Taking \((\epsilon, \omega)\) sufficiently close to \((0, A_{-\infty})\) as base points, the theorem states that the unstable manifold is \(C^1\) with respect to \((\epsilon, \omega)\). Note that the overflowing invariant manifold (away from the bump function) consists only of fixed points, so orbits on the unstable manifold approach a unique fixed point given by \((\epsilon, \omega)\). Take \(T> 0\) large enough so that all the points on \(\mathcal M_\epsilon\) (for \(\epsilon \leq \epsilon_0\)) which intersect the \(\underline B \underline C\)-plane are in the local unstable manifold when flowed backward in time by \(-T\) units. Then locally, there is a one-to-one correspondence between these points flowed backward in time and the points in \(\overline M\); furthermore, this correspondence is \(C^1\) due to \cref{foliation-of-unstable-manifold}. This implies that if the points flowed backward are \(\mcO(\epsilon)\) close then there backward limits are \(\mcO(\epsilon)\) close as well. In particular, the backward limits of \(\gamma_{+,\epsilon}\) and \(\gamma_+\) are \(\mcO(\epsilon)\) close. The argument for the stable manifold is analogous. This shows that the heteroclinic orbits remain \(\mcO(\epsilon)\) for all time. In the case where \(V(x) = \frac 12 x^2 - \frac 1 {24} x^4 + \mcO(\epsilon^6)\), this can be upgraded to \(\mcO(\epsilon^2)\); the proof is similar but we use the regularity of the manifolds with respect to \(\eta = \epsilon^2\) instead. Therefore, we have the following.
+\begin{prop}
+	There exists \(\epsilon_0 > 0\) such that for every \(\epsilon\in(0,\epsilon_0]\) there exist two heteroclinic orbits \(\gamma_{\pm, \epsilon}\) of \cref{epsilon-flow} such that 
+	\begin{equation}
+		|\gamma_{\pm,\epsilon}(s) - \gamma_\pm(s) | \leq C \epsilon \quad \text{ for all } s\in \R
+	\end{equation}
+	where \(\gamma_{\pm}\) are defined in \cref{heteroclinic-orbit-at-zero}. If \(V(x) = \frac 12 x^2 - \frac 1 {24} x^4 + \mcO(\epsilon^6)\), then we instead have the estimate
+	\begin{equation}
+		|\gamma_{\pm,\epsilon}(s) - \gamma_\pm(s) | \leq C \epsilon^2 \quad \text{ for all } s\in \R.
+	\end{equation}
+\end{prop}
+
+By starting to unravel the change of coordinates, we can show the existence of solutions to the advance-delay equation of the form
+\begin{equation}
+	x(t) = q(t) + (\Phi_\mu(\pm\epsilon\phi(\epsilon t),\pm\epsilon^2\phi'(\epsilon t) , \pm\epsilon^3\phi''(\epsilon t)))_x
+\end{equation}
+where \(q(t)\) satisfies the differential equation
+\begin{equation}
+	\frac{dq}{dt} = \pm \phi(\epsilon t).
+\end{equation}
+The differential equation for \(q\) comes form \cref{ode-for-q} and the fact that \(\zeta_1^*(\Phi_\mu) = 0\). Integrating the above derivative gives us that \(q(t) = \log(\cosh(\epsilon t / \sqrt 2))\) plus an arbitrary constant. Thus we have solutions of the form 
+\begin{equation}
+	x(t) = \log\left(\cosh\left(\frac{\epsilon t}{\sqrt 2} \right)\right)+ (\Phi_\mu(\pm\epsilon\phi(\epsilon t),\pm\epsilon^2\phi'(\epsilon t) , \pm\epsilon^3\phi''(\epsilon t)))_x
+\end{equation}
+and perhaps more suggestively
+\begin{equation}
+	\dot x(t) = \frac \epsilon {\sqrt 2} \tanh\left(\frac{\epsilon t}{\sqrt 2} \right)+ (\Phi_\mu(\pm\epsilon\phi(\epsilon t),\pm\epsilon^2\phi'(\epsilon t) , \pm\epsilon^3\phi''(\epsilon t)))_\xi
+\end{equation}
