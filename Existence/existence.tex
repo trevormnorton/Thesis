@@ -468,7 +468,7 @@ and the intersection is transverse. This implies that there is a heteroclinic or
 
 From the previous section, we have the existence of heteroclinic orbits that are perturbation of \(\gamma_\pm\) at \(\epsilon = 0\). From the \(C^1\) regularity of the manifolds with respect to the coordinates, we expect that the orbits remain \(\mcO(\epsilon)\) close to the unperturbed orbits in some sense. There are some subtleties to be addressed. The manifolds remain \(\mcO(\epsilon)\) close in Hausdorff distance, but this does not imply the orbits on the manifolds remain \(\mcO(\epsilon)\) close for all time. The dynamics on the manifolds might change causing orbits on the perturbed manifold to diverge asymptotically despite remaining close initially.
 
-First, let us introduce notation for the perturbed heteroclinic orbits. We shall denote by \(\gamma_{\pm, \epsilon}\) to be the perturbations of \(\gamma_{\pm}\) for \(\epsilon > 0\), where we set \(\gamma_{\pm,\epsilon}(0)\) to be the point where the orbits cross the \(\underline{B}\underline{C}\)-plane. From the continuity of the manifolds with respect to \(\epsilon\), we have that \(|\gamma_{\pm, \epsilon}(0) - \gamma_\pm(0)| = \mcO(\epsilon)\) for small \(\epsilon\). We can extend this estimate onto arbitrarily large time scales by applying an argument using the Gr\"owall inequality. That is, for every \(T> 0\) we have for sufficiently small \(\epsilon\) that \(|\gamma_{\pm, \epsilon}(s) - \gamma_\pm(s)| = C\epsilon\) for all \(s\in[-T,T]\), where \(C>0\) is independent of \(s\). 
+First, let us introduce notation for the perturbed heteroclinic orbits. We shall denote by \(\gamma_{\pm, \epsilon} = (A_{\pm, \epsilon} , B_{\pm, \epsilon}, C_{\pm,\epsilon})\) to be the perturbations of \(\gamma_{\pm}\) for \(\epsilon > 0\), where we set \(\gamma_{\pm,\epsilon}(0)\) to be the point where the orbits cross the \(\underline{B}\underline{C}\)-plane. From the continuity of the manifolds with respect to \(\epsilon\), we have that \(|\gamma_{\pm, \epsilon}(0) - \gamma_\pm(0)| = \mcO(\epsilon)\) for small \(\epsilon\). We can extend this estimate onto arbitrarily large time scales by applying an argument using the Gr\"owall inequality. That is, for every \(T> 0\) we have for sufficiently small \(\epsilon\) that \(|\gamma_{\pm, \epsilon}(s) - \gamma_\pm(s)| = C\epsilon\) for all \(s\in[-T,T]\), where \(C>0\) is independent of \(s\). 
 
 This argument is insufficient for extending the estimate to all time. To get that the orbits remain close as \(s\to\pm\infty\), we can rely on part 7 of \cref{foliation-of-unstable-manifold}. Taking \((\epsilon, \omega)\) sufficiently close to \((0, A_{-\infty})\) as base points, the theorem states that the unstable manifold is \(C^1\) with respect to \((\epsilon, \omega)\). Note that the overflowing invariant manifold (away from the bump function) consists only of fixed points, so orbits on the unstable manifold approach a unique fixed point given by \((\epsilon, \omega)\). Take \(T> 0\) large enough so that all the points on \(\mathcal M_\epsilon\) (for \(\epsilon \leq \epsilon_0\)) which intersect the \(\underline B \underline C\)-plane are in the local unstable manifold when flowed backward in time by \(-T\) units. Then locally, there is a one-to-one correspondence between these points flowed backward in time and the points in \(\overline M\); furthermore, this correspondence is \(C^1\) due to \cref{foliation-of-unstable-manifold}. This implies that if the points flowed backward are \(\mcO(\epsilon)\) close then there backward limits are \(\mcO(\epsilon)\) close as well. In particular, the backward limits of \(\gamma_{+,\epsilon}\) and \(\gamma_+\) are \(\mcO(\epsilon)\) close. The argument for the stable manifold is analogous. This shows that the heteroclinic orbits remain \(\mcO(\epsilon)\) for all time. In the case where \(V(x) = \frac 12 x^2 - \frac 1 {24} x^4 + \mcO(\epsilon^6)\), this can be upgraded to \(\mcO(\epsilon^2)\); the proof is similar but we use the regularity of the manifolds with respect to \(\eta = \epsilon^2\) instead. Therefore, we have the following.
 \begin{prop}
@@ -484,17 +484,13 @@ This argument is insufficient for extending the estimate to all time. To get tha
 
 By starting to unravel the change of coordinates, we can show the existence of solutions to the advance-delay equation of the form
 \begin{equation}
-	x(t) = q(t) + (\Phi_\mu(\pm\epsilon\phi(\epsilon t),\pm\epsilon^2\phi'(\epsilon t) , \pm\epsilon^3\phi''(\epsilon t)))_x
+	x_{\pm,\epsilon}(t) = q_{\pm, \epsilon}(t) + (\Phi_\mu(\epsilon A_{\pm, \epsilon}(\epsilon t),\epsilon^2 B_{\pm, \epsilon}(\epsilon t) ,\epsilon^3 C_{\pm, \epsilon}(\epsilon t))_x
 \end{equation}
-where \(q(t)\) satisfies the differential equation
+where \(q_{\pm, \epsilon}(t)\) satisfies the differential equation
 \begin{equation}
-	\frac{dq}{dt} = \pm \phi(\epsilon t).
+	\frac{dq_{\pm, \epsilon}}{dt} =  \epsilon A_{\pm, \epsilon}(\epsilon t).
 \end{equation}
-The differential equation for \(q\) comes form \cref{ode-for-q} and the fact that \(\zeta_1^*(\Phi_\mu) = 0\). Integrating the above derivative gives us that \(q(t) = \log(\cosh(\epsilon t / \sqrt 2))\) plus an arbitrary constant. Thus we have solutions of the form 
+The differential equation for \(q\) comes form \cref{ode-for-q} and the fact that \(\zeta_1^*(\Phi_\mu) = 0\). Taking a derivative we also have
 \begin{equation}
-	x(t) = \log\left(\cosh\left(\frac{\epsilon t}{\sqrt 2} \right)\right)+ (\Phi_\mu(\pm\epsilon\phi(\epsilon t),\pm\epsilon^2\phi'(\epsilon t) , \pm\epsilon^3\phi''(\epsilon t)))_x
-\end{equation}
-and perhaps more suggestively
-\begin{equation}
-	\dot x(t) = \frac \epsilon {\sqrt 2} \tanh\left(\frac{\epsilon t}{\sqrt 2} \right)+ (\Phi_\mu(\pm\epsilon\phi(\epsilon t),\pm\epsilon^2\phi'(\epsilon t) , \pm\epsilon^3\phi''(\epsilon t)))_\xi
+	\dot x_{\pm, \epsilon}(t) =  \epsilon A_{\pm, \epsilon}(\epsilon t) + (\Phi_\mu(\epsilon A_{\pm, \epsilon}(\epsilon t),\epsilon^2 B_{\pm, \epsilon}(\epsilon t) ,\epsilon^3 C_{\pm, \epsilon}(\epsilon t))_\xi.
 \end{equation}
