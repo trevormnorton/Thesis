@@ -32,7 +32,7 @@ to construct the center manifold parameterized by \(\epsilon\), making sure to e
 \section{Construction of Center Manifold}
 %Change of coordinates to get into the form of an abstract ODE.
 We follow the construction of the center manifold carried out in \cite{iooss2000travelling}. Recall that the equations for the FPUT lattice are given by
-\begin{equation}
+\begin{equation}\label{fput-lattice-odes}
 	\ddot x_n = V'(x_{n+1} - x_n) - V'(x_n - x_{n-1}), \quad n\in\Z.
 \end{equation}
 We assume that \(V(x) = \frac 12 x^2 - \frac 1 {24} x^4 + \mcO(x^5)\) near \(x=0\). We make the ansatz that 
@@ -256,12 +256,15 @@ Then the equations of motion on the center manifold become
 \end{equation}
 Here the \(\mcO(\epsilon)\) represents functions that are at least \(C^4\) in \(\epsilon\), \(\underline A\), \(\underline B\), and \(\underline C\) and can be bounded by a constant times \(\epsilon\) when we are on bounded domains and \(\epsilon >0\) sufficiently small. Since we will be looking for bounded solutions on the center manifold, these terms can be controlled. We may upgrade this to \(\mcO(\epsilon^2)\) if we additionally have \(V(x) = \frac 1 2 x^2 - \frac 1 {24} x^4 + \mcO(x^6)\) as \(x\to 0\).
 
-We shall consider two cases going:
-\begin{enumerate}[label = (\arabic*)]
+We shall consider three different assumptions on the potential going forward:
+\begin{enumerate}[label = (H\arabic*)]
 	\item \(V(x) = \frac 12 x^2 - \frac 1 {24} x^4 + \mcO(\epsilon^5)\)
 	\item \(V(x) = \frac 12 x^2 - \frac 1 {24} x^4 + \mcO(\epsilon^6)\)
+	\item \(V(x) = \frac 12 x^2 - \frac 1 {24} x^4\)
 \end{enumerate}
-For (1), we have that the flow on the center manifold is given by
+The arguments for each assumption are similar, but stronger assumptions on the potential gives better estimates on the final result.
+
+For (H1), we have that the flow on the center manifold is given by
 \begin{equation}\label{epsilon-flow}
 	\begin{aligned}
 		\underline A ' &= \underline B + \epsilon F_1(\underline A, \underline B, \underline C;\epsilon) \\
@@ -270,7 +273,7 @@ For (1), we have that the flow on the center manifold is given by
 		\epsilon' &= 0
 	\end{aligned}
 \end{equation}
-where \(F_1\) and \(G_1\) will be \(C^4\) for \(\epsilon > 0\) and \(\mcO(1)\) as \(\epsilon \to 0\). The additional equation \(\epsilon' = 0\) is added so that we may use \(\epsilon\) as an additional coordinate in our results. Note that this will not change the flow on the center manifold since \(\epsilon\) remains fixed. For (2), we parameterize based on \(\eta = \epsilon^2\) and the flow is now given by
+where \(F_1\) and \(G_1\) will be \(C^4\) for \(\epsilon > 0\) and \(\mcO(1)\) as \(\epsilon \to 0\). The additional equation \(\epsilon' = 0\) is added so that we may use \(\epsilon\) as an additional coordinate in our results. Note that this will not change the flow on the center manifold since \(\epsilon\) remains fixed. For (H2) and (H3), we parameterize based on \(\eta = \epsilon^2\) and the flow is now given by
 \begin{equation}\label{eta-flow}
 	\begin{aligned}
 		\underline A ' &= \underline B + \eta F_2(\underline A, \underline B, \underline C;\sqrt \eta) \\
@@ -494,3 +497,48 @@ The differential equation for \(q\) comes form \cref{ode-for-q} and the fact tha
 \begin{equation}
 	\dot x_{\pm, \epsilon}(t) =  \epsilon A_{\pm, \epsilon}(\epsilon t) + (\Phi_\mu(\epsilon A_{\pm, \epsilon}(\epsilon t),\epsilon^2 B_{\pm, \epsilon}(\epsilon t) ,\epsilon^3 C_{\pm, \epsilon}(\epsilon t))_\xi.
 \end{equation}
+The coordinates \(A_{\pm, \epsilon}\), \(B_{\pm, \epsilon}\), and  \(C_{\pm, \epsilon}\) are at least \(C^5\) and \(\Phi_\mu\) is at least \(C^4\).
+
+The main result will be stated by writing \cref{fput-lattice-odes} in terms of the strain variables, \(u_n = x_{n+1} - x_n\). That is, we look at the travelling wave solution given by 
+\begin{equation}
+	x_{\pm, \epsilon}(n+1-c\tilde t) - x_{\pm, \epsilon}(n-c\tilde t).
+\end{equation}
+Using a central finite difference, we get that 
+\begin{equation}
+\begin{aligned}
+	x_{\pm, \epsilon}(t+1) - x_{\pm, \epsilon}(t) &= \dot x_{\pm, \epsilon}(t+ 1/2) + \int_{t+1/2}^{t+1} \dddot{x}_{\pm, \epsilon}(s) (t+1 -s)^2\, ds \\
+	 &= \pm \epsilon \phi(\epsilon (t+1/2)) + \epsilon^2 R_{\epsilon, \pm}(\epsilon (t+1/2))
+\end{aligned}
+\end{equation}
+where \(R_{\epsilon, \pm} \in C^3_b\). Thus (after shifting the solution) we have that there is are travelling wave like solutions of the FPUT of the form
+\begin{equation}
+	u_n(t) = \pm \epsilon \phi_{\epsilon, \pm}(\epsilon(n-ct)) + \epsilon^2 R_{\epsilon, \pm}(\epsilon (n-ct))
+\end{equation}
+Additionally, if (H2) holds we improve the error estimate so that there are solutions of the form 
+\begin{equation}
+	u_n(t) = \pm \epsilon \phi(\epsilon(n-ct)) + \epsilon^3 R_{\epsilon, \pm}(\epsilon (n-ct)).
+\end{equation}
+
+To match similar estimates made in \cite{friesecke1999solitary}, one would expect the remainder terms to also be in a Sobolev space like \(H^1\). This is in general not true. The travelling wave solution found above may not approach a different limit asymptotically than \(\epsilon \phi \), in which case the remainder does not approach zero asymptotically in space. A necessary condition to get \(R_{\epsilon,\pm}\in H^1\) would be for \(u_n\) to approach the same limits given as \(\pm \epsilon \phi(\epsilon (n-ct))\) as \(|n| \to \infty\).
+
+A useful tool for showing this is the following invariant for \cref{advance-delay-equation}:
+\begin{equation}\label{advance-delay-invariant}
+	\dot x(t) - \mu \int_t^{t+1} V'(x(s) - x(s-1)) \, ds.
+\end{equation}
+It is easy to check that the above is constant for solutions of the advance-delay differential equation. If \(\dot x(t) \to r_\infty\) as \(t\to \infty\), then \cref{advance-delay-invariant} is equal to 
+\begin{equation}
+	r_\infty - \mu V'(r_\infty)
+\end{equation}
+If we also have that \(\dot x(t) \to r_{-\infty}\) as \(t\to-\infty\), then we have \cref{advance-delay-invariant} is also equal to 
+\begin{equation}
+	r_{-\infty} - \mu V'(r_{-\infty}) 
+\end{equation}
+and so the limits \(r_{\pm \infty}\) satisfy the equation
+\begin{equation}
+	r_\infty - \mu V'(r_\infty) = r_{-\infty} - \mu V'(r_{-\infty}) .
+\end{equation}
+For arbitrary \(V\), we cannot show that the limits agree with the limits of \(\pm\epsilon \phi \). However, if we assume (H3) holds, i.e.\ that \(V(x) = \frac 1 2 x^2 - \frac 1 {24} x^4\), then we do have the limits agree. This follows in part from the oddness of \(V'\). That is, we have from \(V'\) odd that \(\lim_{s\to\infty} A_{\pm,\epsilon} (s) = -\lim_{s\to-\infty} A_{\pm, \epsilon}(s)\) and so \(r_\infty = - r_{-\infty}\). Therefore, we must have that 
+\begin{equation}
+	r_\infty - \mu V'(r_\infty) = 0.
+\end{equation}
+Given that \(V'(x) = x - \frac 1 6\), we have that the only solutions to the above equation are \(r_{\infty} = 0, \pm \epsilon / \sqrt 2\). This implies that the limits of the travelling wave solutions agree with \(\pm \epsilon \phi\). Specifically, we must have \(A_{\pm, \epsilon}(s) \to \pm 1 / \sqrt 2\) as \(s\to \infty\) and \(A_{\pm, \epsilon}(s) \to \mp 1 / \sqrt 2\) as \(s\to -\infty\).
