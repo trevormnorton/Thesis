@@ -202,7 +202,7 @@ where we represent the components of \(\Phi_\mu\) by \((\Phi_\mu^x, \Phi_\mu^\xi
 	\dot C =& -12 \Big[\cdots \Big] \label{dotC} \\
 	D\Phi_\mu&(A,B,C) \begin{bmatrix} \dot A \\ \dot B \\ \dot C \end{bmatrix} = L_{\mu_0} \Phi_\mu + \Big[ \cdots \Big] \begin{bmatrix} 0 \\ \frac 35 \\ 2v^3 - \frac 2 5 v \end{bmatrix} \label{perp}.
 \end{align}
-The \(\cdots\) within the brackets are given the following expression
+The \(\cdots\) within the brackets are given by the following expression
 \begin{equation}
 \begin{aligned}
 	&B (\mu-1) + 2(1-\mu) \Phi_\mu^x + (\mu-1)(\delta^1 \Phi_\mu^X + \delta^{-1} \Phi_\mu^X) \\
@@ -213,13 +213,20 @@ which we abridged to improve legibility. Now using the expression for the deriva
 \begin{equation}\label{final-eq}
 	\frac{\partial\Phi}{\partial A}\left( B + \frac 2 5 [\cdots]\right) + \frac{\partial\Phi}{\partial B}C + \frac{\partial\Phi}{\partial C}\left(-12 [\cdots]\right) = L_{\mu_0} \Phi_\mu + [\cdots] \begin{bmatrix} 0 \\ \frac 35 \\ 2v^3 - \frac 2 5 v \end{bmatrix}.
 \end{equation}
-We will now assume \(\Phi_\mu\) has the form given in \cref{phi-taylor-series}. From the center manifold theorem, we have that the first-order terms and the terms quadratic in just \(A\), \(B\), and \(C\) are zero. Thus we start by first computing the second-order terms where \(\ell = 1\). We get the following set of equations:
+We will now assume \(\Phi_\mu\) has the form given in \cref{phi-taylor-series}. From the center manifold theorem, we have that the constant and first-order terms zero. Thus we start by first computing the second-order terms where \(\ell = 0, 1\). We get the following set of equations:
 \begin{align}
 	\Phi^{(1)}_{100}  & = L_{\mu_0} \Phi^{(1)}_{010} + \begin{bmatrix} 0 \\ \frac 35 \\ 2v^3 - \frac 2 5 v \end{bmatrix} \label{phi-1-010} \\
-	\Phi^{(1)}_{010}  & = L_{\mu_0} \Phi^{(1)}_{001}  \label{phi-1-001}\\
-	0 & = L_{\mu_0} \Phi^{(1)}_{100} \label{phi-1-100}
+	2\Phi^{(0)}_{200}  & = L_{\mu_0} \Phi^{(0)}_{110} \\ 
+	\Phi^{(0)}_{110}  & = L_{\mu_0} \Phi^{(0)}_{020} \\
+	\Phi^{(0)}_{101}  & = L_{\mu_0} \Phi^{(0)}_{011} \\
+	\Phi^{(1)}_{010}  & = L_{\mu_0} \Phi^{(1)}_{001} \label{phi-1-001} \\
+	\Phi^{(0)}_{110}  & = L_{\mu_0} \Phi^{(0)}_{101} \\
+	2\Phi^{(0)}_{020}  & = L_{\mu_0} \Phi^{(0)}_{011} \\
+	\Phi^{(0)}_{011}  & = L_{\mu_0} \Phi^{(0)}_{002} \\
+	0 & = L_{\mu_0} \Phi^{(1)}_{100} \label{phi-1-100} \\
+	0 & = L_{\mu_0} \Phi^{(0)}_{200} \label{phi-0-200}
 \end{align}
-\Cref{phi-1-100} can be solved by noting that \(\zeta_0\) is the only zero eigenfunction for \(L_{\mu_0}\) and \(\zeta_0^*(\Phi_{100}^{(1)}) = 0\) since \(\Phi_\mu\) takes values in \(\bbD_1\), thus \(\Phi_{100}^{(1)} = 0\). Then \cref{phi-1-010} is reduced to 
+\Cref{phi-1-100,phi-0-200} can be solved by noting that \(\zeta_0\) is the only zero eigenfunction for \(L_{\mu_0}\) and \(\zeta_0^*(\Phi_{100}^{(1)}) = \zeta_0^*(\Phi_{200}^{(0)}) = 0\) since \(\Phi_\mu\) takes values in \(\bbD_1\), thus \(\Phi_{100}^{(1)} =\Phi_{200}^{(0)} = 0\). Then \cref{phi-1-010} is reduced to 
 \begin{equation}
 	0 =  L_{\mu_0} \Phi^{(1)}_{010} + \begin{bmatrix} 0 \\ \frac 35 \\ 2v^3 - \frac 2 5 v \end{bmatrix},
 \end{equation}
@@ -235,14 +242,14 @@ for some \(k\in \R\). Imposing the constraint that \(\zeta_0^*(\Phi_{010}^{(1)})
 		0 \\ 0 \\ - \frac 1 {10} v^5 + \frac 1 {15} v^3
 	\end{bmatrix} + k  \zeta_1
 \end{equation}
-with the same value of \(k\).
+with the same value of \(k\). The remaining terms end up equaling zero, which can be found by substituting in known values into the equations.
 
-One can similarly compute the cubic coefficient \(\Phi_{300}^{(0)}\) and get that
+One can also compute the cubic coefficient \(\Phi_{300}^{(0)}\) and get that
 \begin{equation}
 	\Phi_{300}^{(0)} = 0.
 \end{equation}
 
-We will not need to compute any of the other coefficients. As we will soon see, after a change of variables they end up being in the higher order terms to be neglected. Before proceeding, we will need a new parameterization for the center manifold. We let \(\epsilon > 0\) correspond with the amplitude of our travelling wave solution, and look to write \(\mu = c^{-2}\) in terms of \(\epsilon\). As seen in \cite{iooss2000travelling}, the heteroclinic orbits on the center manifold will only exists for \(c^2\) slightly less than \(1\). Based on some formal calculations, it appears \(c^2 = 1 - \epsilon^2/12\) will be the correct scaling. This will be borne out by the coming calculations. Thus we have \[\mu-1 = c^{-2} - 1 = \frac 1 {1-\epsilon^2/12} -1 = \frac {\epsilon^2}{12} +\mcO(\epsilon^4).\] Since we are looking for \(\epsilon\)-amplitude waves with wavelength of order \(\epsilon^{-1}\), we make the following change of variables:
+We will not need to compute any of the other coefficients. As we will soon see, after a change of variables they end up being in the higher order terms to be neglected. Before proceeding, we will need a new parameterization for the center manifold. We let \(\epsilon > 0\) correspond with the amplitude of our travelling wave solution, and look to write \(\mu = c^{-2}\) in terms of \(\epsilon\). As seen in \cite{iooss2000travelling}, the heteroclinic orbits on the center manifold will only exist for \(c^2\) slightly less than \(1\). Based on some formal calculations, it appears \(c^2 = 1 - \epsilon^2/12\) will be the correct scaling. This will be borne out by the coming calculations. We have that \[\mu-1 = c^{-2} - 1 = \frac 1 {1-\epsilon^2/12} -1 = \frac {\epsilon^2}{12} +\mcO(\epsilon^4).\] Since we are looking for \(\epsilon\)-amplitude waves with wavelength of order \(\epsilon^{-1}\), we make the following change of variables:
 \begin{equation}
 	A(t) = \epsilon \underline A (\epsilon t), \quad B(t) = \epsilon^2 \underline B(\epsilon t), \quad \epsilon^3 \underline C(\epsilon t).
 \end{equation}
@@ -308,7 +315,7 @@ which has the solution
 \begin{equation}
 	\underline A(s) = \frac 1 {\sqrt 2} \tanh\left(\frac s {\sqrt 2}\right).
 \end{equation}
-This solution is the profile for the kink solution of the defocusing mKdV, \(\phi\). This represents a heteroclinic orbit for the system of ODEs since \((\underline A(s), \underline B(s), \underline C(s)) \to (\pm1/\sqrt 2, 0, 0)\) as \(s\to\pm \infty.\) One might expect that for \(\epsilon > 0\) that there is also a heteroclinic orbit that is close to the above solution. Thus we want to show that the heteroclinic orbit at \(\epsilon = 0\) persists for small perturbations of \(\epsilon\), and we want to get estimates of these orbits relative to \(\epsilon\). To get these results, we apply Fenichel theory. Review \cref{sec:fenichel_theory} for the relevant results that will be used.
+This solution is the profile for the kink solution of the defocusing mKdV, \(\phi\). This represents a heteroclinic orbit for the system of ODEs since \((\underline A(s), \underline B(s), \underline C(s)) \to (\pm1/\sqrt 2, 0, 0)\) as \(s\to\pm \infty.\) One might expect that for \(\epsilon > 0\) that there is also a heteroclinic orbit that is close to the above solution. Thus we want to show that the heteroclinic orbit at \(\epsilon = 0\) persists for small perturbations of \(\epsilon\), and we want to get estimates of these orbits relative to \(\epsilon\). To get these results, we apply Fenichel theory. Review \cref{condition-verification} for the relevant results that will be used.
 
 The idea behind the proof is to show that there is an overflowing invariant set with an unstable manifold and a corresponding inflowing invariant set with a stable manifold. We then show that at \(\epsilon = 0\) these manifolds intersect transversally at a point, and that this intersection is given by the above heteroclinic orbit. From there, we show that this intersection is preserved for \(\epsilon > 0\) and the heteroclinic orbit remains \(\mcO(\epsilon)\) or \(\mcO(\epsilon^2)\) to the original orbit.
 
@@ -507,16 +514,16 @@ Using a central finite difference, we get that
 \begin{equation}
 \begin{aligned}
 	x_{\pm, \epsilon}(t+1) - x_{\pm, \epsilon}(t) &= \dot x_{\pm, \epsilon}(t+ 1/2) + \int_{t+1/2}^{t+1} \dddot{x}_{\pm, \epsilon}(s) (t+1 -s)^2\, ds \\
-	 &= \pm \epsilon \phi(\epsilon (t+1/2)) + \epsilon^2 R_{\epsilon, \pm}(\epsilon (t+1/2))
+	 &= \pm \epsilon \phi(\epsilon (t+1/2)) + \epsilon^2 \mathcal R_{\epsilon, \pm}(\epsilon (t+1/2))
 \end{aligned}
 \end{equation}
 where \(R_{\epsilon, \pm} \in C^3_b\). Thus (after shifting the solution) we have that there is are travelling wave like solutions of the FPUT of the form
 \begin{equation}
-	u_n(t) = \pm \epsilon \phi_{\epsilon, \pm}(\epsilon(n-ct)) + \epsilon^2 R_{\epsilon, \pm}(\epsilon (n-ct))
+	u_n(t) = \pm \epsilon \phi_{\epsilon, \pm}(\epsilon(n-ct)) + \epsilon^2 \mathcal R_{\epsilon, \pm}(\epsilon (n-ct))
 \end{equation}
 Additionally, if (H2) holds we improve the error estimate so that there are solutions of the form 
 \begin{equation}
-	u_n(t) = \pm \epsilon \phi(\epsilon(n-ct)) + \epsilon^3 R_{\epsilon, \pm}(\epsilon (n-ct)).
+	u_n(t) = \pm \epsilon \phi(\epsilon(n-ct)) + \epsilon^3 \mathcal R_{\epsilon, \pm}(\epsilon (n-ct)).
 \end{equation}
 
 To match similar estimates made in \cite{friesecke1999solitary}, one would expect the remainder terms to also be in a Sobolev space like \(H^1\). This is in general not true. The travelling wave solution found above may not approach a different limit asymptotically than \(\epsilon \phi \), in which case the remainder does not approach zero asymptotically in space. A necessary condition to get \(R_{\epsilon,\pm}\in H^1\) would be for \(u_n\) to approach the same limits given as \(\pm \epsilon \phi(\epsilon (n-ct))\) as \(|n| \to \infty\).
@@ -541,4 +548,77 @@ For arbitrary \(V\), we cannot show that the limits agree with the limits of \(\
 \begin{equation}
 	r_\infty - \mu V'(r_\infty) = 0.
 \end{equation}
-Given that \(V'(x) = x - \frac 1 6\), we have that the only solutions to the above equation are \(r_{\infty} = 0, \pm \epsilon / \sqrt 2\). This implies that the limits of the travelling wave solutions agree with \(\pm \epsilon \phi\). Specifically, we must have \(A_{\pm, \epsilon}(s) \to \pm 1 / \sqrt 2\) as \(s\to \infty\) and \(A_{\pm, \epsilon}(s) \to \mp 1 / \sqrt 2\) as \(s\to -\infty\).
+Given that \(V'(x) = x - \frac 1 6 x^3\), we have that the only solutions to the above equation are \(r_{\infty} = 0, \pm \epsilon / \sqrt 2\). This implies that the limits of the travelling wave solutions agree with \(\pm \epsilon \phi\). Specifically, we must have \(A_{\pm, \epsilon}(s) \to \pm 1 / \sqrt 2\) as \(s\to \infty\) and \(A_{\pm, \epsilon}(s) \to \mp 1 / \sqrt 2\) as \(s\to -\infty\).
+
+Now to get the Sobolev estimate, we use the following lemma.
+\begin{restatable}{lem}{heteroclinicorbitsobolev}\label{heteroclinic-orbit-sobolev}
+	Suppose that there is a \(C^{k}\) (\(k \geq 1\)) family of vector fields on \(\R^n\) that are  parameterized by \(\mu \in I\), where \(I\) is a compact interval. We take the parameterization to be \(C^1\). Assume that there is a family of heteroclinic orbits, \(\gamma_\mu\) that satisfy the following properties:
+	\begin{enumerate}[label=(\roman*)]
+		\item The heteroclinic orbits share asymptotic fixed points. That is, there are points \(\gamma_{\pm \infty}\) such that 
+		\begin{equation}
+			\gamma_\mu(t) \xrightarrow[t\to\pm\infty]{} \gamma_{\pm\infty}, \quad \forall\mu\in I.
+		\end{equation}
+		\item There exists \(\sigma > 0\) such that 
+		\begin{equation}
+			\lim_{t\to\pm\infty} |\gamma_\mu(t) - \gamma_{\pm\infty}|e^{\sigma|t|} = 0, \quad \forall \mu \in I.
+		\end{equation}
+		\item The heteroclinic orbits vary continuously. That is, there is a \(C> 0\) such that for any \(\mu, \mu'\in I\)
+		\begin{equation}
+			|\gamma_\mu(t) -\gamma_{\mu'}(t) | \leq C |\mu - \mu'|, \quad \forall t \in \R.
+		\end{equation}
+	\end{enumerate}
+	Then there exists \(C'>0\) such that for \(m = 1, 2, \ldots, k\) we have that 
+	\begin{equation}\label{expoential-decay-derivatives}
+		\lim_{t\to\pm \infty} |\gamma^{(m)}(t)| e^{\sigma|t|} = 0, \quad \forall \mu \in I
+	\end{equation}
+	and 
+	\begin{equation}\label{continutity-of-derivatives}
+		|\gamma^{(m)}_\mu(t) -\gamma^{(m)}_{\mu'}(t) | \leq C' |\mu - \mu'| \quad \forall t \in \R.
+	\end{equation}
+	Furthermore, the difference of heteroclinic orbits is also in \(H^k(\R; \R^n)\). There is \(C''>0\) such that for any \(\mu, \mu'\in I\)
+	\begin{equation}
+		\| \gamma_\mu - \gamma_{\mu'} \|_{H^k(\R;\R^n)} \leq C'' |\mu -\mu'|.
+	\end{equation}
+\end{restatable}
+The proof of \cref{heteroclinic-orbit-sobolev} is given in \cref{lemma-appendix}.
+Applying the above lemma to the heteroclinic orbits found in \cref{eta-flow} gives that 
+\begin{equation}
+	\gamma_{\pm, \epsilon} - \gamma_{\pm} \in H^5(\R;\R^3),
+\end{equation}
+and in particular
+\begin{equation}
+	A_{\pm, \epsilon} - \phi_{\pm} \in H^5(\R;\R).
+\end{equation}
+A similar argument to the proof of \cref{heteroclinic-orbit-sobolev} can be used to show that 
+\begin{equation}
+	(\Phi_\mu(\epsilon A_{\pm, \epsilon}(s),\epsilon^2 B_{\pm, \epsilon}(s) ,\epsilon^3 C_{\pm, \epsilon}(s))_\xi \in H^4(\R;\R).
+\end{equation}
+Since \(\Phi_\mu\) has no quadratic terms in its Taylor series expansion, the function is at least of order \(\epsilon^3\). Therefore, we have that there is an \(R_{\pm,\epsilon} \in H^4(\R;\R)\) such that
+\begin{equation}
+	\dot x_{\pm, \epsilon }(t) = \pm \epsilon\phi(\epsilon t) + \epsilon^3 R_{\pm,\epsilon}(\epsilon t).
+\end{equation}
+Then converting to strain coordinates as before we have
+\begin{equation}
+	u_n(t) = \pm\epsilon\phi(\epsilon(n-ct)) + \epsilon^3 \mathcal R_{\pm, \epsilon}(\epsilon(n-ct))
+\end{equation}
+where \(\mathcal R_{\pm, \epsilon} \in H^3(\R;\R)\).
+
+We state our results as follows.
+\begin{theorem}
+	There exists \(\epsilon_0> 0\) and \(C> 0\) such that for every \(\epsilon > (0,\epsilon_0]\) there is a travelling wave solution given by \(u_n(t) = u_c(n-ct)\) with positive wave speed \(c^2 = 1 - \epsilon^2/12\). Furthermore, we have the additional estimates on the wave profile of \(u_c\).
+	\begin{enumerate}[label = (\roman*)]
+		\item If (H1) holds, then
+		\begin{equation}
+			\left\| \frac 1 \epsilon u_c\left(\frac \cdot \epsilon \right) - \phi \right\|_{C^3} \leq C \epsilon
+		\end{equation}
+		\item If (H2) holds, then
+		\begin{equation}
+			\left\| \frac 1 \epsilon u_c\left(\frac \cdot \epsilon \right) - \phi \right\|_{C^3} \leq C \epsilon^2
+		\end{equation}
+		\item If (H3) holds, then
+		\begin{equation}
+			\left\| \frac 1 \epsilon u_c\left(\frac \cdot \epsilon \right) - \phi \right\|_{H^3} \leq C \epsilon^2
+		\end{equation}
+	\end{enumerate}
+\end{theorem}
+The same estimates hold for \(-\phi\) as the profile wave or for left-moving waves or for both.

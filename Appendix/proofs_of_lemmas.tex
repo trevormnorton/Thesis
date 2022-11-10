@@ -1,5 +1,44 @@
 % !TeX root = ../thesis.tex
 \chapter{Proofs of lemmas}\label{lemma-appendix}
+\heteroclinicorbitsobolev*
+\begin{proof}
+	The results in \cref{continutity-of-derivatives,expoential-decay-derivatives} will be proved by first showing that \(\gamma^{(m)}(t) = F_{m,\mu}(\gamma(t))\) which is \(C^{k-m+1}\) in space and \(C^1\) in \(\mu\). The base case \(m = 1\) follows from the assumptions. Since \(\gamma_\mu(t)\) is generated from a \(C^k\) vector field, there is a \(C^{k}\) function \(F_{1,\mu}\) such that \(\gamma_\mu'(t) = F_{1,\mu}(\gamma_\mu(t))\). The functions \(F_{1,\mu}\) are \(C^1\) in \(\mu\) by assumption. Proceeding with the induction, we assume that the hypothesis holds for \(m - 1\), i.e., \(\gamma^{(m-1)}_\mu(t) = F_{m-1,\mu}(\gamma_\mu(t))\) with \(F_{m-1,\mu}\) being \(C^{k-m + 2}\) in space and \(C^1\) in \(\mu\). Taking a derivative with respect to \(t\) gives
+	\begin{equation}
+		\begin{aligned}
+			\gamma^{(m)}_\mu (t) &= DF_{m-1,\mu} (\gamma_\mu(t)) \gamma'_\mu(t) \\
+			&= DF_{m-1,\mu} (\gamma_\mu(t)) F_{1,m}(\gamma_\mu(t)) \\
+			&=: F_{m,\mu}(\gamma_\mu(t)),
+		\end{aligned}
+	\end{equation}
+	which is a function that is \(C^{k-m+1}\) is space and \(C^1\) in \(\mu\).
+	
+	Then for any \(m =1,2,\ldots, k\)
+	\begin{equation}
+	\begin{aligned}
+			|\gamma^{(m)}_\mu(t) - \gamma^{(m)}_{\mu'}(t)| &= |F_{m,\mu}(\gamma_\mu(t)) - F_{m,\mu'} (\gamma_{\mu'} (t)) | \\
+			&\leq |F_{m,\mu}(\gamma_\mu(t)) - F_{m,\mu'} (\gamma_{\mu} (t)) | + |F_{m,\mu'}(\gamma_\mu(t)) - F_{m,\mu'} (\gamma_{\mu'} (t)) | \\
+			&\leq \| F_{m,\mu} - F_{m,\mu'} \|_{C^0} + |F_{m,\mu'}(\gamma_\mu(t)) - F_{m,\mu'} (\gamma_{\mu'} (t)) | \\
+			&\leq C' |\mu - \mu'|
+	\end{aligned}
+	\end{equation}
+	where the last line follows from \(\mu \mapsto F_{m,\mu}\) and \(x\mapsto F_{m,\mu'}\) being \(C^1\) and restricted to a compact set. This gives \cref{continutity-of-derivatives}.
+	
+	Note that \(F_{m,\mu} (\gamma_{\pm\infty})\) for \(m=1,2,\ldots, k\). Then for \(|t|\) sufficiently large we have 
+	\begin{equation}
+		|F_{m,\mu}(\gamma_{\mu}(t))| = |F_{m,\mu}(\gamma_{\mu}(t)) - F_{m,\mu}(\gamma_{\pm\infty})| \leq C |\gamma_\mu(t) - \gamma_{\pm\infty}|
+	\end{equation}
+	for some \(C> 0\). Hence
+	\begin{equation}
+	\begin{aligned}
+		\lim_{t\to \pm\infty} |\gamma^{(m)} (t) | e^{\sigma|t|} &= \lim_{t\to\pm\infty} |F_{m,\mu}(\gamma_{\mu}(t))| e^{\sigma |t|} \\
+		&\leq C \lim_{t\to\pm\infty} |\gamma_\mu(t) - \gamma_{\pm\infty}| e^{\sigma |t|} \\
+		&= 0.
+	\end{aligned}
+	\end{equation}
+	
+	%Need to prove the continuity in sobolev norms.
+\end{proof}
+
 \prodruleone*
 \begin{proof}
 	The result follows from induction on \(k\).
