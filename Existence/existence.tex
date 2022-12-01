@@ -526,11 +526,17 @@ The main result will be stated by writing \cref{fput-lattice-odes} in terms of t
 \begin{equation}
 	x_{\pm, \epsilon}(n+1-c\tilde t) - x_{\pm, \epsilon}(n-c\tilde t).
 \end{equation}
-Using a central finite difference, we get that 
+Using a Taylor series expansion centered at \(t + \frac 12 \) for \( x_{\pm, \epsilon}(t+ 1)\) and \( x_{\pm, \epsilon}(t)\), we get 
+\begin{align}
+	& x_{\pm, \epsilon}(t+ 1/2) + \frac 12 \dot x_{\pm, \epsilon}(t+1/2) + \frac 1 8\ddot x_{\pm, \epsilon}(t+1/2) + \frac 1 2\int_{0}^{1/2} \dddot x_{\pm, \epsilon}(t+1/2+s)(s-1/2)^2 \, ds \\
+	& x_{\pm, \epsilon}(t+ 1/2) - \frac 12 \dot x_{\pm, \epsilon}(t+1/2) + \frac 1 8 \ddot x_{\pm, \epsilon}(t+1/2) - \frac 1 2\int_0^{1/2} \dddot x_{\pm, \epsilon}(t+s)s^2 \, ds 
+\end{align}
+respectively for each term. Thus 
 \begin{equation}
 \begin{aligned}
-	x_{\pm, \epsilon}(t+1) - x_{\pm, \epsilon}(t) &= \dot x_{\pm, \epsilon}(t+ 1/2) + \int_{t+1/2}^{t+1} \dddot{x}_{\pm, \epsilon}(s) (t+1 -s)^2\, ds \\
-	 &= \pm \epsilon \phi(\epsilon (t+1/2)) + \epsilon^2 \mathcal R_{\epsilon, \pm}(\epsilon (t+1/2))
+	&x_{\pm, \epsilon}(t+1) - x_{\pm, \epsilon}(t) \\
+	&\quad= \dot x_{\pm, \epsilon}(t+ 1/2) + \frac 12 \int_{0}^{1/2} [\dddot x_{\pm, \epsilon}(t+1/2+s)(s-1/2)^2 - \dddot x_{\pm, \epsilon}(t+s)s^2] ds \\
+	&\quad= \pm \epsilon \phi(\epsilon (t+1/2)) + \epsilon^2 \mathcal R_{\epsilon, \pm}(\epsilon (t+1/2))
 \end{aligned}
 \end{equation}
 where \(R_{\epsilon, \pm} \in C^3_b\). Thus (after shifting the solution) we have that there is are travelling wave like solutions of the FPUT of the form
