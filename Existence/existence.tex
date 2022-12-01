@@ -189,13 +189,21 @@ It is useful to compute \(\widehat L_\mu\) applied to each eigenvector:
 	\widehat L_\mu \zeta_3 &= \zeta_2.
 \end{align}
 Note that these calculations agree with \cref{reduced-eigenfunction} when \(\mu\) is equal to \(\mu_0 = 1\). Now plugging \cref{W-center-manifold} into \cref{reduced-first-order-system} gives
-\begin{multline}
+\begin{multline}\label{center-manifold-necessary-ode}
 	\dot A \zeta_1 + \dot B \zeta_2 + \dot C \zeta_3 + D\Phi_\mu(A,B,C) \begin{bmatrix} \dot A \\ \dot B \\ \dot C \end{bmatrix} = \\
 	B \zeta_1 + B(\mu-1) \begin{bmatrix}0 \\ 1 \\ 0 \end{bmatrix} + C \zeta_3 + L_{\mu_0} \Phi_\mu(A,B,C) \\
 	+ \left(2(1-\mu) \Phi_\mu^x + (\mu-1)(\delta^1 \Phi_\mu^X + \delta^{-1} \Phi_\mu^X)\right) \begin{bmatrix}0 \\ 1 \\ 0 \end{bmatrix} \\
 	+ \mu\left( g\big(A + \frac 1 2 B + \frac 1 6 C + (\delta^1 \Phi_\mu^X -\Phi_\mu^x)\big) - g\big(A - \frac 1 2 B + \frac 1 6 C + (\Phi_\mu^x - \delta^{-1} \Phi_\mu^X)\big) \right) \begin{bmatrix}0 \\ 1 \\ 0 \end{bmatrix}
 \end{multline}
-where we represent the components of \(\Phi_\mu\) by \((\Phi_\mu^x, \Phi_\mu^\xi, \Phi_\mu^X)^T\). Now we can group the \(\zeta_1\), \(\zeta_2\) and \(\zeta_3\) together -- as well as the remaining terms -- to get a system of differential equations on the center manifold:
+where we represent the components of \(\Phi_\mu\) by \((\Phi_\mu^x, \Phi_\mu^\xi, \Phi_\mu^X)^T\). We now apply the spectral projections \(\zeta_i^*\) to \cref{center-manifold-necessary-ode} to get the a system of differential equations. Note that we have 
+\begin{equation}
+	\begin{bmatrix}
+		0 \\ 1 \\ 0 
+	\end{bmatrix} = \frac 25 \zeta_1 - 12 \zeta_3 + \begin{bmatrix}
+	0 \\ \frac 3 5 \\ 2v^3 - \frac 2 5 v
+\end{bmatrix},
+\end{equation}
+where the final term is in the kernel of each \(\zeta^*_i\). Thus we get the following system of differential equations:
 \begin{align}
 	\dot A =& B + \frac 2 5 \Big[ \cdots \Big] \label{dotA}\\
 	\dot B =& C \label{dotB}\\
@@ -203,30 +211,34 @@ where we represent the components of \(\Phi_\mu\) by \((\Phi_\mu^x, \Phi_\mu^\xi
 	D\Phi_\mu&(A,B,C) \begin{bmatrix} \dot A \\ \dot B \\ \dot C \end{bmatrix} = L_{\mu_0} \Phi_\mu + \Big[ \cdots \Big] \begin{bmatrix} 0 \\ \frac 35 \\ 2v^3 - \frac 2 5 v \end{bmatrix} \label{perp}.
 \end{align}
 The \(\cdots\) within the brackets are given by the following expression
-\begin{equation}
+\begin{equation}\label{ellipses}
 \begin{aligned}
 	&B (\mu-1) + 2(1-\mu) \Phi_\mu^x + (\mu-1)(\delta^1 \Phi_\mu^X + \delta^{-1} \Phi_\mu^X) \\
 	&+  \mu\left( g\big(A + \frac 1 2 B + \frac 1 6 C + (\delta^1 \Phi_\mu^X -\Phi_\mu^x)\big) - g\big(A - \frac 1 2 B + \frac 1 6 C + (\Phi_\mu^x - \delta^{-1} \Phi_\mu^X)\big) \right),
 \end{aligned}
 \end{equation}
-which we abridged to improve legibility. Now using the expression for the derivatives in \cref{dotA,dotB,dotC} and plugging into \cref{perp} gives the following:
+which we abridged to improve legibility. \Cref{dotA,dotB,dotC} define the dynamics on the center manifold. \Cref{perp} are the components of \cref{center-manifold-necessary-ode} which are in the kernel of the spectral projections. Now using the expression for the derivatives in \cref{dotA,dotB,dotC} and plugging into \cref{perp} gives the following:
 \begin{equation}\label{final-eq}
 	\frac{\partial\Phi}{\partial A}\left( B + \frac 2 5 [\cdots]\right) + \frac{\partial\Phi}{\partial B}C + \frac{\partial\Phi}{\partial C}\left(-12 [\cdots]\right) = L_{\mu_0} \Phi_\mu + [\cdots] \begin{bmatrix} 0 \\ \frac 35 \\ 2v^3 - \frac 2 5 v \end{bmatrix}.
 \end{equation}
-We will now assume \(\Phi_\mu\) has the form given in \cref{phi-taylor-series}. From the center manifold theorem, we have that the constant and first-order terms zero. Thus we start by first computing the second-order terms where \(\ell = 0, 1\). We get the following set of equations:
+We will now assume \(\Phi_\mu\) has the form given in \cref{phi-taylor-series}. Plugging in the terms of the series into \cref{final-eq} above gives use a system of equations we can iteratively solve to get the coefficients. In particular, we will get equations of the form
+\begin{equation}
+	L_{\mu_0} \Phi^{(\ell)}_{ijk} = \cdots
+\end{equation}
+where the right-hand side will depend on coefficients of order no higher than \(\ell + i + j + k\). From the center manifold theorem, we have that the constant and first-order terms are zero. Thus we start by first computing the second-order terms: that is, terms where \(\ell + i + j + k = 2\). We get the following set of equations as a result.
 \begin{align}
-	\Phi^{(1)}_{100}  & = L_{\mu_0} \Phi^{(1)}_{010} + \begin{bmatrix} 0 \\ \frac 35 \\ 2v^3 - \frac 2 5 v \end{bmatrix} \label{phi-1-010} \\
-	2\Phi^{(0)}_{200}  & = L_{\mu_0} \Phi^{(0)}_{110} \\ 
-	\Phi^{(0)}_{110}  & = L_{\mu_0} \Phi^{(0)}_{020} \\
-	\Phi^{(0)}_{101}  & = L_{\mu_0} \Phi^{(0)}_{011} \\
-	\Phi^{(1)}_{010}  & = L_{\mu_0} \Phi^{(1)}_{001} \label{phi-1-001} \\
-	\Phi^{(0)}_{110}  & = L_{\mu_0} \Phi^{(0)}_{101} \\
-	2\Phi^{(0)}_{020}  & = L_{\mu_0} \Phi^{(0)}_{011} \\
-	\Phi^{(0)}_{011}  & = L_{\mu_0} \Phi^{(0)}_{002} \\
+	0 &= L_{\mu_0} \Phi^{(2)}_{000} \label{phi-2-000}\\ 
 	0 & = L_{\mu_0} \Phi^{(1)}_{100} \label{phi-1-100} \\
-	0 & = L_{\mu_0} \Phi^{(0)}_{200} \label{phi-0-200}
+	\Phi^{(1)}_{100}  & = L_{\mu_0} \Phi^{(1)}_{010} + \begin{bmatrix} 0 \\ \frac 35 \\ 2v^3 - \frac 2 5 v \end{bmatrix} \label{phi-1-010} \\
+	\Phi^{(1)}_{010}  & = L_{\mu_0} \Phi^{(1)}_{001} \label{phi-1-001} \\
+	0 & = L_{\mu_0} \Phi^{(0)}_{200} \label{phi-0-200}\\
+	2\Phi^{(0)}_{200}  & = L_{\mu_0} \Phi^{(0)}_{110} \\ 
+		\Phi^{(0)}_{110}  & = L_{\mu_0} \Phi^{(0)}_{101} \\
+	\Phi^{(0)}_{110}  & = L_{\mu_0} \Phi^{(0)}_{020} \\
+	2\Phi^{(0)}_{020}  + \Phi^{(0)}_{101} & = L_{\mu_0} \Phi^{(0)}_{011} \\
+	\Phi^{(0)}_{011}  & = L_{\mu_0} \Phi^{(0)}_{002} 
 \end{align}
-\Cref{phi-1-100,phi-0-200} can be solved by noting that \(\zeta_0\) is the only zero eigenfunction for \(L_{\mu_0}\) and \(\zeta_0^*(\Phi_{100}^{(1)}) = \zeta_0^*(\Phi_{200}^{(0)}) = 0\) since \(\Phi_\mu\) takes values in \(\bbD_1\), thus \(\Phi_{100}^{(1)} =\Phi_{200}^{(0)} = 0\). Then \cref{phi-1-010} is reduced to 
+\Cref{phi-2-000,phi-1-100,phi-0-200} can be solved by noting that \(\zeta_0\) is the only zero eigenfunction for \(L_{\mu_0}\) and \(\zeta_0^*(\Phi_{000}^{(2) } = \zeta_0^*(\Phi_{100}^{(1)}) = \zeta_0^*(\Phi_{200}^{(0)}) = 0\) since \(\Phi_\mu\) takes values in \(\bbD_1\), thus \(\Phi_{000}^{(2)} = \Phi_{100}^{(1)} =\Phi_{200}^{(0)} = 0\). Then \cref{phi-1-010} is reduced to 
 \begin{equation}
 	0 =  L_{\mu_0} \Phi^{(1)}_{010} + \begin{bmatrix} 0 \\ \frac 35 \\ 2v^3 - \frac 2 5 v \end{bmatrix},
 \end{equation}
@@ -244,24 +256,28 @@ for some \(k\in \R\). Imposing the constraint that \(\zeta_0^*(\Phi_{010}^{(1)})
 \end{equation}
 with the same value of \(k\). The remaining terms end up equaling zero, which can be found by substituting in known values into the equations.
 
-One can also compute the cubic coefficient \(\Phi_{300}^{(0)}\) and get that
+One can compute the cubic coefficients in a similar way. In particular, we have that 
 \begin{equation}
-	\Phi_{300}^{(0)} = 0.
+	0 = L_{\mu_0}\Phi_{300}^{(0)}
 \end{equation}
-
-We will not need to compute any of the other coefficients. As we will soon see, after a change of variables they end up being in the higher order terms to be neglected. Before proceeding, we will need a new parameterization for the center manifold. We let \(\epsilon > 0\) correspond with the amplitude of our travelling wave solution, and look to write \(\mu = c^{-2}\) in terms of \(\epsilon\). As seen in \cite{iooss2000travelling}, the heteroclinic orbits on the center manifold will only exist for \(c^2\) slightly less than \(1\). Based on some formal calculations, it appears \(c^2 = 1 - \epsilon^2/12\) will be the correct scaling. This will be borne out by the coming calculations. We have that \[\mu-1 = c^{-2} - 1 = \frac 1 {1-\epsilon^2/12} -1 = \frac {\epsilon^2}{12} +\mcO(\epsilon^4).\] Since we are looking for \(\epsilon\)-amplitude waves with wavelength of order \(\epsilon^{-1}\), we make the following change of variables:
+and so \(\Phi_{300}^{(0)} = 0\).
+We will not need to compute any of the other coefficients. As we will soon see, after a change of variables they end up being in the higher order terms to be neglected. Before proceeding, we will need a new parameterization for the center manifold. We let \(\epsilon > 0\) be the new bifurcation parameter such that \(c^{2} = 1- \epsilon^2/12\). This choice of parameterization is partially based on the parameterization in \cite{friesecke1999solitary}, and -- as we will soon see -- the value of \(\epsilon\) is related to the amplitude of the travelling wave solutions. The bifurcation will now occur at \(\epsilon = 0\), which corresponds to the case where \(\mu = c^{-2} = 1\). As seen in \cite{iooss2000travelling}, the heteroclinic orbits on the center manifold will only exist for \(c^2\) slightly less than \(1\), and so we will look for these orbits when \(\epsilon > 0\). We have that \[\mu-1 = c^{-2} - 1 = \frac 1 {1-\epsilon^2/12} -1 = \frac {\epsilon^2}{12} +\mcO(\epsilon^4).\] Since we are looking for \(\epsilon\)-amplitude waves with wavelength of order \(\epsilon^{-1}\), we are motivated to make the following change of variables:
 \begin{equation}
 	A(t) = \epsilon \underline A (\epsilon t), \quad B(t) = \epsilon^2 \underline B(\epsilon t), \quad \epsilon^3 \underline C(\epsilon t).
+\end{equation}
+By grouping together orders of \(\epsilon\) and using the values of \(\Phi^{(\ell)}_{ijk}\) computed above, we have the following expansion of the terms in \cref{ellipses}
+\begin{equation}
+	\frac {\epsilon^4} {12} (\underline B - 6\underline A^2 \underline B) + \frac {\epsilon^5} 6 V^{(5)}(0) \cdot \underline A^3\underline B + \mathcal O (\epsilon^6)
 \end{equation}
 Then the equations of motion on the center manifold become
 \begin{equation}\label{eqns-center-manifold}
 \begin{aligned}
 	\underline A ' &= \underline B + \mathcal O(\epsilon) \\
 	\underline B ' &= \underline C \\
-	\underline C ' &= - \underline B + 6 \underline A^2 \underline B + \mathcal O(\epsilon).
+	\underline C ' &= - \underline B + 6 \underline A^2 \underline B + \mathcal O(\epsilon),
 \end{aligned}
 \end{equation}
-Here the \(\mcO(\epsilon)\) represents functions that are at least \(C^4\) in \(\epsilon\), \(\underline A\), \(\underline B\), and \(\underline C\) and can be bounded by a constant times \(\epsilon\) when we are on bounded domains and \(\epsilon >0\) sufficiently small. Since we will be looking for bounded solutions on the center manifold, these terms can be controlled. We may upgrade this to \(\mcO(\epsilon^2)\) if we additionally have \(V(x) = \frac 1 2 x^2 - \frac 1 {24} x^4 + \mcO(x^6)\) as \(x\to 0\).
+where \('\) represents the derivative with respect to the new time variable \(s = \epsilon t\). The \(\mcO(\epsilon)\) represents functions that are at least \(C^4\) in \(\epsilon\), \(\underline A\), \(\underline B\), and \(\underline C\) and can be bounded by a constant times \(\epsilon\) when we are on bounded domains and \(\epsilon >0\) sufficiently small. Since we will be looking for bounded solutions on the center manifold, these terms can be controlled. We may upgrade this to \(\mcO(\epsilon^2)\) if we additionally have \(V^{(5)} = 0\).
 
 We shall consider three different assumptions on the potential going forward:
 \begin{enumerate}[label = (H\arabic*)]
@@ -480,7 +496,7 @@ From the previous section, we have the existence of heteroclinic orbits that are
 
 First, let us introduce notation for the perturbed heteroclinic orbits. We shall denote by \(\gamma_{\pm, \epsilon} = (A_{\pm, \epsilon} , B_{\pm, \epsilon}, C_{\pm,\epsilon})\) to be the perturbations of \(\gamma_{\pm}\) for \(\epsilon > 0\), where we set \(\gamma_{\pm,\epsilon}(0)\) to be the point where the orbits cross the \(\underline{B}\underline{C}\)-plane. From the continuity of the manifolds with respect to \(\epsilon\), we have that \(|\gamma_{\pm, \epsilon}(0) - \gamma_\pm(0)| = \mcO(\epsilon)\) for small \(\epsilon\). We can extend this estimate onto arbitrarily large time scales by applying an argument using the Gr\"owall inequality. That is, for every \(T> 0\) we have for sufficiently small \(\epsilon\) that \(|\gamma_{\pm, \epsilon}(s) - \gamma_\pm(s)| = C\epsilon\) for all \(s\in[-T,T]\), where \(C>0\) is independent of \(s\). 
 
-This argument is insufficient for extending the estimate to all time. To get that the orbits remain close as \(s\to\pm\infty\), we can rely on part 7 of \cref{foliation-of-unstable-manifold}. Taking \((\epsilon, \omega)\) sufficiently close to \((0, A_{-\infty})\) as base points, the theorem states that the unstable manifold is \(C^1\) with respect to \((\epsilon, \omega)\). Note that the overflowing invariant manifold (away from the bump function) consists only of fixed points, so orbits on the unstable manifold approach a unique fixed point given by \((\epsilon, \omega)\). Take \(T> 0\) large enough so that all the points on \(\mathcal M_\epsilon\) (for \(\epsilon \leq \epsilon_0\)) which intersect the \(\underline B \underline C\)-plane are in the local unstable manifold when flowed backward in time by \(-T\) units. Then locally, there is a one-to-one correspondence between these points flowed backward in time and the points in \(\overline M\); furthermore, this correspondence is \(C^1\) due to \cref{foliation-of-unstable-manifold}. This implies that if the points flowed backward are \(\mcO(\epsilon)\) close then there backward limits are \(\mcO(\epsilon)\) close as well. In particular, the backward limits of \(\gamma_{+,\epsilon}\) and \(\gamma_+\) are \(\mcO(\epsilon)\) close. The argument for the stable manifold is analogous. This shows that the heteroclinic orbits remain \(\mcO(\epsilon)\) for all time. In the case where \(V(x) = \frac 12 x^2 - \frac 1 {24} x^4 + \mcO(\epsilon^6)\), this can be upgraded to \(\mcO(\epsilon^2)\); the proof is similar but we use the regularity of the manifolds with respect to \(\eta = \epsilon^2\) instead. Therefore, we have the following.
+This argument is insufficient for extending the estimate to all time. To get that the orbits remain close as \(s\to\pm\infty\), we can rely on part 7 of \cref{foliation-of-unstable-manifold}. Taking \((\epsilon, \omega)\) sufficiently close to \((0, A_{-\infty})\) as base points, the theorem states that the unstable manifold is \(C^1\) with respect to \((\epsilon, \omega)\). Note that the overflowing invariant manifold (away from the bump function) consists only of fixed points, so orbits on the unstable manifold approach a unique fixed point given by \((\epsilon, \omega)\). Take \(T> 0\) large enough so that all the points on \(\mathcal M_\epsilon\) (for \(\epsilon \leq \epsilon_0\)) which intersect the \(\underline B \underline C\)-plane are in the local unstable manifold when flowed backward in time by \(-T\) units. Then locally, there is a one-to-one correspondence between these points flowed backward in time and the points in \(\overline M\); furthermore, this correspondence is \(C^1\) due to \cref{foliation-of-unstable-manifold}. This implies that if the points flowed backward are \(\mcO(\epsilon)\) close then their backward limits are \(\mcO(\epsilon)\) close as well. In particular, the backward limits of \(\gamma_{+,\epsilon}\) and \(\gamma_+\) are \(\mcO(\epsilon)\) close. The argument for the stable manifold is analogous. This shows that the heteroclinic orbits remain \(\mcO(\epsilon)\) close for all time. In the case where \(V(x) = \frac 12 x^2 - \frac 1 {24} x^4 + \mcO(\epsilon^6)\), this can be upgraded to \(\mcO(\epsilon^2)\); the proof is similar but we use the regularity of the manifolds with respect to \(\eta = \epsilon^2\) instead. Therefore, we have the following.
 \begin{prop}
 	There exists \(\epsilon_0 > 0\) such that for every \(\epsilon\in(0,\epsilon_0]\) there exist two heteroclinic orbits \(\gamma_{\pm, \epsilon}\) of \cref{epsilon-flow} such that 
 	\begin{equation}
@@ -500,7 +516,7 @@ where \(q_{\pm, \epsilon}(t)\) satisfies the differential equation
 \begin{equation}
 	\frac{dq_{\pm, \epsilon}}{dt} =  \epsilon A_{\pm, \epsilon}(\epsilon t).
 \end{equation}
-The differential equation for \(q\) comes form \cref{ode-for-q} and the fact that \(\zeta_1^*(\Phi_\mu) = 0\). Taking a derivative we also have
+The differential equation for \(q\) comes from \cref{ode-for-q} and the fact that \(\zeta_1^*(\Phi_\mu) = 0\). Using the fact that for solutions of \cref{first-order-abstract-ode} satisfy \(\partial_t (U)_x = U_\xi\), we also have that
 \begin{equation}
 	\dot x_{\pm, \epsilon}(t) =  \epsilon A_{\pm, \epsilon}(\epsilon t) + (\Phi_\mu(\epsilon A_{\pm, \epsilon}(\epsilon t),\epsilon^2 B_{\pm, \epsilon}(\epsilon t) ,\epsilon^3 C_{\pm, \epsilon}(\epsilon t))_\xi.
 \end{equation}
@@ -552,33 +568,41 @@ Given that \(V'(x) = x - \frac 1 6 x^3\), we have that the only solutions to the
 
 Now to get the Sobolev estimate, we use the following lemma.
 \begin{restatable}{lem}{heteroclinicorbitsobolev}\label{heteroclinic-orbit-sobolev}
-	Suppose that there is a \(C^{k}\) (\(k \geq 1\)) family of vector fields on \(\R^n\) that are  parameterized by \(\mu \in I\), where \(I\) is a compact interval. We take the parameterization to be \(C^1\). Assume that there is a family of heteroclinic orbits, \(\gamma_\mu\) that satisfy the following properties:
+	Suppose there is a family of vector fields on \(\R^n\) parameterized by \(\mu\in I\), where \(I\) is a compact interval.  Take the vector fields to be \(C^k\) on \(\R^n\) and \(C^1\) with respect to \(\mu\). Assume that there is a family of heteroclinic orbits, \(\gamma_\mu\) that satisfy the following properties:
 	\begin{enumerate}[label=(\roman*)]
 		\item The heteroclinic orbits share asymptotic fixed points. That is, there are points \(\gamma_{\pm \infty}\) such that 
 		\begin{equation}
 			\gamma_\mu(t) \xrightarrow[t\to\pm\infty]{} \gamma_{\pm\infty}, \quad \forall\mu\in I.
 		\end{equation}
-		\item There exists \(\sigma > 0\) such that 
+		\item There exists \(C > 0\) and \(\sigma > 0\) such that 
 		\begin{equation}
-			\lim_{t\to\pm\infty} |\gamma_\mu(t) - \gamma_{\pm\infty}|e^{\sigma|t|} = 0, \quad \forall \mu \in I.
+			|\gamma_\mu(\pm \tau) - \gamma_{\pm\infty}| \leq C e^{-\sigma \tau}, \quad \forall \mu\in I, \forall \tau\geq 0
 		\end{equation}
-		\item The heteroclinic orbits vary continuously. That is, there is a \(C> 0\) such that for any \(\mu, \mu'\in I\)
+		\item There is a \(C> 0\) such that for any \(\mu, \mu'\in I\)
 		\begin{equation}
 			|\gamma_\mu(t) -\gamma_{\mu'}(t) | \leq C |\mu - \mu'|, \quad \forall t \in \R.
 		\end{equation}
+		\item The limits \[v_\mu^{\pm} = \lim_{t\to\pm\infty} \frac{\dot \gamma_\mu(t)}{|\dot \gamma_\mu(t)|}\] exist and the functions
+		\begin{equation}
+			\mu \mapsto v^\pm_\mu
+		\end{equation}
+		are \(C^1\).
 	\end{enumerate}
-	Then there exists \(C'>0\) such that for \(m = 1, 2, \ldots, k\) we have that 
-	\begin{equation}\label{expoential-decay-derivatives}
-		\lim_{t\to\pm \infty} |\gamma^{(m)}(t)| e^{\sigma|t|} = 0, \quad \forall \mu \in I
-	\end{equation}
-	and 
-	\begin{equation}\label{continutity-of-derivatives}
-		|\gamma^{(m)}_\mu(t) -\gamma^{(m)}_{\mu'}(t) | \leq C' |\mu - \mu'| \quad \forall t \in \R.
-	\end{equation}
-	Furthermore, the difference of heteroclinic orbits is also in \(H^k(\R; \R^n)\). There is \(C''>0\) such that for any \(\mu, \mu'\in I\)
-	\begin{equation}
-		\| \gamma_\mu - \gamma_{\mu'} \|_{H^k(\R;\R^n)} \leq C'' |\mu -\mu'|.
-	\end{equation}
+	Then there exists \(C'>0\) such that 
+	\begin{enumerate}[label=(\alph*)]
+		\item For \(m = 1, 2, \ldots, k\) we have that 
+		\begin{equation}\label{expoential-decay-derivatives}
+			|\gamma_\mu^{(m)}(t)|  \leq C' e^{-\sigma|t|}, \quad \forall\mu\in I, \forall t\in \R.
+		\end{equation}
+		\item For \(m = 0,1,2,\ldots, k\), we have for any \(\mu,\mu'\in I\) that
+		\begin{equation}
+			|\gamma_\mu^{(m)}(t) - \gamma_{\mu'}^{(m)}(t) |  \leq C' e^{-\sigma|t|} |\mu - \mu'|, \quad \forall\mu\in I, \forall t\in \R.
+		\end{equation}
+		\item The difference of the orbits are in \(H^k(\R;\R^n)\) and for any \(\mu,\mu'\in I\)
+		\begin{equation}
+			\| \gamma_\mu - \gamma_{\mu'} \|_{H^k(\R;\R^n)} \leq C' |\mu -\mu'|.
+		\end{equation}
+	\end{enumerate}
 \end{restatable}
 The proof of \cref{heteroclinic-orbit-sobolev} is given in \cref{lemma-appendix}.
 Applying the above lemma to the heteroclinic orbits found in \cref{eta-flow} gives that 
