@@ -1,30 +1,26 @@
 % !TeX root = ../thesis.tex
 \chapter{Proofs of lemmas}\label{lemma-appendix}
-\heteroclinicorbitsobolev*
-\begin{proof}
-	 Parts (a)-(c) will be proved by first showing that \(\gamma^{(m)}(t) = F_{m,\mu}(\gamma(t))\) which is \(C^{k-m+1}\) in \(\R^n\) and \(C^1\) in \(\mu\). The base case \(m = 1\) follows from the assumptions. Since \(\gamma_\mu(t)\) is generated from a \(C^k\) vector field, there is a \(C^{k}\) function \(F_{1,\mu}\) such that \(\gamma_\mu'(t) = F_{1,\mu}(\gamma_\mu(t))\). The functions \(F_{1,\mu}\) are \(C^1\) in \(\mu\) by assumption. Proceeding with the induction, we assume that the hypothesis holds for \(m - 1\), i.e., \(\gamma^{(m-1)}_\mu(t) = F_{m-1,\mu}(\gamma_\mu(t))\) with \(F_{m-1,\mu}\) being \(C^{k-m + 2}\) in space and \(C^1\) in \(\mu\). Taking a derivative with respect to \(t\) gives
+\begin{lem}
+	Suppose \(F(\mu, z)\) are a family of \(C^1\) functions on \(I \times \R\), where \(I\) is a compact intervaland \(F(\mu, \pm 1) = 0\). Furthermore, assume
+	\begin{equation}
+		\pm \frac{\partial F}{\partial s} (\mu , \pm 1) < 0.
+	\end{equation}
+	Then the family of of solutions to 
 	\begin{equation}
 		\begin{aligned}
-			\gamma^{(m)}_\mu (t) &= DF_{m-1,\mu} (\gamma_\mu(t)) \gamma'_\mu(t) \\
-			&= DF_{m-1,\mu} (\gamma_\mu(t)) F_{1,m}(\gamma_\mu(t)) \\
-			&=: F_{m,\mu}(\gamma_\mu(t)),
+			\dot s_\mu(t) &= F(\mu, s_\mu) \\
+			s_\mu(0) &= 0
 		\end{aligned}
 	\end{equation}
-	which is a function that is \(C^{k-m+1}\) is \(\R^n\) and \(C^1\) in \(\mu\). Note also that \(F_{m,\mu} (\gamma_{\pm\infty}) = 0\) for each \(m\) and \(\mu\).
-	\begin{enumerate}[label=(\alph*)]
-		\item This result follows from the fact that
-		\begin{equation}
-			\begin{aligned}
-				|\gamma_\mu^{(m)}| &= |F_{m,\mu} (\gamma_\mu(t)) | \\
-				&= |F_{m,\mu} (\gamma_\mu(t))  - F_{m,\mu} (\gamma_{\pm\infty})| \\
-				&\leq C |\gamma_\mu(t) - \gamma_{\pm\infty}|
-			\end{aligned}
-		\end{equation}
-		and assumption (ii).
-		\item 
-	\end{enumerate}
-
-	%Need to prove the continuity in sobolev norms.
+	are heteroclinic orbits such that there are constants \(C, \alpha > 0\) where 
+	\begin{equation}
+		|s_{\mu_1} (t) - s_{\mu_2}(t) | \leq C e^{-\alpha |t|} |\mu_1- \mu_2|
+	\end{equation}
+	for all \(\mu_1,\mu_2 \in I\).
+\end{lem}
+\heteroclinicorbitsobolev*
+\begin{proof}
+	 \emph{Look at the local coordinates. Show \(z\) satisfy the estimate and then use the fact that the manifold is parameterized by \(z\). }
 \end{proof}
 
 \prodruleone*

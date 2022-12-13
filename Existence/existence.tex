@@ -12,13 +12,13 @@ The goal of this chapter is to show the existence of the travelling wave solutio
 \end{equation}
 when \(c\) is slightly smaller than \(V''(0) = 1\).
 
-One would expect that methods used to find the soliton-like solution for the FPUT can also be applied to this case. Notably Friesecke and Pego showed in \cite{friesecke1999solitary} that there exists a solitary wave solution whose profile is described by the KdV soliton using a fixed-point argument. The argument relies on creating a map from \(H^1(\R)\) to itself using Fourier multipliers such that the fixed point of the map is the profile of the solitary wave. However, this argument does not extend to our case since the function \(\phi\) is not in a Sobolev space and its Fourier transform is defined only in a distributional sense. Due to this problem, we neglect the functional approach and focus on techniques from bifurcation theory. 
+One would expect that methods used to find the soliton-like solution for the FPUT can also be applied to this case. Notably Friesecke and Pego showed in \cite{friesecke1999solitary} that there exists a solitary wave solution whose profile is described by the KdV soliton using a fixed-point argument. The argument relies on creating a map from \(H^1(\R)\) to itself using Fourier multipliers such that the fixed point of the map is the profile of the solitary wave. However, this argument does not seem to extend to our case since the function \(\phi\) is not in a Sobolev space and its Fourier transform is defined only in a distributional sense. Due to this problem, we neglect the functional approach and focus on techniques from bifurcation theory. 
 
 
 %Use center manifold contruction
 %%Usefule for finding small bounded solutions
 %%Bifurcation parameter will be c<c^*
-One common technique for constructing travelling wave solutions to PDEs is by using the center manifold theorem. For PDEs of one spatial and one temporal variable, the strategy is to assume that the solution is a travelling wave (i.e.\ of the form \(f(x-ct)\)) to eliminate the derivative with respect to \(t\) and reduce the problem to an ODE with respect to the spatial variable \(x\). Finding bounded solutions of this ODE then results in travelling wave solutions of the PDE. The center manifold is an important tool for finding these solutions since (1) it is finite-dimensional, (2) can typically be approximated by Taylor series up to arbitrary order, and (3) contains all bounded solution. If a linear operator has an eigenvalue pass through the line \(\{\lambda\in\mathbb C: \Re \lambda = 0\}\) as a parameter \(\mu\) varies, then one typically has a center manifold containing small bounded parameterized by \(\mu\). Such a construction was carried out in \cite{iooss2000travelling}, in which the existence of several travelling wave solutions were proved. The bifurcation parameter in this paper was given in part by the wave speed. In fact, [Thm.\ 5]\cite{iooss2000travelling} shows the existence of a heteroclinic orbit on the center manifold when \(c\) is slightly smaller than \(1\). This heteroclinic orbit corresponds to the kink-like solution of the FPUT we are interested in. But no description of its wave profile was given, so obtaining an estimate of the form in \cref{formal-approximation} is still an open problem.
+One common technique for constructing travelling wave solutions to PDEs is by using the center manifold theorem. For PDEs of one spatial and one temporal variable, the strategy is to assume that the solution is a travelling wave (i.e.\ of the form \(f(x-ct)\)) to eliminate the derivative with respect to \(t\) and reduce the problem to an ODE with respect to the spatial variable \(x\). Finding bounded solutions of this ODE then results in travelling wave solutions of the PDE. The center manifold is an important tool for finding these solutions since (1) it is finite-dimensional, (2) can typically be approximated by Taylor series up to arbitrary order, and (3) contains all bounded solutions. If a linear operator has an eigenvalue pass through the line \(\{\lambda\in\mathbb C: \Re \lambda = 0\}\) as a parameter \(\mu\) varies, then one typically has a center manifold containing small bounded solutions parameterized by \(\mu\). Similar techniques can be used to find center manifold for more general semi-dynamical systems defined on Banach spaces \cite{vanderbauwhede1992center}. Such a construction was carried out in \cite{iooss2000travelling} for an abstract ODE representing an advance delay differential equation. The existence of several travelling wave solutions on the FPUT lattice were proved. The bifurcation parameter in this paper was given in part by the wave speed. In fact, [Thm.\ 5]\cite{iooss2000travelling} shows the existence of a heteroclinic orbit on the center manifold when \(c\) is slightly smaller than \(1\). This heteroclinic orbit corresponds to the kink-like solution of the FPUT we are interested in. But no description of its wave profile was given, so obtaining an estimate of the form in \cref{formal-approximation} is still an open problem.
 
 
 %Sketch of proof: 
@@ -43,7 +43,7 @@ where the \(x(t)\) on the right is a function from \(\R\) to \(\R\). Hence \(x(t
 \begin{equation}\label{advance-delay-equation}
 	\ddot x (t) = \mu \Big(V'(x(t+1) - x(t)) - V(x(t) - x(t-1)) \Big)
 \end{equation}
-where \(\mu = c^{-2}\). Instead of working directly with \cref{advance-delay-equation}, we rewrite the equation as a first-order differential equation in a Banach space. \Cref{advance-delay-equation} cannot be written as a differential equation in a finite-dimensional phase space, and so we use a Banach space to represent a ``slice'' of the function on the interval \([t-1,t+1]\) for \(t\in\R\). We introduce a new variable \(v\in[-1,1]\) and functions \(X(t,v) = x(t+v)\). We use the notation \(\xi(t) = \dot x(t)\), \(\delta^1X(t,v) = X(t,1)\), and \(\delta^{-1} X(t,v) = X(t,-1)\). Then letting \(U(t) = (x(t), \xi(t), X(t,v))^T\) represent our solution, \cref{advance-delay-equation} can be written as follows:
+where \(\mu = c^{-2}\). For delay differential equations like the one above, we are inherently working with an infinite-dimensional problem; the dynamics of \(x(t)\) are determined by its value on an interval of \(t\). Instead of working directly with \cref{advance-delay-equation}, we rewrite the equation as a first-order differential equation in a Banach space. \Cref{advance-delay-equation} cannot be written as a differential equation in a finite-dimensional phase space, and so we use a Banach space to represent a ``slice'' of the function on the interval \([t-1,t+1]\) for \(t\in\R\). We introduce a new variable \(v\in[-1,1]\) and functions \(X(t,v) = x(t+v)\). We use the notation \(\xi(t) = \dot x(t)\), \(\delta^1X(t,v) = X(t,1)\), and \(\delta^{-1} X(t,v) = X(t,-1)\). Then letting \(U(t) = (x(t), \xi(t), X(t,v))^T\) represent our solution, \cref{advance-delay-equation} can be written as follows:
 \begin{equation}\label{first-order-abstract-ode}
 	\partial_t U = L_\mu U + M_\mu (U)
 \end{equation}
@@ -63,10 +63,16 @@ where we define \(g(x)= V'(x) - x\). We will also require that \(X(t,0) = x(t)\)
 \begin{equation}
 	\begin{aligned}
 		\bbH &= \R^2 \times C[-1,1] \\
-		\bbD &= \{U \in \R^2 \times C^1[-1,1] \mid X(0) = x\}
+		\bbD &= \{(x, \xi, X) \in \R^2 \times C^1[-1,1] \mid X(0) = x\}
 	\end{aligned}
 \end{equation}
 where the spaces have the usual maximum norms. The operator \(L_\mu\) is continuous from \(\bbD\) to \(\bbH\). Assuming that \(g\in C^4(I)\) where \(I\) is an open neighborhood around \(0\), we have \(M_\mu \in C^4(\bbD,\bbD)\).
+
+The system above has a reversibility symmetry \(S\) given by 
+\begin{equation}
+	S(x, \xi, X)^T = (-x, \xi, -X \circ s)^T
+\end{equation}
+where \(X\circ s (v) = X(-v)\). That is, \cref{first-order-abstract-ode} is reversible and if \(U(t)\) is a solution then so is \(S\circ U(-t)\). Additionally, if \(V'(x)\) is odd, then \cref{first-order-abstract-ode} is also odd; this means that if \(U(t)\) is a solution then so is \(-U(t)\).
 
 Note that \cref{first-order-abstract-ode} is not well-posed and solutions may not correspond with the requirement that \(X(t,0) = x(t)\). However, we can show that there is a center manifold which contains global solutions and lies in \(\bbD\), and so we will be able to extract the travelling wave solutions that we are interested in.
 
@@ -94,22 +100,28 @@ The spectral projection onto the eigenspace can be found using the Laurent expan
 \begin{equation}
 	(\lambda \mathrm I - L_{\mu_0} )^{-1} = \frac{D^3}{\lambda^4} + \frac{D^2}{\lambda^2} + \frac{D}{\lambda^2} + \frac P \lambda - \tilde L _{\mu_0} ^{-1} + \lambda \tilde L_{\mu_0} ^{-1} - \cdots
 \end{equation}
-where \(P\) is the spectral projection, \(D = L_{\mu_0} P\), and \(\tilde L _{\mu_0} ^{-1}\) is the pseudo-inverse of \(L_{\mu_0}\) on the subspace \((\mathrm I - P)\bbH\) (see \cite{kato2013perturbation}). The spectral projection satisfies
+where \(P\) is the spectral projection onto the \(\lambda = 0\) eigenspace, \(D = L_{\mu_0} P\), and \(\tilde L _{\mu_0} ^{-1}\) is the pseudo-inverse of \(L_{\mu_0}\) on the subspace \((\mathrm I - P)\bbH\) (see \cite{kato2013perturbation}). The spectral projection satisfies
 \begin{equation}
 \begin{aligned}
 	PW &= ((PW)_x, (PW)_\xi, (PW)_X)^T \\
 	&= (PW)_x \zeta_0 + (DW)_x\zeta_1 + (D^2W)_x\zeta_2 + (D^3W)_x \zeta_3
 \end{aligned}
 \end{equation}
-The projection can be computed by finding the resolvent \((\lambda \mathrm I - L_\mu)^{-1}\) and then determining the residue of a meromorphic function. The resolvent operator is straightforward to compute. For \(F=(f_0,f_1,F_2)^T\in\bbH\), we want to find \(U = (x,\xi, X)^T\in \bbD\) such that
+The projection operator has an explicit form given by 
+\begin{equation}
+	P = \oint_\gamma (\lambda I - L_\mu)^{-1} \, d\lambda
+\end{equation}
+where \(\gamma\) is a curve going around \(\lambda = 0\) counter-clockwise and not intersecting the spectrum of \(L_\mu\). The projection can be computed by first finding the resolvent \((\lambda \mathrm I - L_\mu)^{-1}\) and then using the residue theorem to compute the integral. 
+
+The resolvent operator is straightforward to find. For \(F=(f_0,f_1,F_2)^T\in\bbH\), we want to find \(U = (x,\xi, X)^T\in \bbD\) such that
 \begin{equation}
 	(\lambda\mathrm I - L_\mu) U = F.
 \end{equation}
-The operator on the left-hand side when \(N(\lambda ;\mu) \neq 0\) where 
+The above is a differential equation with coupled algebraic equations. The operator on the left-hand side is invertible when \(N(\lambda ;\mu) \neq 0\), where 
 \begin{equation}
-	N(\lambda;\mu) = - \lambda^2 + 2\mu(\cosh \lambda - 1)
+	N(\lambda;\mu) = - \lambda^2 + 2\mu(\cosh \lambda - 1).
 \end{equation}
-and \(U\) is given by
+Solving for \(U\) gives
 \begin{align}
 	x &= -[N(\lambda;\mu)]^{-1}(\lambda f_0 + f_1 + \mu\tilde f_\lambda) \\
 	\xi &= -[N(\lambda;\mu)]^{-1} \Big( [\lambda^2 + N(\lambda;\mu)]f_0 + \lambda f_1 + \mu\lambda \tilde f_\lambda \Big) \\
@@ -119,11 +131,11 @@ with
 \begin{equation}
 	\tilde f_\lambda = \int_0^1 [-e^{\lambda(1-s)} F_2(s) + e^{-\lambda (1-s)} F_2(-s)]\, ds.
 \end{equation}
-Hence, the projection can be computed by standard techniques. For instance, note that 
+The projection can be computed by using the residue theorem. For instance, note that 
 \begin{equation}
 	(PF)_x = \mathrm{Res}((\lambda \mathrm I - L_{\mu_0} ^{-1} F)_x, 0) = \mathrm{Res}(-[N(\lambda;\mu)]^{-1}(\lambda f_0 + f_1 + \mu\tilde f_\lambda), 0).
 \end{equation}
-For fixed \(F\in\bbH\), the last can be found by finding the residue of a meromorphic function in \(\bbC\). Proceeding in this way, we can get 
+For fixed \(F\in\bbH\), the last term can be found by finding the residue of a meromorphic function in \(\bbC\). Proceeding in this way, we can get 
 \begin{align}
 	(PF)_x &= \frac 2 5 \Bigg(  f_0 - \int_0^1[(1-s) - 5(1-s)^3][F_2(s) + F_2(-s)]\, ds \Bigg) \\
 	(DF)_x &= (PF)_\xi = \frac 2 5 \Bigg(  f_1 - \int_0^1[1 - 15(1-s)^2][F_2(s) - F_2(-s)]\, ds \Bigg) \\
@@ -154,7 +166,7 @@ which corresponds to the shift invariance of \cref{advance-delay-equation}. This
 \begin{equation}
 	U = W + q \zeta_0, \quad \zeta_0^*(W) = 0.
 \end{equation}
-Denote by \(\bbH_1\) to codimension-one subspace of \(\bbH\) where \(\zeta_0^*(W) = 0\), and similarly define \(\bbD_1\). Then the system in \cref{first-order-abstract-ode} becomes
+Denote by \(\bbH_1\) the codimension-one subspace of \(\bbH\) where \(\zeta_0^*(W) = 0\), and similarly define \(\bbD_1\). Then the system in \cref{first-order-abstract-ode} becomes
 \begin{align}
 	\frac{dq}{dt} &= \zeta_0^*(L_{\mu} W) = \zeta_0^*(L_{\mu_0} W) = \zeta_1^*(W) \label{ode-for-q} \\
 	\frac{d W}{dt} &= \widehat{L}_\mu W + M_\mu(W) \label{reduced-first-order-system}
@@ -169,7 +181,13 @@ Hence we have a three-dimensional center manifold on which solutions are given b
 \begin{equation}\label{W-center-manifold}
 	W = A \zeta_1 + B\zeta_2 + C\zeta_3 +\Phi_\mu(A,B,C).
 \end{equation}
-Here \(\Phi_\mu\) takes values in \(\bbD_1\). Note that this implies solutions on the center manifold correspond with solutions of \cref{advance-delay-equation}, as desired. We also have that \(\Phi_\mu\) (1) has the same regularity as \(V'\), (2) satisfies \(\zeta_k^*(\Phi_\mu) = 0\) for \(k=1,2,3\),  and (3) is at least quadratic in its arguments.
+Here \(\Phi_\mu\) takes values in \(\bbD_1\). Note that this implies solutions on the center manifold correspond with solutions of \cref{advance-delay-equation}, as desired. We also have that (1) \(\Phi_\mu\) has the same regularity as \(V'\), (2) it satisfies \(\zeta_k^*(\Phi_\mu) = 0\) for \(k=1,2,3\),  and (3) it is at least quadratic in its arguments.
+
+The symmetries noted before in \cref{first-order-abstract-ode} are preserved in the center manifold \cite{vanderbauwhede1992center}. The reversibility symmetry \(S\) is reduced to following representation on the three-dimensional subspace:
+\begin{equation}
+	S_0: (A, B, C) \mapsto (A, -B, C).
+\end{equation}
+The dynamics on the center manifold will be odd when \(V'(x)\) is odd, in which case if  \((A(t),B(t),C(t))\) is a solution then so is \((-A(t), -B(t), -C(t))\).
 
 It is at this point that our discussion diverges from the work in \cite{iooss2000travelling}. From this point, Iooss uses the reversibility of the vector field and results from normal form theory to study the existence of homoclinic, heteroclinic, and periodic solutions on the center manifold. However, since there is an unspecified change of coordinates, the results in \cite{iooss2000travelling} do not give quantitative estimates but rather qualitative descriptions of the solutions. For our purposes though, we would like to compare the profile of the travelling wave solutions and compare it to the mKdV kink solution, and so we must proceed differently. We shall instead compute the Taylor expansion of \(\Phi_\mu\) up to a certain order and get an explicit representation of the center manifold (up to some specified error).
 
@@ -191,7 +209,7 @@ It is useful to compute \(\widehat L_\mu\) applied to each eigenvector:
 Note that these calculations agree with \cref{reduced-eigenfunction} when \(\mu\) is equal to \(\mu_0 = 1\). Now plugging \cref{W-center-manifold} into \cref{reduced-first-order-system} gives
 \begin{multline}\label{center-manifold-necessary-ode}
 	\dot A \zeta_1 + \dot B \zeta_2 + \dot C \zeta_3 + D\Phi_\mu(A,B,C) \begin{bmatrix} \dot A \\ \dot B \\ \dot C \end{bmatrix} = \\
-	B \zeta_1 + B(\mu-1) \begin{bmatrix}0 \\ 1 \\ 0 \end{bmatrix} + C \zeta_3 + L_{\mu_0} \Phi_\mu(A,B,C) \\
+	B \zeta_1 + B(\mu-1) \begin{bmatrix}0 \\ 1 \\ 0 \end{bmatrix} + C \zeta_2 + L_{\mu_0} \Phi_\mu(A,B,C) \\
 	+ \left(2(1-\mu) \Phi_\mu^x + (\mu-1)(\delta^1 \Phi_\mu^X + \delta^{-1} \Phi_\mu^X)\right) \begin{bmatrix}0 \\ 1 \\ 0 \end{bmatrix} \\
 	+ \mu\left( g\big(A + \frac 1 2 B + \frac 1 6 C + (\delta^1 \Phi_\mu^X -\Phi_\mu^x)\big) - g\big(A - \frac 1 2 B + \frac 1 6 C + (\Phi_\mu^x - \delta^{-1} \Phi_\mu^X)\big) \right) \begin{bmatrix}0 \\ 1 \\ 0 \end{bmatrix}
 \end{multline}
@@ -272,17 +290,17 @@ By grouping together orders of \(\epsilon\) and using the values of \(\Phi^{(\el
 Then the equations of motion on the center manifold become
 \begin{equation}\label{eqns-center-manifold}
 \begin{aligned}
-	\underline A ' &= \underline B + \mathcal O(\epsilon) \\
+	\underline A ' &= \underline B + \mathcal O(\epsilon^2) \\
 	\underline B ' &= \underline C \\
-	\underline C ' &= - \underline B + 6 \underline A^2 \underline B + \mathcal O(\epsilon),
+	\underline C ' &= - \underline B + 6 \underline A^2 \underline B - 2 \epsilon V^{(5)}(0) \cdot \underline A^3\underline B +  \mathcal O(\epsilon^2),
 \end{aligned}
 \end{equation}
-where \('\) represents the derivative with respect to the new time variable \(s = \epsilon t\). The \(\mcO(\epsilon)\) represents functions that are at least \(C^4\) in \(\epsilon\), \(\underline A\), \(\underline B\), and \(\underline C\) and can be bounded by a constant times \(\epsilon\) when we are on bounded domains and \(\epsilon >0\) sufficiently small. Since we will be looking for bounded solutions on the center manifold, these terms can be controlled. We may upgrade this to \(\mcO(\epsilon^2)\) if we additionally have \(V^{(5)} = 0\).
+where \('\) represents the derivative with respect to the new time variable \(s = \epsilon t\). The \(\mcO(\epsilon^2)\) represents functions that are at least \(C^4\) in \(\epsilon\), \(\underline A\), \(\underline B\), and \(\underline C\) and can be bounded by a constant times \(\epsilon^2\) when we are on bounded domains and \(\epsilon >0\) sufficiently small. Since we will be looking for bounded solutions on the center manifold, these terms can be controlled. Thus the dynamics on the center manifold are controlled up to \(\mcO(\epsilon)\) terms. We may upgrade this to \(\mcO(\epsilon^2)\) if we additionally have \(V^{(5)}(0) = 0\).
 
 We shall consider three different assumptions on the potential going forward:
 \begin{enumerate}[label = (H\arabic*)]
-	\item \(V(x) = \frac 12 x^2 - \frac 1 {24} x^4 + \mcO(\epsilon^5)\)
-	\item \(V(x) = \frac 12 x^2 - \frac 1 {24} x^4 + \mcO(\epsilon^6)\)
+	\item \(V(x) = \frac 12 x^2 - \frac 1 {24} x^4 + \mcO(x^5)\)
+	\item \(V(x) = \frac 12 x^2 - \frac 1 {24} x^4 + \mcO(x ^6)\)
 	\item \(V(x) = \frac 12 x^2 - \frac 1 {24} x^4\)
 \end{enumerate}
 The arguments for each assumption are similar, but stronger assumptions on the potential gives better estimates on the final result.
@@ -333,11 +351,11 @@ which has the solution
 \end{equation}
 This solution is the profile for the kink solution of the defocusing mKdV, \(\phi\). This represents a heteroclinic orbit for the system of ODEs since \((\underline A(s), \underline B(s), \underline C(s)) \to (\pm1/\sqrt 2, 0, 0)\) as \(s\to\pm \infty.\) One might expect that for \(\epsilon > 0\) that there is also a heteroclinic orbit that is close to the above solution. Thus we want to show that the heteroclinic orbit at \(\epsilon = 0\) persists for small perturbations of \(\epsilon\), and we want to get estimates of these orbits relative to \(\epsilon\). To get these results, we apply Fenichel theory. Review \cref{condition-verification} for the relevant results that will be used.
 
-The idea behind the proof is to show that there is an overflowing invariant set with an unstable manifold and a corresponding inflowing invariant set with a stable manifold. We then show that at \(\epsilon = 0\) these manifolds intersect transversally at a point, and that this intersection is given by the above heteroclinic orbit. From there, we show that this intersection is preserved for \(\epsilon > 0\) and the heteroclinic orbit remains \(\mcO(\epsilon)\) or \(\mcO(\epsilon^2)\) to the original orbit.
+The idea behind the proof is to show that there is an overflowing invariant set with an unstable manifold and a corresponding inflowing invariant set with a stable manifold. We then show that at \(\epsilon = 0\) these manifolds intersect transversally at a point, and that this intersection is given by the above heteroclinic orbit. From there, we show that this intersection is preserved for \(\epsilon > 0\) and the heteroclinic orbit remains \(\mcO(\epsilon)\) or \(\mcO(\epsilon^2)\) close to the original orbit.
 
-\subsection{The Unstable and Stable Manifolds}
+\subsection{The Unstable and Stable Manifolds}\label{sec:manifolds}
 
-We first must find the appropriate overflowing invariant set.\footnote{We need also to find the inflowing invariant set, but we can rely on the symmetry of \cref{eqns-center-manifold} to get this. In fact, we will regularly rely on the symmetry of the flow to get many of the results for the inflowing invariant set after working it out for the overflowing invariant set.} From the heteroclinic orbit found for \(\epsilon = 0\), we know that \((\underline A,\underline B,\underline C, \epsilon) = (-1/\sqrt 2 , 0 ,0, 0)\) should be one point in the set. In fact, for fixed \(\epsilon> 0\) we have that multiples of \(\zeta_1\) are fixed points for \cref{reduced-first-order-system}. From the center manifold theorem in \cite{vanderbauwhede1992center}, bounded solutions sufficiently close to the origin will lie exactly on the center manifold. Thus for \(\epsilon>0\) sufficiently close to zero, any closed interval on the \(\underline A\)-axis is composed entirely of fixed points on the center manifold. We will choose \(\epsilon_0> 0\) small enough such that for \(\epsilon \in (0,\epsilon_0]\) the \(\underline A\)-axis from \([-1,1]\) is composed entirely of fixed points. 
+We first must find the appropriate overflowing invariant set.\footnote{We need also to find the inflowing invariant set, but we can rely on the symmetry of \cref{eqns-center-manifold} to get this. In fact, we will regularly rely on the symmetry of the flow to get many of the results for the inflowing invariant set after working it out for the overflowing invariant set.} From the heteroclinic orbit found for \(\epsilon = 0\), we know that \((\underline A,\underline B,\underline C, \epsilon) = (-1/\sqrt 2 , 0 ,0, 0)\) should be one point in the set. In fact, for fixed \(\epsilon> 0\) we have that multiples of \(\zeta_1\) are fixed points for \cref{reduced-first-order-system}, which correspond to the linear solutions \(x(t) = x_0 + mt\) for \cref{advance-delay-equation}. From the center manifold theorem in \cite{vanderbauwhede1992center}, bounded solutions sufficiently close to the origin will lie exactly on the center manifold. Thus for \(\epsilon>0\) sufficiently close to zero, any closed interval on the \(\underline A\)-axis is composed entirely of fixed points on the center manifold. We will choose \(\epsilon_0> 0\) small enough such that for \(\epsilon \in (0,\epsilon_0]\) the \(\underline A\)-axis from \([-1,1]\) is composed entirely of fixed points. 
 
 
 
@@ -347,12 +365,12 @@ If we fix a small \(\delta > 0\) and set \(A_{-\infty} = - 1/ \sqrt 2\), then
 \end{equation}
 is a smooth manifold with boundary that is invariant under the flow in \cref{epsilon-flow}. In fact, \(\overline M\) consists exclusively of fixed points of the flow.
 
-To get apply \cref{unstable-manifold-fenichel} and get an unstable manifold for \(\overline M\) we need that 
+To apply \cref{unstable-manifold-fenichel} and get an unstable manifold for \(\overline M\) we need that 
 \begin{enumerate}[label=(\roman*)]
 	\item \(\overline M\) is overflowing invariant, and 
 	\item the generalized Lyapunov-type numbers on \(\overline M\) satisfy the inequalities in \cref{unstable-manifold-fenichel}.
 \end{enumerate}
-As written, \(\overline M\) is \emph{not} an overflowing invariant manifold. However, a common trick in Fenichel is to adjust the flow on the boundary of an invariant manifold so that it becomes overflowing invariant (see \cite[\S 6.3]{wiggins1994normally}). This will alter the behavior of our dynamical system at the boundary, but elsewhere the dynamics will remain the same. For our case, we may adjust the flow near the boundary \(|(\underline A - A_{-\infty},  \epsilon)| = \delta\) to get \(\overline M\) is overflowing invariant, but this will not affect the dynamics near the heteroclinic orbit. Thus we can still talk about the existence of the heteroclinic orbit in the unaltered system. This adjustment will need to be done in a way to not greatly affect the generalized Lyapunov-type numbers. For now, we set aside point (i) and address (ii), which is more straightforward. 
+As written, \(\overline M\) is \emph{not} an overflowing invariant manifold. However, a common trick in Fenichel is to adjust the flow on the boundary of an invariant manifold so that it becomes overflowing invariant (see \cite[\S 6.3]{wiggins1994normally}). This will alter the behavior of our dynamical system at the boundary, but elsewhere the dynamics will remain the same. For our case, we may adjust the flow near the boundary \(|(\underline A - A_{-\infty}, \underline B, \underline C,  \epsilon)| = \delta\) to get \(\overline M\) is overflowing invariant, but this will not affect the dynamics near the heteroclinic orbit. Thus we can still talk about the existence of the heteroclinic orbit in the unaltered system. This adjustment will need to be done in a way to not greatly affect the generalized Lyapunov-type numbers. For now, we set aside point (i) and address (ii), which is more straightforward. 
 
 Since \(\overline M\) consists only of fixed points, the generalized Lyapunov-type numbers can be computed using the linearization of the flow. Note that since each \((\underline A, 0, 0,\epsilon) \in \overline M\) is a fixed point, we have that
 \begin{equation}
@@ -362,7 +380,7 @@ Since \(\overline M\) consists only of fixed points, the generalized Lyapunov-ty
 	\end{aligned}
 \end{equation}
 and the partial derivatives of \(F_1\) and \(G_1\) with respect to \(\underline A\) or \(\epsilon\) will be zero. Thus at a point \((\underline A, 0, 0, \epsilon) \in\overline M\), the linearization of the flow is given by
-\begin{equation}
+\begin{equation}\label{linearization-flow}
 	\begin{bmatrix}
 		0 & 1 + \epsilon \frac{\partial F_1}{\partial \underline B}(\underline A, 0, 0; \epsilon) & \epsilon \frac{\partial F_1}{\partial \underline C}(\underline A, 0, 0;\epsilon) & 0 \\
 		0 & 0 & 1 & 0 \\
@@ -384,17 +402,17 @@ Then condition (ii) is satisfied. Now we want to show that we can alter near \(\
 	\item \(\chi(r) = 0\) when \(r\in [\delta +\sigma,\infty)\)
 \end{enumerate}
 where \(\sigma > 0\) will be a parameter that we can make as small as necessary. We then alter the vector field in \cref{epsilon-flow} by setting
-\begin{equation}
+\begin{equation}\label{perturbed-vector-field}
 \begin{aligned}
-	\underline A ' &= \underline B + \epsilon F_1(\underline A, \underline B, \underline C;\epsilon) + \chi( |(\underline A - A_{-\infty},  \epsilon)|) \cdot (\underline A - A_{-\infty}) \\
+	\underline A ' &= \underline B + \epsilon F_1(\underline A, \underline B, \underline C;\epsilon) + \chi( |(\underline A - A_{-\infty}, \underline B, \underline C, \epsilon)|) \cdot (\underline A - A_{-\infty}) \\
 	\underline B' &= \underline C \\
 	\underline C ' &= - \underline B + 6 \underline A^2 \underline B + \epsilon G_1(\underline A, \underline B, \underline C;\epsilon) \\
-	\epsilon' &= \chi( |(\underline A - A_{-\infty},  \epsilon)|) \cdot \epsilon.
+	\epsilon' &= \chi( |(\underline A - A_{-\infty}, \underline B, \underline C, \epsilon)|) \cdot \epsilon.
 \end{aligned}
 \end{equation}
 This change keeps the flow \(C^1\) and makes \(\overline M\) an overflowing invariant vector field. However, a couple things need to be checked before applying \cref{unstable-manifold-fenichel}: the vector bundles \(N^u\) and \(N^s\) must be defined on \(\chi \neq 0\) and the generalized Lyapunov-type numbers must satisfy the necessary inequalities.
 
-The extension of the normal vector bundles is somewhat technical, but otherwise straightforward. We need \(N^u\) and \(N^s\) invariant under the flow and continuous. In particular, if \(p\) is a point in \(M\) where \(\chi \neq 0\) and \(\xi \in N^u_p\), then \(D\phi_t(p) \xi \in N^u_{\phi_t(p)}\) for all \(t\) such that \(\phi_t(p) \in M\). A similar result should hold for \(N^s\). We also need that the vector bundles are continuous with respect to \(p\). Continuity relies on showing that we can assign the vector bundles in a way so that if \(\phi_t(p) \to p'\) as \(t\to-\infty\) then \(N^u_{\phi_t(p)}\) approaches \(N^u_{p'}\). This can be done and the details are carried out in \cref{condition-verification}.
+The extension of the normal vector bundles is somewhat technical. We need \(T M \oplus N^u\) and \(TM \oplus N^s\) invariant under the flow and continuous. In particular, if \(p\) is a point in \(M\) where \(\chi \neq 0\) and \(\xi \in N^u_p\), then \(D\phi_t(p) \xi \in T_{\phi_t(p)} \oplus N^u_{\phi_t(p)}\) for all \(t\) such that \(\phi_t(p) \in M\). A similar result should hold for \(N^s\). We also need that the vector bundles are continuous with respect to \(p\). Continuity relies on showing that we can assign the vector bundles in a way so that if \(\phi_t(p) \to p'\) as \(t\to-\infty\) then \(N^u_{\phi_t(p)}\) approaches \(N^u_{p'}\). This can be done and the details are carried out in \cref{sec:boundary-modifications}.
 
 For the generalized Lyapunov-type numbers, it can be shown that the values on the altered region of \(M\) can be bounded by those on the unaltered region. More generally, we have the following result.
 \begin{restatable}{prop}{lyapunovbound}
@@ -468,21 +486,21 @@ Take \(\omega\) to be a point near \(A_{-\infty} = - 1/\sqrt 2\). The orbit that
 \end{equation}
 Setting \(\underline A = 0\), we can find that \(\mathcal M_0\) hits the \(\underline B \underline C\)- plane at 
 \begin{equation}
-	\mu(\omega) = (0, |\omega| \sqrt{3\omega^2 -1 }, \omega - 2\omega^3)
+	m(\omega) = (0, |\omega| \sqrt{3\omega^2 -1 }, \omega - 2\omega^3)
 \end{equation}
-for \(\omega\) close to \(A_{-\infty}\). In particular, we see that if \(\mu(A_{-\infty}) = p\). Identical reasoning gives that \(\mathcal N_0\) intersects the plane at 
+for \(\omega\) close to \(A_{-\infty}\). In particular, we see \(m(A_{-\infty}) = p\). Identical reasoning gives that \(\mathcal N_0\) intersects the plane at 
 \begin{equation}\label{intersection-with-plane}
-	\nu(\alpha) = (0, |\alpha| \sqrt{3\alpha^2 -1 }, \alpha - 2\alpha^3)
+	n(\alpha) = (0, |\alpha| \sqrt{3\alpha^2 -1 }, \alpha - 2\alpha^3)
 \end{equation}
-where \(\alpha\) is near \(A_\infty = 1 / \sqrt 2\) and \(\nu (A_{\infty} ) = p\).
+where \(\alpha\) is near \(A_\infty = 1 / \sqrt 2\) and \(n (A_{\infty} ) = p\).
 
-The derivative of the heteroclinic orbit is given by \((1/2, 0, -1/2)\), and this vector lies in both \(T_p\mathcal M_0\) and \(T_p \mathcal N_0\). Since \(\mu(\omega) \in \mathcal M_0\) for \(\omega\) near \(A_{-\infty}\), we have that 
+A tangent vector to the heteroclinic orbit is given by \(\gamma_{+}'(0) = (1/2, 0, -1/2)\), and this vector lies in both \(T_p\mathcal M_0\) and \(T_p \mathcal N_0\). Since \(m(\omega) \in \mathcal M_0\) for \(\omega\) near \(A_{-\infty}\), we have that 
 \begin{equation}
-	\mu'(A_{-\infty}) = \left( 0, 1, \frac  1 {\sqrt 2} \right) \in T_p \mathcal M_0.
+	m'(A_{-\infty}) = \left( 0, 1, \frac  1 {\sqrt 2} \right) \in T_p \mathcal M_0.
 \end{equation}
 Similarly,
 \begin{equation}
-	\nu'(A_{\infty}) = \left( 0, 1, \frac  {-1} {\sqrt 2} \right) \in T_p \mathcal N_0.
+	n'(A_{\infty}) = \left( 0, 1, \frac  {-1} {\sqrt 2} \right) \in T_p \mathcal N_0.
 \end{equation}
 Therefore
 \begin{equation}
@@ -494,7 +512,7 @@ and the intersection is transverse. This implies that there is a heteroclinic or
 
 From the previous section, we have the existence of heteroclinic orbits that are perturbation of \(\gamma_\pm\) at \(\epsilon = 0\). From the \(C^1\) regularity of the manifolds with respect to the coordinates, we expect that the orbits remain \(\mcO(\epsilon)\) close to the unperturbed orbits in some sense. There are some subtleties to be addressed. The manifolds remain \(\mcO(\epsilon)\) close in Hausdorff distance, but this does not imply the orbits on the manifolds remain \(\mcO(\epsilon)\) close for all time. The dynamics on the manifolds might change causing orbits on the perturbed manifold to diverge asymptotically despite remaining close initially.
 
-First, let us introduce notation for the perturbed heteroclinic orbits. We shall denote by \(\gamma_{\pm, \epsilon} = (A_{\pm, \epsilon} , B_{\pm, \epsilon}, C_{\pm,\epsilon})\) to be the perturbations of \(\gamma_{\pm}\) for \(\epsilon > 0\), where we set \(\gamma_{\pm,\epsilon}(0)\) to be the point where the orbits cross the \(\underline{B}\underline{C}\)-plane. From the continuity of the manifolds with respect to \(\epsilon\), we have that \(|\gamma_{\pm, \epsilon}(0) - \gamma_\pm(0)| = \mcO(\epsilon)\) for small \(\epsilon\). We can extend this estimate onto arbitrarily large time scales by applying an argument using the Gr\"owall inequality. That is, for every \(T> 0\) we have for sufficiently small \(\epsilon\) that \(|\gamma_{\pm, \epsilon}(s) - \gamma_\pm(s)| = C\epsilon\) for all \(s\in[-T,T]\), where \(C>0\) is independent of \(s\). 
+First, let us introduce notation for the perturbed heteroclinic orbits. We shall denote by \(\gamma_{\pm, \epsilon} = (A_{\pm, \epsilon} , B_{\pm, \epsilon}, C_{\pm,\epsilon})\) the perturbations of \(\gamma_{\pm}\) for \(\epsilon > 0\), where we set \(\gamma_{\pm,\epsilon}(0)\) to be the point where the orbits cross the \(\underline{B}\underline{C}\)-plane. From the continuity of the manifolds with respect to \(\epsilon\), we have that \(|\gamma_{\pm, \epsilon}(0) - \gamma_\pm(0)| = \mcO(\epsilon)\) for small \(\epsilon\). We can extend this estimate onto arbitrarily large finite time scales by applying an argument using the Gr\"onwall inequality. That is, for every \(T> 0\) we have for sufficiently small \(\epsilon\) that \(|\gamma_{\pm, \epsilon}(s) - \gamma_\pm(s)| = C\epsilon\) for all \(s\in[-T,T]\), where \(C>0\) is independent of \(s\). 
 
 This argument is insufficient for extending the estimate to all time. To get that the orbits remain close as \(s\to\pm\infty\), we can rely on part 7 of \cref{foliation-of-unstable-manifold}. Taking \((\epsilon, \omega)\) sufficiently close to \((0, A_{-\infty})\) as base points, the theorem states that the unstable manifold is \(C^1\) with respect to \((\epsilon, \omega)\). Note that the overflowing invariant manifold (away from the bump function) consists only of fixed points, so orbits on the unstable manifold approach a unique fixed point given by \((\epsilon, \omega)\). Take \(T> 0\) large enough so that all the points on \(\mathcal M_\epsilon\) (for \(\epsilon \leq \epsilon_0\)) which intersect the \(\underline B \underline C\)-plane are in the local unstable manifold when flowed backward in time by \(-T\) units. Then locally, there is a one-to-one correspondence between these points flowed backward in time and the points in \(\overline M\); furthermore, this correspondence is \(C^1\) due to \cref{foliation-of-unstable-manifold}. This implies that if the points flowed backward are \(\mcO(\epsilon)\) close then their backward limits are \(\mcO(\epsilon)\) close as well. In particular, the backward limits of \(\gamma_{+,\epsilon}\) and \(\gamma_+\) are \(\mcO(\epsilon)\) close. The argument for the stable manifold is analogous. This shows that the heteroclinic orbits remain \(\mcO(\epsilon)\) close for all time. In the case where \(V(x) = \frac 12 x^2 - \frac 1 {24} x^4 + \mcO(\epsilon^6)\), this can be upgraded to \(\mcO(\epsilon^2)\); the proof is similar but we use the regularity of the manifolds with respect to \(\eta = \epsilon^2\) instead. Therefore, we have the following.
 \begin{prop}
@@ -539,7 +557,7 @@ respectively for each term. Thus
 	&\quad= \pm \epsilon \phi(\epsilon (t+1/2)) + \epsilon^2 \mathcal R_{\epsilon, \pm}(\epsilon (t+1/2))
 \end{aligned}
 \end{equation}
-where \(R_{\epsilon, \pm} \in C^3_b\). Thus (after shifting the solution) we have that there is are travelling wave like solutions of the FPUT of the form
+where \(R_{\epsilon, \pm} \in C^3_b\). Thus (after shifting the solution) we have that there are travelling wave like solutions of the FPUT of the form
 \begin{equation}
 	u_n(t) = \pm \epsilon \phi_{\epsilon, \pm}(\epsilon(n-ct)) + \epsilon^2 \mathcal R_{\epsilon, \pm}(\epsilon (n-ct))
 \end{equation}
@@ -548,7 +566,7 @@ Additionally, if (H2) holds we improve the error estimate so that there are solu
 	u_n(t) = \pm \epsilon \phi(\epsilon(n-ct)) + \epsilon^3 \mathcal R_{\epsilon, \pm}(\epsilon (n-ct)).
 \end{equation}
 
-To match similar estimates made in \cite{friesecke1999solitary}, one would expect the remainder terms to also be in a Sobolev space like \(H^1\). This is in general not true. The travelling wave solution found above may not approach a different limit asymptotically than \(\epsilon \phi \), in which case the remainder does not approach zero asymptotically in space. A necessary condition to get \(R_{\epsilon,\pm}\in H^1\) would be for \(u_n\) to approach the same limits given as \(\pm \epsilon \phi(\epsilon (n-ct))\) as \(|n| \to \infty\).
+To match similar estimates made in \cite{friesecke1999solitary}, one would expect the remainder terms to also be in a Sobolev space like \(H^1\). This is in general not true. The travelling wave solution found above may approach a different limit asymptotically than \(\epsilon \phi \), in which case the remainder does not approach zero asymptotically in space. A necessary condition to get \(R_{\epsilon,\pm}\in H^1\) would be for \(u_n\) to approach the same limits of \(\pm \epsilon \phi(\epsilon (n-ct))\) as \(|n| \to \infty\).
 
 A useful tool for showing this is the following invariant for \cref{advance-delay-equation}:
 \begin{equation}\label{advance-delay-invariant}
@@ -566,7 +584,15 @@ and so the limits \(r_{\pm \infty}\) satisfy the equation
 \begin{equation}
 	r_\infty - \mu V'(r_\infty) = r_{-\infty} - \mu V'(r_{-\infty}) .
 \end{equation}
-For arbitrary \(V\), we cannot show that the limits agree with the limits of \(\pm\epsilon \phi \). However, if we assume (H3) holds, i.e.\ that \(V(x) = \frac 1 2 x^2 - \frac 1 {24} x^4\), then we do have the limits agree. This follows in part from the oddness of \(V'\). That is, we have from \(V'\) odd that \(\lim_{s\to\infty} A_{\pm,\epsilon} (s) = -\lim_{s\to-\infty} A_{\pm, \epsilon}(s)\) and so \(r_\infty = - r_{-\infty}\). Therefore, we must have that 
+For arbitrary \(V\), we cannot show that the limits agree with the limits of \(\pm\epsilon \phi \). However, if we assume (H3) holds, i.e.\ that \(V(x) = \frac 1 2 x^2 - \frac 1 {24} x^4\), then we do have the limits agree. This follows in part from the oddness of \(V'\) and the reversibility of the system. Recall that the vector field on the center manifold is reversible (given by the reversibility operator \(S_0\)) and odd. Therefore, we have that
+\begin{equation}
+	\begin{bmatrix}
+		- A_{\pm, \epsilon} (-s) \\
+		B_{\pm, \epsilon} (-s) \\
+		-C_{\pm, \epsilon} (-s)
+	\end{bmatrix}
+\end{equation}
+is also a solution on the center manifold. One can note that the above solutions lie on the intersection of the stable and unstable manifolds and are in an \(\epsilon\)-neighborhood of the unperturbed heteroclinic orbits \(\gamma_{\pm}(s)\). This contradicts the uniqueness of the transverse intersection of the manifolds in a neighborhood of the original intersection, and thus the above solutions must in fact be \(\gamma_{\pm,\epsilon}(s)\). Hence, comparing the limits at infinity we have that \(\lim_{s\to\infty} A_{\pm,\epsilon} (s) = -\lim_{s\to-\infty} A_{\pm, \epsilon}(s)\) and so \(r_\infty = - r_{-\infty}\). Therefore, we must have that 
 \begin{equation}
 	r_\infty - \mu V'(r_\infty) = 0.
 \end{equation}
@@ -574,56 +600,24 @@ Given that \(V'(x) = x - \frac 1 6 x^3\), we have that the only solutions to the
 
 Now to get the Sobolev estimate, we use the following lemma.
 \begin{restatable}{lem}{heteroclinicorbitsobolev}\label{heteroclinic-orbit-sobolev}
-	Suppose there is a family of vector fields on \(\R^n\) parameterized by \(\mu\in I\), where \(I\) is a compact interval.  Take the vector fields to be \(C^k\) on \(\R^n\) and \(C^1\) with respect to \(\mu\). Assume that there is a family of heteroclinic orbits, \(\gamma_\mu\) that satisfy the following properties:
-	\begin{enumerate}[label=(\roman*)]
-		\item The heteroclinic orbits share asymptotic fixed points. That is, there are points \(\gamma_{\pm \infty}\) such that 
-		\begin{equation}
-			\gamma_\mu(t) \xrightarrow[t\to\pm\infty]{} \gamma_{\pm\infty}, \quad \forall\mu\in I.
-		\end{equation}
-		\item There exists \(C > 0\) and \(\sigma > 0\) such that 
-		\begin{equation}
-			|\gamma_\mu(\pm \tau) - \gamma_{\pm\infty}| \leq C e^{-\sigma \tau}, \quad \forall \mu\in I, \forall \tau\geq 0
-		\end{equation}
-		\item There is a \(C> 0\) such that for any \(\mu, \mu'\in I\)
-		\begin{equation}
-			|\gamma_\mu(t) -\gamma_{\mu'}(t) | \leq C |\mu - \mu'|, \quad \forall t \in \R.
-		\end{equation}
-		\item The limits \[v_\mu^{\pm} = \lim_{t\to\pm\infty} \frac{\dot \gamma_\mu(t)}{|\dot \gamma_\mu(t)|}\] exist and the functions
-		\begin{equation}
-			\mu \mapsto v^\pm_\mu
-		\end{equation}
-		are \(C^1\).
-	\end{enumerate}
-	Then there exists \(C'>0\) such that 
-	\begin{enumerate}[label=(\alph*)]
-		\item For \(m = 1, 2, \ldots, k\) we have that 
-		\begin{equation}\label{expoential-decay-derivatives}
-			|\gamma_\mu^{(m)}(t)|  \leq C' e^{-\sigma|t|}, \quad \forall\mu\in I, \forall t\in \R.
-		\end{equation}
-		\item For \(m = 0,1,2,\ldots, k\), we have for any \(\mu,\mu'\in I\) that
-		\begin{equation}
-			|\gamma_\mu^{(m)}(t) - \gamma_{\mu'}^{(m)}(t) |  \leq C' e^{-\sigma|t|} |\mu - \mu'|, \quad \forall\mu\in I, \forall t\in \R.
-		\end{equation}
-		\item The difference of the orbits are in \(H^k(\R;\R^n)\) and for any \(\mu,\mu'\in I\)
-		\begin{equation}
-			\| \gamma_\mu - \gamma_{\mu'} \|_{H^k(\R;\R^n)} \leq C' |\mu -\mu'|.
-		\end{equation}
-	\end{enumerate}
+	Suppose that (H3) holds. Then there exist \(C> 0\) and \(\alpha > 0\) such that
+	\begin{equation}
+		| \gamma_{\pm, \epsilon}(s) - \gamma_{\pm}(s) | \leq C e^{-\alpha s} \epsilon^2.
+	\end{equation}
+	Furthermore, the difference of the heteroclinic orbits are in \(H^5(\R; \R^3)\) and 
+	\begin{equation}
+		\| \gamma_{\pm, \epsilon}(s) - \gamma_{\pm}(s) \|_{H^5(\R;\R^3)}  \leq C \epsilon^2.
+	\end{equation}
 \end{restatable}
-The proof of \cref{heteroclinic-orbit-sobolev} is given in \cref{lemma-appendix}.
-Applying the above lemma to the heteroclinic orbits found in \cref{eta-flow} gives that 
+The proof of \cref{heteroclinic-orbit-sobolev} is given in \cref{lemma-appendix}. Thus we have
 \begin{equation}
-	\gamma_{\pm, \epsilon} - \gamma_{\pm} \in H^5(\R;\R^3),
+	\|A_{\pm, \epsilon} - \phi_{\pm}\|_{H^5(\R;\R)} \leq C \epsilon^2.
 \end{equation}
-and in particular
-\begin{equation}
-	A_{\pm, \epsilon} - \phi_{\pm} \in H^5(\R;\R).
-\end{equation}
-A similar argument to the proof of \cref{heteroclinic-orbit-sobolev} can be used to show that 
+One can also show from the exponential decay of \(\gamma_{\pm, \epsilon}\) to \(\gamma_{\pm\infty}\) and the smoothness of \(\Phi_\mu\) that
 \begin{equation}
 	(\Phi_\mu(\epsilon A_{\pm, \epsilon}(s),\epsilon^2 B_{\pm, \epsilon}(s) ,\epsilon^3 C_{\pm, \epsilon}(s))_\xi \in H^4(\R;\R).
 \end{equation}
-Since \(\Phi_\mu\) has no quadratic terms in its Taylor series expansion, the function is at least of order \(\epsilon^3\). Therefore, we have that there is an \(R_{\pm,\epsilon} \in H^4(\R;\R)\) such that
+By noticing that the Taylor expansion of \(\Phi_\mu(\epsilon A_{\pm, \epsilon}, \epsilon^2 B_{\pm, \epsilon}, \epsilon^3 C_{\pm, \epsilon})\) has no terms of order \(\epsilon^2\) or lower, the function is at least of order \(\epsilon^3\). Therefore, we have that there is an \(R_{\pm,\epsilon} \in H^4(\R;\R)\) such that
 \begin{equation}
 	\dot x_{\pm, \epsilon }(t) = \pm \epsilon\phi(\epsilon t) + \epsilon^3 R_{\pm,\epsilon}(\epsilon t).
 \end{equation}

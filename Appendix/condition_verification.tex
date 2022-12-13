@@ -1,40 +1,125 @@
 % !TeX root = ../thesis.tex
 \chapter{Fenichel Theory}\label{condition-verification}
 
-\cite{wiggins1994normally}
+In this section we give a brief overview of Fenichel theory and give some useful results to be applied in \cref{chp:existence}. Fenichel theory is concerned with a large class of invariant manifolds which fulfill a certain hyperbolicity condition. Major results include the persistence of the manifolds under perturbations, existence of unstable manifolds, and the foliation of the unstable manifolds. The results are mainly from \cite{fenichel1971persistence,fenichel1974asymptotic}. Much of the presentation and additional results are taken from \cite{wiggins1994normally}, and for proofs of the theorems and propositions we direct the reader there.
 
+\section{Overflowing Invariant Manifolds}
+In this and later sections, we will generally be concerned with an ODE given by
 \begin{equation}\label{generic_ode}
 	\dot x = f(x), \quad x \in \R^n
 \end{equation}
-
+with a corresponding flow \(\phi_t\). In the study of dynamics, finding invariant manifolds is often a useful first step to understanding the more complicated behavior. Here we will be primarily be concerned with a less rigid notion of invariant manifolds: overflowing invariant manifolds.
 \begin{defn}
 	Let \(\overline M = M \cup \partial M\) be a compact, connected \(C^r\) manifold with boundary contained in \(\R^n\). Then \(\overline M\) is said to be \emph{overflowing invariant} under \cref{generic_ode} if for every \(p \in \overline M\), \(\phi_t(p) \in \overline M\) for all \(t\leq 0\) and the vector field \cref{generic_ode} is pointing strictly outward on \(\partial M\).
 \end{defn}
+There is also a definition for \emph{inflowing invariant manifolds}, but we will exclusively focus on the overflowing variety. Results for inflowing invariant manifolds can be recovered by reversing the direction of time. We also have many results that apply to invariant manifolds as well; to demonstrate this, we typically apply a bump function to the vector field at the boundary of an invariant manifold to make it overflowing while leaving the dynamics the same in the interior. We will discuss this more in \cref{sec:unstable-manifold}.
 
-%Wiggins Thm. 4.5.1 originally Fenichel 1971
-\begin{theorem}\label{unstable-manifold-fenichel}
-	Suppose \(\dot x = f(x)\) is a \(C^r\) vector field on \(\R^n\), \(r\geq 1\). Let \(\overline M = M \cup \partial M\) be a \(C^r\), compact connected manifold with boundary overflowing invariant under the vector field \(f(x)\). Suppose \(\nu^s(p) < 1\), \(\lambda^u(p) < 1\), and \(\sigma^s(p) < \frac 1 r\) for all \(p\in M\). Then there exists a \(C^r\) overflowing invariant manifold \(W^u(\overline M)\) containing \(\overline M\) and tangent to \(h_u(N'^u_\epsilon )\) along \(\overline M\) with trajectories in \(W^u(\overline M)\) approaching \(\overline M\) as \(t\to -\infty\).
-\end{theorem}
+In the proofs of many of theorems, the technical problem of the boundary of \(\overline M\) is avoiding by slightly enlarging our set. Let 
+\begin{equation}
+	M_1 := \phi_1(M) \quad M_2 := \phi_2(M).
+\end{equation}
+The manifolds \(\overline M_1\) and \(\overline M_2\) are also overflowing invariant.
 
-%Wiggins Thm 5.6.1
-\begin{theorem}\label{foliation-of-unstable-manifold}
-	Suppose \(\dot x = f(x) \) is a \(C^r\) vector field on \(\R^n\), \(r\geq 1\). Let \(\overline M = M \cup \partial M\) be a \(C^r\) compact connected manifold with boundary, overflowing invariant under the vector field \(f(x)\). Suppose \(\lambda^u(p)< 1\), \(\sigma^{cu}(p) < 1\), and \(\sigma^{su}(p) < 1\) for every \(p \in \overline M_1\). Then there exists a \(n-(s+u)\)-parameter family \(\mcF^u = \cup_{p\in M} f^u(p)\) of \(u\)-dimensional surfaces \(f^u(p)\) (with boundary) such that the following hold:
-	\begin{enumerate}
-		\item \(\mcF^u\) is a negatively invariant family, i.e., \(\phi_{-t} (f^u(p)) = f^u(\phi_{-t}(p))\) for any \(t\geq 0\) and \(p\in M\).
-		\item The \(u\)-dimensional surfaces \(f^u(p)\) are \(C^r\).
-		\item \(f^u(p)\) is tangent to \(h_u(N'^u_p)\) at \(p\).
-		\item There exists \(C_u,\lambda_u > 0\) such that if \(q\in f^u(p)\), then \[| \phi_{-t}(q) - \phi_{-t}(p) | < C_u e^{-\lambda_u t}\] for any \(t\geq 0\).
-		\item Suppose \(q\in f^u(p)\) and \(q'\in f^u(p')\). Then \[\frac{|\phi_{-t}(q) - \phi_{-t}(p) |}{| \phi_{-t}('q) - \phi_{-t}(p) |} \to 0 \quad \text{as } t\to\infty\] unless \(p = p'\).
-		\item \(f^u(p) \cap f^u(p') = \emptyset \), unless \(p=p'\).
-		\item If the hypotheses of the unstable manifold theorem hold, i.e., if additionally \(\nu^s(p) < 1\) and \(\sigma^s(p) < \frac 1 r\) for every \(p \in \overline M_1\), then the \(u\)-dimensional surfaces \(f^u(p)\) are \(C^r\) with respect to the basepoint \(p\).
-		\item \(\mcF^u = W_{\mathrm{loc}}^u(M)\).
-	\end{enumerate}
-\end{theorem}
+For many of the proofs found in \cite{wiggins1994normally}, a special set of atlases for the manifold \(\overline M_2\) is needed. 
+\begin{prop}\label{atlases}
+	Let \(k = \dim \overline M_2\). For every open cover \(\mcU\) of \(\overline M_2\) there exist atlases
+	\begin{equation}
+		\left\{  (U^j_i, \sigma_i) : i=1,2,\ldots, s; j = 1,2,\dots, 6 \right\}
+	\end{equation}
+	such that
+	\begin{equation}
+		U^1_i \subset \overline U^1_i  \subset U^2_i \subset \overline U^2_i  \subset U^3_i \subset \overline U^3_i  \subset U^4_i \subset \overline U^4_i  \subset U^5_i \subset \overline U^5_i  \subset U^6_i \subset \overline U^6_i  
+	\end{equation}
+	with 
+	\begin{equation}
+		\sigma_i(U^j_i) = \mathcal D^j, \quad j=1,2,\ldots, 6
+	\end{equation}
+	where \(\mathcal D^j := \{x\in \R^{n-k} : |x|< j\}\), i.e., the open disc of radius \(j\). Moreover the open covers
+	\begin{equation}
+		\mcU^j = \{U^j_i: i = 1,2,\ldots, s\}
+	\end{equation}
+	are subordinate to \(\mcU\).
+\end{prop}
+\section{Unstable manifold to overflowing invariant manifolds}\label{sec:unstable-manifold}
 
+Similar to the unstable manifold theorem for hyperbolic fixed points, we will have some invariant manifold approaching our overflowing invariant manifold under the condition that the flow transverse to the manifold is hyperbolic. To make this precise, we split the tangent space on \(M_2\) into a direct sum of vector bundles corresponding with the tangent, stable, and unstable directions. Assume we have the continuous splitting
+\begin{equation}
+	T\R^n |_{M_2} = TM_2 \oplus N^s \oplus N^u 
+\end{equation}
+and associated projections
+\begin{align}
+	\Pi^s &: T\R^n|_{M_2} \to N^s \\
+	\Pi^u &: T\R^n|_{M_2} \to N^u
+\end{align}
+We assume that the subbundles \(TM_2 \oplus N^s\) and \(TM_2 \oplus N^u\) are invariant under \(D\phi_t\) for all \(t< 0\).
+
+To characterize the exponential rate of growth/decay in the these bundles under the linearized dynamics, we introduce generalized Lyapunov-type numbers. For a point \(p \in M_2\) we consider the following nonzero vectors:
+\begin{equation}
+	\begin{aligned}
+		u_0 &\in N^u_p, \\
+		w_0 &\in N^s_p, \\
+		v_0 &\in T_p M_2,
+	\end{aligned}
+\end{equation}
+and 
+\begin{equation}
+	\begin{aligned}
+		u_{-t} &= \Pi^u D\phi_{-t}(p) u_0, \\
+		w_{-t} &= \Pi^s D\phi_{-t}(p) w_0, \\
+		v_{-t} &= D\phi_{-t}(p) v_0.
+	\end{aligned}
+\end{equation}
+\begin{defn}
+	The \emph{generalized Lyapunov-type numbers} at \(p\) are given by
+	\begin{align}
+		\lambda^u(p) &:= \inf \left\{ a : \left( \frac{|u_{-t}|}{|u_0|}\right) /  a^t \to 0  \text{ as }t\to\infty, \forall u_0 \in N^u_p \right\} ,\\
+		\nu^s(p) &:= \inf \left\{ a : \left( \frac{|w_{0}|}{|w_{-t}|}\right) /  a^t \to 0  \text{ as }t\to\infty, \forall w_0 \in N^s_p \right\}.
+	\end{align}
+	If \(\nu^s(p) < 1\), then we define
+	\begin{equation}
+		\sigma^s(p) = \inf \left\{ b: (|w_0|^b /|v_0|) / (|w_{-t}|^b/ |v_{-t}| ) \to 0 \text{ as } t\to \infty, \forall v_0 \in T_pM_2, w_0 \in N^s_p  \right\}.
+	\end{equation}
+\end{defn}
+One can also show that these expressions are equal to 
+\begin{align}
+	\lambda^u(p) &= \limsup_{t\to\infty} \|\Pi^u D\phi_{-t}(p) \mid_{N^u_p} \| ^{1/t} \\
+	\nu^s(p) &= \limsup_{t\to\infty} \|\Pi^s D\phi_t(\phi_{-t} (p) ) \mid_{N^s_{\phi_{-t}(p)}} \|^{1/t} \\
+	\sigma^s(p) &= \limsup_{t\to\infty} \frac{ \log \| D\phi_{-t}(p) \mid_{T_pM}\|}{-\log\| \Pi^s D\phi_t(\phi_{-t}(p)) \mid_{N^s_{\phi_{-t}(p)} } \|}.
+\end{align}
+
+To simplify the notation, we can introduce the linear operators
+\begin{align}
+	&A_t(p) : T_pM \to T_{\phi_{-t}(p)} M, & &v\mapsto D\phi_{-t}(p) v \\
+	&B_t(p) : N^s_{\phi_{-t}(p)} \to N^s_p, & &v\mapsto \Pi^s D\phi_t(\phi_{-t}(p)) v \\
+	&C_t(p) : N^u_p \to N^u_{\phi_{-t}(p)}, & &v\mapsto \Pi^u D\phi_{-t}(p) v.
+\end{align}
+Then the Lyapunov-type numbers can be rewritten as 
+\begin{align}
+	\lambda^u(p) &= \limsup_{t\to\infty} \|C_t(p) \| ^{1/t} \\
+	\nu^s(p) &= \limsup_{t\to\infty} \| B_t(p)\|^{1/t} \\
+	\sigma^s(p) &= \limsup_{t\to\infty} \frac{ \log \| A_t(p) \|}{-\log\| B_t(p) \|}.
+\end{align}
+
+We say that a splitting is hyperbolic if 
+\begin{equation}
+	\lambda^u(p) < 1, \quad \nu^s(p) < 1, \quad \forall p \in M.
+\end{equation}
+
+We list a couple of useful properties of generalized Lyapunov-type numbers.
+\begin{lem}\cite[Lem.~4.1.1]{wiggins1994normally}
+	The generalized Lyapunov-type numbers obtain their suprema on \(M\).
+\end{lem}
+\begin{lem}\cite[Lem.~3.1.2]{wiggins1994normally}
+	The generalized Lyapunov-type numbers are constant on orbits, i.e., 
+	\begin{equation}
+		\lambda^u(\phi_{-t}(p)) = \lambda^u(p), \quad \nu^s(\phi_{-t}(p)) = \nu^s(p), \quad \sigma^s(p.)
+	\end{equation}
+\end{lem}
+
+Based on the above lemma, one might suspect that the backward limit of an orbit would have the same generalized Lyapunov-type numbers as the points on the orbit. While we do not show exact equality, the backward limit set does provide an upper bound on the numbers. A more narrow result of the kind was proved in \cite[Thm.~2.3]{dieci1997lyapunov}, where the backwards limit set was a single point. We will extend this result to the case where the backwards limit set is a compact set.
 
 %See update for 10/14/2020 for more details about this.
-The proofs for these lemmas should be similar to the proofs found in \cite{dieci1997lyapunov}.
-
+The proofs for the following lemmas should be similar to the proofs found in \cite{dieci1997lyapunov}.
 \begin{lem}\label{lemma1}
 	Let \(p \in M\) with \(\nu^s(p) < 1\). For \(c > \sigma^s(p)\), we have 
 	\begin{equation}\label{eq1}
@@ -42,7 +127,6 @@ The proofs for these lemmas should be similar to the proofs found in \cite{dieci
 	\end{equation}
 	Conversely, if \cref{eq1} holds for some \(c\in \R\), then \(c\geq \sigma^s(p).\)
 \end{lem}
-
 \begin{lem}\label{lemma2}
 	For \(p\in M\) and \(s,t\geq 0\), we have the following:
 	\begin{enumerate}[label=(\roman*)]
@@ -51,6 +135,8 @@ The proofs for these lemmas should be similar to the proofs found in \cite{dieci
 		\item \(C_{s+t}(p) = C_t(\phi_{-s}(p))C_s(p)\).
 	\end{enumerate}
 \end{lem}
+
+Hence we have the following bounds on the generalized Lyapunov-type numbers.
 \lyapunovbound*
 \begin{proof}
 	\emph{(i)} Let \(a\in\R\) such that \(\lambda^u(K) < a\). For each \(q\in K\) there is a \(\tau_q>0\) and an open, precompact neighborhood of \(q\), \(U_q\), such that \[\| C_{\tau_q}(q')\| < a^{\tau_q} \quad \text{for all } q'\in U_q.\] Then \(\{ U_q \}_{q\in K}\) is an open cover of \(K\), and so we can take a finite subcover \(\{U_i\}_{i=1}^m\) with associated \(\tau_q\) values denoted by \(\tau_i\) for \(i = 1,\ldots, m\). Let \(U = \bigcup_{i=1}^m U_i\) and assume without loss of generality that \(\tau_1\leq \tau_2\leq\cdots\leq \tau_m\). Since \(\lambda^u(p)\) is constant along trajectories and \(\phi_{-t}(p) \to K\) as \(t\to\infty\), we can assume that \(\phi_{-t}(p) \in U\) for all \(t\geq 0.\) 
@@ -159,3 +245,152 @@ The proofs for these lemmas should be similar to the proofs found in \cite{dieci
 	\end{equation}
 	As \(t\to\infty\), we have \(\ell \to \infty\). Therefore \( \| A_t(p) \| \, \| B_t(p)| \|^c\to 0\) as \(t\to\infty\) and \(\sigma^s(p) \leq c\). We can then conclude that \(\sigma^s(p) \leq \sigma^s(K).\)
 \end{proof}
+
+At this point, we are nearly ready to state the main theorem concerning the existence of unstable manifolds. One might expect that the unstable manifold will be tangent to the unstable vector bundle, \(N^u\). But we want our unstable manifold to be \(C^r\) smooth and \(N^u\) is only \(C^{r-1}\). To get around this, the unstable vector bundle is perturbed slightly to increase its regularity. 
+
+\begin{prop}
+	Suppose \(N\) is a \(C^{r-1}\)  \(k\)-dimensional normal vector bundle defined on \(M_1\). Then there is a \(C^r\) \(k\)-dimensional bundle \(N'\subset T\R^n |_{M_1}\), transversal to \(TM_1\). Moreover, given \(\epsilon > 0\), for any set \(U^j_i\) as constructed in \cref{atlases}, there exist orthonormal bases 
+	\begin{align}
+		\{e^{ij}_1(p), \ldots, e^{ij}_k(p)\} \quad \text{for } N|_{U^j_i} \\
+		\{f^{ij}_1(p), \ldots, f^{ij}_k(p)\} \quad \text{for } N'|_{U^j_i} 
+	\end{align}
+	such that
+	\begin{equation}
+		|e^{ij}_\ell(p) - f^{ij}_\ell(p) | < \epsilon, \quad \ell = 1,\ldots, k.
+	\end{equation}
+	The \(f^{ij}_\ell(p)\) can be chosen to be \(C^r\) functions of \(p \in U^j_i\)
+\end{prop}
+The main takeaway though is that replacing \(N^u\) and \(N^s\) with \({N'}^u\) and \({N'}^s\), respectively, allows us to increase the regularity of the vector bundles to \(C^r\). In order to find local coordinates around \(M_2\), we let 
+\begin{align}
+	{N'_\epsilon}^s &:= \{(p, v^u) \in {N'}^s: |v^s| \leq \epsilon\}, \\
+	{N'_\epsilon}^ u&:= \{(p, v^u) \in {N'}^u: |v^u| \leq \epsilon\},
+\end{align}
+and set \(N'_\epsilon = {N'_\epsilon}^s \oplus {N'_\epsilon}^u\). Then for \(\epsilon_0>0\) suitably small, for any \(0< \epsilon \leq \epsilon_0\) the map
+\begin{equation}
+\begin{aligned}
+	h:\, &N'_\epsilon  \to \R^n \\
+	&(p, v^s, v^u) \mapsto p + v^s + v^u
+\end{aligned}
+\end{equation}
+is \(C^r\) and has an image containing a neighborhood of \(M_2\). We also have local coordinates around the manifold given by
+\begin{equation}
+\begin{aligned}
+	(\sigma_i \times \tau_i^s \times \tau_i^u) : N'_\epsilon |_{\overline U_i^6}  \to &\R^{n-(s+u)} \times \R^s \times \R^u, \\
+	(\sigma_i \times \tau_i^s \times \tau_i^u) (p, v^s, v^u) &= (\sigma_i(p), \tau_i^s(v^s), \tau_i^u(v^u)) \\
+	&= (x,y,z)
+\end{aligned}
+\end{equation}
+which are \(C^r\) diffeomorphisms.
+
+To describe the unstable manifold being tangent to \({N'_\epsilon}^u\), we define 
+\begin{equation}
+\begin{aligned}
+	h_u : {N'_\epsilon}^u &\to \R^n \\
+	(p, v^u) &\mapsto  p + v^u
+\end{aligned}
+\end{equation}
+so that \(h_u({N'_\epsilon}^u) \subset \R^n\).
+
+%Wiggins Thm. 4.5.1 originally Fenichel 1971
+\begin{theorem}\label{unstable-manifold-fenichel}
+	Suppose \(\dot x = f(x)\) is a \(C^r\) vector field on \(\R^n\), \(r\geq 1\). Let \(\overline M = M \cup \partial M\) be a \(C^r\), compact connected manifold with boundary overflowing invariant under the vector field \(f(x)\). Suppose \(\nu^s(p) < 1\), \(\lambda^u(p) < 1\), and \(\sigma^s(p) < \frac 1 r\) for all \(p\in M\). Then there exists a \(C^r\) overflowing invariant manifold \(W^u(\overline M)\) containing \(\overline M\) and tangent to \(h_u(N'^u_\epsilon )\) along \(\overline M\) with trajectories in \(W^u(\overline M)\) approaching \(\overline M\) as \(t\to -\infty\).
+\end{theorem}
+
+\section{Foliations of unstable manifolds}
+
+In addition to the existence of an unstable manifold, we have under certain conditions that the manifold is foliated. We first introduce other generalized Lyapunov-type numbers before stating the theorem.
+
+\begin{defn}
+	The generalized Lyapunov-type numbers at \(p\) are given by
+	\begin{align}
+		\sigma^{cu}(p) &:= \inf \left\{ \rho :( (|u_{-t}| / |v_{-t}|) / (|u_0| / |v_0|))/ \rho^t \to 0 \text{ as } t\to\infty , \forall v_0 \in T_pM_2 , u_0 \in N^u_p \right\}, \\
+		\sigma^{su}(p) &:= \inf \left\{ \rho :( (|u_{-t}| / |w_{-t}|) / (|u_0| / |w_0|)) / \rho^t \to 0 \text{ as } t\to\infty , \forall w_0 \in N^s_p , u_0 \in N^u_p \right\} .
+	\end{align}
+\end{defn}
+%Wiggins Thm 5.6.1
+\begin{theorem}\label{foliation-of-unstable-manifold}
+	Suppose \(\dot x = f(x) \) is a \(C^r\) vector field on \(\R^n\), \(r\geq 1\). Let \(\overline M = M \cup \partial M\) be a \(C^r\) compact connected manifold with boundary, overflowing invariant under the vector field \(f(x)\). Suppose \(\lambda^u(p)< 1\), \(\sigma^{cu}(p) < 1\), and \(\sigma^{su}(p) < 1\) for every \(p \in \overline M_1\). Then there exists a \(n-(s+u)\)-parameter family \(\mcF^u = \cup_{p\in M} f^u(p)\) of \(u\)-dimensional surfaces \(f^u(p)\) (with boundary) such that the following hold:
+	\begin{enumerate}
+		\item \(\mcF^u\) is a negatively invariant family, i.e., \(\phi_{-t} (f^u(p)) = f^u(\phi_{-t}(p))\) for any \(t\geq 0\) and \(p\in M\).
+		\item The \(u\)-dimensional surfaces \(f^u(p)\) are \(C^r\).
+		\item \(f^u(p)\) is tangent to \(h_u(N'^u_p)\) at \(p\).
+		\item There exists \(C_u,\lambda_u > 0\) such that if \(q\in f^u(p)\), then \[| \phi_{-t}(q) - \phi_{-t}(p) | < C_u e^{-\lambda_u t}\] for any \(t\geq 0\).
+		\item Suppose \(q\in f^u(p)\) and \(q'\in f^u(p')\). Then \[\frac{|\phi_{-t}(q) - \phi_{-t}(p) |}{| \phi_{-t}(q') - \phi_{-t}(p) |} \to 0 \quad \text{as } t\to\infty\] unless \(p = p'\).
+		\item \(f^u(p) \cap f^u(p') = \emptyset \), unless \(p=p'\).
+		\item If the hypotheses of the unstable manifold theorem hold, i.e., if additionally \(\nu^s(p) < 1\) and \(\sigma^s(p) < \frac 1 r\) for every \(p \in \overline M_1\), then the \(u\)-dimensional surfaces \(f^u(p)\) are \(C^r\) with respect to the basepoint \(p\).
+		\item \(\mcF^u = W_{\mathrm{loc}}^u(M)\).
+	\end{enumerate}
+\end{theorem}
+
+\begin{prop}
+	Assume the conditions in \cref{foliation-of-unstable-manifold} hold and that \(u = 1\). Let \(p \in \overline{M}_1\) be a fixed points under the flow. Then in some neighborhood of \(p\), \(U\), there is \(C> 0 \) and \(\alpha > 0\) such that for any fixed point \(p'\in U\) and any \(q \in f^u(p)\) and \(q'\in f^u(p')\) we have
+	\begin{equation}
+		|(\phi_{-t}(q) - p) - (\phi_{-t}(q') - p')| < C e^{-\alpha t} | q - q'|
+	\end{equation}
+	for any \(t\geq 0.\)
+\end{prop}
+\section{Boundary modifications}\label{sec:boundary-modifications}
+
+In this section we provide the details for the boundary modification we made in \cref{sec:manifolds} in order to claim that we had an unstable manifold. In particular, we asserted that the vector bundles could be continuously extended to the region where the perturbation of the vector field was made. If we denote the new vector field in \cref{perturbed-vector-field} by \(\tilde F\) and its flow by \(\tilde \phi_t\), then we know that the vectors in \(T_p\R^4\) evolve according to the ODE
+\begin{equation}
+	\xi'(s) = D\tilde F(\tilde \phi_{-s}(p)) \xi,
+\end{equation}
+a linear non-autonomous ODE. If \(\tilde \phi_{-s}(p) \to p'\), then we thus want a way to assign \(\xi(0) \in T_p\R^4\) so that \(\mathrm{span}\{\xi(t)\}\) approaches \(N^u_{p'}\) or \(N^s_{p'}\) as \(s\to \infty\). Thus we are really concerned with solutions of linear ODEs with certain limits at \(t\to\infty\).
+
+More generally, we want solutions of
+\begin{equation}\label{linear-nonauto-ode}
+	x'(t) = (A+ V(t) + R(t))x
+\end{equation}
+which approach eigenvectors of \(A\) as \(t\to \infty\). The following theorem gives us a way to find those solutions \cite[Chp.~3, Thm.~8.1]{coddington1955theory}.
+\begin{theorem}
+	Let \(A\) be a constant matrix with characteristic roots \(\mu_j\), \(j=1,2,\ldots, n\), all of which are distinct. Let the matrix \(V\) be differentiable and satisfy
+	\begin{equation}
+		\int_0^\infty |V'(t)|\, dt < \infty
+	\end{equation}
+	and let \(V(t) \to 0\) as \(t\to\infty\). Let the matrix \(R\) be integrable and let 
+	\begin{equation}
+		\int_0^\infty |R(t)|\, dt < \infty.
+	\end{equation}
+	Let the roots of \(\det(A+V(t) -\lambda I) = 0\) be denoted by \(\lambda_j(t)\), \(j = 1,2 ,\ldots, n\). Clearly, by reordering the \(\mu_j\) if necessary, \(\lim_{t\to\infty} \lambda_j(t) = \mu_j\). For a given \(k\), let 
+	\begin{equation}
+		D_{kj}(t) = \Re(\lambda_k(t) - \lambda_j(t)).
+	\end{equation}
+	Suppose all \(j\), \(1\leq j \leq n\), fall into one of two classes \(I_1\) and \(I_2\), where
+	\begin{equation}
+		j \in I_1 \text{ if } \int_0^t D_{kj}\, d\tau \to \infty \text{ as } t\to\infty \text{ and } \int_{t_1}^{t_2} D_{kj}\, d\tau > -K \text{ for }t_2\geq t_1 \geq 0
+	\end{equation}
+	and 
+	\begin{equation}
+		j \in I_2 \text{ if } \int_{t_1}^{t_2} D_{kj}(\tau) \, d\tau  < K \text{ for } t_2\geq t_1\geq 0
+	\end{equation}
+	where \(k\) is fixed and \(K\) is a constant. Let \(p_k\) be an eigenvector of \(A\) associated with \(\mu_k\), so that 
+	\begin{equation}
+		Ap_k = \mu_k p_k
+	\end{equation}
+	Then there is a solution \(\varphi_k\) of \cref{linear-nonauto-ode} and a \(t_0\), \(0\leq t_0< \infty\), such that
+	\begin{equation}
+		\lim_{t\to\infty} \varphi_k(t) \exp\left[ - \int_{t_0}^ t \lambda_k(\tau) \, d\tau \right] = p_k.
+	\end{equation}
+\end{theorem}
+
+We will first apply the above theorem to 
+\begin{equation}
+	\xi'(s) = DF(\tilde \phi_{-s}(p)) \xi.
+\end{equation}
+Here \(F\) denotes the unperturbed vector field as given in \cref{epsilon-flow} while \(\tilde\phi_{-s}\) is the flow under the perturbed vector field. Again, take \(\phi_{-s}(p) \to p '\) as \(s\to \infty\). Set \(A = DF(p')\) so that the linear ODE can be expressed as
+\begin{equation}\label{ode-for-vector-bundles-unperturbed}
+	\xi'(s) = (A + (DF(\tilde \phi_{-s}(p)) - A)) \xi,
+\end{equation}
+which is the same form as \cref{linear-nonauto-ode} with \(V(s) = DF(\tilde \phi_{-s}(p)) - A\). One can check that \(V\) is differentiable by noting the linearization as computed in \cref{linearization-flow} is \(C^1\) in space. One can also check that \(\int_{0}^\infty |V'(s)|\, ds < \infty\) (... add calculation here integrate with respect to arc length so that integral is bounded by second derivatives of \(F\)).
+
+There is a slight complication given from the need that the eigenvalues of \(A\) are distinct. In our case, we have two eigenvalues that are the same: the two zero eigenvalues. However, we can remove one of our eigenvalues. For the zero eigenvalue with corresponding eigenvector \(e_4 = (0, 0, 0, 1)\), we have the following spectral projection
+\begin{equation}
+	P v = (e_4 \cdot v) e_4.
+\end{equation}
+The eigenvalue and eigenvector for \(A\) are the same as \(DF(q)\) for any \(q\) in our manifold, and \(P\) commutes with \(DF(q)\). This allows us to break up the solution \(\xi\) of \cref{ode-for-vector-bundles-unperturbed} into two components as such:
+\begin{equation}
+	\xi = P\xi + (I-P)\xi = \xi_P + \xi_Q
+\end{equation}
+Then the ODE for \(\xi_Q\) is a three-dimensional ODE and \(A(I-P)\) has distinct eigenvalues.
+
+The conditions on the eigenvalues of \(A+V(s) = DF(\tilde\phi_{-s}(p))\) follow from the fact that \(DF(q)\) has eigenvalues continuous in \(q\) and they are distinct.
