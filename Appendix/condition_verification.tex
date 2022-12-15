@@ -332,7 +332,7 @@ In addition to the existence of an unstable manifold, we have under certain cond
 \section{Boundary modifications}\label{sec:boundary-modifications}
 
 In this section we provide the details for the boundary modification we made in \cref{sec:manifolds} in order to claim that we had an unstable manifold. In particular, we asserted that the vector bundles could be continuously extended to the region where the perturbation of the vector field was made. If we denote the new vector field in \cref{perturbed-vector-field} by \(\tilde F\) and its flow by \(\tilde \phi_t\), then we know that the vectors in \(T_p\R^4\) evolve according to the ODE
-\begin{equation}
+\begin{equation}\label{flow-tangent-vectors-perturbed}
 	\xi'(s) = D\tilde F(\tilde \phi_{-s}(p)) \xi,
 \end{equation}
 a linear non-autonomous ODE. If \(\tilde \phi_{-s}(p) \to p'\), then we thus want a way to assign \(\xi(0) \in T_p\R^4\) so that \(\mathrm{span}\{\xi(t)\}\) approaches \(N^u_{p'}\) or \(N^s_{p'}\) as \(s\to \infty\). Thus we are really concerned with solutions of linear ODEs with certain limits at \(t\to\infty\).
@@ -342,7 +342,7 @@ More generally, we want solutions of
 	x'(t) = (A+ V(t) + R(t))x
 \end{equation}
 which approach eigenvectors of \(A\) as \(t\to \infty\). The following theorem gives us a way to find those solutions \cite[Chp.~3, Thm.~8.1]{coddington1955theory}.
-\begin{theorem}
+\begin{theorem}\label{thm:coddington}
 	Let \(A\) be a constant matrix with characteristic roots \(\mu_j\), \(j=1,2,\ldots, n\), all of which are distinct. Let the matrix \(V\) be differentiable and satisfy
 	\begin{equation}
 		\int_0^\infty |V'(t)|\, dt < \infty
@@ -374,10 +374,11 @@ which approach eigenvectors of \(A\) as \(t\to \infty\). The following theorem g
 \end{theorem}
 
 We will first apply the above theorem to 
-\begin{equation}
+\begin{equation}\label{flow-for-tangent-vectors-unperturbed}
 	\xi'(s) = DF(\tilde \phi_{-s}(p)) \xi.
 \end{equation}
-Here \(F\) denotes the unperturbed vector field as given in \cref{epsilon-flow} while \(\tilde\phi_{-s}\) is the flow under the perturbed vector field. Again, take \(\phi_{-s}(p) \to p '\) as \(s\to \infty\). Set \(A = DF(p')\) so that the linear ODE can be expressed as
+Here \(F\) denotes the unperturbed vector field as given in \cref{epsilon-flow} while \(\tilde\phi_{-s}\) is the flow under the perturbed vector field. Again, take \(\phi_{-s}(p) \to p'
+\) as \(s\to \infty\). Set \(A = DF(p')\) so that the linear ODE can be expressed as
 \begin{equation}\label{ode-for-vector-bundles-unperturbed}
 	\xi'(s) = (A + (DF(\tilde \phi_{-s}(p)) - A)) \xi,
 \end{equation}
@@ -391,6 +392,68 @@ The eigenvalue and eigenvector for \(A\) are the same as \(DF(q)\) for any \(q\)
 \begin{equation}
 	\xi = P\xi + (I-P)\xi = \xi_P + \xi_Q
 \end{equation}
-Then the ODE for \(\xi_Q\) is a three-dimensional ODE and \(A(I-P)\) has distinct eigenvalues.
+Then the ODE for \(\xi_Q\) is a three-dimensional ODE and \(A(I-P)\) has distinct eigenvalues. For simplicity of notation, we will assume that this reduction has been done and drop the subscript \(Q\) when talking about the reduced solution.
 
 The conditions on the eigenvalues of \(A+V(s) = DF(\tilde\phi_{-s}(p))\) follow from the fact that \(DF(q)\) has eigenvalues continuous in \(q\) and they are distinct.
+
+Thus we can apply \cref{thm:coddington} to the reduction of \cref{ode-for-vector-bundles-unperturbed} to define vector bundles. There are a couple of open question that need to be addressed before we can be satisfied with these vector bundles. 
+
+Firstly, one must check that the vector bundles defined this way are well-defined. For instance, one might get different vectors in the vector bundle depending on where the initial condition of the ODE is chosen. Starting at a point \(p\) and flowing the vector forward until time \(t_0\) can lead to a different solution than if the vector is assigned by starting at \(\tilde\phi_{-t_0}(p)\). This would not be unexpected, since there are infinitely many solutions of the linear ODE which approach the unstable bundle in backward time. We sidestep the issue by only assigning a solution to one point in each possible orbit. For our case, we have a radial flow, and so we will assign the vector bundles on a circle in \(\overline M\) and choose \(\mathrm{span}\{\xi(0)\}\) at each point \(p\). The rest of the vector bundles will be defined by simply flowing the vector bundles on the circle backward in time. 
+
+Secondly, we need to check that the vector bundles are continuous. Certainly, along an orbit the solutions will be continuous but \cref{thm:coddington} does say whether solutions will be continuous in space. To answer this question, we must go the proof of \cref{thm:coddington}. Essentially, the proof is done by rewriting the ODE using a change-of-coordinates and variation of parameters and then applying a Picard iteration. We shall look into the details for our specific case. The eigenvalues and eigenvectors of \(DF(q)\) will be denoted by \(\lambda_k(q)\) and \(v_k(q)\), respectively. From the regularity in \(F\), we have that the eigenvectors and values are continuously differentiable in \(q\). Then we define the matrix
+\begin{equation}
+	S(q) = [v_1(q), v_2(q), \ldots, v_n(q)]
+\end{equation}
+and make the change of coordinates
+\begin{equation}
+	\xi(s) = S(\tilde \phi_{-s} (p)) \varphi(s).
+\end{equation}
+The matrix \(S(q)\) diagonalizes \(DF(q)\) and so 
+\begin{equation}
+	\varphi'(s) = \Lambda(s,p)\varphi + \underbrace{[S(\phi_{-s}(p))]' S(\phi_{-s}(q))^{-1}}_{=: R(s,p)} \varphi(s)
+\end{equation}
+where 
+\begin{equation}
+	\Lambda(s,p) = \mathrm{diag} \left\{  \lambda_k(\tilde\phi_{-s}(p))\right\}.
+\end{equation}
+Letting \(\Psi(s,p)\) be the fundamental matrix solution associated with \(\Lambda(s,p)\), the \(\varphi\) we are looking for is the solution to the following integral equation
+\begin{equation}\label{variation-of-constants}
+\begin{aligned}
+		\varphi_k(s,p) = &\Psi(s,p) e_k + \int_0^s \Psi_1(s, p) \Psi(\tau, p)^{-1}R(\tau, p) \varphi_k(\tau,p)\, d\tau \\
+		&\quad - \int_s^\infty \Psi_2(s,p) \Psi(\tau, p)^{-1} R(\tau, p) \varphi_k(\tau, p)\, d\tau.
+\end{aligned}
+\end{equation}
+At this point an iteration scheme can be set up, but to show regularity of the solution with respect to \(p\), we set it up as a fixed point problem. We will slightly alter the function on the right-hand side so that the function space for the solution does not depend on \(p\). Let 
+\begin{equation}
+	h_k(s,p) := \exp\left[\int_0^s \lambda_k(\sigma)\, d\sigma\right].
+\end{equation}
+Then define
+\begin{equation}
+\begin{aligned}
+	\mcF_k[\varphi_0, p](s) :=& e_k + h_k(s,p)^{-1}\int_0^s \Psi_1(s, p) \Psi(\tau, p)^{-1}R(\tau, p) h_k(\tau,p)\varphi_0(\tau)\, d\tau \\
+	&\quad - h_k(s,p)^{-1}\int_s^\infty \Psi_2(s,p) \Psi(\tau, p)^{-1} R(\tau, p)h_k(\tau,p) \varphi_0(\tau)\, d\tau
+\end{aligned}
+\end{equation}
+where \(\varphi^0\in C^0_b([0,\infty), \R^n)\). Then by multiplying the above equation through by \(h_k\), we can see that \(h_k(\cdot, p)\varphi^0\) is a solution of \cref{variation-of-constants} if \(\mcF_k[\varphi_0, p] = \varphi_0\). Choosing our initial condition \(p\) sufficiently close to its limit point guarantees that \(\mcF_k[\cdot, p]\) maps into \(C^0_b([0,\infty), \R^n)\) and
+\begin{equation}
+	|\mcF_k[\varphi_1, p](s) - \mcF_k[\varphi_2, p](s) | \leq \rho  |\varphi_1(s) - \varphi_2(s)| 
+\end{equation}
+for some \(0< \rho < 1\). Thus by the Banach fixed point theorem, there is a unique solution in the closed set.
+
+The regularity of the solutions with respect to \(p\) follows from the continuity \(S\) and \(R\) with respect to \(p\). In particular, we have that \(\mcF_k\) is continuous in \(p\) and so the solutions to the fixed point problem \(\mcF_k[\varphi_k^0(\cdot, p) , p] = \varphi_k^0(\cdot, p)\) are continuous with respect to \(p\). This means that \(p\mapsto \varphi_k(0,p) = \varphi_k^0(0,p) \) is also continuous with respect to \(p\) and we can define the vector bundles smoothly.
+
+To summarize, we define the vector bundles on a small circle in \(M\) so that they are invariant under the flow given by \cref{flow-for-tangent-vectors-unperturbed}. We now return to the perturbed flow of the tangent vectors given by \cref{flow-tangent-vectors-perturbed}. The vector bundles do not remain invariant under the perturbed vector field, but \(TM_2 \oplus N^u\) and \(TM_2 \oplus N^s\) are both invariant. This is because the perturbation is only in the tangent direction on the \(M\) and so the ODE partially decouples. For example, if \(\xi(0) \in T_pM_2 \oplus N^u_p\), then we can define the solution to 
+\begin{equation}
+\begin{aligned}
+	u'(s) &= DF(\tilde \phi_{-s}(p)) u\\
+	u(0) &= \Pi^u_p \xi(0),
+\end{aligned}
+\end{equation}
+which is guaranteed to be in \(N^u\) for all time, and 
+\begin{equation}
+\begin{aligned}
+	v'(s) &= (D\tilde F(\tilde\phi_{-s}(p)) - DF(\tilde\phi_{-s}(p))) (v + u) \\
+	v(0) &= (I - \Pi^u_p) \xi(0)
+\end{aligned}
+\end{equation}
+which is in \(TM_2\) for all time, so that \(u + v\) is a solution to \cref{flow-tangent-vectors-perturbed}.
