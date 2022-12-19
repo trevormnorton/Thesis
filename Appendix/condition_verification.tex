@@ -322,6 +322,24 @@ In addition to the existence of an unstable manifold, we have under certain cond
 	\end{enumerate}
 \end{theorem}
 
+\begin{lem}
+	Suppose \(F(\mu, z)\) are a family of \(C^1\) functions on \(I \times [0,\alpha]\), where \(I\) is a compact interval and \(F(\mu, 0) = 0\). Furthermore, assume
+	\begin{equation}
+		\frac{\partial F}{\partial z} (\mu , 0) > 0.
+	\end{equation}
+	Then for the family of of solutions to 
+	\begin{equation}
+		\begin{aligned}
+			\dot z_\mu(t) &= F(\mu, z_\mu) 
+		\end{aligned}
+	\end{equation}
+	there are constants \(C, \alpha > 0\) where 
+	\begin{equation}
+		|z_{\mu_1} (-t) - z_{\mu_2}(-t) | \leq C e^{-\alpha t}( |\mu_1- \mu_2| + |z_{\mu_1}(0) - z_{\mu_2}(0)|)
+	\end{equation}
+	for all \(\mu_1,\mu_2 \in I\) and \(t> 0\).
+\end{lem}
+
 \begin{prop}
 	Assume the conditions in \cref{foliation-of-unstable-manifold} hold and that \(u = 1\). Let \(p \in \overline{M}_1\) be a fixed points under the flow. Then in some neighborhood of \(p\), \(U\), there is \(C> 0 \) and \(\alpha > 0\) such that for any fixed point \(p'\in U\) and any \(q \in f^u(p)\) and \(q'\in f^u(p')\) we have
 	\begin{equation}
@@ -329,15 +347,19 @@ In addition to the existence of an unstable manifold, we have under certain cond
 	\end{equation}
 	for any \(t\geq 0.\)
 \end{prop}
+
+\begin{proof}
+	content...
+\end{proof}
 \section{Boundary modifications}\label{sec:boundary-modifications}
 
 In this section we provide the details for the boundary modification we made in \cref{sec:manifolds} in order to claim that we had an unstable manifold. In particular, we asserted that the vector bundles could be continuously extended to the region where the perturbation of the vector field was made. If we denote the new vector field in \cref{perturbed-vector-field} by \(\tilde F\) and its flow by \(\tilde \phi_t\), then we know that the vectors in \(T_p\R^4\) evolve according to the ODE
 \begin{equation}\label{flow-tangent-vectors-perturbed}
 	\xi'(s) = D\tilde F(\tilde \phi_{-s}(p)) \xi,
 \end{equation}
-a linear non-autonomous ODE. If \(\tilde \phi_{-s}(p) \to p'\), then we thus want a way to assign \(\xi(0) \in T_p\R^4\) so that \(\mathrm{span}\{\xi(t)\}\) approaches \(N^u_{p'}\) or \(N^s_{p'}\) as \(s\to \infty\). Thus we are really concerned with solutions of linear ODEs with certain limits at \(t\to\infty\).
+a linear non-autonomous ODE. If \(\tilde \phi_{-s}(p) \to p'\), then ideally we want a way to assign \(\xi(0) \in T_p\R^4\) so that \(\mathrm{span}\{\xi(t)\}\) approaches \(N^u_{p'}\) or \(N^s_{p'}\) as \(s\to \infty\). Thus we are really concerned with solutions of linear ODEs with certain limits at infinity.
 
-More generally, we want solutions of
+This problem can be described more generally as finding solutions of 
 \begin{equation}\label{linear-nonauto-ode}
 	x'(t) = (A+ V(t) + R(t))x
 \end{equation}
@@ -375,9 +397,9 @@ which approach eigenvectors of \(A\) as \(t\to \infty\). The following theorem g
 
 We will first apply the above theorem to 
 \begin{equation}\label{flow-for-tangent-vectors-unperturbed}
-	\xi'(s) = DF(\tilde \phi_{-s}(p)) \xi.
+	\xi'(s) = DF(\tilde \phi_{-s}(p)) \xi
 \end{equation}
-Here \(F\) denotes the unperturbed vector field as given in \cref{epsilon-flow} while \(\tilde\phi_{-s}\) is the flow under the perturbed vector field. Again, take \(\phi_{-s}(p) \to p'
+before returning to the full problem. Here \(F\) denotes the unperturbed vector field as given in \cref{epsilon-flow} while \(\tilde\phi_{-s}\) is the flow under the perturbed vector field. Again, take \(\phi_{-s}(p) \to p'
 \) as \(s\to \infty\). Set \(A = DF(p')\) so that the linear ODE can be expressed as
 \begin{equation}\label{ode-for-vector-bundles-unperturbed}
 	\xi'(s) = (A + (DF(\tilde \phi_{-s}(p)) - A)) \xi,
@@ -438,7 +460,7 @@ where \(\varphi^0\in C^0_b([0,\infty), \R^n)\). Then by multiplying the above eq
 \begin{equation}
 	|\mcF_k[\varphi_1, p](s) - \mcF_k[\varphi_2, p](s) | \leq \rho  |\varphi_1(s) - \varphi_2(s)| 
 \end{equation}
-for some \(0< \rho < 1\). Thus by the Banach fixed point theorem, there is a unique solution in the closed set.
+for some \(0< \rho < 1\). Thus by the Banach fixed point theorem, there is a unique solution in \(C^0_b\).
 
 The regularity of the solutions with respect to \(p\) follows from the continuity \(S\) and \(R\) with respect to \(p\). In particular, we have that \(\mcF_k\) is continuous in \(p\) and so the solutions to the fixed point problem \(\mcF_k[\varphi_k^0(\cdot, p) , p] = \varphi_k^0(\cdot, p)\) are continuous with respect to \(p\). This means that \(p\mapsto \varphi_k(0,p) = \varphi_k^0(0,p) \) is also continuous with respect to \(p\) and we can define the vector bundles smoothly.
 
