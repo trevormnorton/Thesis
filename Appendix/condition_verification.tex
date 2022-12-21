@@ -276,7 +276,7 @@ is \(C^r\) and has an image containing a neighborhood of \(M_2\). We also have l
 \begin{equation}
 \begin{aligned}
 	(\sigma_i \times \tau_i^s \times \tau_i^u) : N'_\epsilon |_{\overline U_i^6}  \to &\R^{n-(s+u)} \times \R^s \times \R^u, \\
-	(\sigma_i \times \tau_i^s \times \tau_i^u) (p, v^s, v^u) &= (\sigma_i(p), \tau_i^s(v^s), \tau_i^u(v^u)) \\
+	(\sigma_i \times \tau_i^s \times \tau_i^u) (p, v^s, v^u) &= (\sigma_i(p), \tau_i^s(p, v^s), \tau_i^u(p, v^u)) \\
 	&= (x,y,z)
 \end{aligned}
 \end{equation}
@@ -323,22 +323,50 @@ In addition to the existence of an unstable manifold, we have under certain cond
 \end{theorem}
 
 \begin{lem}
-	Suppose \(F(\mu, z)\) are a family of \(C^1\) functions on \(I \times [0,\alpha]\), where \(I\) is a compact interval and \(F(\mu, 0) = 0\). Furthermore, assume
+	Suppose \(F(\mu, z)\) are a family of \(C^1\) functions from \(K \times [0,a]\) into \([0,a]\), where \(K\) is a compact set in \(\R^n\) and \(F(\mu, 0) = 0\) and \(F(\mu, z) > 0\). Furthermore, assume
 	\begin{equation}
-		\frac{\partial F}{\partial z} (\mu , 0) > 0.
+		0< \frac{\partial F}{\partial z} (\mu , 0) < 1, \quad \forall \mu \in K.
 	\end{equation}
-	Then for the family of of solutions to 
+	Then there exists \(z_0 \in (0,a]\) and constants \(C> 0\) and \(0<\rho< 1\) where the family of solutions to the recurrence equations
 	\begin{equation}
-		\begin{aligned}
-			\dot z_\mu(t) &= F(\mu, z_\mu) 
-		\end{aligned}
+		z_{\mu, n+1} = F(\mu, z_{\mu, n})
 	\end{equation}
-	there are constants \(C, \alpha > 0\) where 
+	with initial values \(z_{\mu, 0}\) in the interval \([0,z_0]\) all approach \(0\) as \(n\to \infty\) and
 	\begin{equation}
-		|z_{\mu_1} (-t) - z_{\mu_2}(-t) | \leq C e^{-\alpha t}( |\mu_1- \mu_2| + |z_{\mu_1}(0) - z_{\mu_2}(0)|)
+		|z_{\mu_1,n} - z_{\mu_2,n} | \leq C \rho^n( |\mu_1- \mu_2| + |z_{\mu_1,n} - z_{\mu_2,n}|)
 	\end{equation}
-	for all \(\mu_1,\mu_2 \in I\) and \(t> 0\).
+	for all \(\mu_1,\mu_2 \in K\) and \(n\geq 0\).
 \end{lem}
+
+\begin{proof}
+	Define 
+	\begin{equation}
+		\alpha_0 := \min_{\mu\in K } \frac{\partial F}{\partial z} (\mu, 0) 
+	\end{equation} 
+	and 
+	\begin{equation}
+		M_0 := \max_{\mu\in K} \left| D_\mu F (\mu, 0) \right|
+	\end{equation}
+	Set \(\alpha = \frac{1 + \alpha_0}{2}\) and \(M = 2M_0\). Note that \(\alpha_0 < \alpha < 1\). Let \(z_0 > 0\) such that 
+	\begin{equation}
+		0 < \frac{\partial F}{\partial z} (\mu, z) \leq \alpha \quad \text{and} \quad \left| D_\mu F (\mu, z) \right| \leq M
+	\end{equation}
+	for any \(z \in [0,z_0]\) and \(\mu \in K\). 
+	
+	Now fix \(\mu_1,\mu_2\in K\) and assume \(z_{\mu_1, 0}, z_{\mu_2,0} \in [0,z_0]\). Then we have that 
+	\begin{align*}
+		z_{\mu_1, n} - z_{\mu_2, n}=\ &z_{\mu_1, 0}- z_{\mu_2, 0} + \sum_{k=0}^{n-1} [(F(\mu_1, z_{\mu_1,k} ) - z_{\mu_1, k}) - (F(\mu_2, z_{\mu_2,k} ) - z_{\mu_2, k})]\\
+		=\ &z_{\mu_1, 0}- z_{\mu_2, 0} + \sum_{k=0}^{n-1} [(F(\mu_1, z_{\mu_1,k} ) - z_{\mu_1, k}) - (F(\mu_1, z_{\mu_2,k} ) - z_{\mu_2, k})] \\
+		&\quad\sum_{k=0}^{n-1} [(F(\mu_1, z_{\mu_2,k} ) - z_{\mu_2, k}) - (F(\mu_2, z_{\mu_2,k} ) - z_{\mu_2, k})] \\
+		\leq\ &z_{\mu_1, 0}- z_{\mu_2, 0} + \sum_{k=0}^{n-1} (\alpha - 1) (z_{\mu_1, k}- z_{\mu_2, k}) +\sum_{k=0}^{n-1} M|\mu_1 - \mu_2| \\
+		=\ &z_{\mu_1, 0}- z_{\mu_2, 0} + \sum_{k=0}^{n-1} (\alpha - 1) (z_{\mu_1, k}- z_{\mu_2, k}) +M|\mu_1 - \mu_2| n.
+	\end{align*}
+	Hence applying the discrete Gr\"onwall inequality gives us
+	\begin{equation}
+		z_{\mu_1, n} - z_{\mu_2, n} \leq \alpha^n(z_{\mu_1, 0}- z_{\mu_2, 0} + M |\mu_1-\mu_2| n)
+	\end{equation}
+	We can then get the final result by choosing \(\rho \in (\alpha, 1)\) and \(C>0\) as large as we need.
+\end{proof}
 
 \begin{prop}
 	Assume the conditions in \cref{foliation-of-unstable-manifold} hold and that \(u = 1\). Let \(p \in \overline{M}_1\) be a fixed points under the flow. Then in some neighborhood of \(p\), \(U\), there is \(C> 0 \) and \(\alpha > 0\) such that for any fixed point \(p'\in U\) and any \(q \in f^u(p)\) and \(q'\in f^u(p')\) we have
