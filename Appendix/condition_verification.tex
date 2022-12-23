@@ -322,7 +322,7 @@ In addition to the existence of an unstable manifold, we have under certain cond
 	\end{enumerate}
 \end{theorem}
 
-\begin{lem}
+\begin{lem}\label{discrete-gronwall-estimate}
 	Suppose \(F(\mu, z)\) are a family of \(C^1\) functions from \(K \times [0,a]\) into \([0,a]\), where \(K\) is a compact set in \(\R^n\) and \(F(\mu, 0) = 0\) and \(F(\mu, z) > 0\). Furthermore, assume
 	\begin{equation}
 		0< \frac{\partial F}{\partial z} (\mu , 0) < 1, \quad \forall \mu \in K.
@@ -369,7 +369,7 @@ In addition to the existence of an unstable manifold, we have under certain cond
 \end{proof}
 
 \begin{prop}
-	Assume the conditions in \cref{foliation-of-unstable-manifold} hold and that \(u = 1\). Let \(p \in \overline{M}_1\) be a fixed points under the flow. Then in some neighborhood of \(p\) in \(\R^n\), \(U\), there is \(C> 0 \) and \(\lambda > 0\) such that for any fixed point \(p'\in U\) and any \(q \in f^u(p)\) and \(q'\in f^u(p')\) we have
+	Assume the conditions in \cref{foliation-of-unstable-manifold} hold and that \(r\geq 2\) and \(u = 1\). Let \(p \in {M}_1\) be a fixed points under the flow and assume that there are fixed points on \( M_1\) approaching \(p\). Then in some neighborhood of \(p\), \(U\), there is \(C> 0 \) and \(\lambda > 0\) such that for any fixed point \(p'\in U\cap M_1\) and any \(q \in f^u(p)\) and \(q'\in f^u(p')\) we have
 	\begin{equation}
 		|(\phi_{-t}(q) - p) - (\phi_{-t}(q') - p')| < C e^{-\lambda t} | q - q'|
 	\end{equation}
@@ -381,8 +381,42 @@ In addition to the existence of an unstable manifold, we have under certain cond
 	\begin{equation}
 		(x,z) \mapsto (f_1(z; x),  f_2(z;x),  z)
 	\end{equation}
-	Here the point \((x,0,0)\) picks out a point on \(\overline M_1\) and the one-dimensional foliation of the unstable manifold is parameterized by \(z\).
-	Let \(p'\) be an arbitrary fixed point on \(\overline M_1\cap U\) and denote the local coordinates of \(p\) and \(p'\) by \((x,0,0)\) and \((x',0,0)\), respectively.
+	Here the point \((x,0,0)\) picks out a point on \( M_1\) and the one-dimensional foliation of the unstable manifold is parameterized by \(z\).
+	Let \(p'\) be an arbitrary fixed point on \( M_1\cap U\) and denote the local coordinates of \(p\) and \(p'\) by \((x,0,0)\) and \((x',0,0)\), respectively. Take \(q \in f^u(p)\) and \(q' \in f^u(p')\), and let there local coordinates be given by \((f_1(z;x), f_2(z; x), z)\) and \((f_1(z';x') , f_2(z';x'), x')\), respectively. 
+	
+	We first want to show that 
+	\begin{equation}\label{z-estimate}
+		|z(-t) - z'(-t)| \leq C e^{-\lambda t} (|x- x'| + |z(0) - z'(0)|).
+	\end{equation}
+	The argument should be similar to the one given in \cite{wiggins1994normally} for part 4 of \cref{foliation-of-unstable-manifold}, but we use the Gr\"onwall estimate found before to get dependence on the initial conditions. Fix \(T>0\) and define \(z_n = z(-nT)\) and \(z'_{n} = z(-nT)\). These values can be found by iteratively applying the map
+	\begin{equation}
+		z \mapsto h(z;x) := \tau^u \circ \phi_{-T} \circ (\sigma \times \tau^s \times \tau^u)^{-1}(f_1(z;x), f_2(x;z), z).
+	\end{equation}
+	Thus we have 
+	\begin{equation}
+		z_{n+1} = h(z_{n}; x).
+	\end{equation}
+	The map \(h\) is \(C^1\) for \(x\in \overline {U\cap M_1}\) and \(z\) sufficiently small. We also have that \(0 < \frac{\partial h}{\partial z}(0;x) < 1\). A calculation of this type can be found in \cite{wiggins1994normally}. Therefore we can apply \cref{discrete-gronwall-estimate} to get 
+	\begin{equation}
+		|z_n - z'_n| \leq C \rho^n (|x-x'| + |z_0 - z'_0|)
+	\end{equation}
+	for any choice of \(p'\).
+	
+	The same estimate will hold if we adjust the initial condition of the \(z_n\) and \(z_n'\). Thus for any \(t\in [0,T)\) we also have
+	\begin{equation}
+		|z(-nT - t) - z'(-nT - t)| \leq C \rho^n (|x-x'| + |z(-t) - z'(-t)|).
+	\end{equation}
+	By the continuity of the flow, we can replace \(|z(-t) - z'(-t)|\) with \(C|z(0) - z'(0)|\) in the estimate above. Also, we can choose \(\lambda > 0\) small enough so that
+	\begin{equation}
+		\max_{0\leq t < T} e^{\lambda (T + t)} \rho < 1
+	\end{equation}
+	so that \cref{z-estimate} holds.
+	
+	Now consider the map
+	\begin{equation}
+		(x,z) \mapsto g(x,z) := (\sigma \times \tau^s \times \tau^u)^{-1}(f_1(x;z) , f_2(x;z), z) - (\sigma \times \tau^s \times \tau^u)^{-1}(x,0,0).
+	\end{equation}
+	This gives the difference between a point in \(f^u(p)\) and its limit point \(p\) when given its local coordinates. 
 \end{proof}
 \section{Boundary modifications}\label{sec:boundary-modifications}
 
