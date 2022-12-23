@@ -369,15 +369,20 @@ In addition to the existence of an unstable manifold, we have under certain cond
 \end{proof}
 
 \begin{prop}
-	Assume the conditions in \cref{foliation-of-unstable-manifold} hold and that \(u = 1\). Let \(p \in \overline{M}_1\) be a fixed points under the flow. Then in some neighborhood of \(p\), \(U\), there is \(C> 0 \) and \(\alpha > 0\) such that for any fixed point \(p'\in U\) and any \(q \in f^u(p)\) and \(q'\in f^u(p')\) we have
+	Assume the conditions in \cref{foliation-of-unstable-manifold} hold and that \(u = 1\). Let \(p \in \overline{M}_1\) be a fixed points under the flow. Then in some neighborhood of \(p\) in \(\R^n\), \(U\), there is \(C> 0 \) and \(\lambda > 0\) such that for any fixed point \(p'\in U\) and any \(q \in f^u(p)\) and \(q'\in f^u(p')\) we have
 	\begin{equation}
-		|(\phi_{-t}(q) - p) - (\phi_{-t}(q') - p')| < C e^{-\alpha t} | q - q'|
+		|(\phi_{-t}(q) - p) - (\phi_{-t}(q') - p')| < C e^{-\lambda t} | q - q'|
 	\end{equation}
 	for any \(t\geq 0.\)
 \end{prop}
 
 \begin{proof}
-	content...
+	We use the change of coordinates described before to prove the result. Choose \(U\) small enough so that the diffeomorphism is defined on all of \(U\). From \cref{foliation-of-unstable-manifold}, we have \(C^r\) functions \(f_1\) and \(f_2\) such that the unstable manifold is given by the graph
+	\begin{equation}
+		(x,z) \mapsto (f_1(z; x),  f_2(z;x),  z)
+	\end{equation}
+	Here the point \((x,0,0)\) picks out a point on \(\overline M_1\) and the one-dimensional foliation of the unstable manifold is parameterized by \(z\).
+	Let \(p'\) be an arbitrary fixed point on \(\overline M_1\cap U\) and denote the local coordinates of \(p\) and \(p'\) by \((x,0,0)\) and \((x',0,0)\), respectively.
 \end{proof}
 \section{Boundary modifications}\label{sec:boundary-modifications}
 
