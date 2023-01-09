@@ -368,10 +368,10 @@ In addition to the existence of an unstable manifold, we have under certain cond
 	We can then get the final result by choosing \(\rho \in (\alpha, 1)\) and \(C>0\) as large as we need.
 \end{proof}
 
-\begin{prop}
+\begin{prop}\label{distance-to-fixed-point}
 	Assume the conditions in \cref{foliation-of-unstable-manifold} hold and that \(r\geq 2\) and \(u = 1\). Let \(p \in {M}_1\) be a fixed points under the flow and assume that there are fixed points on \( M_1\) approaching \(p\). Then in some neighborhood of \(p\), \(U\), there is \(C> 0 \) and \(\lambda > 0\) such that for any fixed point \(p'\in U\cap M_1\) and any \(q \in f^u(p)\) and \(q'\in f^u(p')\) we have
 	\begin{equation}
-		|(\phi_{-t}(q) - p) - (\phi_{-t}(q') - p')| < C e^{-\lambda t} | q - q'|
+		|(\phi_{-t}(q) - p) - (\phi_{-t}(q') - p')| \leq C e^{-\lambda t} | q - q'|
 	\end{equation}
 	for any \(t\geq 0.\)
 \end{prop}
@@ -406,9 +406,9 @@ In addition to the existence of an unstable manifold, we have under certain cond
 	\begin{equation}
 		|z(-nT - t) - z'(-nT - t)| \leq C \rho^n (|x-x'| + |z(-t) - z'(-t)|).
 	\end{equation}
-	By the continuity of the flow, we can replace \(|z(-t) - z'(-t)|\) with \(C|z(0) - z'(0)|\) in the estimate above. Also, we can choose \(\lambda > 0\) small enough so that
+	By the continuity of the flow, we can replace \(|z(-t) - z'(-t)|\) with \(C|z(0) - z'(0)|\) in the estimate above. Also, we can choose \(\lambda_0 > 0\) small enough so that
 	\begin{equation}
-		\max_{0\leq t < T} e^{\lambda (T + t)} \rho < 1
+		\max_{0\leq t < T} e^{\lambda_0 (T + t)} \rho < 1
 	\end{equation}
 	so that \cref{z-estimate} holds.
 	
@@ -416,7 +416,20 @@ In addition to the existence of an unstable manifold, we have under certain cond
 	\begin{equation}
 		(x,z) \mapsto g(x,z) := (\sigma \times \tau^s \times \tau^u)^{-1}(f_1(x;z) , f_2(x;z), z) - (\sigma \times \tau^s \times \tau^u)^{-1}(x,0,0).
 	\end{equation}
-	This gives the difference between a point in \(f^u(p)\) and its limit point \(p\) when given its local coordinates. 
+	This gives the difference between a point in \(f^u(p)\) and its limit point \(p\) when given its local coordinates. The map is \(C^2\) in its arguments. Also, since \(g(x,0)= 0\) for all \(x\) we have that
+	\begin{equation}\label{g-zero-derivative}
+		\frac{\partial g}{\partial x}(x,0) = 0.
+	\end{equation}
+	Then we have 
+	\begin{align}
+		&|(\phi_{-t}(q) - p) - (\phi_{-t}(q') - p')| \nonumber \\
+		&\quad= |g(x, z(-t)) - g(x',z'(-t))| \nonumber \\
+		&\quad\leq |g(x, z(-t)) - g(x',z(-t)) | + |g(x',z(-t)) - g(x',z'(-t))| \nonumber \\
+		&\quad\leq C(|z(-t)||x-x'| + |z(-t) -z(-t)|)  \label{c1-estimate-g}\\
+		&\quad \leq C(e^{-\lambda_u t} |q-q'| + e^{-\lambda_0 t} |q-q'|) \label{exponential-estimate-g} \\
+		&\quad \leq C e^{-\lambda t} |q-q'| \nonumber
+	\end{align}
+	for some value of \(C\) and \(\lambda>0\). Note that \cref{c1-estimate-g} follows from the fact that \(g\) is \(C^2\) and \cref{g-zero-derivative}. \Cref{exponential-estimate-g} follows from \cref{foliation-of-unstable-manifold}, the estimate given in \cref{z-estimate}, and the fact that the map \(q\mapsto x\) is a \(C^1\) map.
 \end{proof}
 \section{Boundary modifications}\label{sec:boundary-modifications}
 
@@ -471,7 +484,7 @@ before returning to the full problem. Here \(F\) denotes the unperturbed vector 
 \begin{equation}\label{ode-for-vector-bundles-unperturbed}
 	\xi'(s) = (A + (DF(\tilde \phi_{-s}(p)) - A)) \xi,
 \end{equation}
-which is the same form as \cref{linear-nonauto-ode} with \(V(s) = DF(\tilde \phi_{-s}(p)) - A\). One can check that \(V\) is differentiable by noting the linearization as computed in \cref{linearization-flow} is \(C^1\) in space. One can also check that \(\int_{0}^\infty |V'(s)|\, ds < \infty\) (... add calculation here integrate with respect to arc length so that integral is bounded by second derivatives of \(F\)).
+which is the same form as \cref{linear-nonauto-ode} with \(V(s) = DF(\tilde \phi_{-s}(p)) - A\). One can check that \(V\) is differentiable by noting the linearization as computed in \cref{linearization-flow} is \(C^1\) in space. One can also check that \(\int_{0}^\infty |V'(s)|\, ds < \infty\).
 
 There is a slight complication given from the need that the eigenvalues of \(A\) are distinct. In our case, we have two eigenvalues that are the same: the two zero eigenvalues. However, we can remove one of our eigenvalues. For the zero eigenvalue with corresponding eigenvector \(e_4 = (0, 0, 0, 1)\), we have the following spectral projection
 \begin{equation}
@@ -489,7 +502,7 @@ Thus we can apply \cref{thm:coddington} to the reduction of \cref{ode-for-vector
 
 Firstly, one must check that the vector bundles defined this way are well-defined. For instance, one might get different vectors in the vector bundle depending on where the initial condition of the ODE is chosen. Starting at a point \(p\) and flowing the vector forward until time \(t_0\) can lead to a different solution than if the vector is assigned by starting at \(\tilde\phi_{-t_0}(p)\). This would not be unexpected, since there are infinitely many solutions of the linear ODE which approach the unstable bundle in backward time. We sidestep the issue by only assigning a solution to one point in each possible orbit. For our case, we have a radial flow, and so we will assign the vector bundles on a circle in \(\overline M\) and choose \(\mathrm{span}\{\xi(0)\}\) at each point \(p\). The rest of the vector bundles will be defined by simply flowing the vector bundles on the circle backward in time. 
 
-Secondly, we need to check that the vector bundles are continuous. Certainly, along an orbit the solutions will be continuous but \cref{thm:coddington} does say whether solutions will be continuous in space. To answer this question, we must go the proof of \cref{thm:coddington}. Essentially, the proof is done by rewriting the ODE using a change-of-coordinates and variation of parameters and then applying a Picard iteration. We shall look into the details for our specific case. The eigenvalues and eigenvectors of \(DF(q)\) will be denoted by \(\lambda_k(q)\) and \(v_k(q)\), respectively. From the regularity in \(F\), we have that the eigenvectors and values are continuously differentiable in \(q\). Then we define the matrix
+Secondly, we need to check that the vector bundles are continuous. Certainly, along an orbit the solutions will be continuous but \cref{thm:coddington} does say whether solutions will be continuous in space. To answer this question, we must go the proof of \cref{thm:coddington}. Essentially, the proof is done by rewriting the ODE using a change of coordinates and variation of parameters and then applying a Picard iteration. We shall look into the details for our specific case. The eigenvalues and eigenvectors of \(DF(q)\) will be denoted by \(\lambda_k(q)\) and \(v_k(q)\), respectively. From the regularity in \(F\), we have that the eigenvectors and values are continuously differentiable in \(q\). Then we define the matrix
 \begin{equation}
 	S(q) = [v_1(q), v_2(q), \ldots, v_n(q)]
 \end{equation}
@@ -529,9 +542,9 @@ where \(\varphi^0\in C^0_b([0,\infty), \R^n)\). Then by multiplying the above eq
 \end{equation}
 for some \(0< \rho < 1\). Thus by the Banach fixed point theorem, there is a unique solution in \(C^0_b\).
 
-The regularity of the solutions with respect to \(p\) follows from the continuity \(S\) and \(R\) with respect to \(p\). In particular, we have that \(\mcF_k\) is continuous in \(p\) and so the solutions to the fixed point problem \(\mcF_k[\varphi_k^0(\cdot, p) , p] = \varphi_k^0(\cdot, p)\) are continuous with respect to \(p\). This means that \(p\mapsto \varphi_k(0,p) = \varphi_k^0(0,p) \) is also continuous with respect to \(p\) and we can define the vector bundles smoothly.
+The regularity of the solutions with respect to \(p\) follows from the continuity \(S\) and \(R\) with respect to \(p\). In particular, we have that \(\mcF_k\) is continuous in \(p\) and so the solutions to the fixed point problem \(\mcF_k[\varphi_k^0(\cdot, p) , p] = \varphi_k^0(\cdot, p)\) are continuous with respect to \(p\). This means that \(p\mapsto \varphi_k(0,p) = \varphi_k^0(0,p) \) is also continuous with respect to \(p\) and we can define the vector bundles smoothly. Furthermore, by applying the implicit function theorem, one can get that the regularity of the extended vector bundles is the same as the original vector bundles. That is, if the original bundles were \(C^k\), then the extensions are also \(C^k\).
 
-To summarize, we define the vector bundles on a small circle in \(M\) so that they are invariant under the flow given by \cref{flow-for-tangent-vectors-unperturbed}. We now return to the perturbed flow of the tangent vectors given by \cref{flow-tangent-vectors-perturbed}. The vector bundles do not remain invariant under the perturbed vector field, but \(TM_2 \oplus N^u\) and \(TM_2 \oplus N^s\) are both invariant. This is because the perturbation is only in the tangent direction on the \(M\) and so the ODE partially decouples. For example, if \(\xi(0) \in T_pM_2 \oplus N^u_p\), then we can define the solution to 
+To summarize, we define the vector bundles on a small circle so that they are invariant under the flow given by \cref{flow-for-tangent-vectors-unperturbed}. We now return to the perturbed flow of the tangent vectors given by \cref{flow-tangent-vectors-perturbed}. The vector bundles do not remain invariant under the perturbed vector field, but \(TM_2 \oplus N^u\) and \(TM_2 \oplus N^s\) are both invariant. This is because the perturbation is only in the tangent direction on the \(M\) and so the ODE partially decouples. For example, if \(\xi(0) \in T_pM_2 \oplus N^u_p\), then we can define the solution to 
 \begin{equation}
 \begin{aligned}
 	u'(s) &= DF(\tilde \phi_{-s}(p)) u\\

@@ -2,7 +2,17 @@
 \chapter{Proofs of lemmas}\label{lemma-appendix}
 \heteroclinicorbitsobolev*
 \begin{proof}
-	 \emph{Look at the local coordinates. Show \(z\) satisfy the estimate and then use the fact that the manifold is parameterized by \(z\). }
+	 If (H3) holds, then we have the vector field is \(C^2\) with respect to \(\epsilon\). Also, one can check that manifold \(M\) is \(C^\infty\) and the vector bundles are \(C^1\). Thus the hypotheses for \cref{distance-to-fixed-point} are satisfied.
+	 
+	 Let \(\gamma_\pm(-\infty)\) be the shared asymptotic limit of \(\gamma_{\pm, \epsilon}\) and \(\gamma_\pm\). Therefore,
+	 \begin{align*}
+	 	|\gamma_{\pm, \epsilon}(-s) - \gamma_\pm(-s)| &=((\epsilon, \gamma_{\pm,\epsilon}(-s)) - (\epsilon, \gamma_\pm(-\infty)) )- ((0, \gamma_{\pm}(-s)) - (0, \gamma_\pm(-\infty)))| \\
+	 	&\leq C e^{-\lambda s} |(\epsilon, \gamma_{\pm,\epsilon}(0)) - (0,\gamma_\pm(0)) | \\
+	 	&\leq C e^{-\alpha s} \epsilon .
+	 \end{align*}
+ 	The \(s> 0\) direction follows similarly. 
+ 	
+ 	The \(H^5\) estimate follows from the fact that \(\gamma_{\pm,\epsilon}\) are \(\gamma_{\pm}\) are solutions to a \(C^5\) set of ODEs and so derivatives with respect to \(s\) are equal to at least \(C^1\) functions with \(\gamma_{\pm, \epsilon}\) and \(\gamma_{\pm}\) as arguments.
 \end{proof}
 
 \prodruleone*

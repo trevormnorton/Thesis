@@ -330,7 +330,7 @@ where \(F_2\) and \(G_2\) will be \(C^4\) for \(\eta > 0\) and \(\mcO(1)\) as \(
 	\epsilon G_1(\underline A, \underline B, \underline C; \epsilon) &\rightarrow \epsilon G_1(\underline A, \underline B, \underline C; |\epsilon|)
 \end{aligned}
 \end{equation}
-to get \cref{epsilon-flow} is \(C^1\) for (possibly negative) \(\epsilon\) near zero. A similar replacement of \(\sqrt \eta \rightarrow \sqrt{|\eta|}\) makes \cref{eta-flow} \(C^1\) for \(\eta\) near zero. 
+to get \cref{epsilon-flow} is \(C^1\) for (possibly negative) \(\epsilon\) near zero. A similar replacement of \(\sqrt \eta \rightarrow \sqrt{|\eta|}\) makes \cref{eta-flow} \(C^1\) for \(\eta\) near zero. One can get improved regularity of the vector field form (H2) and (H3) by using the original parameter, \(\epsilon\), but this sacrifices the \(\epsilon^2\) error in the estimate. This trade-off will be necessary to get certain regularity in the error term.
 
 The arguments for the persistence of heteroclinic orbits is similar for \cref{epsilon-flow,eta-flow}, so we will focus first on the former system and note where the results differ for the latter system.
 \section{Existence of Heteroclinic Orbit}
@@ -602,16 +602,16 @@ Now to get the Sobolev estimate, we use the following lemma.
 \begin{restatable}{lem}{heteroclinicorbitsobolev}\label{heteroclinic-orbit-sobolev}
 	Suppose that (H3) holds. Then there exist \(C> 0\) and \(\alpha > 0\) such that
 	\begin{equation}
-		| \gamma_{\pm, \epsilon}(s) - \gamma_{\pm}(s) | \leq C e^{-\alpha s} \epsilon^2.
+		| \gamma_{\pm, \epsilon}(s) - \gamma_{\pm}(s) | \leq C e^{-\alpha| s|} \epsilon.
 	\end{equation}
 	Furthermore, the difference of the heteroclinic orbits are in \(H^5(\R; \R^3)\) and 
 	\begin{equation}
-		\| \gamma_{\pm, \epsilon}(s) - \gamma_{\pm}(s) \|_{H^5(\R;\R^3)}  \leq C \epsilon^2.
+		\| \gamma_{\pm, \epsilon}(s) - \gamma_{\pm}(s) \|_{H^5(\R;\R^3)}  \leq C \epsilon.
 	\end{equation}
 \end{restatable}
 The proof of \cref{heteroclinic-orbit-sobolev} is given in \cref{lemma-appendix}. Thus we have
 \begin{equation}
-	\|A_{\pm, \epsilon} - \phi_{\pm}\|_{H^5(\R;\R)} \leq C \epsilon^2.
+	\|A_{\pm, \epsilon} - \phi_{\pm}\|_{H^5(\R;\R)} \leq C \epsilon.
 \end{equation}
 One can also show from the exponential decay of \(\gamma_{\pm, \epsilon}\) to \(\gamma_{\pm\infty}\) and the smoothness of \(\Phi_\mu\) that
 \begin{equation}
@@ -619,11 +619,11 @@ One can also show from the exponential decay of \(\gamma_{\pm, \epsilon}\) to \(
 \end{equation}
 By noticing that the Taylor expansion of \(\Phi_\mu(\epsilon A_{\pm, \epsilon}, \epsilon^2 B_{\pm, \epsilon}, \epsilon^3 C_{\pm, \epsilon})\) has no terms of order \(\epsilon^2\) or lower, the function is at least of order \(\epsilon^3\). Therefore, we have that there is an \(R_{\pm,\epsilon} \in H^4(\R;\R)\) such that
 \begin{equation}
-	\dot x_{\pm, \epsilon }(t) = \pm \epsilon\phi(\epsilon t) + \epsilon^3 R_{\pm,\epsilon}(\epsilon t).
+	\dot x_{\pm, \epsilon }(t) = \pm \epsilon\phi(\epsilon t) + \epsilon^2 R_{\pm,\epsilon}(\epsilon t).
 \end{equation}
 Then converting to strain coordinates as before we have
 \begin{equation}
-	u_n(t) = \pm\epsilon\phi(\epsilon(n-ct)) + \epsilon^3 \mathcal R_{\pm, \epsilon}(\epsilon(n-ct))
+	u_n(t) = \pm\epsilon\phi(\epsilon(n-ct)) + \epsilon^2 \mathcal R_{\pm, \epsilon}(\epsilon(n-ct))
 \end{equation}
 where \(\mathcal R_{\pm, \epsilon} \in H^3(\R;\R)\).
 
@@ -641,7 +641,7 @@ We state our results as follows.
 		\end{equation}
 		\item If (H3) holds, then
 		\begin{equation}
-			\left\| \frac 1 \epsilon u_c\left(\frac \cdot \epsilon \right) - \phi \right\|_{H^3} \leq C \epsilon^2
+			\left\| \frac 1 \epsilon u_c\left(\frac \cdot \epsilon \right) - \phi \right\|_{H^3} \leq C \epsilon
 		\end{equation}
 	\end{enumerate}
 \end{theorem}
