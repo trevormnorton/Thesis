@@ -234,7 +234,7 @@ and \(\langle \cdot \rangle_+\) continued smoothly between \(0\) and \(1\) such 
 \begin{equation}
 	(\alpha, f) \mapsto \alpha + f \langle \cdot \rangle^{-n}_{\pm}.
 \end{equation}
-One can show that the kink solutions as specified in \cref{kink-solutions} lie in \(\mcX^k_n\) for all \(k,n\geq 0\); the derivatives are smooth and decay exponentially to zero, and the kink solutions approach the limits \(\mp\sqrt{12v}\) exponentially fast. These spaces also contain bounded rational functions. For instance, the function \[\frac 1 {x^2 +1}\] is in \(\mcX^k_2(\R)\) since it approaches its limit at infinity (which in this case is \(1\)) at a rate of \(\mathcal O(1/x^2)\), and its derivatives are in \(H^0_2(\R)\).
+One can show that the kink solutions as specified in \cref{kink-solutions} lie in \(\mcX^k_n\) for all \(k,n\geq 0\); the derivatives are smooth and decay exponentially to zero, and the kink solutions approach the limits \(\mp\sqrt{12v}\) exponentially fast. These spaces also contain bounded rational functions. For instance, the function \[1 + \frac 1 {x^2 +1}\] is in \(\mcX^k_2(\R)\) since it approaches its limit at infinity (which in this case is \(1\)) at a rate of \(\mathcal O(1/x^2)\), and its derivatives are in \(H^0_2(\R)\).
 
 The definitions above are used to prove that \(\phi\) remains bounded for all time. The idea behind the proof is similar to that of \cite[Lemma~3.1]{schneider2000counter}. The following lemma will be useful in showing the decay in products of \(f-f_\infty\) and \(g\).
 \begin{restatable}{lem}{cknormbound}
@@ -420,7 +420,7 @@ and
 	&\quad\qquad + \mathcal U_n^3(t)  - \mathcal U_{n-1}^3(t)\Big).
 \end{aligned}
 \end{equation}
-The terms \(\mcU\) and \(\mcQ\) control the error associated with the ansatz in \cref{u-ansatz,q-ansatz}. Thus if these terms remain small in the \(\ell^2(\Z)\) norm, then the traveling wave ansatz will remain valid. In particular, if one has that \(\|\mcU\|_\ell^2 \leq C\epsilon^{5/2}\), then the ansatz \(\epsilon f + \epsilon g\) is valid up to order \(\epsilon^{5/2}\) (since \(\phi\) is uniformly bounded in norm and is thus \(\mathcal O (1)\)). Similarly, if \(\mcQ\) is of order \(\epsilon^{5/2}\), then one can show that \(\dot u_n(t)\) is approximated by \(\epsilon^2 \partial_1 f + \epsilon^2 \partial_1 g\) up to order \(\epsilon^{5/2}\). Hence, controlling the norms of \(\mcU\) and \(\mcQ\) is sufficient in proving the approximation holds.
+The terms \(\mcU\) and \(\mcQ\) control the error associated with the ansatz in \cref{u-ansatz,q-ansatz}. Thus if these terms remain small in the \(\ell^2(\Z)\) norm, then the traveling wave ansatz will remain valid. In particular, if one has that \(\|\mcU\|_{\ell^2} \leq C\epsilon^{5/2}\), then the ansatz \(\epsilon f + \epsilon g\) is valid up to order \(\epsilon^{5/2}\) (since \(\phi\) is uniformly bounded in norm and is thus \(\mathcal O (1)\)). Similarly, if \(\mcQ\) is of order \(\epsilon^{5/2}\), then one can show that \(\dot u_n(t)\) is approximated by \(\epsilon^2 \partial_1 f + \epsilon^2 \partial_1 g\) up to order \(\epsilon^{5/2}\). Hence, controlling the norms of \(\mcU\) and \(\mcQ\) is sufficient in proving the approximation holds.
 
 \section{Preparatory Estimates}
  

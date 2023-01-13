@@ -8,11 +8,11 @@ In this and later sections, we will generally be concerned with an ODE given by
 \begin{equation}\label{generic_ode}
 	\dot x = f(x), \quad x \in \R^n
 \end{equation}
-with a corresponding flow \(\phi_t\). In the study of dynamics, finding invariant manifolds is often a useful first step to understanding the more complicated behavior. Here we will be primarily be concerned with a less rigid notion of invariant manifolds: overflowing invariant manifolds.
+with a corresponding flow \(\phi_t\). In the study of dynamics, finding invariant manifolds is often a useful first step to understanding more complicated behavior. Here we will be primarily be concerned with a less rigid notion of invariant manifolds: overflowing invariant manifolds.
 \begin{defn}
 	Let \(\overline M = M \cup \partial M\) be a compact, connected \(C^r\) manifold with boundary contained in \(\R^n\). Then \(\overline M\) is said to be \emph{overflowing invariant} under \cref{generic_ode} if for every \(p \in \overline M\), \(\phi_t(p) \in \overline M\) for all \(t\leq 0\) and the vector field \cref{generic_ode} is pointing strictly outward on \(\partial M\).
 \end{defn}
-There is also a definition for \emph{inflowing invariant manifolds}, but we will exclusively focus on the overflowing variety. Results for inflowing invariant manifolds can be recovered by reversing the direction of time. We also have many results that apply to invariant manifolds as well; to demonstrate this, we typically apply a bump function to the vector field at the boundary of an invariant manifold to make it overflowing while leaving the dynamics the same in the interior. We will discuss this more in \cref{sec:unstable-manifold}.
+There is also a definition for \emph{inflowing invariant manifolds}, but we will exclusively focus on the overflowing variety. Results for inflowing invariant manifolds can be recovered by reversing the direction of time; reparameterizing our time variable by \(t\mapsto -t\) makes the inflowing invariant manifolds into overflowing invariant manifolds. We also have many results that apply to invariant manifolds as well; to demonstrate this, we typically apply a bump function to the vector field at the boundary of an invariant manifold to make it overflowing while leaving the dynamics the same in the interior. We will discuss this more in \cref{sec:unstable-manifold}.
 
 In the proofs of many of theorems, the technical problem of the boundary of \(\overline M\) is avoiding by slightly enlarging our set. Let 
 \begin{equation}
@@ -24,7 +24,7 @@ For many of the proofs found in \cite{wiggins1994normally}, a special set of atl
 \begin{prop}\label{atlases}
 	Let \(k = \dim \overline M_2\). For every open cover \(\mcU\) of \(\overline M_2\) there exist atlases
 	\begin{equation}
-		\left\{  (U^j_i, \sigma_i) : i=1,2,\ldots, s; j = 1,2,\dots, 6 \right\}
+		\left\{  (U^j_i, \sigma_i) : i=1,2,\ldots, s;\, j = 1,2,\dots, 6 \right\}
 	\end{equation}
 	such that
 	\begin{equation}
@@ -136,7 +136,7 @@ The proofs for the following lemmas should be similar to the proofs found in \ci
 	\end{enumerate}
 \end{lem}
 
-Hence we have the following bounds on the generalized Lyapunov-type numbers.
+We have the following bounds on the generalized Lyapunov-type numbers.
 \lyapunovbound*
 \begin{proof}
 	\emph{(i)} Let \(a\in\R\) such that \(\lambda^u(K) < a\). For each \(q\in K\) there is a \(\tau_q>0\) and an open, precompact neighborhood of \(q\), \(U_q\), such that \[\| C_{\tau_q}(q')\| < a^{\tau_q} \quad \text{for all } q'\in U_q.\] Then \(\{ U_q \}_{q\in K}\) is an open cover of \(K\), and so we can take a finite subcover \(\{U_i\}_{i=1}^m\) with associated \(\tau_q\) values denoted by \(\tau_i\) for \(i = 1,\ldots, m\). Let \(U = \bigcup_{i=1}^m U_i\) and assume without loss of generality that \(\tau_1\leq \tau_2\leq\cdots\leq \tau_m\). Since \(\lambda^u(p)\) is constant along trajectories and \(\phi_{-t}(p) \to K\) as \(t\to\infty\), we can assume that \(\phi_{-t}(p) \in U\) for all \(t\geq 0.\) 
@@ -322,6 +322,10 @@ In addition to the existence of an unstable manifold, we have under certain cond
 	\end{enumerate}
 \end{theorem}
 
+In this work, we show that there is a transverse intersection of the unstable and stable manifolds, which allows us to conclude the existence of a heteroclinic orbit. An important estimate to us is that the difference of heteroclinic orbits is in a Sobolev space like \(H^1\). While we have the differences are \(\mcO(\epsilon)\) or \(\mcO(\epsilon^2)\) from the \(C^1\) dependence on \(\epsilon\), we cannot use this conclude that the differences are in Sobolev spaces. From part 4 of \cref{foliation-of-unstable-manifold}, we have that the orbits approach the unstable and stable manifolds at a uniform exponential rate, so it is plausible that the difference of the orbits also satisfy some uniform exponential decay. However, we need some continuous dependence on the initial conditions and the parameters. The following two results give us the control we need.
+
+The first lemma shows that for a family of discrete semi-dynamical system with uniform exponential decay to zero, we can bound the difference of the orbits by an exponential factor times the difference in the parameter and initial values.
+
 \begin{lem}\label{discrete-gronwall-estimate}
 	Suppose \(F(\mu, z)\) are a family of \(C^1\) functions from \(K \times [0,a]\) into \([0,a]\), where \(K\) is a compact set in \(\R^n\) and \(F(\mu, 0) = 0\) and \(F(\mu, z) > 0\). Furthermore, assume
 	\begin{equation}
@@ -333,7 +337,7 @@ In addition to the existence of an unstable manifold, we have under certain cond
 	\end{equation}
 	with initial values \(z_{\mu, 0}\) in the interval \([0,z_0]\) all approach \(0\) as \(n\to \infty\) and
 	\begin{equation}
-		|z_{\mu_1,n} - z_{\mu_2,n} | \leq C \rho^n( |\mu_1- \mu_2| + |z_{\mu_1,n} - z_{\mu_2,n}|)
+		|z_{\mu_1,n} - z_{\mu_2,n} | \leq C \rho^n( |\mu_1- \mu_2| + |z_{\mu_1,0} - z_{\mu_2,0}|)
 	\end{equation}
 	for all \(\mu_1,\mu_2 \in K\) and \(n\geq 0\).
 \end{lem}
@@ -368,12 +372,13 @@ In addition to the existence of an unstable manifold, we have under certain cond
 	We can then get the final result by choosing \(\rho \in (\alpha, 1)\) and \(C>0\) as large as we need.
 \end{proof}
 
+The next result shows that points on the unstable manifold approach their asymptotic limits at a uniform exponential rate that is continuous with respect to their initial conditions. This will ultimately gives us a way to control the difference of heteroclinic orbits found on the unstable manifold.
 \begin{prop}\label{distance-to-fixed-point}
-	Assume the conditions in \cref{foliation-of-unstable-manifold} hold and that \(r\geq 2\) and \(u = 1\). Let \(p \in {M}_1\) be a fixed points under the flow and assume that there are fixed points on \( M_1\) approaching \(p\). Then in some neighborhood of \(p\), \(U\), there is \(C> 0 \) and \(\lambda > 0\) such that for any fixed point \(p'\in U\cap M_1\) and any \(q \in f^u(p)\) and \(q'\in f^u(p')\) we have
+	Assume the conditions in \cref{foliation-of-unstable-manifold} hold and that \(r\geq 2\) and \(u = 1\). Let \(p \in {M}_1\) be a fixed point under the flow and assume that there is a neighborhood of \(p\) in \(M_1\) consisting of just fixed points. Then in some neighborhood of \(p\), \(U\), there is \(C> 0 \) and \(\lambda > 0\) such that for any fixed point \(p'\in U\cap M_1\) and any \(q \in f^u(p)\) and \(q'\in f^u(p')\) we have
 	\begin{equation}
 		|(\phi_{-t}(q) - p) - (\phi_{-t}(q') - p')| \leq C e^{-\lambda t} | q - q'|
 	\end{equation}
-	for any \(t\geq 0.\)
+	for \(t\geq 0.\)
 \end{prop}
 
 \begin{proof}
@@ -382,7 +387,7 @@ In addition to the existence of an unstable manifold, we have under certain cond
 		(x,z) \mapsto (f_1(z; x),  f_2(z;x),  z)
 	\end{equation}
 	Here the point \((x,0,0)\) picks out a point on \( M_1\) and the one-dimensional foliation of the unstable manifold is parameterized by \(z\).
-	Let \(p'\) be an arbitrary fixed point on \( M_1\cap U\) and denote the local coordinates of \(p\) and \(p'\) by \((x,0,0)\) and \((x',0,0)\), respectively. Take \(q \in f^u(p)\) and \(q' \in f^u(p')\), and let there local coordinates be given by \((f_1(z;x), f_2(z; x), z)\) and \((f_1(z';x') , f_2(z';x'), x')\), respectively. 
+	Let \(p'\) be an arbitrary fixed point on \( M_1\cap U\) and denote the local coordinates of \(p\) and \(p'\) by \((x,0,0)\) and \((x',0,0)\), respectively. Take \(q \in f^u(p)\) and \(q' \in f^u(p')\), and let there local coordinates be given by \((f_1(z;x), f_2(z; x), z)\) and \((f_1(z';x') , f_2(z';x'), z')\), respectively. 
 	
 	We first want to show that 
 	\begin{equation}\label{z-estimate}
@@ -396,7 +401,7 @@ In addition to the existence of an unstable manifold, we have under certain cond
 	\begin{equation}
 		z_{n+1} = h(z_{n}; x).
 	\end{equation}
-	The map \(h\) is \(C^1\) for \(x\in \overline {U\cap M_1}\) and \(z\) sufficiently small. We also have that \(0 < \frac{\partial h}{\partial z}(0;x) < 1\). A calculation of this type can be found in \cite{wiggins1994normally}. Therefore we can apply \cref{discrete-gronwall-estimate} to get 
+	The map \(h\) is \(C^2\) for \(x\in \overline {U\cap M_1}\) and \(z\) sufficiently small. We also have that \(0 < \frac{\partial h}{\partial z}(0;x) < 1\). A calculation of this type can be found in \cite{wiggins1994normally}. Therefore we can apply \cref{discrete-gronwall-estimate} to get 
 	\begin{equation}
 		|z_n - z'_n| \leq C \rho^n (|x-x'| + |z_0 - z'_0|)
 	\end{equation}
@@ -486,7 +491,7 @@ before returning to the full problem. Here \(F\) denotes the unperturbed vector 
 \end{equation}
 which is the same form as \cref{linear-nonauto-ode} with \(V(s) = DF(\tilde \phi_{-s}(p)) - A\). One can check that \(V\) is differentiable by noting the linearization as computed in \cref{linearization-flow} is \(C^1\) in space. One can also check that \(\int_{0}^\infty |V'(s)|\, ds < \infty\).
 
-There is a slight complication given from the need that the eigenvalues of \(A\) are distinct. In our case, we have two eigenvalues that are the same: the two zero eigenvalues. However, we can remove one of our eigenvalues. For the zero eigenvalue with corresponding eigenvector \(e_4 = (0, 0, 0, 1)\), we have the following spectral projection
+There is a slight complication given from the need that the eigenvalues of \(A\) are distinct. In our case, we have two eigenvalues that are the same: the two zero eigenvalues. However, we can remove one of these eigenvalues. For the zero eigenvalue with corresponding eigenvector \(e_4 = (0, 0, 0, 1)\), we have the following spectral projection
 \begin{equation}
 	P v = (e_4 \cdot v) e_4.
 \end{equation}
@@ -500,7 +505,7 @@ The conditions on the eigenvalues of \(A+V(s) = DF(\tilde\phi_{-s}(p))\) follow 
 
 Thus we can apply \cref{thm:coddington} to the reduction of \cref{ode-for-vector-bundles-unperturbed} to define vector bundles. There are a couple of open question that need to be addressed before we can be satisfied with these vector bundles. 
 
-Firstly, one must check that the vector bundles defined this way are well-defined. For instance, one might get different vectors in the vector bundle depending on where the initial condition of the ODE is chosen. Starting at a point \(p\) and flowing the vector forward until time \(t_0\) can lead to a different solution than if the vector is assigned by starting at \(\tilde\phi_{-t_0}(p)\). This would not be unexpected, since there are infinitely many solutions of the linear ODE which approach the unstable bundle in backward time. We sidestep the issue by only assigning a solution to one point in each possible orbit. For our case, we have a radial flow, and so we will assign the vector bundles on a circle in \(\overline M\) and choose \(\mathrm{span}\{\xi(0)\}\) at each point \(p\). The rest of the vector bundles will be defined by simply flowing the vector bundles on the circle backward in time. 
+Firstly, one must check that the vector bundles defined this way are well-defined. For instance, one might get different vectors in the vector bundle depending on where the initial condition of the ODE is chosen. Starting at a point \(p\) and flowing the vector forward until time \(t_0\) can lead to a different solution than if the vector is assigned by starting at \(\tilde\phi_{-t_0}(p)\). This would not be unexpected, since there are infinitely many solutions of the linear ODE which approach the stable bundle in backward time. We sidestep the issue by only assigning a solution to one point in each possible orbit. For our case, we have a radial flow, and so we will assign the vector bundles on a circle in \(\overline M\) and choose \(\mathrm{span}\{\xi(0)\}\) at each point \(p\). The rest of the vector bundles will be defined by simply flowing the vector bundles on the circle backward in time. 
 
 Secondly, we need to check that the vector bundles are continuous. Certainly, along an orbit the solutions will be continuous but \cref{thm:coddington} does say whether solutions will be continuous in space. To answer this question, we must go the proof of \cref{thm:coddington}. Essentially, the proof is done by rewriting the ODE using a change of coordinates and variation of parameters and then applying a Picard iteration. We shall look into the details for our specific case. The eigenvalues and eigenvectors of \(DF(q)\) will be denoted by \(\lambda_k(q)\) and \(v_k(q)\), respectively. From the regularity in \(F\), we have that the eigenvectors and values are continuously differentiable in \(q\). Then we define the matrix
 \begin{equation}
@@ -559,3 +564,5 @@ which is guaranteed to be in \(N^u\) for all time, and
 \end{aligned}
 \end{equation}
 which is in \(TM_2\) for all time, so that \(u + v\) is a solution to \cref{flow-tangent-vectors-perturbed}.
+
+Finally, there is just to check that this construction does not affect the necessary bounds on the generalized Lyapunov-type numbers. As was stated in \cref{sec:manifolds}, we can use \cref{lyapunovbound} to show the bounds for \(\lambda^u\), \(\nu^s\), and \(\sigma^s\) are still satisfied. 
