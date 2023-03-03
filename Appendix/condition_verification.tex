@@ -558,11 +558,74 @@ To summarize, we define the vector bundles on a small circle so that they are in
 \end{equation}
 which is guaranteed to be in \(N^u\) for all time, and 
 \begin{equation}
-\begin{aligned}
+x\begin{aligned}
 	v'(s) &= (D\tilde F(\tilde\phi_{-s}(p)) - DF(\tilde\phi_{-s}(p))) (v + u) \\
 	v(0) &= (I - \Pi^u_p) \xi(0)
 \end{aligned}
 \end{equation}
 which is in \(TM_2\) for all time, so that \(u + v\) is a solution to \cref{flow-tangent-vectors-perturbed}.
 
-Finally, there is just to check that this construction does not affect the necessary bounds on the generalized Lyapunov-type numbers. As was stated in \cref{sec:manifolds}, we can use \cref{lyapunovbound} to show the bounds for \(\lambda^u\), \(\nu^s\), and \(\sigma^s\) are still satisfied. 
+Finally, there is just to check that this construction does not affect the necessary bounds on the generalized Lyapunov-type numbers. As was stated in \cref{sec:manifolds}, we can use \cref{lyapunovbound} to show the bounds for \(\lambda^u\), \(\nu^s\), and \(\sigma^s\) are still satisfied. Thus we just need to check that \(\sigma^{cu}\) and \(\sigma^{su}\) are less than zero. Denote by \(\lambda_u(p)\) and \(-\lambda_s(p)\) positive and negative eigenvalues of \(DF(p)\) for \(p \in M\). From the construction of the vector bundles we have that for \(u_0\in N^u_p\) and \(w_0\in N^s_p\) the solutions of
+\begin{equation}
+	u_{-t} = \Pi^uD\phi_{-t}(p) u_0 \quad \text{and} \quad w_{-t} = \Pi^s D\phi_{-t} w_0
+\end{equation}
+satisfy
+\begin{equation}
+	u_{-t} \exp\left[ \int_{-t}^0 \lambda_u(\phi_{-\tau}(p) ) \, d\tau\right] \to p_u \quad \text{and}\quad  w_{-t} \exp\left[ \int_{-t}^0 -\lambda_s(\phi_{-\tau}(p) ) \, d\tau\right] \to p_s
+\end{equation}
+as \(t\to\infty\) for vectors \(p_u\) and \(p_s\). Since the orbit converges to a fixed point in backward time, the eigenvalues are bounded away from zero and we can choose \(\alpha> 0\) such that
+\begin{equation}
+	-(\lambda_u(\phi_{-t}(p)) + \lambda_s(\phi_{-t}(p)) < -\alpha < 0
+\end{equation}
+for all \(t \geq 0 \) and so for \(\rho = e^{-\alpha}\) we have
+\begin{equation}
+	\frac{|u_{-t}|/|w_{-t}|}{|u_0|/|w_0|} \cdot \rho^{-t} \to 0
+\end{equation}
+as \(t\to\infty\). Thus \(\sigma^{su}(p) \leq e^{-\alpha} < 1\), as desired.
+
+To compute \(\sigma^{cu}(p)\), one needs to find the flow of the tangent vectors along an orbit. Since the tangent vectors are the zero eigenvectors for the linearization of the unperturbed vector field, given by \(DF(\phi_{-t}(p))\), it suffices to look just at the linearization of the perturbation. That is, if \(\tilde F\) is the perturbed vector field, we shall look at the differential system
+\begin{equation}\label{linearize-pertubation-ode}
+	\dot v(t) = (DF(\phi_{t} (p)) - D\tilde F(\phi_t (p))) v(t).
+\end{equation}
+Recall that the perturbation is given by 
+\begin{equation}
+	\tilde F(\underline A, \underline B, \underline C, \epsilon) = \chi(|(\underline A-A_{-\infty} , B, C, \epsilon)|) \begin{bmatrix}
+		\underline A - A_{-\infty} \\ 0 \\ 0 \\ \epsilon
+	\end{bmatrix}.
+\end{equation}
+The flow on the manifold ends up being radial. That is, setting \(r = |(\underline A-A_{-\infty}, 0, 0, \epsilon)|\), the dynamics remain on ray starting at \((A_{-\infty}, 0,0,0)\) and the distance from this point is given by 
+\begin{equation}
+	\dot r(t) = \chi(r) r.
+\end{equation}
+The linearized equation nicely decouples. The linearization \(DF - D\tilde F\) has eigenvalues \(\chi(r) + \chi'(r)r\) and \(\chi(r)\) with corresponding normal eigenvectors
+\begin{equation}
+	v_1 = \frac 1 r\begin{bmatrix}
+		\underline A - A_{-\infty} \\ 0 \\ 0 \\ \epsilon 
+	\end{bmatrix} \quad \text{ and } \quad  v_2 = \frac 1 r \begin{bmatrix}
+	-\epsilon \\ 0 \\ 0 \\ \underline A - A_{-\infty}, 
+\end{bmatrix} 
+\end{equation}
+respectively. Note that the eigenvectors are the radial component and an orthogonal vector to it. Since we stay on rays starting at \((A_{-\infty}, 0, 0, 0)\), the eigenspaces stay the same and so we can solve the linearized equation by looking at the flow on the eigenspaces. Namely, taking 
+\begin{equation}
+	v(t) = \alpha (t) v_1 + \beta(t) v_2
+\end{equation}
+the solution to \cref{linearize-pertubation-ode} is given by 
+\begin{equation}
+	\begin{aligned}
+		\alpha(t) &= \alpha(0) \exp\left[ \int_0^t (\chi(r(\tau)) + \chi'(r(\tau))r(\tau) )\, d\tau\right]\\
+		\beta(t) &= \beta(0)\exp\left[\int_0^t \chi(r(\tau))\, d\tau\right]
+	\end{aligned}
+\end{equation}
+Note that \(\chi(r(t)) ,\chi'(r(t)) \to 0\) as \(t\to-\infty\). Then we can choose \(\alpha > 0\) such that
+\begin{equation}
+	\lambda_u(\phi_{-t}(p)) + \alpha > \chi(r(-t)) + \chi'(r(-t))r(-t)
+\end{equation}
+and 
+\begin{equation}
+	\lambda_u(\phi_{-t}(p)) + \alpha > \chi(r(-t)),
+\end{equation}
+for sufficiently large \(t\). Then for \(\rho = e^{-\alpha}\) we have
+\begin{equation}
+	\frac{|u_{-t}|/|v_{-t}|}{|u_0|/|v_0|} \cdot \rho^{-t} \to 0
+\end{equation}
+as \(t\to\infty\). Thus \(\sigma^{cu}(p) < 1\) as well.

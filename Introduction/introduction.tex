@@ -1,1 +1,77 @@
 % !TeX root = ../thesis.tex
+
+\chapter{Introduction}
+
+\section{A brief history of the FPUT lattice}
+
+This thesis is concerned with the Fermi-Pasta-Ulam (FPUT) lattice, an infinite set of differential equations posed on the lattice \(\Z\) with a nearest-neighbor interaction. The equations can be written as
+\begin{equation}
+	\ddot x_n = V'(x_{n+1}- x_n) - V'(x_n - x_{n-1}), \quad n\in \Z
+\end{equation}
+where \(V(x)\) is the potential. Another common way to write the equations is using the strain variables, \(u_n = x_ n - x_{n-1}\), in which case our equations become
+\begin{equation}\label{fput-lattice-equations-strain-variables}
+	\ddot{u}_n = V'(u_{n+1}) - 2 V'(u_n) + V'(u_{n-1}), \quad n \in \Z.
+\end{equation}
+The lattice first became of interest when it was used to model the thermalization process in a solid. In \cite{fermi1955studies}, researchers numerically computed solutions of the FPUT on a finite lattice with a nonlinear potential given by
+\begin{equation}
+	V(x) = \frac 1 2 x^2 + \frac 1 6 x^3 + \text{h.o.t.},
+\end{equation}
+up to a rescaling. The FPUT with this potential is typically referred to as the \(\alpha\)-FPUT chain. The initial condition for the system had its energy concentrated in its first Fourier mode, and it was believed that the nonlinear coupling in the system would cause an equipartition of energy across all the modes after a sufficiently long time. Surprisingly, after a very long period of time the system made a near-recurrence to its initial condition; the system returned to a state where around 97\% of its energy was in its first mode. The cause for this recurrence was unknown, and the phenomenon was labeled a paradox. 
+
+Progress was made in  \cite{zabusky1965interaction} by looking at the continuum limit of the lattice. If one imagines moving the points of the lattice \(\Z\) closer together, then it seems like the real line could be used as an approximation in the limit. Looking at this limiting case, Zubusky and Kruskal were able to show that solutions of the FPUT could be modeled by solutions of the Korteweg-de Vries (KdV) equation. The KdV is a dispersive partial differential equation given by 
+\begin{equation}
+	u_t + u_{xxx} - 6 u u_x = 0
+\end{equation}
+and is commonly used as a model for shallow water waves. Importantly, it is an example of an integrable PDE and it has soliton solutions. A soliton is a solitary wave solution with ``properties of a particle''. That is, two solitons can collide and pass through each other without a change of shape. The existence of soliton solutions is a characteristic of many integable PDEs.
+
+The soliton solutions help explain the behavior of the \(\alpha\)-FPUT and its near-recurrence. Using the KdV as the continuum limit, the initial condition decomposes into a sum of solitons moving at different speeds. These solitons move up and down the finite interval, passing through each other, until they nearly all return to their initial position, which results in the near recurrence. 
+
+This argument was mainly heuristic, but the idea was later made rigorous. In particular, Friesecke and Pego show that there exists a solitary wave solution to the \(\alpha\)-FPUT chain whose profile can be approximated by the soliton of the KdV and also demonstrated stability of the solution on the lattice \cite{friesecke1999solitary,friesecke2002solitary,friesecke2003solitary,friesecke2004solitary}. Asymptotic stability of the solitary wave in the space \(\ell^2\) was shown by Mizumachi in \cite{mizumachi2009asymptotic} and later expanded to the \(N\)-solitary wave case in \cite{mizumachi2013asymptotic}.Further work shows how the KdV can be used more widely as a modulation equation for small-amplitude, long-wavelength solutions of the \(\alpha\)-FPUT lattice. Wayne and Schneider showed that the KdV can be used to approximate counter-propagating waves for long periods of time \cite{schneider2000counter} of the order \(\epsilon^{-3}\), where \(\epsilon > 0\) is the amplitude of the solutions. This idea is expanded in \cite{khan2017long}, where it is demonstrated that the KdV can approximate solutions of the FPUT for time of the order \(\epsilon^{-3}\log |\epsilon|\) which is then used to comment on the meta-stability of traveling wave solutions on the lattice. 
+
+\section{The \(\beta\)-FPUT chain}
+
+The \(\beta\)-FPUT chain is the system we get when the potential equals
+\begin{equation}
+	V(x) = \frac 12 x^2 \pm \frac 1 {24}x^4 + \text{h.o.t.},
+\end{equation}
+up to a rescaling. As opposed to the \(\alpha\)-FPUT chain where the cubic term can be positive after rescaling, the quartic term in the \(\beta\)-FPUT chain can be either positive or negative and this changes the behavior of the system. In either case, this system also experience the recurrences as first demonstrated in the \(\alpha\)-FPUT chain. There is also a continuum limit to the lattice equation given by the modified Korteweg- de Vries equation (mKdV), given by 
+\begin{equation}
+	u_t \pm 6 u^2 u_x + u_{xxx} = 0.
+\end{equation}
+The choice of \(\pm\) is determined by the corresponding sign in the quartic term of \(V(x)\). The choice of \(+6u^2u_x\) gives the focusing mKdV, and the choice of \(-6u^2u_x\) gives the defocusing mKdV. Similar to solitons in the KdV, the defocusing mKdV has traveling wave solutions known as kinks. Kinks have profiles which approach non-zero values at \(\pm \infty\); for example, \(\frac 1 {\sqrt 2} \tanh(\frac 1 {\sqrt 2} (x+t))\) is such a solution.
+
+In \cite{pace2019beta}, the recurrence in the \(\beta\)-FPUT chain was numerically studied. When looking at the lattice when \(V(x) = \frac  12 x^2 - \frac 1 {24}x^4\), the recurrence seemed to be driven by kink-like solutions of the FPUT in an analagous way to the role solitary wave solutions played in the \(\alpha\)-FPUT recurrence. This suggests that these kink-like solutions are an important object of study and can help understand the recurrence occurring in the \(\beta\)-FPUT chain. However, there has been relatively little research into these kink-like solutions or the defocusing mKdV as a continuum limit for the lattice equations. The research problems can roughly be divided into three parts: 1) deriving the existence of a kink-like solution and estimating its wave profile; 2) approximating small-amplitude, long-wavelength solutions of the FPUT by using the defocusing mKdV as a modulation equation; and 3) determining the stability of the kink-like solution on the lattice. While these areas are related, each comes with its own tools and challenges that need to be considered separately. 
+
+
+\section{Research challenges and layout for thesis}
+
+The first challenge is to determine the existence of a traveling wave solution whose profile is approximated by the defocusing mKdV kink solution. One notable technique for finding traveling wave solutions is \emph{spatial dynamics}. For PDEs and other dynamical systems, the idea is to assume a special form of the solution so that the derivatives in time disappear, then the spatial variable can be thought of as the variable in time. This allows one to usually reduce the problem to finding solutions of an ODE, which is usually simpler. For example, spatial dynamics can be used to derive the explicit form of the kink solutions of the defocusing mKdV. Assume we want a solution of 
+\begin{equation}\label{intro-defocusing-mkdv}
+	u_t - 6u^2u_x + u_{xxx} = 0
+\end{equation}
+of the form
+\begin{equation}
+	u(x,t) = \varphi(x+vt) 
+\end{equation}
+with \(v > 0\). Substituting the ansatz into \cref{intro-defocusing-mkdv} gives
+\begin{equation}
+	v \varphi '(\xi) - 6\varphi(\xi)^2 \varphi'(\xi) + \varphi'''(\xi) = 0,
+\end{equation}
+which is an ODE in the variable \(\xi\). Taking an antiderivative on the left-hand side and setting that to zero gives
+\begin{equation}
+	v\varphi  - 2 \varphi^3  + \varphi'' = 0
+\end{equation}
+The above ODE can be solved by noting that 1) it is Hamiltonian with \(H(q,p) = \frac 1 2 p^2 + \frac v 2 q^2 - \frac 12 q^4\) and 2) the non-zero equilibria of the system occur when \((\varphi, \varphi') = (\pm \frac v {\sqrt 2}, 0)\). Then finding the solution along level set \(H(\pm \frac v {\sqrt 2}, 0) = \frac {v^2} 8\) gives 
+\begin{equation}
+	\varphi(\xi) = \pm \sqrt{\frac v  2} \tanh\left( \sqrt{\frac v 2} \xi\right)
+\end{equation}
+and the (increasing) kink solutions of \cref{intro-defocusing-mkdv} are
+\begin{equation}
+	\varphi_v(x,t) = \sqrt{\frac v 2} \tanh\left(\sqrt{\frac v 2} (x+vt) \right).
+\end{equation}
+
+Spatial dynamics is less useful in the context of lattices since the spatial domain in that case is discrete. Trying something along the same lines for equations on the lattice would result in a difference equations, which are more difficult to extract explicit solutions from. Thus other methods must be used. In \cite{friesecke1999solitary}, the authors set up a fixed point problem in \(H^1(\R)\) for the profile of the traveling wave by using a Fourier transform. Hence they were able to get existence of the solution and describe the profile of the wave. A challenge in our particular case is that kink solutions do not lie in any nice Sobolev space like \(H^1(\R)\), so defining Fourier transforms becomes fragile.
+
+A more robust strategy for finding traveling wave solutions can be found in \cite{iooss2000travelling}. Here the author uses a center manifold construction to find traveling wave solutions on the FPUT lattice. Center manifolds are a useful tool for finding these special solutions. These manifolds contains slowly growing/decaying solutions of a dynamical system, and so traveling wave solutions can typically be found on them. A close reading of \cite{iooss2000travelling} shows that kink-like solutions of the \(\beta\)-FPUT exist. However, the profiles of these solutions are not analyzed with respect to the profile of the kink solutions. In this thesis, we expand on Iooss' work to get explicit descriptions of the profile for these kink-like solutions and show that they are well-approximated by the mKdV kink solutions.
+
+The next challenge to consider is more generally considering the defocusing mKdV as a modulation equation. This would specialize the results found in \cite{schneider2000counter,khan2017long} to our \(\beta\)-FPUT lattice.

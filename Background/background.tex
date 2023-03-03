@@ -1,2 +1,32 @@
 % !TeX root = ../thesis.tex
 \chapter{Background Material}
+
+\emph{Note: This chapter is currently a placeholder. More background information and historical context will be added later.}
+
+The Fermi-Pasta-Ulam-Tsingou (FPUT) lattice is described by an infinite system of coupled ODEs:
+\begin{equation}\label{fput-lattice-odes}
+	\ddot x_n = V'(x_{n+1} - x_n) - V'(x_n - x_{n-1}), \quad n \in \Z
+\end{equation}
+where \(V:\R\to \R\) is the potential function. This system with a potential function of the form
+\begin{equation}
+	V(x) = a x^2 + b x^3 + c x^4 + \mathrm{h.o.t.}
+\end{equation} 
+with \(a,b\neq 0\) has been well studied. This system is sometimes referred to as the \(\alpha\)-FPUT chain. In particular, it has been shown that the Korteweg-De Vries (KdV) equation can be used as a modulation equation for small-amplitude, long-wavelength solutions of \cref{fput-lattice-equations}. By converting to the strain variables
+\begin{equation*}
+	u_n = x_{n+1} - x_n
+\end{equation*}
+we get that \cref{fput-lattice-equations} are equivalent to 
+
+which has approximate solutions of the form
+\begin{equation}
+	u_n(t) \approx \epsilon^2 f(\epsilon (n+t),\epsilon^3 t)
+\end{equation}
+with \(f\) a solution of the KdV equation
+\begin{equation*}
+	2 \partial_2 f = \frac 1 {12} \partial_1^3 f  + {V'''(0)} f \partial_1 f..
+\end{equation*}
+Furthermore, it has been shown that there is a travelling wave solution to \cref{fput-lattice-equations} with a profile approximately given by the soliton solution to the KdV. See \cite{schneider2000counter,friesecke1999solitary,khan2017long} for results along this line.
+
+However, there is less research done on the \(\beta\)-FPUT chain, where \(a, c\neq 0\) but \(b = 0\). From formal calculations and numerical experiments, it seems that there are similar results to the \(\alpha\)-FPUT chain but with the modified KdV (mKdV) serving as the modulation equation. In fact, we see that when \(a> 0\) and \(c< 0\), there are seemingly solutions to \cref{fput-lattice-equations-strain-variables} with non-zero limits at infinity whose profile is given by kink solutions of the mKdV equation. The goal of this thesis is to explore how the mKdV equations can serve as modulation equations in this case, show that there is an explicit kink-like solution to \cref{fput-lattice-equations-strain-variables}, and describe the stability of this kink-like solution.
+
+\Cref{chp:existence} first determines the existence of the kink-like traveling wave solution. This is done by assuming a traveling wave ansatz with some generic wave speed \(c<V''(0)\). Earlier results are used to show that a bifurcation occurs at \(c = V''(0)\) and to construct a center manifold, on which the desired kink-like solution exists. Then we can determine the existence and properties of the solution using Fenichel theory. \Cref{chp:long-time-stability} next explores using the mKdV as a modulation equation for more general initial conditions. An energy argument is used to prove that there exist solutions that can be described by counter-propagating solutions of the mKdV and a generalized KdV equation for times of order \(\epsilon^{-3}\). Particular attention is paid to solutions with possibly non-zero limits at infinity (like the kink solution). The argument is then partially extended to show that the approximation holds for times of order \(\epsilon^{-3}|\log(\epsilon)|\) when we use just the mKdV as a modulation equation. This is a useful result since it allows us to draw conclusions of the stability of the kink-like solution from the stability of the mKdV kink. \Cref{condition-verification} goes over some of the basics of Fenichel theory and proves other technical results necessary in \cref{chp:existence}. Finally \cref{lemma-appendix} contains proofs for technical lemmas used in both \cref{chp:existence,chp:long-time-stability}.

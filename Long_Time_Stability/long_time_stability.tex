@@ -10,9 +10,9 @@ As shown in earlier work, there exists a wave solution of the FPUT lattice whose
 	\ddot x_n = V'(x_{n+1} - x_n) - V'(x_n - x_{n-1}), \quad n \in \Z.
 \end{equation}
 where \(V\) is the interaction potential between neighboring particles and \(\dot{\hspace{0.5em}}\) denotes the derivative with respect to the time \(t\in \mathbb{R}\). \Cref{fput-lattice-equations} can be rewritten in the strain variables \(u_n := x_{n+1} - x_n\) as follows
-\begin{equation}\label{fput-lattice-equations-strain-variables}
-	\ddot{u}_n = V'(u_{n+1}) - 2 V'(u_n) + V'(u_{n-1}), \quad n \in \Z
-\end{equation}
+\begin{equation*}\label{fput-lattice-equations-strain-variables}
+	\ddot{u}_n = V'(u_{n+1}) - 2 V'(u_n) + V'(u_{n-1}), \quad n \in \Z \tag{\ref{fput-lattice-equations-strain-variables}}
+\end{equation*}
 The moving wave solution in \cref{fput-lattice-equations} corresponds to a kink solution in \cref{fput-lattice-equations-strain-variables}.
 
 For the case where \(V\) is of the form \(V(u) = \frac 1 2 u^2 + \frac{\epsilon^2}{p+1} u^{p+1}\) for \(p\geq 2\), the generalized KdV equation given by 
@@ -325,7 +325,7 @@ and \(\mcH(U) = \sum_{n\in\Z} \frac 1 2 q_n^2 + V(u_n)\).
 
 We will now introduce the traveling wave ansatz for the system in \cref{first-order-lattice-eqns}, but we first must assume certain regularity and decay of \(f\) and \(g\).
 \begin{assum}\label{assumption-1}
-	Let \(f\) and \(g\) be solutions of \cref{f-mKdV,g-gKdV}, respectively. Assume that \[f\in C_b(\R, \mcX_2^6(\R)) \quad \text{ and } \quad g\in C_b(\R,H_2^6(\R)).\] Furthermore, assume that \(f\) has fixed limits in its spatial variable at \(\pm \infty\) given by \(f_{\pm \infty}\).
+	Let \(f\) and \(g\) be solutions of \cref{f-mKdV,g-gKdV}, respectively. Assume that \[f\in C([-\tau_0, \tau_0], \mcX_2^6(\R)) \quad \text{ and } \quad g\in C([-\tau_0,\tau_0],H_2^6(\R))\] for some \(\tau_0>0\) fixed. Furthermore, assume that \(f\) has fixed limits in its spatial variable at \(\pm \infty\) given by \(f_{\pm \infty}\).
 \end{assum}
 
 The traveling wave ansatz for \(u_n\) and \(q_n\) is then given by
@@ -378,7 +378,7 @@ We want \(\mcU(t)\) and \(\mcQ(t)\) to be elements of \(\ell^2(\Z)\) (at least l
 \begin{assum}\label{assumption-2}
 	Assume that \[\sum_{n=-\infty}^\infty \dot u_n(0) = \epsilon F_{+\infty} - \epsilon F_{-\infty}.\]
 \end{assum}
-Note that if this did not hold, then \(\mcQ_n(0)\not\to 0\) as \(n\to\infty\) and \(\mcQ(0)\notin \ell^2(\Z)\). That \(\mcQ(0)_n \to 0\) as \(n\to-\infty\) follows directly from the ansatz. The introduction of the constant \(\epsilon F_{-\infty}\) in \cref{q-ansatz} does not affect the dynamics of \(q\) in \cref{first-order-lattice-eqns}
+Note that if this did not hold, then \(\mcQ_n(0)\not\to 0\) as \(n\to\infty\) and \(\mcQ(0)\notin \ell^2(\Z)\). That \(\mcQ_n(0) \to 0\) as \(n\to-\infty\) follows directly from the ansatz. The introduction of the constant \(\epsilon F_{-\infty}\) in \cref{q-ansatz} does not affect the dynamics of \(q\) in \cref{first-order-lattice-eqns}
 
 An equivalent set of equations to \cref{first-order-lattice-eqns} are given by
 \begin{equation}\label{error-lattice-eqns}
@@ -717,14 +717,109 @@ We can now show the following.
 	
 	Thus we have \cref{initial-condition-ineq} where the \(C>0\) can be chosen based on the norms of \(f\) and \(g\).
 \end{proof}
-\section{Proof of Long-Time Stability}
 
-Now with the setup complete, the main result of this chapter can be shown. The result and proof are analogous to those of \cite[Thm.~1]{khan2017long}.
+\section{Long-time approximation of FPUT}
+
+In this section, we prove that the solutions of the FPUT can be approximated by counter-propagating solutions for the KdV equations given in \cref{f-mKdV} and \cref{g-gKdV} for times scales of order \(\epsilon^{-3}\).
 
 \begin{theorem}
-	Let \cref{assumption-1} hold and set 
+	Let \cref{assumption-1} hold and set
 	\begin{equation}
-		\delta = \max \left\{\sup_{\tau\in\R}\|f(\cdot,\tau)\|_{\mcX^6_2},\ \sup_{\tau\in \R} \|g(\cdot, \tau)\|_{H^6_2} \right\}
+		\delta = \max \left\{\sup_{\tau\in[-\tau_0, \tau_0]}\|f(\cdot,\tau)\|_{\mcX^6_2},\ \sup_{\tau\in[-\tau_0, \tau_0]} \|g(\cdot, \tau)\|_{H^6_2} \right\}
+	\end{equation}
+	There exists positive constants \(\epsilon_0\) and \(C\) such that for all \(\epsilon \in(0,\epsilon_0)\), when initial data \((u(0), \dot u(0))\) satisfy \cref{assumption-2,assumption-3}, the unique solution \((u,q)\) to the FPU equation \cref{first-order-lattice-eqns} belongs to 
+	\begin{equation}
+		C^1([-t_0(\epsilon), t_0(\epsilon)], \ell^\infty(\mathbb Z))
+	\end{equation}
+	with \(t_0(\epsilon):= \epsilon^{-3}\tau_0 \) and satisfies
+	\begin{equation}
+		\begin{aligned}
+			&\| u(t) - \epsilon f(\epsilon(\cdot+t), \epsilon^3 t) -\epsilon g(\epsilon(\cdot -ct) ,\epsilon^3 t) \|_{\ell^2} \\
+			&\quad + \| \dot u(t) - \epsilon \partial_1 f(\epsilon (\cdot +t),\epsilon^3t)  +\epsilon^2 \partial_1 g(\epsilon(\cdot - ct), \epsilon^3t)\|_{\ell^2} \leq C \epsilon^{5/2 }, \quad t\in[-t_0(\epsilon), t_0(\epsilon)].
+		\end{aligned}
+	\end{equation}
+\end{theorem}
+
+\begin{proof}
+	Set \(\mathcal S := \mathcal E ^{1/2}\) where \(\mathcal E\) is defined in \cref{energy-function}. From the results in \cref{initial-conditions-lem}, we get that \(\mathcal S(0) \leq C_0 \epsilon^{5/2}\) for some constant \(C_0 > 0\) and \(\epsilon_0\) as chosen in \cref{energy-coercive-bounds-lem}. For fixed constant \(C> 0\) define
+	\begin{equation}
+		T_{C} := \sup \left\{T_0 \in (0,   \epsilon^{-3} \tau_0]: \mathcal S(t) \leq C \epsilon^{5/2},\, t\in [-T_0, T_0]\right\}.
+	\end{equation} 
+	The goal is then to pick \(C\) so that \(T_{C} = \epsilon^{-3} \tau_0\).
+	
+	We have that
+	\begin{equation}
+		\begin{aligned}
+			\left | \frac d {dt} \mathcal S(t) \right | &= \frac 1 {2 \mathcal E ^{1/2}} \left | \frac d {dt} \mathcal E(t) \right| \\
+			&\leq C_1(\delta + \delta^5) \epsilon^{11/2} + C_2 \epsilon^3\left[ \delta^2 + \epsilon^{-2}(\delta + \mathcal S) \mathcal S \right]\mathcal S
+		\end{aligned}
+	\end{equation}
+	where \(C_1, C_2 > 0\) are independent of \(\delta\) and \(\epsilon\). While \(|t| \leq T_{C}\),
+	\begin{equation}
+		C_2 \left[ \delta^2 + \epsilon^{-2}(\delta + \mathcal S) \mathcal S \right] \leq C_2 \left[ \delta^2  + (\delta +  C\epsilon^{5/2}) C \epsilon^{1/2} \right],
+	\end{equation}
+	where the right-hand side is continuous in \(\epsilon \) for \(\epsilon \in [0,\epsilon_0]\) and \(C>0\). Furthermore, the right-hand side of the inequality above is increasing in both \(\epsilon\) and \(C\), and so we can uniformly bound the term by some fixed number. Set \(K(C,\epsilon_0)= K>0\) to be
+	\begin{equation}\label{K-def-2}
+		K :=  \left[ \delta^2  + (\delta +  C\epsilon_0^{5/2}) C \epsilon_0^{1/2} \right].
+	\end{equation}
+	
+	Hence, we can get that for \(t \in [-T_{C}, T_{C}]\) 
+	\begin{equation}
+		\begin{aligned}
+			\frac d {dt} e^{-\epsilon^3 K t} \mathcal S(t) &= - \epsilon^3 K e^{-\epsilon^3 K t} \mathcal S  + e^{-\epsilon^3 K t} \frac d {dt} \mathcal S \\
+			&\leq - \epsilon^3 K e^{-\epsilon^3 K t} \mathcal S  + e^{-\epsilon^3 K t}C_1(\delta + \delta^5) \epsilon^{11/2} \\
+			&\qquad+ e^{-\epsilon^3 K t}C_2 \epsilon^3\left[ \delta^2 + \epsilon^{-2}(\delta + \mathcal S) \mathcal S \right]\mathcal S \\
+			&\leq - \epsilon^3 K e^{-\epsilon^3 K t} \mathcal S  +  e^{-\epsilon^3 K t}C_1(\delta + \delta^5) \epsilon^{11/2} + \epsilon^3 K e^{-\epsilon^3 K t}\mathcal S \\
+			&= e^{-\epsilon^3 K t}C_1(\delta + \delta^5) \epsilon^{11/2}.
+		\end{aligned}
+	\end{equation}
+	Integrating gives
+	\begin{equation} 
+		\begin{aligned}
+			\mathcal S(t) &\leq \left( \mathcal S(0) + K^{-1} C_1 (\delta+\delta^5) \epsilon^{5/2} \right) e^{\epsilon^3 K t} - \epsilon^{5/2} K^{-1} C_1 (\delta + \delta^5) \\
+			&\leq \left(C_0+ K^{-1} C_1 (\delta+\delta^5)  \right) \epsilon^{5/2}e^{\epsilon^3 K t} \\
+			&\leq (C_0 + K^{-1} C_1 (\delta+\delta^5) ) e^{K\tau_0} \epsilon^{5/2}
+		\end{aligned}
+	\end{equation}
+	for \(t \in [-T_{C}, T_{C}]\). If we have 
+	\begin{equation}\label{C-ineq-bound}
+		(C_0 + K^{-1} C_1 (\delta+\delta^5) ) e^{K\tau_0}  \leq C
+	\end{equation} 
+	then we can conclude that \(T_C = \epsilon^{-3}\tau_0.\) Note that the left-hand side of the inequality goes to 
+	\begin{equation}
+		(C_0 + \delta^{-2} C_1 (\delta+\delta^5) ) e^{\delta^2\tau_0}
+	\end{equation}
+	as \(\epsilon \to 0\) for fixed values of \(C\). Thus choose \(C>0\) large enough so that
+	\begin{equation}
+		(C_0 + \delta^{-2} C_1 (\delta+\delta^5) ) e^{\delta^2\tau_0} < C
+	\end{equation}
+ 	and then we can make \(\epsilon_0\) sufficiently small so that \cref{C-ineq-bound} holds for all \(\epsilon \in (0,\epsilon_0]\).
+\end{proof}
+
+\section{Meta-stability of kink-like solutions}
+
+We would now like to apply a similar method as seen in \cite{khan2017long} to show that the approximations hold for time scales of order \(\epsilon^{-3}|\log(\epsilon)|\). This is a useful result because one can then make conclusions about the meta-stability of the kink-like solution on the FPUT from the stability of the kink solution for the mKdV. 
+
+However, we cannot use the full approximation with the counter-propagating solutions. The problem comes from trying to extend \cref{assumption-1}. To make sure \(\phi\) remains bounded for longer period of times, we need to assume that \(f\) and \(g\) remain localized for longer and longer times. However, the PDEs \cref{f-mKdV} and \cref{g-gKdV} are dispersive, and so generic solutions will become less localized over time resulting in larger norms in \(\mcX^6_2\) and \(H^6_2\).
+
+The localization assumption is only necessary to keep \(\phi\), the term coming from the coupling of \(f\) and \(g\), bounded. We can drop this assumption if we set \(g\) identically equal to zero. It is easy to see that if \(g=0\) then \(\phi = 0\). Also, one can check that the estimates of the residuals and nonlinear terms rely only on \(f \in \mcX^6\) if \(\phi = 0\), and so our estimates from before still hold in this case.
+
+\begin{assum}\label{assumption-4}
+	Let \(f\) be a solution to \cref{f-mKdV} and set \(g = 0\). Assume that 
+	\begin{equation}
+		f \in C_b(\R, \mcX^6(\R)).
+	\end{equation}
+	Furthermore, assume that \(f\) has fixed limits in its spatial variables at \(\pm \infty\) given by \(f_{\pm \infty}\).
+\end{assum}
+
+We will still need to assume that the initial condition of \(f\) is still localized as in \cref{assumption-3}, but this assumption holds for many solutions including the kink solutions of \cref{f-mKdV}.
+
+The following result and proof are analogous to those of \cite[Thm.~1]{khan2017long}.
+
+\begin{theorem}
+	Let \cref{assumption-4} hold and set 
+	\begin{equation}
+		\delta =\sup_{\tau\in\R}\|f(\cdot,\tau)\|_{\mcX^6}
 	\end{equation}
 	For fixed \(r\in(0,1/2)\), there exists positive constants \(\epsilon_0\), \(C\), and \(K\) such that for all \(\epsilon \in(0,\epsilon_0)\), when initial data \((u(0), \dot u(0))\) satisfy \cref{assumption-2,assumption-3}, the unique solution \((u,q)\) to the FPU equation \cref{first-order-lattice-eqns} belongs to 
 	\begin{equation}
@@ -733,8 +828,8 @@ Now with the setup complete, the main result of this chapter can be shown. The r
 	with \(t_0(\epsilon):= r K^{-1} \epsilon^{-3} | \log (\epsilon) | \) and satisfies
 	\begin{equation}
 	\begin{aligned}
-		&\| u(t) - \epsilon f(\epsilon(\cdot+t), \epsilon^3 t) -\epsilon g(\epsilon(\cdot -ct) ,\epsilon^3 t) \|_{\ell^2} \\
-		&\quad + \| \dot u(t) - \epsilon \partial_1 f(\epsilon (\cdot +t),\epsilon^3t)  +\epsilon^2 \partial_1 g(\epsilon(\cdot - ct), \epsilon^3t)\|_{\ell^2} \leq C \epsilon^{5/2 - r}, \quad t\in[-t_0(\epsilon), t_0(\epsilon)].
+		&\| u(t) - \epsilon f(\epsilon(\cdot+t), \epsilon^3 t) \|_{\ell^2} \\
+		&\quad + \| \dot u(t) - \epsilon \partial_1 f(\epsilon (\cdot +t),\epsilon^3t)  \|_{\ell^2} \leq C \epsilon^{5/2 - r}, \quad t\in[-t_0(\epsilon), t_0(\epsilon)].
 	\end{aligned}
 	\end{equation}
 \end{theorem}
@@ -757,11 +852,11 @@ Now with the setup complete, the main result of this chapter can be shown. The r
 	\end{equation}
 	where \(C_1, C_2 > 0\) are independent of \(\delta\) and \(\epsilon\). While \(|t| \leq T_{C,K,r}\),
 	\begin{equation}
-		C_2 \left[ \delta^2 + \epsilon^{-2}(\delta + \mathcal S) \mathcal S \right] \leq C_2 \left[ \delta^2  + \epsilon^{-2}(\delta +  C\epsilon^{11/2-r}) C \epsilon^{11/2-r} \right],
+		C_2 \left[ \delta^2 + \epsilon^{-2}(\delta + \mathcal S) \mathcal S \right] \leq C_2 \left[ \delta^2  + \epsilon^{-2}(\delta +  C\epsilon^{5/2-r}) C \epsilon^{5/2-r} \right],
 	\end{equation}
 	where the right-hand side is continuous in \(\epsilon \) for \(\epsilon \in [0,\epsilon_0]\). Thus the right-hand side can be uniformly bounded by a constant independent of \(\epsilon\). Choose \(K>0\) (dependent on \(C\)) sufficiently large so that 
 	\begin{equation}\label{K-def}
-		C_2 \left[ \delta^2  + \epsilon^{-2}(\delta +  C\epsilon^{11/2-r}) C \epsilon^{11/2-r} \right] \leq K.
+		C_2 \left[ \delta^2  + \epsilon^{-2}(\delta +  C\epsilon^{5/2-r}) C \epsilon^{5/2-r} \right] \leq K.
 	\end{equation}
 
 	Hence, we can get that for \(t \in [-T_{C,K,r}, T_{C,K,r}]\) 
