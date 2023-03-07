@@ -74,6 +74,14 @@
 \newtheorem{theorem}{Theorem}[chapter]
 \newtheorem{assum}{Assumption}
 
+
+\usepackage{forloop}
+\newcounter{loopcntr}
+\newcommand{\rpt}[2][1]{%
+	\forloop{loopcntr}{0}{\value{loopcntr}<#1}{#2}%
+}
+%\usepackage[showframe]{geometry}
+
 \crefname{lem}{lemma}{lemmas}
 \Crefname{lem}{Lemma}{Lemmas}
 \crefname{assum}{assumption}{assumptions}
@@ -130,7 +138,7 @@
 	
 	%==========================================================================%
 	% Curriculum Vitae
-	%\include{0_Prelim/cv} 
+	\include{Prelim/cv} 
 	
 	%==========================================================================%
 \end{document}
