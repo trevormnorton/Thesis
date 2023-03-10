@@ -1,0 +1,488 @@
+% !TeX root = ../thesis.tex
+\chapter{Linear Stability of Kink-like Solution}\label{chp:stability}
+
+\section{Introduction}
+In this chapter, we discuss the problem of stability for the kink-like solution of the FPUT and make some progress toward showing asymptotic stability. For discussing asymptotic stability in our case, it is helpful to draw an analogy with the soliton solution of the KdV. In \cite{pego1994asymptotic}, it is shown that the family of soliton solutions of the KdV is orbitally stable and asymptotically stable in an exponentially weighted space. In particular, if we have an initial condition \(u_0\in H^2(\R)\cap H^1_a(\R)\) (where \(H^1_a(\R)\) represents the space \(H^1\) with exponential weighting \(e^{ax}\)) such that
+\begin{equation}
+	\|u_0 - u_c(\cdot + \gamma) \|_{H^1} \quad \text{and} \quad \|u_0 - u_c(\cdot + \gamma) \|_{H^1_a}
+\end{equation}
+are sufficiently small, then \(u(x,t)\) will remain close to some soliton solution for all time and approach that solution in the \(H^1_a\) norm. There are a couple things that should be noted about this result. Firstly, we allow changes in the parameters \(c\) and \(\gamma\) for this stability result. So the initial condition might be close to one soliton solution initially but approach a soliton solution with a slightly different wave speed or displacement. Secondly, we only have asymptotic stability in the exponentially weight space. This is because generic initial conditions for the KdV will decompose into a train of soliton solutions and radiation that moves quickly to the left. Thus it is possible to have a solution comprised of a large soliton solution moving to the right, smaller (and slower) soliton solutions following behind, and dispersion moving to the left that does not decay in \(H^1\), in which case we could not possibly have asymptotic stability in \(H^1\) \cite{schuur2006asymptotic}. Thus the \(H^1_a\) norm essentially says we will have asymptotic stability in front of the solitary wave.
+
+The general idea of the proof in \cite{pego1994asymptotic} is as follows. One decomposes the solution of the KdV \(u(x,t)\) so that
+\begin{equation}
+	u(x,t)  = u_{c(t)} (x + \theta(t)) + v(x + \theta(t), t)
+\end{equation}
+where \(\theta(t) = \gamma(t) - \int_0^t c(s)\, ds\). We choose \(c(t)\) and \(\gamma(t)\) at each time so that \(u_{c(t)} (\cdot + \theta(t))\) remains close to \(u(\cdot, t)\). In particular, we want to choose \(c(t)\) and \(\gamma(t)\) so that \(v\) does not exhibit growth in its equations. This can be done by requiring \(v\) remain orthogonal to a certain subspace. Namely, we define a spectral projection \(P\) associated the zero eigenvalue of the linearization around the soliton solution and require \(P v = 0\), which defines modulation equations for \(c(t)\) and \(\gamma(t)\). Following this, one can show that the \(v\) decays in time. This can be done by showing that the linear part generates a semigroup with decay or smoothing. This is referred to as linear stability, since it reduces to showing that after linearizing around the solution we have asymptotic stability of the linear PDE.
+
+A analogous method is carried out in \cite{friesecke2002solitary} for the solitary wave solution of the FPUT. However, in this case linear stability is assumed in order to carry out the rest of the proof. The later papers \cite{friesecke2003solitary,friesecke2004solitary} prove the linear stability result by developing a Floquet theory modulo shifts on the lattice. An alternative way to show linear stability when dealing with lattice solutions can be found in \cite{mizumachi2013asymptotic}. Here to show the asymptotic stability of of the \(N\)-solitary wave on the FPUT lattice, it was first shown that a linear stability result held. This was done using a Fourier method. To get linear stability though, the linear stability of the \(N\)-soliton solution was needed.
+
+The following course is suggested to get asymptotic stability of the kink-like solution on the FPUT. First, linear stability of the kink solution for the defocusing mKdV is proved. Next, linear stability for the kink-like solution can be shown using the stability of the kink solution \`a la Mizumachi. Finally, the asymptotic stability of the kink-like solution can be proved in a method similar to that in \cite{friesecke2002solitary}.
+
+A linear stability result for the kink solution of the defocusing mKdV is given in this chapter. The arguments use standard techniques for finding the stability of nonlinear waves, such as those detailed in \cite{kapitula2013spectral}. Next, we begin to sketch out the argument for the linear stability of the kink-like solution on the lattice. Some preliminary results are detailed, but much is left for future work.
+\section{Linear stability of kink solution}
+
+We want to find the linear stability of the kink solutions of 
+\begin{equation*}
+	u_t - 6u^2u_x + u_{xxx} = 0. \tag{\ref{intro-defocusing-mkdv}}
+\end{equation*}
+The family of kink solutions is parameterized by the wave speed \(c>0\) and the displacement \(\gamma \in \R\),
+\begin{equation}
+	\varphi_c(x + ct + \gamma)  = \sqrt{\frac c 2} \tanh\left(\sqrt{\frac c 2} (x +ct + \gamma) \right).
+\end{equation}
+Moving to a co-moving frame given by \(y = x+ct+\gamma\) and linearizing around \(\varphi_c(y)\) gives the following linear PDE
+\begin{equation}
+	\partial_t v + \partial_y (\partial_y^2 + c - 6 \varphi_c^2)v = 0.
+\end{equation}
+Define the linear operator
+\begin{equation}
+	\partial_y L_c := \partial_y(-\partial_y^2 - c + 6 \varphi_c^2)
+\end{equation}
+so that the above PDE is given by 
+\begin{equation}\label{linear-v-eqn}
+	\partial_t v = \partial_y L_c v.
+\end{equation}
+To study linear stability, we will first analyze the spectrum of \(\partial_y L_c\).
+
+\subsection{Spectrum of the linear operator}
+
+We first begin by describing the essential spectrum of \(\partial_y L_c\). The operator \(\partial_y L_c\) is exponentially asymptotic with asymptotic operator
+\begin{equation}
+	A^\infty = - \partial_y^3 + 2 c\partial_y.
+\end{equation}
+The characteristic polynomial for this differential operator is given by \(p (\lambda) = -\lambda^3 + 2\lambda\). The essential spectrum of \(\partial_y L_c\) and \(A^\infty\) are the same, and can be given explicitly by
+\begin{equation}
+	\sigma_{\mathrm{ess}}(\partial_y L_c) = \sigma_{\mathrm{ess}}(A^\infty) = \{p(ik) \mid k \in \R\} = \{i(k^3 +2c k) \mid k \in \R\} = i \R.
+\end{equation}
+From this, we can see that \(\partial_y L_c\) does not have spectrum contained in the left-half plane of \(\mathbb C\), and so we do not have spectral stability in \(L^2(\R)\). However, we can push the essential spectrum into the left-half plane by moving to an exponentially weighted space \(L^2_a(\R)\) with norm 
+\begin{equation}
+	\|v\|_{L^2_a} = \|e^{ay} v\|_{L^2}.
+\end{equation}
+We can write an equivalent linear problem on \(L^2\) as the linear problem on \(L^2_a\). If \(v\in L^2_a\) and solves \cref{linear-v-eqn}, then making the substitution 
+\begin{equation}
+	w(y,t) = e^{ay} v(y,t)
+\end{equation}
+gives \(w\in L^2\), which satisfies
+\begin{equation}
+	\partial_t w = A_a w, \quad \text{with } A_a := e^{ay} \partial_y L_c e^{-ay}.
+\end{equation}
+Again \(A_a\) is exponentially asymptotic with asymptotic operator
+\begin{equation}
+	A_a^\infty = - \partial_y^3 + 3a\partial_y^2 + (2c - 3a^2) \partial_y - a(2c - a^2).
+\end{equation}
+We can write \(A_a\) as 
+\begin{equation}
+	A_a = A_a^\infty + (\partial_y - a)g
+\end{equation}
+where 
+\begin{equation}
+	g(y) := 6\varphi_c(y) - 3c = - 3c\sech^2\left(\sqrt{\frac c 2} y \right).
+\end{equation}
+The essential spectrum of \(A_a\) and \(A_a^\infty\) in \(L^2\) is given by
+\begin{equation}
+	S^a_e = \{p(ik - a) \mid k \in \R\}= \{ - (ik - a)^3 + 2c(ik - a) \mid k \in \R\},
+\end{equation}
+which is contained in the left-half plane for \(a>0\) small. The distance between \(S^a_e\) and \(i\R\) is maximized when \(a = \sqrt{2c/3}\), so moving forward we only consider \(0< a < \sqrt{2c/3}\). Denote by \(\Omega(a)\) the open, connected component of \(\mathbb C\) to the right of \(S^a_e\). 
+
+Having dealt with the essential spectrum, we can now move on to the point spectrum of \(A_a\). To simplify the problem, we will look first at the point spectrum of \(\partial_y L_c\), since if \(v\) is an eigenfunction of this operator then \(e^{ay}v = w\) is an eigenfunction of \(A_a\). We can directly solve the eigenvalue problem
+\begin{equation}\label{eigen-problem-mkdv}
+	\partial_ yL_c v = \lambda v
+\end{equation}
+by using the Miura transformation. The Miura transformation is a way of transforming solutions of the defocusing mKdV \cref{intro-defocusing-mkdv} into solutions of the KdV \cref{kdv}. The transformation is given by
+\begin{equation}
+	u \mapsto M[u] = \partial_x u + u^2
+\end{equation}
+where \(u\) is an mKdV solution. For the kink solutions \(\varphi_c\), the Miura transformation takes these solutions to the constant solutions \(\frac c 2\). This gives us a way to convert the linearization around the kink solution into a linearization around the constant solution of the KdV, thus removing the spatial dependence in our ODE. A similar idea was used in \cite{pego1994asymptotic} to solve the eigenvalue problem for focusing mKdV.\footnote{In fact, the use of B\"acklund transforms to find stability is quite common in the area of integrable PDEs. In \cite{mizumachi2013asymptotic}, the B\"acklund transform was used to get linear stability of \(N\)-soliton solutions in the KdV equation. A similar idea is used in \cite{benes2012asymptotic} to show the asymptotic stability of the toda \(m\)-soliton.} The corresponding eigenvalue problem for the KdV is given by
+\begin{equation}\label{eig-problem}
+	(-\partial_y^3 + 2c \partial_y) v = \lambda v,
+\end{equation}
+so one might proceed formally by asserting
+\begin{equation}
+	M[\varphi_c]^{-1} (\partial_y^3 - 2c \partial_y + \lambda) M[\varphi_c]  = \lambda - \partial_y L_c.
+\end{equation}
+Indeed, one can verify by expanding that we have
+\begin{equation}\label{eig-problem-equivalence}
+	(\partial_y^3 - 2 c \partial_y + \lambda)(\partial_y + 2\varphi_c) v = (\partial_c + 2\varphi_c)(\partial_y^3 + \partial_y(c - 6\varphi_c^2) + \lambda) v
+\end{equation}
+as one might expect from the formal calculation. We can use the equivalence \cref{eig-problem-equivalence} to find solutions of \cref{eigen-problem-mkdv}. If we set \(w = \partial_yv + 2\varphi_c v\), then \(v\) being a solution to \cref{eigen-problem-mkdv} would imply that
+\begin{equation}
+	\partial_y^3 w - 2c \partial_y w + \lambda w = 0,
+\end{equation}
+which can be solved directly. Assuming that 
+\begin{equation}
+	\mu^3 - 2 c \mu + \lambda = 0
+\end{equation}
+has three distinct, non-zero roots \(\mu_k(\lambda) = \mu_k\), \(k =1,2,3\),  for our choice of \(\lambda\) (if \(\Re \lambda >> 1\), then this will hold), we have three linearly independent solutions 
+\begin{equation}
+	w_k(y)  = e^{\mu_k y}, \quad k =1,2,3.
+\end{equation}
+We will assume an ordering of the \(\mu_k\)'s so that \(\Re \mu_1 < 0 < \Re \mu_2 \leq \Re \mu_3\). Then we can find the corresponding solutions to \cref{eig-problem} by solving \(\partial_y v_k + 2 \varphi_c v_k = w_k\) for each \(k\). One can solve these first-order ODEs using \(\cosh^2(\sqrt{c/2} y)\) as an integrating factor. That is, we have
+\begin{equation}
+	\frac{\mathrm{d}}{\mathrm d y}\left( v_k(y) \cosh^2\left( \sqrt{\frac c 2} y\right) \right) =  \cosh^2\left( \sqrt{\frac c 2} y\right) w_k(y).
+\end{equation}
+Solving for \(v_k\) gives
+\begin{equation}
+	v_k(y) = \frac{1}{2 \mu_k^3 - 4c\mu_k} e^{\mu_k y} \sech^2\left( \sqrt{\frac c 2} y\right) (\mu_k^2 -2c + \mu_k^2 \cosh(\sqrt{2c} y) - \mu_k \sqrt{2c} \sinh(\sqrt{2c} y))
+\end{equation}
+for \(k=1,2,3\). Substituting the \(v_k\)'s back into \cref{eigen-problem-mkdv} shows that these are solutions. Moreover, we have that
+\begin{equation}\label{yplus}
+	\frac{2\mu_1^3 - 4c\mu_1}{2\mu_1(\mu_1 - \sqrt{2c})} v_1(y) \sim e^{\mu_1 y}, \quad y\to\infty
+\end{equation}
+and
+\begin{equation}
+	\frac{2\mu_k^3 - 4c\mu_k}{2\mu_k(\mu_k + \sqrt{2c})} v_k(y) \sim e^{\mu_k y}, \quad y\to-\infty
+\end{equation}
+for \(k = 2,3\). So these solutions correspond to the Jost solutions.
+
+To find eigenvalues, we want some solution \(v\in L^2(\R)\). This happens when \(v_1\) is a linear combination of \(v_2\) and \(v_3\). One can measure this by finding the Evans function, \(D(\lambda)\). This function can be defined as a transmission coefficient with the property that if \(Y^+(y,\lambda)\sim e^{\mu_1 y}\) as \(y\to \infty\) then \(Y^+(y,\lambda) \sim D(\lambda) e^{\mu_1 y}\) as \(y\to-\infty\). Such a \(Y^+(y,\lambda)\) was found in \cref{yplus}, so we can easily calculate that
+\begin{equation}
+	\frac{2\mu_1^3 - 4c\mu_1}{2\mu_1(\mu_1 + \sqrt{2c})} v_1(y) \sim \frac{\mu_1(\lambda) + \sqrt{2c}}{\mu_1(\lambda) - \sqrt{2c}} e^{\mu_1 y}.
+\end{equation}
+Thus we have that the Evans function is given by
+\begin{equation}
+	D(\lambda ) = \frac{\mu_1(\lambda) + \sqrt{2c}}{\mu_1(\lambda) - \sqrt{2c}}.
+\end{equation}
+One can show that the Evans functions for \(\partial_y L_c\) and \(A_a\) agree. The Evans function is a useful tool for determining the point spectrum for \(A_a\) since it is analytic in \(\Omega(a)\) and \(\lambda \in \Omega(a)\) is an eigenvalue of multiplicity \(d\) if and only if \(\lambda\) is a zero of \(D(\lambda)\) of multiplicity \(d\). Thus we can find all possible unstable eigenvalues.
+
+Solving for \(D(\lambda) = 0\), we find the only solution is when \(\lambda = 0\), in which case we have a simple root. It is typical when considering a family of traveling wave solutions that the linearization would have an eigenvalue \(\lambda = 0\). This corresponds to perturbations in the parameters of the traveling wave: for example the displacement parameter \(\gamma\) or the the wave speed \(c\). What might be surprising is that we have only a simple eigenvalue at \(\lambda = 0\), given that we have two parameters to vary. In the case of the soliton solution for the KdV, for instance, the linearization has a double zero eigenvalue and the eigenfunctions are the derivatives of the soliton solution with respect to the wave speed and the displacement.
+
+For the kink solution, the eigenfunction for \(\lambda = 0\) is given by \(\partial_\gamma \varphi_c = \varphi_c'\) and can be written as 
+\begin{equation}
+	\xi(y) = \frac c 2 \sech^2\left( \sqrt{\frac c 2} y \right),
+\end{equation}
+which is in \(L^2_a(\R)\) for \(0 < a < \sqrt {2c}\). However, taking a derivative with respect to \(c\) gives
+\begin{equation}
+	\partial_c \varphi_c (y) =  \frac 1 4 \sqrt{\frac 2 c} \tanh\left(\sqrt{\frac c 2} y\right) + \frac 1 4 y \sech^2\left(\sqrt{\frac c 2} y\right),
+\end{equation}
+which is not in \(L^2_a(\R)\) and so is not an eigenfunction. The kernel of \(\partial_y L_c\) is spanned by \(\xi\). 
+
+We can also find the spectral projection onto the eigenspace of \(\partial_y L_c\) in \(L^2_a\) for \(0< a< \sqrt{2c}\). We can write the projection by finding the adjoint eigenfunction. The adjoint of \(\partial_y L_c\) in \(L^2_a(\R)\) is \(-L_c\partial_y\) in \(L^2_{-a}\). We can find the eigenfunction associated with \(\lambda = 0\) in a similar way as before. Thus, we have the adjoint eigenfunction
+\begin{equation}
+	\eta(y) = \frac{1}{\sqrt{2c}} \tanh\left(\sqrt{\frac c 2 } y\right) + \frac{1}{\sqrt{2c}}.
+\end{equation}
+The scaling for \(\eta\) is chosen so that
+\begin{equation}
+	\langle \eta, \xi \rangle = \int_{-\infty}^\infty \eta(y) \xi(y) \, d y = 1
+\end{equation}
+and so the spectral projection \(P_a : L^2_a(\R) \to L_a^2(\R)\) onto the \(\lambda = 0\) eigenspace is given by
+\begin{equation}
+	P_av = \langle \eta, v \rangle \xi, \quad v\in L^2_a(\R).
+\end{equation}
+The projection \(P:L^2(\R) \to L^2(\R)\) for \(A_a\) can similarly be given by
+\begin{equation}\label{spectral-projector}
+	P w = \langle \eta, e^{-ay} w \rangle e^{ay} \xi, \quad w\in L^2(\R).
+\end{equation}
+
+\subsection{Linear stability}
+
+With the results about the spectrum out of the way, we now focus on proving the following 
+
+\begin{theorem}\label{linear-stability-kink}
+	Assume that \(0<a<\sqrt{2c/3}\) and that the spectral projection for \(A_a\) associated with \(\lambda = 0\) is given by \(P\). Let \(I - P = Q.\) Then \(A_a\) is the generator of a \(C^0\) semigroup on \(H^s\) for any real \(s\), and, for any \(b>0\) such that the \(L^2\)-spectrum \(\sigma(A_a) \subset \{ \lambda \mid \Re(\lambda) < -b\} \cup \{0\}\), there exists \(C\) such that for all \(w\in L^2\) and \(t>0\),
+	\begin{equation}\label{linear-decay-result}
+		\| e^{A_a t} Qw \|_{H^1} \leq C t^{-1/2} e^{-bt} \| w \|_{L^2}.
+	\end{equation}
+\end{theorem}
+
+Many of the results follow directly from the work in \cite[\SS 4]{pego1994asymptotic} or can be adapted to our case with little effort. In the paper, they were studying the generalized KdV, and so the asymptotic operator \(A_a^\infty\) is the same (after rescaling \(c\)). The following results about \(A_a^\infty\) are proved in by Pego and Weinstein.
+\begin{prop}[c.f.\ Proposition 4.1]\label{asymptotic-operator-semigroup-estimate}
+	For any integer \(n\geq 0\), and \(0<a<\sqrt{2c/3}\), there exists \(C = C(n,a)\) such that, for any \(w \in L^2\) and for all \(t>0\),
+	\begin{equation}
+		\|\partial_y^n e^{A^\infty_a t} w \|_{L^2} \leq C t^{-n/2} e^{-a(2c-a^2)t} \| w \|_{L^2}.
+	\end{equation}
+\end{prop}
+
+\begin{prop}[c.f.\ Lemma 4.3]\label{derivative-resolvent-estimate}
+	Let \(0<\alpha < a < \sqrt{2c/3}\). Then there exist \(C_0, C_1\) such that for \(\lambda\in \overline{\Omega(\alpha)}\) with \(|\lambda| \geq C_0\),
+	\begin{equation}
+		\| \partial_y^n (\lambda I - A_a^\infty)^{-1}\| \leq C_1 |\lambda|^{(n-2)/3}, \quad \text{for } n =0,1.
+	\end{equation}
+	Here \(\|\cdot \|\) denotes the operator norm in \(L^2\).
+\end{prop}
+
+Next we compute the following estimate on the resolvent operators.
+
+\begin{prop}[c.f.\ Lemma 4.4]\label{difference-of-resolvents-estimate}
+	Let \(0<\alpha<a< \sqrt{2c/3}\). Then there exist \(C_0,C_1\) such that for \(\lambda\in\overline{\Omega(\alpha)}\) with \(|\lambda| \geq C_0\), we have \(\lambda\in\rho(A_a)\),
+	\begin{align}
+		\|\partial_y^n [(\lambda I -A_a)^{-1} - (\lambda I - A_a^0)^{-1}] \| &\leq C_1 |\lambda|^{n/3 - 1} \quad \text{for } n=0,1 \text{ and} \\
+		\|\partial_y^n(\lambda I - A_a)^{-1} \| &\leq C_1 |\lambda|^{(n-2)/3} \quad \text{for } n=0,1. \label{derivative-A_a-resolvent}
+	\end{align}
+\end{prop}
+\begin{proof}
+	Since we have that \(A_a\) has the same essential spectrum as \(A_a^0\), given by \(S_e^a\), and the only eigenvalue of \(A_a\) is \(\lambda = 0\), we must have \(\lambda \in \rho(A_a)\) for \(\lambda\in\overline{\Omega(\alpha)}\) non-zero. If \(A\) and \(B\) are operators with the same domain and \(\lambda \in \rho(A)\cap\rho(B)\), then we have the following resolvent identity:
+	\begin{equation}
+		(\lambda I - B)^{-1} - (\lambda I - A)^{-1} = (\lambda I - A)^{-1} (B-A) (\lambda I - A)^{-1} \times \left[ I - (B-A)(\lambda I -A)^{-1} \right]^{-1}.
+	\end{equation}
+	Setting \(A = A_a^\infty\) and \(B = A_a\), we get that \(B-A = (\partial_y -a) g = g' + g(\partial_y -a)\). Since \(g'(y)\) and \(g(y)\) are both bounded, we can apply \cref{derivative-resolvent-estimate} to get 
+	\begin{equation}
+		\| (B-A)(\lambda I - A)^{-1} \| = \| (A_a - A_a^0)(\lambda I - A_a^0)^{-1} \| = \mathcal O(|\lambda|^{-1/3})
+	\end{equation}
+	as \(|\lambda|\to \infty\) for \(\lambda \in \overline{\Omega_+(\alpha)}\). We also have that 
+	\begin{equation}
+		I - (B-A)(\lambda I - A)^{-1} = I - (A_a-A_a^0)(\lambda I - A_a)^{-1}
+	\end{equation}
+	is invertible for \(|\lambda|\) sufficiently large and the norm of the inverse is \(\mathcal O(1)\) as \(|\lambda| \to \infty\) in \(\overline{\Omega(\alpha)}\). Thus applying \cref{derivative-resolvent-estimate} gives us that 
+	\begin{equation}
+		\begin{aligned}
+			\|\partial_y^n [(\lambda I -A_a)^{-1} - (\lambda I - A_a^0)^{-1}] \| &\leq \|\partial_y^n (\lambda I - A_a)^{-1} \| \times C |\lambda|^{-1/3} \\
+			&\leq C |\lambda|^{n/3 - 1}
+		\end{aligned}
+	\end{equation}
+	for \(n=0,1\). From the above and \cref{derivative-resolvent-estimate}, we can obtain \cref{derivative-A_a-resolvent}.
+\end{proof}
+
+\begin{proof}[Proof of \cref{linear-stability-kink}]
+	The argument showing \(A_a\) is the generator of a \(C^0\) semigroup on \(H^s\) follows line-for-line the proof given in \cite[Thm.~4.2]{pego1994asymptotic}, which uses the fact that \(A_a = A_a^\infty + (\partial_y - a) g\) with \(A_a^\infty\) the generator of a contraction semigroup on \(H^s\) and applys perturbation results from \cite{kato2013perturbation}.
+	
+	To prove the decay result \cref{linear-decay-result}, we will write the operator \(e^{A_at} Q\) as a contour integral involving the resolvent. Then applying the results for \(e^{A_a^\infty t}\) and the estimates for the resolvents we computed earlier, we will be able to show that we have decay. Let \(b> 0\) such that \(\sigma(A_a)  \subset \{\lambda \mid \Re \lambda < - b\} \cup \{0\}.\)
+	
+	We can choose \(\alpha\) such that \(0< \alpha < a\) and \(S_e^\alpha\) lies to the right of \(S_e^\alpha\). Also, choosing \(\alpha \) small enough so that \(-b < = - \alpha (2c - \alpha^2)\) and the curve \(S^\alpha_e\) intersects \(\Re \lambda = -b\). We will define a contour \(\Gamma\) so that the non-zero spectrum of \(A_a\) is to the left of \(\Gamma\) by ``gluing'' the curves \(S_e^\alpha\) and \(\Re \lambda = -b\). Let \(\tau_0> 0\) be the value where
+	\begin{equation}
+		\Re(p(\pm i \tau_0 - \alpha)) = -b,
+	\end{equation}
+	i.e., where the curves \(S^\alpha_e\) and \(\Re \lambda = - b\) intersect. Then the contour \(\Gamma\) can be parameterized by
+	\begin{equation}
+		\tau \mapsto \lambda(\tau) = \begin{cases}
+			p(i\tau - \alpha) \quad \text{if } |\tau|\geq \tau_0,\\
+			- b + i \beta_0 \tau
+		\end{cases}
+	\end{equation}
+	where \(\beta_0 = \Im p(i\tau_0 - \alpha) / \tau_0\). Then \(\lambda \mapsto (\lambda I - A_a)^{-1} Q\) is analytic to the right of \(\Gamma\) with a removable singularity at \(\lambda = 0\). Due to the estimates on the resolvent in \cref{derivative-A_a-resolvent}, we have the following integral converges, and we have the representation
+	\begin{equation}
+		e^{A_at} Q = \frac 1 {2\pi i} \int_\Gamma (\lambda I - A_a)^{-1} Q\, d\lambda.
+	\end{equation}
+	Adding and subtracting the similar representation of \(e^{A_a^\infty t} Q\) gives
+	\begin{equation}\label{semigroup-operator-aa}
+		e^{A_at} Q = e^{A_a^\infty t} Q + \frac 1 {2 \pi i } \int_\Gamma e^{\lambda t} [ (\lambda I - A_a)^{-1} - (\lambda I - A_a^\infty)^{-1}] \, d\lambda.
+	\end{equation}
+	We can estimate the integral term above using the results in \cref{difference-of-resolvents-estimate}. We have that
+	\begin{equation}
+		\begin{aligned}
+			&\left \| \int_\Gamma e^{\lambda t} \partial_y^n [(\lambda I - A_a)^{-1}  - (\lambda I - A_a^\infty)^{-1}] Q \, d\lambda \right \| \\
+			&\quad\leq C \int_\Gamma e^{\Re \lambda t} |\lambda|^{-2/3} |d\lambda| \\
+			&\quad\leq C e^{-bt} + C \int_{\tau_0}^\infty e^{- \alpha (2c - \alpha^2)t} e^{-3\alpha t \tau^2} |p(i\tau-\alpha)|^{-2/3} |p'(i\tau - \alpha)| \, d\tau,
+		\end{aligned}
+	\end{equation}
+	where the \(C\)'s above are generic constants. Since \(|p(i\tau-\alpha)|^{-2/3} |p'(i\tau - \alpha)|\leq C\), the last line can be bounded by 
+	\begin{equation}
+		\begin{aligned}
+			C e^{-bt} + C e^{-\alpha(2c - \alpha^2) t} \int_{\tau_0}^\infty e^{-3\alpha t \tau^2}\, d\tau &\leq C e^{-bt} + C e^{-\alpha(2c - \alpha^2) t} e^{-3\alpha \tau_0^2 t} t^{-1/2} \\
+			&= C e^{-bt }( 1 + t^{-1/2})
+		\end{aligned}
+	\end{equation}
+	since \(\Re [p(i\tau_0 - \alpha)] = -3\alpha \tau_0^2 - \alpha (2c - \alpha^2) = -b\). By choosing a slightly larger \(b' > b\), we can apply the same argument for \(b'\) and then get
+	\begin{equation}
+		e^{b't} ( 1 + t^{-1/2}) \leq C e^{-bt} t^{-1/2}.
+	\end{equation}
+	Applying the above estimate and \cref{asymptotic-operator-semigroup-estimate} to the equality in \cref{semigroup-operator-aa} gives the desired result.
+\end{proof}
+
+\section{Sketch of the proof of linear stability of the kink-like solution}
+
+Let 
+\begin{equation}
+	r_\epsilon(t,x) = \epsilon \varphi_1(\epsilon (x - c_\epsilon t))
+\end{equation}
+where \(\varphi_1(\cdot)=  \frac 1 {\sqrt 2 }\tanh(\frac \cdot {\sqrt 2})\) is the profile of the kink solution for the (defocusing) mKdV equation and \(c_\epsilon = \sqrt{1 - \epsilon^2/12}\). Set 
+\begin{equation}
+	u_{\epsilon} (t,n) = \begin{pmatrix}
+		r_\epsilon(t,n) \\
+		-r_\epsilon(t,n)
+	\end{pmatrix}.
+\end{equation}
+We fix \(V(x) = \frac 1 2 x^2 - \frac 1 {24} x^4\). From \cref{chp:existence}, there is \(\zeta(t)\) such that there is a kink-like solution to the FPUT of the form \(u_\epsilon(t) + \zeta(t)\) and \(|\zeta(t)| + \epsilon^{-1} |\zeta'(t)| = \mcO( \epsilon^3)\). We wish to study the stability of the linearization around the moving wave solution. That is we want to show that for solutions of
+\begin{equation}\label{linearization-eqn}
+	\partial_t w (t) = J H''(u_\epsilon(t) + \zeta(t))w(t)
+\end{equation}
+where 
+\begin{equation}\label{orthogonality-condition}
+	|\langle w(t), J^{-1} \partial_t u_{\epsilon} (t) \rangle| \leq \epsilon^{1/2} \| e ^{\epsilon a (\cdot - c_\epsilon t)} w(t) \|_{\ell^2}, \quad \forall t \geq 0
+\end{equation}
+is suitably small, then for every \(t > s \geq 0\)
+\begin{equation}\label{exponential-linear-stability}
+	\| e^{\epsilon a(\cdot - c_\epsilon t)} w(t) \|_{\ell^2} \leq M e^{-b\epsilon^3 (t-s)} \| e^{\epsilon a(\cdot - c_\epsilon s)} w(s) \|_{\ell^2} .
+\end{equation}
+The idea behind the proof is to use a Fourier transform to rewrite the equation in frequency space, and then use the fact that the mKdV acts like a modulation equation for the low frequency parts (\(\xi \sim \epsilon\)) and that there is a similar stability for the lineariztion around the mKdV kink. 
+
+
+We will make a change of coordinates in Fourier space to better study the stability. For \(v \in \ell^2(\Z)\) we define the discrete Fourier transform
+\begin{equation}
+	(\mcF_n v)(\xi) = \hat v (\xi) = \frac 1 {\sqrt {2\pi}} \sum_{n\in \Z} v_n e^{-in \xi}, \quad \xi\in[-\pi, \pi].
+\end{equation}
+Denote
+\begin{equation}
+	\hat J = \hat J(\xi) = \begin{bmatrix}
+		0 & e^{i\xi} - 1 \\
+		1 - e^{-i\xi} & 0
+	\end{bmatrix}
+\end{equation}
+the operator \(J\) acting in Fourier space. Let 
+\begin{equation}
+	P(\xi) = \frac 1 2 \sqrt{\frac{2 - \epsilon^2/4}{1 - \epsilon^2/4}} \begin{bmatrix}
+		\sqrt{1-\epsilon^2/4} & e^{i\xi/2} \\
+		-\sqrt{1-\epsilon^2/4} e^{-i\xi/2} & 1
+	\end{bmatrix}
+\end{equation}
+with inverse given by 
+\begin{equation}
+	P(\xi)^{-1} = \frac 1 {\sqrt{2-\epsilon^2/4}} \begin{bmatrix}
+		1 & - e^{i\xi/2} \\
+		\sqrt{1-\epsilon^2/4}  e^{-i\xi /2} & \sqrt{1-\epsilon^2 /4}
+	\end{bmatrix}
+\end{equation}
+The matrix \(P(\xi)\) is useful because it diagonalizes 
+\begin{equation}
+	A(\xi) := \hat J  \begin{bmatrix}
+		1 - \epsilon^2/4 & 0 \\
+		0 & 1
+	\end{bmatrix} = \begin{bmatrix}
+		0 & e^{-i\xi} -  1 \\
+		(1-\epsilon^2 /4)(1-e^{-i\xi}) & 0
+	\end{bmatrix}.
+\end{equation}
+In particular, we have \(P(\xi) A(\xi) P(\xi)^{-1} = 2i \sin(\xi/2) \sqrt{1-\epsilon^2/4}\, \sigma_3\) where \(\sigma_3 = \begin{bmatrix}
+	1 & 0 \\ 0 & -1
+\end{bmatrix}\).
+The matrix \(A(\xi)\) comes up in the Fourier transform of \cref{linearization-eqn} because
+\begin{equation}
+	\begin{aligned}
+	&\mcF_n[ JH''(u_\epsilon(t) + \zeta(t)) w]\\
+	&\quad = \underbrace{\hat J \begin{bmatrix}
+			1-\epsilon^2/4 & 0 \\
+			0 & 1
+	\end{bmatrix}}_{=A(\xi)} \mcF_n w + \hat J\begin{bmatrix}
+		\mcF_n [V''(u_\epsilon(t) + \zeta(t)) - 1 + \epsilon^2 /4 ]& 0 \\
+		0 & 0 
+	\end{bmatrix} *_{\mathbb T} \mcF_n w
+	\end{aligned}
+\end{equation} 
+where \(V''(u_\epsilon + \zeta) - 1 + \epsilon^2/4\) has a well-defined Fourier transform.
+
+We now introduce
+\begin{equation}
+	f(t,\xi)  = e^{ic_\epsilon t \xi} P(\xi) [\mcF_n w](t,\xi).
+\end{equation}
+Note that the \(e^{ic_\epsilon t\xi}\) puts the solution into a moving frame (since \(u_\epsilon\) moves to the right at a speed of \(c_\epsilon\)). Also, \(P(\xi)\) introduces a change of coordinates to diagonalize \(A(\xi)\). Taking the time derivative of \(f\) we get
+\begin{equation}\label{f-eqn}
+\begin{aligned}
+	&\partial_t f(t,\xi) \\
+	\quad &= i c_\epsilon \xi f + e^{i c_\epsilon \xi t} P(\xi) [\mcF_n \partial_t w](t,\xi) \\
+	\quad &= i c_\epsilon \xi f + e^{i c_\epsilon \xi t} P(\xi) \left( A(\xi) \mathcal F w + \hat J\begin{bmatrix}
+		\mathcal F(V''(u_{1,\epsilon} +\zeta_1) - 1 + \epsilon^2/4) & 0 \\ 0 & 0 & 0 
+	\end{bmatrix} *_{\mathbb T} \mathcal F w \right) \\
+	\quad &= \Lambda_\epsilon f + i G_1(t,\xi) \sin(\xi/2)\begin{bmatrix}
+		1 \\ e^{-i\xi/2}
+	\end{bmatrix}
+\end{aligned}
+\end{equation}
+where 
+\begin{equation}\label{notation-f-eqn}
+\begin{aligned}
+	g(t,\xi) &= e^{-ic_\epsilon t \xi}(f_1 - e^{-\xi/2} f_2) \\
+	G_1(t,\xi) &= \frac{e^{ic_\epsilon t \xi}}{\sqrt{2\pi (1 - \epsilon^2/ 4) }} (\mcF_n(V''(u_{1,\epsilon}  + \zeta_1) -1 + \epsilon^2/4) *_{\mathbb T} g ) \\
+	\Lambda_\epsilon(\xi) &= \mathrm{diag}(i \lambda_{-,\epsilon} (\xi), i \lambda_{+,\epsilon}(\xi)) \\
+	\lambda_{\pm, \epsilon}(\xi) &= \sqrt{1-\epsilon^2/12}\, \xi \pm 2 \sqrt{1-\epsilon^2/4} \, \sin(\xi/2)
+\end{aligned}
+\end{equation}
+The exponential weighting in \cref{exponential-linear-stability} corresponds to a shift in the frequency domain. Namely, if \(v_n = e^{\alpha n} u_n\), then 
+\begin{equation}
+	[\mcF_n v] (\xi) = \frac 1 {\sqrt{2\pi}} \sum_{n\in\Z} e^{\alpha n} u_n e^{-in\xi} =  \frac 1 {\sqrt{2\pi}} \sum_{n\in\Z}  u_n e^{-in(\xi+i\alpha)} = [\mcF_n u](\xi + i \alpha ).
+\end{equation} 
+In particular, we have that
+\begin{equation}
+	\|e^{\epsilon a(\cdot + c_\epsilon t)} w(t) \|_{\ell^2} \lesssim \| f(t, \cdot +ia\epsilon) \|_{L^2(-\pi, \pi)}
+\end{equation}
+Thus we will be interested in the decay of \(f(t, \xi + ia\epsilon)\), and to this end we will need to estimate the imaginary parts of \(\lambda_{\pm,\epsilon}(\xi + ia\epsilon)\).
+
+\begin{lem}\label{linear-frequency}
+	Fix \(a> 0\) and \(\delta \in (0,\pi)\). Then there exist positive numbers \(K\) and \(\epsilon_0\) such that for \(\epsilon\in(0,\epsilon_0)\),
+	\begin{align*}
+		\lambda_{-, \epsilon}(\epsilon(\eta + ia)) &= \frac{\epsilon^3}{12}(\eta + ia) + \frac{\epsilon^3}{24}(\eta + ia)^3 + \mathcal O(\epsilon^5\langle \eta \rangle^5), \\
+		 & &&\hspace{-6em}\text{if } \eta\in[-2K, 2K], \\
+		\Im \lambda_{-,\epsilon}(\epsilon(\eta + ia)) &\geq \frac{a \epsilon^3}{48} \eta^2, &&\hspace{-6em}\text{if } \eta\in[-2\delta\epsilon^{-1}, -K] \cup [K, 2\delta \epsilon^{-1}], \\
+		\Im \lambda_{-,\epsilon}(\epsilon(\eta + ia)) &\geq \frac{a\epsilon}2(1-\cos(\delta / 2)), &&\hspace{-6em}\text{if } \eta\in[-\pi\epsilon^{-1}, - \delta \epsilon^{-1}] \cup [\delta\epsilon^{-1}, \pi\epsilon^{-1}], \\
+		\Im \lambda_{+,\epsilon}(\epsilon(\eta + ia)) &\geq a\epsilon\sqrt{1-\epsilon^2/12} &&\hspace{-6em}\text{if } \eta\in [-\pi \epsilon^{-1}, \pi \epsilon^{-1}].
+	\end{align*}
+\end{lem}
+
+\begin{proof}
+	For the first equality, we have that 
+	\begin{align*}
+		&\lambda_{-,\epsilon} (\epsilon(\eta + ia))  \\
+		\quad&= \sqrt{1-\frac{\epsilon^2}{12}} (\epsilon(\eta + ia)) - 2 \sqrt{1 - \frac{\epsilon^2} 4}\sin\left(\frac \epsilon 2 (\eta + ia ) \right) \\
+		\quad&=\left( 1 - \frac{\epsilon^2}{24} +\mathcal O(\epsilon^4) \right) (\epsilon(\eta + ia )) \\
+		&\qquad - 2 \left( 1 - \frac{\epsilon^2} 8 + \mathcal O(\epsilon^4) \right) \left( \frac\epsilon 2 (\eta+ i a) - \frac 1 {48}  (\eta + ia)^3 + \mathcal O(\epsilon^5\langle\eta \rangle^5)\right) \\
+		\quad&= \frac {\epsilon^3} {12} (\eta + ia) + \frac{\epsilon^3}{24}(\eta + ia)^3 + \mathcal O(\epsilon^5 \langle \eta\rangle^5).
+	\end{align*}
+	For the remaining inequalities, it will be useful to split the \(\sin\) function into its real and imaginary parts
+	\begin{equation}
+		\lambda_{\pm,\epsilon}(\epsilon (\eta + ia)) = \epsilon \sqrt{1-\epsilon^2/12}(\eta+ia) \pm 2 \sqrt{1-\epsilon^2/4} \left(\sin \frac{\epsilon \eta}{2} \cosh\frac{\epsilon a}{2} + i\cos \frac{\epsilon \eta}{2} \sinh \frac{\epsilon a}{2}\right).
+	\end{equation}
+	The second inequality relies on the fact that 
+	\begin{equation}\label{quadratic-bound}
+		1- \cos x  \geq  \frac 1  6 x^2, \quad \text{for } x\in[-\pi, \pi],
+	\end{equation}
+	which can be proven by using the Taylor remainder theorem. Then for \(|\eta|\in [K,2\delta \epsilon^{-1}] \) we have
+	\begin{align*}
+		&\Im \lambda_{-,\epsilon}(\epsilon(\eta + ia))\\
+		&\quad= a\epsilon \sqrt{1-\epsilon^2/12} - 2 \sqrt{1-\epsilon^2/4} \cos\frac{\epsilon\eta} 2 \sinh \frac{\epsilon a} 2 \\
+		&\quad= a\epsilon (1 - \epsilon^2/24 + \mathcal{O}(\epsilon^4))- 2 (1 - \epsilon^2/8 + \mathcal{O}(\epsilon^4)) \cos\frac{\epsilon\eta} 2 (\epsilon a/2 + \mathcal O(\epsilon^3))\\
+		&\quad= a \epsilon (1- \cos \frac{\epsilon \eta} 2 ) + \mathcal O(\epsilon^3).
+	\end{align*}
+	The \(\mathcal O(\epsilon ^3)\) terms can be bounded below by \(-\frac{a\epsilon^3}{48}\eta^2\) by choosing \(K\) sufficiently large and \(\epsilon_0\) small enough so that \(K < 2\delta \epsilon^{-1}\). The other term can be bounded below using \cref{quadratic-bound}. Thus
+	\begin{equation*}
+		\Im \lambda_{-,\epsilon}(\epsilon(\eta + ia)) \geq \frac{a\epsilon^3}{24} \eta^2 - \frac{a\epsilon^3}{48} \eta^2 = \frac{a\epsilon^3}{48} \eta^2.
+	\end{equation*}
+	The third inequality follows from
+	\begin{align*}
+		\Im \lambda_{-,\epsilon}(\epsilon(\eta + ia)) &= a \epsilon (1-\cos \frac{\epsilon \eta} 2) + \mathcal O(\epsilon^3) \\
+		&\geq \epsilon a (1- \cos\frac \delta 2) + \mathcal O(\epsilon^3),
+	\end{align*}
+	since the first term is minimized on the set when \(|\eta| = \delta \epsilon^{-1} \). The second term can be bounded below by \(-\frac{\epsilon a} 2(1-\cos\delta /2) \) by choosing \(\epsilon_0\) sufficiently small.
+	
+	The last inequality follows from
+	\begin{align*}
+		\Im \lambda_{+,\epsilon}(\epsilon(\eta+ia)) &=  a \epsilon\sqrt{1 - \epsilon^2/ 12} + \underbrace{2 \sqrt{1-\epsilon^2/4} \cos\frac{\epsilon \eta} 2 \sinh\frac{\epsilon a} 2}_{\geq 0} \\
+		&\geq  a \epsilon\sqrt{1 - \epsilon^2/ 12}.
+	\end{align*}
+\end{proof}
+
+To isolate the low-, middle-, and high-frequency parts of \(f\), we introduce cut-off function. Let \(\chi\) and \(\tilde\chi\) be nonnegative, smooth functions such that \(\chi + \tilde \chi = 1\) and \(\chi(\xi) = 1\) if \(\xi\in[-1,1]\) and \(\chi(\xi) = 0\) if \(|\xi|\geq 2.\) Let \(\chi_b(\xi) = \chi(\xi/b)\) and \(\tilde \chi_b (\xi) = \tilde \chi(\xi/b)\). Set \(\xi_\epsilon = \xi + i a \epsilon\) and
+\begin{align*}
+	f_{\flat}(t, \xi) &= \chi_{K\epsilon}(\xi) f_1(t,\xi_\epsilon) \\
+	f_{\natural} (t,\xi) &= (\chi_\delta(\xi) - \chi_{K\epsilon}(\xi)) f_1(t, \xi_\epsilon) \\
+	f_{\sharp} (t,\xi) &= \tilde \chi_\delta (\xi) f_1(t,\xi_\epsilon) \\
+	f_* (t,\xi) &= f_2 (t,\xi_\epsilon)
+\end{align*}
+Then from \cref{f-eqn,notation-f-eqn} the PDEs for \(f_\flat, f_\natural, f_\sharp, f_*\) are given by
+\begin{align}
+	\partial_t f_\flat (t, \xi) &= i\lambda_{-,\epsilon}(\xi_\epsilon) f_\flat(t,\xi) + i \chi_{K\epsilon}(\xi) G_1(t,\xi_\epsilon) \sin(\xi_\epsilon/2) \label{f-flat-pde} \\
+	\partial_t f_\natural (t,\xi) &= i\lambda_{-, \epsilon}(\xi_\epsilon) f_\flat(t,\xi) + i (\chi_\delta(\xi) - \chi_{K\epsilon}(\xi)) G_1(t,\xi_\epsilon) \sin(\xi_\epsilon/ 2) \\
+	\partial_t f_\sharp(t,\xi) &= i\lambda_{-, \epsilon}(\xi_\epsilon) f_\sharp (t,\xi) + i \tilde\chi_{\delta}(\xi) G_1(t,\xi_\epsilon) \sin(\xi_\epsilon/2) \\
+	\partial_t f_*(t, \xi) &= i \lambda_{+,\epsilon}(\xi_\epsilon) f_*(t,\xi) + i G_1(t, \xi_\epsilon) \sin(\xi_\epsilon / 2) e^{-i \xi_\epsilon /2}.
+\end{align}
+Except for the low-frequency term \(f_\flat\), each term can be controlled using the results in \cref{linear-frequency} and the variation of constants formula.
+
+For the \(f_\flat\) term, we will need the linear stability of the kink solution to control it. The idea behind the estimate is that since the defocusing mKdV is a modulation equation for solutions with long-wavelengths of order \(\epsilon^{-1}\), by truncating the frequencies higher than \(\epsilon\) we should get similar stability results as the kink solution. Specifically, we define
+\begin{equation}
+	h_1(\tau, y) = \frac 1 {\sqrt {2\pi}} \int_{-\pi\epsilon^{-1}}^{\pi \epsilon^{-1}} f_\flat (t, \xi) e^{iy\eta}\, d \eta 
+\end{equation}
+where \(\xi = \epsilon \eta\) and \(\tau = \epsilon^3 t/24\). Here \(h_1\) will be a function on \(\R\) whose dynamics are well-approximated by those of the linearization around a kink solution. Using \cref{linear-frequency}, we find 
+\begin{equation}
+	\begin{aligned}
+		&\partial_t f_\flat (t,\xi) - i \lambda_{-,\epsilon}(\xi_\epsilon) f_\flat(t,\xi) \\
+		&\quad = \frac{\epsilon^3}{24} \mathcal F_y[\partial_\tau h_1 - 2 (\partial_y + a) h_1 + (\partial_y + a)^3 h_1 + \mathcal O(\epsilon^2 h_1)],
+	\end{aligned}
+\end{equation}
+where \(\mcF_y\) denotes the standard Fourier transform in the variable \(y\). By adding an extra term to the right-hand side terms above, we see that we have
+\begin{equation}
+	\begin{aligned}
+		&\partial_\tau h_1 - 2(\partial_y + a) h_1 + (\partial_y + a)^3 h_1 - 6 (\partial_y + a) [(\varphi_1^2 - 1/2) h_1 ]\\
+		&\quad= \partial_\tau h_1 + (\partial_y + a ) h_1 + (\partial_y +a)^3 h_1 - 6 (\partial_y + a) [\varphi_1^2 h_1],
+	\end{aligned}
+\end{equation}
+which corresponds to the linearization around \(\varphi_1\) after switching to a co-moving frame and adding an exponential weight \(e^{ay}\). Furthermore, the orthogonality condition \cref{orthogonality-condition} implies that \( \| P h_1 \|_{L^2}\) remains small, where \(P\) is the spectral projection defined in \cref{spectral-projector}. Substituting into \cref{f-flat-pde} thus gives something of the form
+\begin{equation}\label{h1-pde}
+	\partial_\tau h_1 - 2(\partial_y + a) h_1 + (\partial_y + a)^3 h_1 - 6 (\partial_y + a) [(\varphi_1^2 - 1/2) h_1 ] = \cdots
+\end{equation}
+from which we can apply the results stated in \cref{linear-stability-kink} and the variation of constants formula. The right-hand side of \cref{h1-pde} contains terms that can all be controlled, and so we can get an estimate for \(h_1\) and thus \(f_\flat\).

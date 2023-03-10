@@ -6,19 +6,19 @@
 \section{Introduction}
 % Talk about the problem
 %Friesecke/Pego method. Why doesn't it work here?
-The goal of this chapter is to show the existence of the travelling wave solution for the FPUT lattice and describe its profile. From formal calculations and the numerical experiments carried out in \cite{pace2019beta}, it seems that the travelling wave solution has a profile given by the kink solution to the mKdV; that is, for \(\phi(\xi) = \frac 1 {\sqrt 2} \tanh(\xi/\sqrt 2)\) we expect to have a travelling wave solution \(u\) such that 
+The goal of this chapter is to show the existence of the travelling wave solution for the FPUT lattice and describe its profile. From formal calculations and the numerical experiments carried out in \cite{pace2019beta}, it seems that the travelling wave solution has a profile given by the kink solution to the mKdV; that is, for \(\varphi_1(\cdot) = \frac 1 {\sqrt 2} \tanh(\cdot/\sqrt 2)\) we expect to have a traveling wave solution \(u\) such that 
 \begin{equation}\label{formal-approximation}
-	u_n(t) = \epsilon \phi(\epsilon(n + ct)) +\mcO(\epsilon^3)
+	u_n(t) = \epsilon \varphi_1(\epsilon(n - ct)) +\mcO(\epsilon^3)
 \end{equation}
 when \(c\) is slightly smaller than \(V''(0) = 1\).
 
-One would expect that methods used to find the soliton-like solution for the FPUT can also be applied to this case. Notably it was shown in \cite{friesecke1999solitary} that there exists a solitary wave solution whose profile is described by the KdV soliton using a fixed-point argument. The argument relies on creating a map from \(H^1(\R)\) to itself using Fourier multipliers such that the fixed point of the map is the profile of the solitary wave. However, this argument does not seem to extend to our case since the function \(\phi\) is not in a Sobolev space and its Fourier transform is defined only in a distributional sense. Due to this problem, we neglect the functional approach and focus on techniques from bifurcation theory. 
+One would expect that methods used to find the soliton-like solution for the FPUT can also be applied to this case. Notably it was shown in \cite{friesecke1999solitary} that there exists a solitary wave solution whose profile is described by the KdV soliton using a fixed-point argument. The argument relies on creating a map from \(H^1(\R)\) to itself using Fourier multipliers such that the fixed point of the map is the profile of the solitary wave. However, this argument does not seem to extend to our case since the function \(\varphi_1\) is not in a Sobolev space and its Fourier transform is defined only in a distributional sense. Due to this problem, we neglect the functional approach and focus on techniques from bifurcation theory. 
 
 
 %Use center manifold contruction
 %%Usefule for finding small bounded solutions
 %%Bifurcation parameter will be c<c^*
-One common technique for constructing travelling wave solutions to PDEs is by using the center manifold theorem. For PDEs of one spatial and one temporal variable, the strategy is to assume that the solution is a travelling wave (i.e.\ of the form \(f(x-ct)\)) to eliminate the derivative with respect to \(t\) and reduce the problem to an ODE with respect to the spatial variable \(x\). Finding bounded solutions of this ODE then results in travelling wave solutions of the PDE. The center manifold is an important tool for finding these solutions since (1) it is typically finite-dimensional, (2) can be approximated by Taylor series up to arbitrary order, and (3) contains all bounded solutions. If a linear operator has an eigenvalue pass through the line \(\{\lambda\in\mathbb C: \Re \lambda = 0\}\) as a parameter \(\mu\) varies, then one typically has a center manifold containing small bounded solutions parameterized by \(\mu\). Similar techniques can be used to find center manifold for more general semi-dynamical systems defined on Banach spaces \cite{vanderbauwhede1992center}. Such a construction was carried out in \cite{iooss2000travelling} for an abstract ODE representing an advance delay differential equation. The existence of several travelling wave solutions on the FPUT lattice were proved. The bifurcation parameter in this paper was given in part by the wave speed. In fact, \cite[Thm.\ 5]{iooss2000travelling} shows the existence of a heteroclinic orbit on the center manifold when \(c\) is slightly smaller than \(1\). This heteroclinic orbit corresponds to the kink-like solution of the FPUT we are interested in. But no description of its wave profile was given, so obtaining an estimate of the form in \cref{formal-approximation} is still an open problem.
+One common technique for constructing travelling wave solutions to PDEs is by using the center manifold theorem. For PDEs of one spatial and one temporal variable, the strategy is to assume that the solution is a travelling wave (i.e.\ of the form \(f(x-ct)\)) to eliminate the derivative with respect to \(t\) and reduce the problem to an ODE with respect to the spatial variable \(x\). Finding bounded solutions of this ODE then results in travelling wave solutions of the PDE. The center manifold is an important tool for finding these solutions since (1) it is typically finite-dimensional, (2) can be approximated by Taylor series up to arbitrary order, and (3) contains all bounded solutions. If a linear operator has an eigenvalue pass through the line \(\{\lambda\in\mathbb C: \Re \lambda = 0\}\) as a parameter \(\mu\) varies, then one can have a center manifold containing small bounded solutions parameterized by \(\mu\). Similar techniques can be used to find center manifold for more general semi-dynamical systems defined on Banach spaces \cite{vanderbauwhede1992center}. Such a construction was carried out in \cite{iooss2000travelling} for an abstract ODE representing an advance delay differential equation. The existence of several travelling wave solutions on the FPUT lattice were proved. The bifurcation parameter in this paper was given in part by the wave speed. In fact, \cite[Thm.\ 5]{iooss2000travelling} shows the existence of a heteroclinic orbit on the center manifold when \(c\) is slightly smaller than \(1\). This heteroclinic orbit corresponds to the kink-like solution of the FPUT we are interested in. But no description of its wave profile was given, so obtaining an estimate of the form in \cref{formal-approximation} is still an open problem.
 
 
 %Sketch of proof: 
@@ -27,7 +27,7 @@ One common technique for constructing travelling wave solutions to PDEs is by us
 %% Then show that this solution persists for epsilon > 0 using Fenichel theory.
 %% Later we reverse our change of coordinates to get an approximation of the solution on the original lattice formulation.
 Our argument for getting such an estimate will proceed as follows. We first follow the procedure in \cite{iooss2000travelling}
-to construct the center manifold parameterized by \(\epsilon\), making sure to explicitly compute the dynamics on the center manifold. Making a suitable change of variables, we look for small-amplitude, long-wavelength solutions for the FPUT on the center manifold and show that formally setting \(\epsilon = 0\) gives a solution related to the kink solution \(\phi\). Next we apply results from Fenichel theory to show that this solution persists for \(\epsilon> 0\). Lastly we convert our results back to the original formulation of the FPUT lattice and prove an estimate of the form \cref{formal-approximation}.
+to construct the center manifold parameterized by \(\epsilon\), making sure to explicitly compute the dynamics on the center manifold. Making a suitable change of variables, we look for small-amplitude, long-wavelength solutions for the FPUT on the center manifold and show that formally setting \(\epsilon = 0\) gives a solution related to the kink solution \(\varphi_1\). Next we apply results from Fenichel theory to show that this solution persists for \(\epsilon> 0\). Lastly we convert our results back to the original formulation of the FPUT lattice and prove an estimate of the form \cref{formal-approximation}.
 
 \section{Construction of Center Manifold}
 %Change of coordinates to get into the form of an abstract ODE.
@@ -115,9 +115,9 @@ where \(\gamma\) is a curve going around \(\lambda = 0\) counter-clockwise and n
 
 The resolvent operator is straightforward to find. For \(F=(f_0,f_1,F_2)^T\in\bbH\), we want to find \(U = (x,\xi, X)^T\in \bbD\) such that
 \begin{equation}
-	(\lambda\mathrm I - L_\mu) U = F.
+	(\lambda I a- L_\mu) U = F.
 \end{equation}
-The above is a differential equation with coupled algebraic equations. The operator on the left-hand side is invertible when \(N(\lambda ;\mu) \neq 0\), where 
+The above is a differentil equation with coupled algebraic equations. The operator on the left-hand side is invertible when \(N(\lambda ;\mu) \neq 0\), where 
 \begin{equation}
 	N(\lambda;\mu) = - \lambda^2 + 2\mu(\cosh \lambda - 1).
 \end{equation}
@@ -133,7 +133,7 @@ with
 \end{equation}
 The projection can be computed by using the residue theorem. For instance, note that 
 \begin{equation}
-	(PF)_x = \mathrm{Res}((\lambda \mathrm I - L_{\mu_0} ^{-1} F)_x, 0) = \mathrm{Res}(-[N(\lambda;\mu)]^{-1}(\lambda f_0 + f_1 + \mu\tilde f_\lambda), 0).
+	(PF)_x = \mathrm{Res}((\lambda  I - L_{\mu_0} ^{-1} F)_x, 0) = \mathrm{Res}(-[N(\lambda;\mu)]^{-1}(\lambda f_0 + f_1 + \mu\tilde f_\lambda), 0).
 \end{equation}
 For fixed \(F\in\bbH\), the last term can be found by finding the residue of a meromorphic function in \(\bbC\). Proceeding in this way, we can get 
 \begin{align}
@@ -466,9 +466,9 @@ up to a shift in the variable \(s\). One can check that these are solutions of \
 		 \pm\frac 1 2 \mathrm{sech}^2\left( \frac s {\sqrt 2}\right) \\
 		 \mp\frac{1}{\sqrt 2 }\tanh\left(\frac s {\sqrt 2 }\right)\mathrm{sech}^2\left(\frac {s}{\sqrt 2}\right)
 	\end{bmatrix} = \begin{bmatrix}
-	\pm \phi(s)\\
-	\pm \phi'(s) \\
-	\pm \phi''(s) \
+	\pm \varphi_1(s)\\
+	\pm \varphi_1'(s) \\
+	\pm \varphi_1''(s) \
 \end{bmatrix}
 \end{equation}
 denote the two heteroclinic orbits.
@@ -524,7 +524,7 @@ Then if make the manifold small enough, this condition for the hypotheses of \cr
 	\begin{equation}
 		|\gamma_{\pm,\epsilon}(s) - \gamma_\pm(s) | \leq C \epsilon \quad \text{ for all } s\in \R
 	\end{equation}
-	where \(\gamma_{\pm}\) are defined in \cref{heteroclinic-orbit-at-zero}. If \(V(x) = \frac 12 x^2 - \frac 1 {24} x^4 + \mcO(\epsilon^6)\), then we instead have the estimate
+	where \(\gamma_{\pm}\) are defined in \cref{heteroclinic-orbit-at-zero}. If \(V\) satisfies (H2), then we instead have the estimate
 	\begin{equation}
 		|\gamma_{\pm,\epsilon}(s) - \gamma_\pm(s) | \leq C \epsilon^2 \quad \text{ for all } s\in \R.
 	\end{equation}
@@ -558,19 +558,19 @@ respectively for each term. Thus
 \begin{aligned}
 	&x_{\pm, \epsilon}(t+1) - x_{\pm, \epsilon}(t) \\
 	&\quad= \dot x_{\pm, \epsilon}(t+ 1/2) + \frac 12 \int_{0}^{1/2} [\dddot x_{\pm, \epsilon}(t+1/2+s)(s-1/2)^2 - \dddot x_{\pm, \epsilon}(t+s)s^2] ds \\
-	&\quad= \pm \epsilon \phi(\epsilon (t+1/2)) + \epsilon^2 \mathcal R_{\epsilon, \pm}(\epsilon (t+1/2))
+	&\quad= \pm \epsilon \varphi_1(\epsilon (t+1/2)) + \epsilon^2 \mathcal R_{\epsilon, \pm}(\epsilon (t+1/2))
 \end{aligned}
 \end{equation}
 where \(R_{\epsilon, \pm} \in C^3_b\). Thus (after shifting the solution) we have that there are travelling wave like solutions of the FPUT of the form
 \begin{equation}
-	u_n(t) = \pm \epsilon \phi_{\epsilon, \pm}(\epsilon(n-ct)) + \epsilon^2 \mathcal R_{\epsilon, \pm}(\epsilon (n-ct))
+	u_n(t) = \pm \epsilon \varphi_1(\epsilon(n-ct)) + \epsilon^2 \mathcal R_{\epsilon, \pm}(\epsilon (n-ct))
 \end{equation}
 Additionally, if (H2) holds we improve the error estimate so that there are solutions of the form 
 \begin{equation}
-	u_n(t) = \pm \epsilon \phi(\epsilon(n-ct)) + \epsilon^3 \mathcal R_{\epsilon, \pm}(\epsilon (n-ct)).
+	u_n(t) = \pm \epsilon \varphi_1(\epsilon(n-ct)) + \epsilon^3 \mathcal R_{\epsilon, \pm}(\epsilon (n-ct)).
 \end{equation}
 
-To match similar estimates made in \cite{friesecke1999solitary}, one would expect the remainder terms to also be in a Sobolev space like \(H^1\). This is in general not true. The travelling wave solution found above may approach a different limit asymptotically than \(\epsilon \phi \), in which case the remainder does not approach zero asymptotically in space. A necessary condition to get \(\mathcal R_{\epsilon,\pm}\in H^1\) would be for \(u_n\) to approach the same limits of \(\pm \epsilon \phi(\epsilon (n-ct))\) as \(|n| \to \infty\).
+To match similar estimates made in \cite{friesecke1999solitary}, one would expect the remainder terms to also be in a Sobolev space like \(H^1\). This is in general not true. The travelling wave solution found above may approach a different limit asymptotically than \(\epsilon \varphi_1 \), in which case the remainder does not approach zero asymptotically in space. A necessary condition to get \(\mathcal R_{\epsilon,\pm}\in H^1\) would be for \(u_n\) to approach the same limits of \(\pm \epsilon \varphi_1(\epsilon (n-ct))\) as \(|n| \to \infty\).
 
 A useful tool for showing this is the following invariant for \cref{advance-delay-equation}:
 \begin{equation}\label{advance-delay-invariant}
@@ -615,7 +615,7 @@ Now to get the Sobolev estimate, we use the following lemma.
 \end{restatable}
 The proof of \cref{heteroclinic-orbit-sobolev} is given in \cref{lemma-appendix}. Thus we have
 \begin{equation}
-	\|A_{\pm, \epsilon} - \phi_{\pm}\|_{H^5(\R;\R)} \leq C \epsilon.
+	\|A_{\pm, \epsilon} \mp \varphi_{1}\|_{H^5(\R;\R)} \leq C \epsilon.
 \end{equation}
 One can also show from the exponential decay of \(\gamma_{\pm, \epsilon}\) and the smoothness of \(\Phi_\mu\) that
 \begin{equation}
@@ -623,11 +623,11 @@ One can also show from the exponential decay of \(\gamma_{\pm, \epsilon}\) and t
 \end{equation}
 By noticing that the Taylor expansion of \(\Phi_\mu(\epsilon A_{\pm, \epsilon}, \epsilon^2 B_{\pm, \epsilon}, \epsilon^3 C_{\pm, \epsilon})\) has no terms of order \(\epsilon^2\) or lower, the function is at least of order \(\epsilon^3\). Therefore, we have that there is an \(R_{\pm,\epsilon} \in H^4(\R;\R)\) such that
 \begin{equation}
-	\dot x_{\pm, \epsilon }(t) = \pm \epsilon\phi(\epsilon t) + \epsilon^2 R_{\pm,\epsilon}(\epsilon t).
+	\dot x_{\pm, \epsilon }(t) = \pm \epsilon\varphi_1(\epsilon t) + \epsilon^2 R_{\pm,\epsilon}(\epsilon t).
 \end{equation}
 Then converting to strain coordinates as before we have
 \begin{equation}
-	u_n(t) = \pm\epsilon\phi(\epsilon(n-ct)) + \epsilon^2 \mathcal R_{\pm, \epsilon}(\epsilon(n-ct))
+	u_n(t) = \pm\epsilon\varphi_1(\epsilon(n-ct)) + \epsilon^2 \mathcal R_{\pm, \epsilon}(\epsilon(n-ct))
 \end{equation}
 where \(\mathcal R_{\pm, \epsilon} \in H^3(\R;\R)\).
 
@@ -637,16 +637,16 @@ We state our results as follows.
 	\begin{enumerate}[label = (\roman*)]
 		\item If (H1) holds, then
 		\begin{equation}
-			\left\| \frac 1 \epsilon u_c\left(\frac \cdot \epsilon \right) - \phi \right\|_{C^3} \leq C \epsilon
+			\left\| \frac 1 \epsilon u_c\left(\frac \cdot \epsilon \right) - \varphi_1 \right\|_{C^3} \leq C \epsilon
 		\end{equation}
 		\item If (H2) holds, then
 		\begin{equation}
-			\left\| \frac 1 \epsilon u_c\left(\frac \cdot \epsilon \right) - \phi \right\|_{C^3} \leq C \epsilon^2
+			\left\| \frac 1 \epsilon u_c\left(\frac \cdot \epsilon \right) - \varphi_1 \right\|_{C^3} \leq C \epsilon^2
 		\end{equation}
 		\item If (H3) holds, then
 		\begin{equation}
-			\left\| \frac 1 \epsilon u_c\left(\frac \cdot \epsilon \right) - \phi \right\|_{H^3} \leq C \epsilon
+			\left\| \frac 1 \epsilon u_c\left(\frac \cdot \epsilon \right) - \varphi_1 \right\|_{H^3} \leq C \epsilon
 		\end{equation}
 	\end{enumerate}
 \end{theorem}
-The same estimates hold for \(-\phi\) as the profile wave or for left-moving waves or for both.
+The same estimates hold for \(-\varphi_1\) as the profile wave or for left-moving waves or for both.
