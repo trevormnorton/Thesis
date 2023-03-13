@@ -6,14 +6,14 @@
 \section{Introduction}
 
 As shown in earlier work, there exists a wave solution of the FPUT lattice whose profile is well approximated by that of the kink solution to the (defocusing) mKdV. This approximation holds globally in time, but is restricted to one special solution of the FPUT. We are now interested in studying more general solutions of the FPUT which can be approximated by solutions of the mKdV for long (but finite) time. The equations of motion on the lattice are given by 
-\begin{equation}\label{fput-lattice-equations}
-	\ddot x_n = V'(x_{n+1} - x_n) - V'(x_n - x_{n-1}), \quad n \in \Z.
-\end{equation}
-where \(V\) is the interaction potential between neighboring particles and \(\dot{\hspace{0.5em}}\) denotes the derivative with respect to the time \(t\in \mathbb{R}\). \Cref{fput-lattice-equations} can be rewritten in the strain variables \(u_n := x_{n+1} - x_n\) as follows
-\begin{equation*}\label{fput-lattice-equations-strain-variables}
+\begin{equation*}
+	\ddot x_n = V'(x_{n+1} - x_n) - V'(x_n - x_{n-1}), \quad n \in \Z. \tag{\ref{fput-lattice-odes}}
+\end{equation*}
+where \(V\) is the interaction potential between neighboring particles and \(\dot{\hspace{0.5em}}\) denotes the derivative with respect to the time \(t\in \mathbb{R}\). \Cref{fput-lattice-odes} can be rewritten in the strain variables \(u_n := x_{n+1} - x_n\) as follows
+\begin{equation*}
 	\ddot{u}_n = V'(u_{n+1}) - 2 V'(u_n) + V'(u_{n-1}), \quad n \in \Z \tag{\ref{fput-lattice-equations-strain-variables}}
 \end{equation*}
-The moving wave solution in \cref{fput-lattice-equations} corresponds to a kink solution in \cref{fput-lattice-equations-strain-variables}.
+The moving wave solution in \cref{fput-lattice-odes} corresponds to a kink-like solution in \cref{fput-lattice-equations-strain-variables}.
 
 For the case where \(V\) is of the form \(V(u) = \frac 1 2 u^2 + \frac{\epsilon^2}{p+1} u^{p+1}\) for \(p\geq 2\), the generalized KdV equation given by 
 \begin{equation}\label{generalized-KdV}
