@@ -4,9 +4,8 @@
 \pagestyle{myheadings}
 
 \section{Introduction}
-% Talk about the problem
-%Friesecke/Pego method. Why doesn't it work here?
-The goal of this chapter is to show the existence of the traveling wave solution for the FPUT lattice and describe its profile. From formal calculations and the numerical experiments carried out in \cite{pace2019beta}, it seems that the traveling wave solution has a profile given by the kink solution to the mKdV; that is, for \(\varphi_1(\cdot) = \frac 1 {\sqrt 2} \tanh(\cdot/\sqrt 2)\) we expect to have a traveling wave solution \(u\) such that 
+
+The goal of this chapter is to show the existence of the traveling wave solution for the FPUT lattice and describe its profile. From formal calculations and the numerical experiments carried out in \cite{pace2019beta}, it seems that the traveling wave solution has a profile given by the kink solution to the defocusing mKdV, \cref{intro-defocusing-mkdv}; that is, for \(\varphi_1(\cdot) = \frac 1 {\sqrt 2} \tanh(\cdot/\sqrt 2)\) we expect to have a traveling wave solution \(u\) such that 
 \begin{equation}\label{formal-approximation}
 	u_n(t) = \epsilon \varphi_1(\epsilon(n - ct)) +\mcO(\epsilon^3)
 \end{equation}
@@ -14,20 +13,14 @@ when \(c\) is slightly smaller than \(V''(0) = 1\).
 
 One would expect that methods used to find the solitary wave solution for the FPUT can also be applied to this case. Notably it was shown in \cite{friesecke1999solitary} that there exists a solitary wave solution whose profile is described by the KdV soliton using a fixed-point argument. The argument relies on creating a map from \(H^1(\R)\) to itself using Fourier multipliers such that the fixed point of the map is the profile of the solitary wave. However, this argument does not seem to extend to our case since the function \(\varphi_1\) is not in a Sobolev space and its Fourier transform is defined only in a distributional sense. Due to this problem, we neglect the functional approach and focus on techniques from bifurcation theory. 
 
-
-%Use center manifold contruction
-%%Usefule for finding small bounded solutions
-%%Bifurcation parameter will be c<c^*
 One common technique for constructing traveling wave solutions to PDEs is by using the center manifold theorem. For PDEs of one spatial and one temporal variable, the strategy is to assume that the solution is a traveling wave (i.e.\ of the form \(f(x-ct)\)) to eliminate the derivative with respect to \(t\) and reduce the problem to an ODE with respect to the spatial variable \(x\). Finding bounded solutions of this ODE then results in traveling wave solutions of the PDE. The center manifold is an important tool for finding these solutions since (1) it is typically finite-dimensional, (2) can be approximated by Taylor series up to arbitrary order, and (3) contains all bounded solutions. If a linear operator has an eigenvalue pass through the line \(\{\lambda\in\mathbb C: \Re \lambda = 0\}\) as a parameter \(\mu\) varies, then one can have a center manifold containing small bounded solutions parameterized by \(\mu\). Similar techniques can be used to find center manifold for more general semi-dynamical systems defined on Banach spaces \cite{vanderbauwhede1992center}. Such a construction was carried out in \cite{iooss2000travelling} for an abstract ODE representing an advance delay differential equation. The existence of several traveling wave solutions on the FPUT lattice were proved. The bifurcation parameter in this paper was given in part by the wave speed. In fact, \cite[Thm.\ 5]{iooss2000travelling} shows the existence of a heteroclinic orbit on the center manifold when \(c\) is slightly smaller than \(1\). This heteroclinic orbit corresponds to the kink-like solution of the FPUT we are interested in. But no description of its wave profile was given, so obtaining an estimate of the form in \cref{formal-approximation} is still an open problem.
 
 
-%Sketch of proof: 
-%%Construct center manifold with epsilon as the bifurcation parameter
-%%Show that (after an appropriate change of coordinates) that the epsilon = 0 system has a solution whose profile matches the kink solution of the  defocusing mKdV.
-%% Then show that this solution persists for epsilon > 0 using Fenichel theory.
-%% Later we reverse our change of coordinates to get an approximation of the solution on the original lattice formulation.
 Our argument for getting such an estimate will proceed as follows. We first follow the procedure in \cite{iooss2000travelling}
 to construct the center manifold parameterized by \(\epsilon\), making sure to explicitly compute the dynamics on the center manifold. Making a suitable change of variables, we look for small-amplitude, long-wavelength solutions for the FPUT on the center manifold and show that formally setting \(\epsilon = 0\) gives a solution related to the kink solution \(\varphi_1\). Next we apply results from Fenichel theory to show that this solution persists for \(\epsilon> 0\). Lastly we convert our results back to the original formulation of the FPUT lattice and prove an estimate of the form \cref{formal-approximation}.
+
+
+%Main result here?
 
 \section{Construction of Center Manifold}
 %Change of coordinates to get into the form of an abstract ODE.
@@ -35,7 +28,7 @@ We follow the construction of the center manifold carried out in \cite{iooss2000
 \begin{equation*}
 	\ddot x_n = V'(x_{n+1} - x_n) - V'(x_n - x_{n-1}), \quad n \in \Z. \tag{\ref{fput-lattice-odes}}
 \end{equation*}
-We assume that \(V(x) = \frac 12 x^2 - \frac 1 {24} x^4 + \mcO(x^5)\) near \(x=0\). We make the ansatz that 
+We assume that \(V(x) = \frac 12 x^2 - \frac 1 {24} x^4 + \mcO(x^5)\) near \(x=0\). This choice of potential is chosen so that \(V''(0) = 1\) and \(V^{(4)}(0) = -1\); if we have a potential where \(V(0) = V'''(0)=0\), \(V''(0) > 0\) and \(V^{(4)}(0)< 0\), we can rescale to get the potential above. We make the ansatz that 
 \begin{equation}
 	x_n(\tilde t) = x(n-c\tilde t),
 \end{equation}
@@ -47,7 +40,7 @@ where \(\mu = c^{-2}\). For delay differential equations like the one above, we 
 \begin{equation}\label{first-order-abstract-ode}
 	\partial_t U = L_\mu U + M_\mu (U)
 \end{equation}
-where \(L_\mu\) is the linear operator
+where \(L_\mu\) is the linear operator %Explain \partial_\nu. Corresponds to shift, but how do we get unique solutions?
 \begin{equation}
 	L_\mu = \begin{pmatrix}
 		0 & 1 & 0\\
@@ -59,7 +52,7 @@ and
 \begin{equation}
 	M_\mu(U) = \mu (0, g(\delta^1X -x) - g(x- \delta^{-1} X), 0)^T
 \end{equation}
-where we define \(g(x)= V'(x) - x\). We will also require that \(X(t,0) = x(t)\), so that \(X(t,v) = x(t+v)\) and solutions of \cref{first-order-abstract-ode} correspond with solutions of \cref{advance-delay-equation}. We introduce the following Banach spaces for \(U\):
+where we define \(g(x)= V'(x) - x\). Note the second component of \cref{first-order-abstract-ode} corresponds with the advance-delay equation. The third component corresponds to the functional part  \(X(t,\nu)\) and gives \(\partial_t X = \partial_\nu X\), so that the solution is given by a translation . We will also require that \(X(t,0) = x(t)\), so that \(X(t,v) = x(t+v)\) and solutions of \cref{first-order-abstract-ode} correspond with solutions of \cref{advance-delay-equation}. We introduce the following Banach spaces for \(U\):
 \begin{equation}
 	\begin{aligned}
 		\bbH &= \R^2 \times C[-1,1] \\
@@ -100,7 +93,7 @@ The spectral projection onto the eigenspace can be found using the Laurent expan
 \begin{equation}
 	(\lambda \mathrm I - L_{\mu_0} )^{-1} = \frac{D^3}{\lambda^4} + \frac{D^2}{\lambda^2} + \frac{D}{\lambda^2} + \frac P \lambda - \tilde L _{\mu_0} ^{-1} + \lambda \tilde L_{\mu_0} ^{-1} - \cdots
 \end{equation}
-where \(P\) is the spectral projection onto the \(\lambda = 0\) eigenspace, \(D = L_{\mu_0} P\), and \(\tilde L _{\mu_0} ^{-1}\) is the pseudo-inverse of \(L_{\mu_0}\) on the subspace \((\mathrm I - P)\bbH\) (see \cite{kato2013perturbation}). The spectral projection satisfies
+where \(P\) is the spectral projection onto the \(\lambda = 0\) eigenspace, \(D = L_{\mu_0} P\), and \(\tilde L _{\mu_0} ^{-1}\) is the pseudo-inverse of \(L_{\mu_0}\) on the subspace \((\mathrm I - P)\bbH\) (see \cite{kato2013perturbation}). The spectral projection satisfies %Is there a better citation for this?
 \begin{equation}
 \begin{aligned}
 	PW &= ((PW)_x, (PW)_\xi, (PW)_X)^T \\
@@ -133,9 +126,31 @@ with
 \end{equation}
 The projection can be computed by using the residue theorem. For instance, note that 
 \begin{equation}
-	(PF)_x = \mathrm{Res}((\lambda  I - L_{\mu_0} ^{-1} F)_x, 0) = \mathrm{Res}(-[N(\lambda;\mu)]^{-1}(\lambda f_0 + f_1 + \mu\tilde f_\lambda), 0).
+	(PF)_x = \mathrm{Res}(((\lambda  I - L_{\mu_0})^{-1} F)_x, 0) = \mathrm{Res}(-[N(\lambda;\mu_0)]^{-1}(\lambda f_0 + f_1 + \mu_0\tilde f_\lambda), 0).
 \end{equation}
-For fixed \(F\in\bbH\), the last term can be found by finding the residue of a meromorphic function in \(\bbC\). Proceeding in this way, we can get 
+For fixed \(F\in\bbH\), the last term can be found by finding the residue of a meromorphic function in \(\bbC\). For example, we can compute that the Laurent series of \(-[N(\lambda,\mu_0)]^{-1}\) is given by
+\begin{equation}
+	-[N(\lambda;\mu_0)]^{-1} = \frac  1 {\lambda^2 - 2(\cosh\lambda - 1)} = \frac{-12}{\lambda^4} + \frac{2}{5\lambda^2} - \frac{13}{2100} + \cdots.
+\end{equation}
+Similarly, we have the power series representation
+\begin{equation}
+	\begin{aligned}
+		\int_0^1[-e^{\lambda(1-s) } F_2(s) + e^{-\lambda (1-s)} F_2(-s)]\, ds = &- \int_0^1[F_2(s) - F_2(-s)] \, ds \\
+		&\quad - \lambda  \int_0^1 (1-s)[F_2(s) + F_2(-s)]\, ds \\
+		&\quad - \frac{\lambda^2}{2} \int_0^1 (1-s)^2[F_2(s) - F_2(-s)]\, ds \\
+		&\quad - \frac{\lambda^3}{6} \int_0^1 (1-s)^3[F_2(s) + F_2(-s)]\, ds \\
+		&\quad + \cdots
+	\end{aligned}
+\end{equation}
+Thus taking a convolution of the Laurent series and finding the \(-1\)st coefficient yields
+\begin{equation}
+\begin{aligned}
+	&\mathrm{Res}(-[N(\lambda;\mu_0)]^{-1}(\lambda f_0 + f_1 + \mu_0\tilde f_\lambda), 0)&\\
+	&\quad= \frac 2 5 f_0 - \frac 2 5 \int_0^1 (1-s)[F_2(s) + F_2(-s)]\, ds + 2 \int_0^1 (1-s)^3[F_2(s) + F_2(-s)]\, ds \\
+	&\quad =  \frac 2 5 \Bigg(  f_0 - \int_0^1[(1-s) - 5(1-s)^3][F_2(s) + F_2(-s)]\, ds \Bigg) .
+\end{aligned}
+\end{equation}
+Proceeding in this way, we can get  
 \begin{align}
 	(PF)_x &= \frac 2 5 \Bigg(  f_0 - \int_0^1[(1-s) - 5(1-s)^3][F_2(s) + F_2(-s)]\, ds \Bigg) \\
 	(DF)_x &= (PF)_\xi = \frac 2 5 \Bigg(  f_1 - \int_0^1[1 - 15(1-s)^2][F_2(s) - F_2(-s)]\, ds \Bigg) \\
@@ -235,7 +250,7 @@ The \(\cdots\) within the brackets are given by the following expression
 	&+  \mu\left( g\big(A + \frac 1 2 B + \frac 1 6 C + (\delta^1 \Phi_\mu^X -\Phi_\mu^x)\big) - g\big(A - \frac 1 2 B + \frac 1 6 C + (\Phi_\mu^x - \delta^{-1} \Phi_\mu^X)\big) \right),
 \end{aligned}
 \end{equation}
-which we abridged to improve legibility. \Cref{dotA,dotB,dotC} define the dynamics on the center manifold. \Cref{perp} are the components of \cref{center-manifold-necessary-ode} which are in the kernel of the spectral projections. Now using the expression for the derivatives in \cref{dotA,dotB,dotC} and plugging into \cref{perp} gives the following:
+which we abridged to improve legibility. \Cref{dotA,dotB,dotC} define the dynamics on the center manifold. \Cref{perp} contains the components of \cref{center-manifold-necessary-ode} which are in the kernel of the spectral projections. Now using the expression for the derivatives in \cref{dotA,dotB,dotC} and plugging into \cref{perp} gives the following:
 \begin{equation}\label{final-eq}
 	\frac{\partial\Phi}{\partial A}\left( B + \frac 2 5 [\cdots]\right) + \frac{\partial\Phi}{\partial B}C + \frac{\partial\Phi}{\partial C}\left(-12 [\cdots]\right) = L_{\mu_0} \Phi_\mu + [\cdots] \begin{bmatrix} 0 \\ \frac 35 \\ 2v^3 - \frac 2 5 v \end{bmatrix}.
 \end{equation}
@@ -281,7 +296,7 @@ One can compute the cubic coefficients in a similar way. In particular, we have 
 and so \(\Phi_{300}^{(0)} = 0\).
 We will not need to compute any of the other coefficients. As we will soon see, after a change of variables they end up being in the higher order terms to be neglected. Before proceeding, we will need a new parameterization for the center manifold. We let \(\epsilon > 0\) be the new bifurcation parameter such that \(c^{2} = 1- \epsilon^2/12\). This choice of parameterization is partially based on the parameterization in \cite{friesecke1999solitary}, and -- as we will soon see -- the value of \(\epsilon\) is related to the amplitude of the traveling wave solutions. The bifurcation will now occur at \(\epsilon = 0\), which corresponds to the case where \(\mu = c^{-2} = 1\). As seen in \cite{iooss2000travelling}, the heteroclinic orbits on the center manifold will only exist for \(c^2\) slightly less than \(1\), and so we will look for these orbits when \(\epsilon > 0\). We have that \[\mu-1 = c^{-2} - 1 = \frac 1 {1-\epsilon^2/12} -1 = \frac {\epsilon^2}{12} +\mcO(\epsilon^4).\] Since we are looking for \(\epsilon\)-amplitude waves with wavelength of order \(\epsilon^{-1}\), we are motivated to make the following change of variables:
 \begin{equation}
-	A(t) = \epsilon \underline A (\epsilon t), \quad B(t) = \epsilon^2 \underline B(\epsilon t), \quad \epsilon^3 \underline C(\epsilon t).
+	A(t) = \epsilon \underline A (\epsilon t), \quad B(t) = \epsilon^2 \underline B(\epsilon t), \quad C(t) =  \epsilon^3 \underline C(\epsilon t).
 \end{equation}
 By grouping together orders of \(\epsilon\) and using the values of \(\Phi^{(\ell)}_{ijk}\) computed above, we have the following expansion of the terms in \cref{ellipses}
 \begin{equation}
@@ -388,7 +403,7 @@ and the partial derivatives of \(F_1\) and \(G_1\) with respect to \(\underline 
 		0 & 0 & 0 & 0
 	\end{bmatrix}.
 \end{equation}
-The tangent space at \(p\in M\) is given by \(T_p M = \mathrm{span}\{(1,0,0,0), (0,0,0,1)\}\). The vector bundles \(N^u\) and \(N^s\) will be defined as the unstable and stable subspaces of each fixed point, respectively. That these vector bundles are invariant under the flow and continuous follows immediately from their definition. Furthermore, the vector bundles are \(C^1\) since \cref{linearization-flow} is continuously differentiable on \(M\). The two eigenvalues \(\lambda_1,\lambda_2=0\) correspond with the flow tangent to the manifold. Fixing \(\underline A = A_{-\infty}\) and \(\epsilon = 0\), the other eigenvalues are \(\lambda_{3,4} = \pm \sqrt{6A_{-\infty}^2-1}\), which correspond with the flow along the vector bundles \(N^u\) and \(N^s\), respectively. There at \(p_0 =(A_{-\infty}, 0, 0, 0)\)  we have the generalized Lyapunov-type numbers given by
+The tangent space at \(p\in M\) is given by \(T_p M = \mathrm{span}\{(1,0,0,0), (0,0,0,1)\}\). The vector bundles \(N^u\) and \(N^s\) will be defined as the unstable and stable subspaces of each fixed point, respectively. That these vector bundles are invariant under the flow and continuous follow immediately from their definition. Furthermore, the vector bundles are \(C^1\) since \cref{linearization-flow} is continuously differentiable on \(M\). The two eigenvalues \(\lambda_1,\lambda_2=0\) correspond with the flow tangent to the manifold. Fixing \(\underline A = A_{-\infty}\) and \(\epsilon = 0\), the other eigenvalues are \(\lambda_{3,4} = \pm \sqrt{6A_{-\infty}^2-1}\), which correspond with the flow along the vector bundles \(N^u\) and \(N^s\), respectively. There at \(p_0 =(A_{-\infty}, 0, 0, 0)\)  we have the generalized Lyapunov-type numbers given by
 \begin{equation}
 	\lambda^u(p_0) = \nu^s(p_0) = \exp\big(-\sqrt{6A_{-\infty}^2-1}\big), \quad \sigma^s(p_0) = 0.
 \end{equation}
@@ -475,7 +490,54 @@ denote the two heteroclinic orbits.
 
 The solution corresponding with the choice of \(+\) also lies inside the manifolds \(W^u_{\mathrm{loc}}(\overline M)\) and \(W^s_{\mathrm{loc}}(\overline N)\) since it converges to \(\overline M\) and \(\overline N\) as \(s\to - \infty \) and \(s\to +\infty\), respectively. This does not imply the local manifolds intersect since they are only defined in a neighborhood of \(\overline M\) and \(\overline N\), but we may extend these manifolds under the flow so that they both contain the point \((\epsilon , \underline A, \underline B, \underline C) = (0, 0, 1/2, 0)\) and thus intersect. We shall refer to the manifolds extended under the flow by \(\mathcal M_\epsilon\) and \(\mathcal N_\epsilon\). These extended manifolds are still \(C^1\) with respect to the parameter \(\epsilon\).
 
-Now the goal is to demonstrate that this intersection is transverse. That is for \(p = (0,1/2,0)\) we want to show that \(T_p\mathcal M_0 + T_p \mathcal N_0 = T_p \R^3\). One can explicitly compute each of the tangent spaces at \(p\) and show they span \(T_p\R^3\). This is done by finding the intersection each of these manifolds make with the \(\underline B\underline C\)-plane. Similar to the construction of the heteroclinic orbit, we find the orbit which approaches some asymptotic value on the \(\underline A\)-axis near \(A_{-\infty}\) or \(A_{\infty}\) and find where it intersect the \(\underline B\underline C\)-plane. These orbits lie on the stable and unstable manifolds, and so this shows how the manifolds intersect the plane.
+Now the goal is to demonstrate that this intersection is transverse. That is for \(p = (0,1/2,0)\) we want to show that \(T_p\mathcal M_0 + T_p \mathcal N_0 = T_p \R^3\). One can explicitly compute each of the tangent spaces at \(p\) and show they span \(T_p\R^3\). This is done by finding the intersection each of these manifolds make with the \(\underline B\underline C\)-plane. Similar to the construction of the heteroclinic orbit, we find the orbit which approaches some asymptotic value on the \(\underline A\)-axis near \(A_{-\infty}\) or \(A_{\infty}\) and find where it intersects the \(\underline B\underline C\)-plane. These orbits lie on the stable and unstable manifolds, and so this shows how the manifolds intersect the plane.
+
+\begin{figure}[h]
+	\center
+	\begin{tikzpicture}
+		\begin{axis}
+			[
+			axis lines = center,
+			width=15cm,
+			height=15cm,
+			xmin = -1.0, xmax =1.0,
+			ymin = -0.1, ymax= 1.0,
+			zmin= -0.5, zmax=0.5,
+			xtick style={draw = none},
+			ytick style={draw = none},
+			xticklabels={,,},
+			yticklabels={,,},
+			zticklabels={,,},
+			ztick style={draw = none},
+			xlabel=$\underline{A}$,
+			ylabel=$\underline{B}$,
+			zlabel=$\underline{C}$,
+			view={130}{30},
+			]
+			\addplot3[surf,color= blue, opacity =0.5,
+			domain=(0.7071 - 0.05 ):(0.7071 + 0.05), %omega
+			domain y = 0.001:0.9, % t
+			]
+			({x*(1-y) - 0.1* y}, %
+			{((-x^2 + 3*x^4 - (x*(1-y) - 0.1 * y)^2 + (x*(1-y) - 0.1 * y)^4 + 2*(x*(1-y) - 0.1 * 	y)*(x-2*x^3)))^(0.5)},
+			{x - 2*x^3 - (x*(1-y) - 0.1 * y) + 2*(x*(1-y) - 0.1 * y)^3});
+			\addplot3[surf,color= orange, opacity =0.5,
+			domain=(-0.7071 - 0.05 ):(-0.7071 + 0.05), %omega
+			domain y = 0.005:0.9, % t
+			]
+			({x*(1-y) + 0.1* y}, %
+			{((-x^2 + 3*x^4 - (x*(1-y) + 0.1 * y)^2 + (x*(1-y) + 0.1 * y)^4 + 2*(x*(1-y) + 0.1 * y)*(x-2*x^3)))^(0.5)},
+			{x - 2*x^3 - (x*(1-y) + 0.1 * y) + 2*(x*(1-y) + 0.1 * y)^3});
+			\addplot3[mark=*,black,point meta=explicit symbolic,nodes near coords] 
+			coordinates {(0,0.5,0)[$p$]};
+			\addplot3[black,point meta=explicit symbolic,nodes near coords] 
+			coordinates {(-0.45,0.5,0.35)[$\color{orange} {\mathcal M}_0$]};
+			\addplot3[black,point meta=explicit symbolic,nodes near coords] 
+			coordinates {(0.55,0.1,-0.35)[$\color{blue} {\mathcal N}_0$]};
+		\end{axis}
+	\end{tikzpicture}
+	\caption{The above figure shows the stable and unstable manifolds for \(\epsilon = 0\). The manifolds \(\mathcal M_0\) and \(\mathcal N_0\) have a transverse intersection at \(p = (0,1/2,0)\).}
+\end{figure}
 
 Take \(\omega\) to be a point near \(A_{-\infty} = - 1/\sqrt 2\). The orbit that approaches \((\omega, 0, 0)\) in backwards time lies on the intersection of 
 \begin{equation}
@@ -508,6 +570,7 @@ Therefore
 \end{equation}
 and the intersection is transverse. This implies that there is a heteroclinic orbit on the intersection of \(\mathcal M_\epsilon\) and \(\mathcal N_\epsilon\) for \(\epsilon > 0\). 
 
+
 \subsection{Estimates on the heteroclinic orbit}
 
 From the previous section, we have the existence of heteroclinic orbits that are perturbation of \(\gamma_\pm\) at \(\epsilon = 0\). From the \(C^1\) regularity of the manifolds with respect to the coordinates, we expect that the orbits remain \(\mcO(\epsilon)\) close to the unperturbed orbits in some sense. There are some subtleties to be addressed. The manifolds remain \(\mcO(\epsilon)\) close in Hausdorff distance, but this does not imply the orbits on the manifolds remain \(\mcO(\epsilon)\) close for all time. The dynamics on the manifolds might change causing orbits on the perturbed manifold to diverge asymptotically despite remaining close initially.
@@ -518,7 +581,7 @@ This argument is insufficient for extending the estimate to all time. To get tha
 \begin{equation}
 	\sigma^{cu}(p_0) = \exp(-\sqrt{6 A_{-\infty}^2 -1}), \quad \sigma^{su}(p_0) = \exp(-2\sqrt{6 A_{-\infty}^2 -1}).
 \end{equation}
-Then if make the manifold small enough, this condition for the hypotheses of \cref{foliation-of-unstable-manifold} hold. We check that this condition is not broken by perturbation of the vector field with the bump function in \cref{condition-verification}. Taking \((\epsilon, \omega)\) sufficiently close to \((0, A_{-\infty})\) as base points, the theorem states that the unstable manifold is \(C^1\) with respect to \((\epsilon, \omega)\). Note that the overflowing invariant manifold (away from the bump function) consists only of fixed points, so orbits on the unstable manifold approach a unique fixed point given by \((\epsilon, \omega)\). Take \(T> 0\) large enough so that all the points on \(\mathcal M_\epsilon\) (for \(\epsilon \leq \epsilon_0\)) which intersect the \(\underline B \underline C\)-plane are in the local unstable manifold when flowed backward in time by \(-T\) units. Then locally, there is a one-to-one correspondence between these points flowed backward in time and the points in \(\overline M\); furthermore, this correspondence is \(C^1\) due to \cref{foliation-of-unstable-manifold}. This implies that if the points flowed backward are \(\mcO(\epsilon)\) close then their backward limits are \(\mcO(\epsilon)\) close as well. In particular, the backward limits of \(\gamma_{+,\epsilon}\) and \(\gamma_+\) are \(\mcO(\epsilon)\) close. The argument for the stable manifold is analogous. This shows that the heteroclinic orbits remain \(\mcO(\epsilon)\) close for all time. In the case where \(V(x) = \frac 12 x^2 - \frac 1 {24} x^4 + \mcO(\epsilon^6)\), this can be upgraded to \(\mcO(\epsilon^2)\); the proof is similar but we use the regularity of the manifolds with respect to \(\eta = \epsilon^2\) instead. Therefore, we have the following.
+Then if we make the manifold small enough, this condition for the hypotheses of \cref{foliation-of-unstable-manifold} hold. We check that this condition is not broken by perturbation of the vector field with the bump function in \cref{condition-verification}. Taking \((\epsilon, \omega)\) sufficiently close to \((0, A_{-\infty})\) as base points, the theorem states that the unstable manifold is \(C^1\) with respect to \((\epsilon, \omega)\). Note that the overflowing invariant manifold (away from the bump function) consists only of fixed points, so orbits on the unstable manifold approach a unique fixed point given by \((\epsilon, \omega)\). Take \(T> 0\) large enough so that all the points on \(\mathcal M_\epsilon\) (for \(\epsilon \leq \epsilon_0\)) which intersect the \(\underline B \underline C\)-plane are in the local unstable manifold when flowed backward in time by \(-T\) units. Then locally, there is a one-to-one correspondence between these points flowed backward in time and the points in \(\overline M\); furthermore, this correspondence is \(C^1\) due to \cref{foliation-of-unstable-manifold}. This implies that if the points flowed backward are \(\mcO(\epsilon)\) close then their backward limits are \(\mcO(\epsilon)\) close as well. In particular, the backward limits of \(\gamma_{+,\epsilon}\) and \(\gamma_+\) are \(\mcO(\epsilon)\) close. The argument for the stable manifold is analogous. This shows that the heteroclinic orbits remain \(\mcO(\epsilon)\) close for all time. In the case where \(V(x) = \frac 12 x^2 - \frac 1 {24} x^4 + \mcO(\epsilon^6)\), this can be upgraded to \(\mcO(\epsilon^2)\); the proof is similar but we use the regularity of the manifolds with respect to \(\eta = \epsilon^2\) instead. Therefore, we have the following.
 \begin{prop}
 	There exists \(\epsilon_0 > 0\) such that for every \(\epsilon\in(0,\epsilon_0]\) there exist two heteroclinic orbits \(\gamma_{\pm, \epsilon}\) of \cref{epsilon-flow} such that 
 	\begin{equation}
@@ -632,7 +695,7 @@ Then converting to strain coordinates as before we have
 where \(\mathcal R_{\pm, \epsilon} \in H^3(\R;\R)\).
 
 We state our results as follows.
-\begin{theorem}
+\begin{theorem}\label{thm:estimates-on-profile}
 	There exists \(\epsilon_0> 0\) and \(C> 0\) such that for every \(\epsilon > (0,\epsilon_0]\) there is a traveling wave solution given by \(u_n(t) = u_c(n-ct)\) with positive wave speed \(c^2 = 1 - \epsilon^2/12\). Furthermore, we have the additional estimates on the wave profile of \(u_c\).
 	\begin{enumerate}[label = (\roman*)]
 		\item If (H1) holds, then

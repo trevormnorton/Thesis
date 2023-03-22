@@ -111,7 +111,7 @@ A natural choice of function space for \(g\) is a Sobolev space like \(H^k(\R)\)
 \end{defn}
 Then \(\mcX^k\) is the set of \(L^\infty\) functions which are \(k\) times weakly differentiable and whose derivatives are in \(L^2\). That this is a Banach space follows from the Banach space isomorphism
 \begin{equation}
-	\mcX^k(\R) \cong L^\infty(\R) \cap \dot H^1(R) \cap \dot H^k(\R),
+	\mcX^k(\R) \cong L^\infty(\R) \cap \dot H^1(\R) \cap \dot H^k(\R),
 \end{equation}
 where \(\dot H^k(\R)\) denotes the homogeneous Sobolev spaces. For convenience, we let \(\mcX^0(\R)\) denote \(L^\infty(\R)\)
 
@@ -321,7 +321,7 @@ where \(U = (u,q)\), \(J\) is the skew-symmetric operator given by
 		0 & e^\partial - 1 \\ 1 - e^{-\partial} & 0
 	\end{bmatrix}
 \end{equation}
-and \(\mcH(U) = \sum_{n\in\Z} \frac 1 2 q_n^2 + V(u_n)\).
+and \(\mcH(U) = \sum_{n\in\Z} \frac 1 2 q_n^2 + V(u_n)\). The operators \(e^\partial\) and \(e^{-\partial}\) are the forward and backward shift operators, respectively. So we have \((e^\partial u)_n = u_{n+1}\) and \((e^{-\partial}u)_n = u_{n-1}\).
 
 We will now introduce the traveling wave ansatz for the system in \cref{first-order-lattice-eqns}, but we first must assume certain regularity and decay of \(f\) and \(g\).
 \begin{assum}\label{assumption-1}
@@ -424,7 +424,7 @@ The terms \(\mcU\) and \(\mcQ\) control the error associated with the ansatz in 
 
 \section{Preparatory Estimates}
  
-To control the dynamics of \(\mcU\) and \(\mcQ\), we need estimates of the residuals and the nonlinearity. We will frequently need to bound the \(\ell^2(\Z)\) of a term by the \(H^1(\R)\) norm of a function. To this end the following lemma proved in \cite{dumas2014justification} is useful.
+To control the dynamics of \(\mcU\) and \(\mcQ\), we need estimates of the residuals and the nonlinearity. We will frequently need to bound the \(\ell^2(\Z)\) norm of a term by the \(H^1(\R)\) norm of a function. To this end the following lemma proved in \cite{dumas2014justification} is useful.
 \begin{lem}\label{h1-ell2-ineq}
 	There exists \(C>0\) such that for all \(X \in H^1(\R)\) and \(\epsilon \in (0,1)\), \[\|x\|_{\ell^2} \leq C \epsilon^{-1/2} \|X\|_{H^1},\] where \(x_n := X(\epsilon n)\), \(n\in \mathbb Z\).
 \end{lem}

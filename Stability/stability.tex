@@ -12,7 +12,7 @@ The general idea of the proof in \cite{pego1994asymptotic} is as follows. One de
 \begin{equation}
 	u(x,t)  = u_{c(t)} (x + \theta(t)) + v(x + \theta(t), t)
 \end{equation}
-where \(\theta(t) = \gamma(t) - \int_0^t c(s)\, ds\). We choose \(c(t)\) and \(\gamma(t)\) at each time so that \(u_{c(t)} (\cdot + \theta(t))\) remains close to \(u(\cdot, t)\). In particular, we want to choose \(c(t)\) and \(\gamma(t)\) so that \(v\) does not exhibit growth in the \(H^1\) norm and decays in the \(H^1_a\) norm. This can be done by requiring \(v\) remain orthogonal to a certain subspace. Namely, we define a spectral projection \(P\) associated the zero eigenvalue of the linearization around the soliton solution and require \(P v = 0\), which defines modulation equations for \(c(t)\) and \(\gamma(t)\). Following this, one can show that the \(v\) decays in time. This can be done by showing that the linear part generates a semigroup with decay or smoothing. This is referred to as linear stability, since it reduces to showing that after linearizing around the solution we have asymptotic stability of the linear PDE.
+where \(\theta(t) = \gamma(t) - \int_0^t c(s)\, ds\). We choose \(c(t)\) and \(\gamma(t)\) at each time so that \(u_{c(t)} (\cdot + \theta(t))\) remains close to \(u(\cdot, t)\). In particular, we want to choose \(c(t)\) and \(\gamma(t)\) so that \(v\) does not exhibit growth in the \(H^1\) norm and decays in the \(H^1_a\) norm. This can be done by requiring \(v\) remain orthogonal to a certain subspace. Namely, we define a spectral projection \(P\) associated the zero eigenvalue of the linearization around the soliton solution and require \(P v = 0\), which defines modulation equations for \(c(t)\) and \(\gamma(t)\). Following this, one can show that \(v\) decays in time. This can be done by showing that the linear part generates a semigroup with decay or smoothing. This is referred to as linear stability, since it reduces to showing that after linearizing around the solution we have asymptotic stability of the linear PDE.
 
 A analogous method is carried out in \cite{friesecke2002solitary} for the solitary wave solution of the FPUT. However, in this case linear stability is assumed in order to carry out the rest of the proof. The later papers \cite{friesecke2003solitary,friesecke2004solitary} prove the linear stability result by developing a Floquet theory modulo shifts on the lattice. An alternative way to show linear stability when dealing with lattice solutions can be found in \cite{mizumachi2013asymptotic}. Here to show the asymptotic stability of of the \(N\)-solitary wave on the FPUT lattice, it was first shown that a linear stability result held. This was done using a Fourier method. To get linear stability though, the linear stability of the \(N\)-soliton solution was needed.
 
@@ -20,6 +20,8 @@ The following course is suggested to get asymptotic stability of the kink-like s
 
 A linear stability result for the kink solution of the defocusing mKdV is given in this chapter. The arguments use standard techniques for finding stability of nonlinear waves, such as those detailed in \cite{kapitula2013spectral}. Next, we begin to sketch out the argument for the linear stability of the kink-like solution on the lattice. Some preliminary results are detailed, but the rest  is left for future work.
 \section{Linear stability of kink solution}
+
+%Add in discussion of previous results dealing with stability
 
 We want to find the linear stability of the kink solutions of 
 \begin{equation*}
@@ -91,7 +93,7 @@ by using the Miura transformation. The Miura transformation is a way of transfor
 \begin{equation}
 	u \mapsto M[u] = \partial_x u + u^2
 \end{equation}
-where \(u\) is an mKdV solution. For the kink solutions \(\varphi_c\), the Miura transformation takes these solutions to the constant solutions \(\frac c 2\). This gives us a way to convert the linearization around the kink solution into a linearization around the constant solution of the KdV, thus removing the spatial dependence in our ODE. A similar idea was used in \cite{pego1994asymptotic} to solve the eigenvalue problem for focusing mKdV.\footnote{In fact, the use of B\"acklund transforms to find stability is quite common in the area of integrable PDEs. In \cite{mizumachi2013asymptotic}, the B\"acklund transform was used to get linear stability of \(N\)-soliton solutions in the KdV equation. A similar idea is used in \cite{benes2012asymptotic} to show the asymptotic stability of the toda \(m\)-soliton.} The corresponding eigenvalue problem for the KdV is given by
+where \(u\) is an mKdV solution. For the kink solutions \(\varphi_c\), the Miura transformation takes these solutions to the constant solutions \(\frac c 2\). This gives us a way to convert the linearization around the kink solution into a linearization around the constant solution of the KdV, thus removing the spatial dependence in our ODE. A similar idea was used in \cite{pego1994asymptotic} to solve the eigenvalue problem for focusing mKdV.\footnote{In fact, the use of B\"acklund transforms to find stability is quite common in the area of integrable PDEs. In \cite{mizumachi2013asymptotic}, the B\"acklund transform was used to get linear stability of \(N\)-soliton solutions in the KdV equation. A similar idea is used in \cite{benes2012asymptotic} to show the asymptotic stability of the Toda \(m\)-soliton.} The corresponding eigenvalue problem for the KdV is given by
 \begin{equation}\label{eig-problem}
 	(-\partial_y^3 + 2c \partial_y) v = \lambda v,
 \end{equation}
@@ -135,7 +137,7 @@ for \(k = 2,3\). So these solutions correspond to the Jost solutions.
 
 To find eigenvalues, we want some solution \(v\in L^2(\R)\). This happens when \(v_1\) is a linear combination of \(v_2\) and \(v_3\). One can measure this by finding the Evans function, \(D(\lambda)\). This function can be defined as a transmission coefficient with the property that if \(Y^+(y,\lambda)\sim e^{\mu_1 y}\) as \(y\to \infty\) then \(Y^+(y,\lambda) \sim D(\lambda) e^{\mu_1 y}\) as \(y\to-\infty\). Such a \(Y^+(y,\lambda)\) was found in \cref{yplus}, so we can easily calculate that
 \begin{equation}
-	\frac{2\mu_1^3 - 4c\mu_1}{2\mu_1(\mu_1 + \sqrt{2c})} v_1(y) \sim \frac{\mu_1(\lambda) + \sqrt{2c}}{\mu_1(\lambda) - \sqrt{2c}} e^{\mu_1 y}.
+	\frac{2\mu_1^3 - 4c\mu_1}{2\mu_1(\mu_1 + \sqrt{2c})} v_1(y) \sim \frac{\mu_1(\lambda) + \sqrt{2c}}{\mu_1(\lambda) - \sqrt{2c}} e^{\mu_1 y}, \quad y\to-\infty.
 \end{equation}
 Thus we have that the Evans function is given by
 \begin{equation}
