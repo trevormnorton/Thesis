@@ -87,9 +87,9 @@
 		II = \frac {Cm_1} {\langle x +\tau\rangle_+^{2+m} \langle x -c\tau \rangle^{2+m}}\langle x + \tau \rangle_+^{m_1-1}\langle x-c\tau\rangle^{m_2} \Big( \langle x+\tau\rangle_+'F(x,\tau)\Big).
 	\end{align*}
 	The above is again of the form in \cref{term} (and a similar result holds for \(III\)). Finally,
-	\begin{equation}
+	\begin{equation*}
 		IV = \frac C {\langle x +\tau\rangle_+^{2+m} \langle x -c\tau \rangle^{2+m}}\langle x + \tau \rangle_+^{m_1}\langle x-c\tau\rangle^{m_2} \frac{\partial F}{\partial x}(x,\tau),
-	\end{equation}
+	\end{equation*}
 	which of the form in \cref{term}.
 	
 	This shows that the \((k+1)^\text{st}\) derivative is a sum of terms of the form in \cref{term} and proves the claim.
@@ -102,9 +102,9 @@
 	The constant in \cref{Ck-bound} can be chosen to be the sum of the constants in the above inequality. Note that there is no \(\tau\) dependence since we are taking the supremum of \(F\) over all \(x\) and \(\tau\).
 	
 	The result in \cref{sup-integrable} follows from 
-	\begin{equation}
+	\begin{equation*}
 		\sup_{x\in\R} \frac 1 {\langle x+\tau\rangle_+^2 \langle x -c\tau \rangle^2} = \mathcal O (1/\tau^2)
-	\end{equation}
+	\end{equation*}
 	as \(\tau\to \infty\).
 \end{proof}
 
@@ -112,9 +112,9 @@
 \elltwo*
 \begin{proof}
 	Let \(E_n := \{k \in \Z \mid k \leq n\}\) so that the characteristic function \(\chi_{E_n}\) satisfies
-	\begin{equation}
+	\begin{equation*}
 		\chi_{E_n}(k) = \begin{cases}1, & k \leq n \\ 0, & k > 0\end{cases}.
-	\end{equation}
+	\end{equation*}
 	Then applying the Cauchy-Schwarz inequality, we get that
 	\begin{align*}
 		\left| \sum_{k=-\infty}^n a_k \right| &= \left| \sum_{k=-\infty}^\infty \langle k\rangle ^2a_k \frac{\chi_{E_n}(k)}{\langle k \rangle^2} \right|  \\
@@ -122,15 +122,15 @@
 		&= \| a\|_{\ell^2_2} \left( \sum_{k=-\infty}^n \frac{1}{\langle k \rangle^4}\right)^{1/2}.
 	\end{align*}
 	By comparing the final sum to the integral \(\int_{-\infty}^n 1/ \langle x\rangle^4 \, dx\), we have that there is a constant \(C>0\) independent of \(a\) such that
-	\begin{equation}
+	\begin{equation*}
 		\left| \sum_{k=-\infty}^n a_k \right|  \leq C \| a\|_{\ell^2_2} \times \frac 1 {\langle n\rangle^{3/2}}
-	\end{equation}
+	\end{equation*}
 	for \(n\leq 0\). By noting that \(\sum_{k=-\infty}^n a_k = -\sum_{k=n+1}^\infty a_k\), an identical argument can be applied to get that 
-	\begin{equation}
+	\begin{equation*}
 		\left| \sum_{k=n}^\infty a_k \right|  \leq C \| a\|_{\ell^2_2} \times \frac 1 {\langle n\rangle ^{3/2}}
-	\end{equation}
+	\end{equation*}
 	for \(n \geq 0\). Therefore,
-	\begin{equation}
+	\begin{equation*}
 		\|b \|_{\ell^2} \leq C \left( \sum_{n=-\infty}^\infty \frac{1}{\langle n\rangle^{3}}\right)^{1/2} \| a \|_{\ell^2_2}.
-	\end{equation}
+	\end{equation*}
 \end{proof}

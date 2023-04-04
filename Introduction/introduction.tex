@@ -13,9 +13,9 @@ where \(V(x)\) is the potential. Another common way to write the equations is us
 	\ddot{u}_n = V'(u_{n+1}) - 2 V'(u_n) + V'(u_{n-1}), \quad n \in \Z.
 \end{equation}
 The lattice first became of interest when it was used to model the thermalization process in a solid. In \cite{fermi1955studies}, researchers numerically computed solutions of the FPUT on a large, finite lattice with a nonlinear potential given by
-\begin{equation}
+\begin{equation*}
 	V(x) = \frac 1 2 x^2 + \frac 1 6 x^3 + \text{h.o.t.},
-\end{equation}
+\end{equation*}
 up to a rescaling. The FPUT with this potential is typically referred to as the \(\alpha\)-FPUT chain. The initial condition for the system had its energy concentrated in its first Fourier mode, and it was believed that the nonlinear coupling would cause an equipartition of energy across all the modes after a sufficient amount of time. Surprisingly, after a certain period the system made a near-recurrence to its initial condition; around 97\% of the energy returned to the first mode. The cause for this recurrence was unknown, and the phenomenon was labeled a paradox. 
 
 Progress was made in  \cite{zabusky1965interaction} by looking at the continuum limit of the lattice. If one imagines moving the points of the lattice \(\Z\) closer together, then the real line could be used as an approximation in the limit. Looking at this limiting case, Zubusky and Kruskal were able to show that solutions of the FPUT could be modeled by solutions of the Korteweg-de Vries (KdV) equation. The KdV is a dispersive partial differential equation given by 
@@ -31,13 +31,13 @@ This argument was mainly heuristic, but the idea was later made rigorous. In par
 \section{The \(\beta\)-FPUT chain}
 
 The \(\beta\)-FPUT chain is the system we get when the potential equals
-\begin{equation}
+\begin{equation*}
 	V(x) = \frac 12 x^2 \pm \frac 1 {24}x^4 + \text{h.o.t.},
-\end{equation}
+\end{equation*}
 up to a rescaling. As opposed to the \(\alpha\)-FPUT chain where the cubic term can be made positive after rescaling, the sign of quartic term in the \(\beta\)-FPUT chain cannot be changed by rescaling, and its value affects the behavior of the system. In either case, this system  experiences the recurrences as first demonstrated in the \(\alpha\)-FPUT chain. There is also a continuum limit to the lattice equation given by the modified Korteweg- de Vries equation (mKdV), written as
-\begin{equation}
+\begin{equation*}
 	u_t \pm 6 u^2 u_x + u_{xxx} = 0.
-\end{equation}
+\end{equation*}
 The \(\pm\) in the above equation is determined by the corresponding sign in the quartic term of \(V(x)\). The choice of \(+6u^2u_x\) gives the focusing mKdV, and the choice of \(-6u^2u_x\) gives the defocusing mKdV. Similar to solitons in the KdV, the defocusing mKdV has traveling wave solutions known as kinks. Kinks have profiles which approach non-zero values at \(\pm \infty\); for example, \(\frac 1 {\sqrt 2} \tanh(\frac 1 {\sqrt 2} (x+t))\) is such a solution.
 
 In \cite{pace2019beta}, the recurrence in the \(\beta\)-FPUT chain was numerically studied. When looking at the lattice when \(V(x) = \frac  12 x^2 - \frac 1 {24}x^4\), the recurrence seemed to be driven by kink-like solutions of the FPUT in an analagous way to the role solitary wave solutions played in the \(\alpha\)-FPUT recurrence. This suggests that these kink-like solutions are an important object of study and can help explain the recurrence occurring in the \(\beta\)-FPUT chain. However, there has been relatively little research into these kink-like solutions or the defocusing mKdV as a continuum limit for the lattice equations. 
@@ -52,25 +52,25 @@ The first challenge is to determine the existence of a traveling wave solution w
 	u_t - 6u^2u_x + u_{xxx} = 0
 \end{equation}
 of the form
-\begin{equation}
+\begin{equation*}
 	u(x,t) = \varphi(x+ct) 
-\end{equation}
+\end{equation*}
 with \(c > 0\). Substituting the ansatz into \cref{intro-defocusing-mkdv} gives
-\begin{equation}
+\begin{equation*}
 	c \varphi '(\xi) - 6\varphi(\xi)^2 \varphi'(\xi) + \varphi'''(\xi) = 0,
-\end{equation}
+\end{equation*}
 which is an ODE in the variable \(\xi=x+ct\). Taking an antiderivative on the left-hand side and setting that to zero gives
-\begin{equation}
+\begin{equation*}
 	c\varphi  - 2 \varphi^3  + \varphi'' = 0
-\end{equation}
+\end{equation*}
 The above ODE can be solved by noting that it is Hamiltonian with \(H(q,p) = \frac 1 2 p^2 + \frac c 2 q^2 - \frac 12 q^4\) and the non-zero equilibria of the system occur when \((\varphi, \varphi') = (\pm \frac c {\sqrt 2}, 0)\). Then finding the solutions along the level set \(H(\pm \frac c {\sqrt 2}, 0) = \frac {c^2} 8\) gives 
-\begin{equation}
+\begin{equation*}
 	\varphi(\xi) = \pm \sqrt{\frac c  2} \tanh\left( \sqrt{\frac c 2} \xi\right)
-\end{equation}
+\end{equation*}
 and the (increasing) kink solutions of \cref{intro-defocusing-mkdv} are 
-\begin{equation}\label{kink-soln-defocusing-mkdv}
+\begin{equation*}
 	\varphi_c(x+ct) = \sqrt{\frac c 2} \tanh\left(\sqrt{\frac c 2} (x+ct) \right).
-\end{equation}
+\end{equation*}
 
 Spatial dynamics is less useful in the context of lattices since the spatial domain in that case is discrete. Trying something along the same lines for equations on the lattice would result in a difference equations, which are more difficult to extract explicit solutions from. Thus other methods must be used. In \cite{friesecke1999solitary}, the authors set up a fixed point problem in \(H^1(\R)\) for the profile of the traveling wave by using a Fourier transform. Hence they were able to get existence of the solution and describe the profile of the wave. A challenge in our particular case is that kink solutions do not lie in any nice Sobolev space like \(H^1(\R)\), so defining Fourier transforms becomes difficult.
 

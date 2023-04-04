@@ -15,95 +15,95 @@ with a corresponding flow \(\phi_t\). In the study of dynamics, finding invarian
 There is also a definition for \emph{inflowing invariant manifolds}, but we will exclusively focus on the overflowing variety. Results for inflowing invariant manifolds can be recovered by reversing the direction of time; reparameterizing our time variable by \(t\mapsto -t\) makes the inflowing invariant manifolds into overflowing invariant manifolds. We also have many results that apply to invariant manifolds as well; to demonstrate this, we typically apply a bump function to the vector field at the boundary of an invariant manifold to make it overflowing while leaving the dynamics the same in the interior. We will discuss this more in \cref{sec:unstable-manifold}.
 
 In the proofs of many of theorems, the technical problem of the boundary of \(\overline M\) is avoiding by slightly enlarging our set. Let 
-\begin{equation}
+\begin{equation*}
 	M_1 := \phi_1(M) \quad M_2 := \phi_2(M).
-\end{equation}
+\end{equation*}
 The manifolds \(\overline M_1\) and \(\overline M_2\) are also overflowing invariant.
 
 For many of the proofs found in \cite{wiggins1994normally}, a special set of atlases for the manifold \(\overline M_2\) is needed. 
 \begin{prop}\label{atlases}
 	Let \(k = \dim \overline M_2\). For every open cover \(\mcU\) of \(\overline M_2\) there exist atlases
-	\begin{equation}
+	\begin{equation*}
 		\left\{  (U^j_i, \sigma_i) : i=1,2,\ldots, s;\, j = 1,2,\dots, 6 \right\}
-	\end{equation}
+	\end{equation*}
 	such that
-	\begin{equation}
+	\begin{equation*}
 		U^1_i \subset \overline U^1_i  \subset U^2_i \subset \overline U^2_i  \subset U^3_i \subset \overline U^3_i  \subset U^4_i \subset \overline U^4_i  \subset U^5_i \subset \overline U^5_i  \subset U^6_i \subset \overline U^6_i  
-	\end{equation}
+	\end{equation*}
 	with 
-	\begin{equation}
+	\begin{equation*}
 		\sigma_i(U^j_i) = \mathcal D^j, \quad j=1,2,\ldots, 6
-	\end{equation}
+	\end{equation*}
 	where \(\mathcal D^j := \{x\in \R^{n-k} : |x|< j\}\), i.e., the open disc of radius \(j\). Moreover the open covers
-	\begin{equation}
+	\begin{equation*}
 		\mcU^j = \{U^j_i: i = 1,2,\ldots, s\}
-	\end{equation}
+	\end{equation*}
 	are subordinate to \(\mcU\).
 \end{prop}
 \section{Unstable manifold to overflowing invariant manifolds}\label{sec:unstable-manifold}
 
 Similar to the unstable manifold theorem for hyperbolic fixed points, we will have some invariant manifold approaching our overflowing invariant manifold under the condition that the flow transverse to the manifold is hyperbolic. To make this precise, we split the tangent space on \(M_2\) into a direct sum of vector bundles corresponding with the tangent, stable, and unstable directions. Assume we have the continuous splitting
-\begin{equation}
+\begin{equation*}
 	T\R^n |_{M_2} = TM_2 \oplus N^s \oplus N^u 
-\end{equation}
+\end{equation*}
 and associated projections
-\begin{align}
+\begin{align*}
 	\Pi^s &: T\R^n|_{M_2} \to N^s \\
 	\Pi^u &: T\R^n|_{M_2} \to N^u
-\end{align}
+\end{align*}
 We assume that the subbundles \(TM_2 \oplus N^s\) and \(TM_2 \oplus N^u\) are invariant under \(D\phi_t\) for all \(t< 0\).
 
 To characterize the exponential rate of growth/decay in the these bundles under the linearized dynamics, we introduce generalized Lyapunov-type numbers. For a point \(p \in M_2\) we consider the following nonzero vectors:
-\begin{equation}
+\begin{equation*}
 	\begin{aligned}
 		u_0 &\in N^u_p, \\
 		w_0 &\in N^s_p, \\
 		v_0 &\in T_p M_2,
 	\end{aligned}
-\end{equation}
+\end{equation*}
 and 
-\begin{equation}
+\begin{equation*}
 	\begin{aligned}
 		u_{-t} &= \Pi^u D\phi_{-t}(p) u_0, \\
 		w_{-t} &= \Pi^s D\phi_{-t}(p) w_0, \\
 		v_{-t} &= D\phi_{-t}(p) v_0.
 	\end{aligned}
-\end{equation}
+\end{equation*}
 \begin{defn}
 	The \emph{generalized Lyapunov-type numbers} at \(p\) are given by
-	\begin{align}
+	\begin{align*}
 		\lambda^u(p) &:= \inf \left\{ a : \left( \frac{|u_{-t}|}{|u_0|}\right) /  a^t \to 0  \text{ as }t\to\infty, \forall u_0 \in N^u_p \right\} ,\\
 		\nu^s(p) &:= \inf \left\{ a : \left( \frac{|w_{0}|}{|w_{-t}|}\right) /  a^t \to 0  \text{ as }t\to\infty, \forall w_0 \in N^s_p \right\}.
-	\end{align}
+	\end{align*}
 	If \(\nu^s(p) < 1\), then we define
-	\begin{equation}
+	\begin{equation*}
 		\sigma^s(p) = \inf \left\{ b: (|w_0|^b /|v_0|) / (|w_{-t}|^b/ |v_{-t}| ) \to 0 \text{ as } t\to \infty, \forall v_0 \in T_pM_2, w_0 \in N^s_p  \right\}.
-	\end{equation}
+	\end{equation*}
 \end{defn}
 One can also show that these expressions are equal to 
-\begin{align}
+\begin{align*}
 	\lambda^u(p) &= \limsup_{t\to\infty} \|\Pi^u D\phi_{-t}(p) \mid_{N^u_p} \| ^{1/t} \\
 	\nu^s(p) &= \limsup_{t\to\infty} \|\Pi^s D\phi_t(\phi_{-t} (p) ) \mid_{N^s_{\phi_{-t}(p)}} \|^{1/t} \\
 	\sigma^s(p) &= \limsup_{t\to\infty} \frac{ \log \| D\phi_{-t}(p) \mid_{T_pM}\|}{-\log\| \Pi^s D\phi_t(\phi_{-t}(p)) \mid_{N^s_{\phi_{-t}(p)} } \|}.
-\end{align}
+\end{align*}
 
 To simplify the notation, we can introduce the linear operators
-\begin{align}
+\begin{align*}
 	&A_t(p) : T_pM \to T_{\phi_{-t}(p)} M, & &v\mapsto D\phi_{-t}(p) v \\
 	&B_t(p) : N^s_{\phi_{-t}(p)} \to N^s_p, & &v\mapsto \Pi^s D\phi_t(\phi_{-t}(p)) v \\
 	&C_t(p) : N^u_p \to N^u_{\phi_{-t}(p)}, & &v\mapsto \Pi^u D\phi_{-t}(p) v.
-\end{align}
+\end{align*}
 Then the Lyapunov-type numbers can be rewritten as 
-\begin{align}
+\begin{align*}
 	\lambda^u(p) &= \limsup_{t\to\infty} \|C_t(p) \| ^{1/t} \\
 	\nu^s(p) &= \limsup_{t\to\infty} \| B_t(p)\|^{1/t} \\
 	\sigma^s(p) &= \limsup_{t\to\infty} \frac{ \log \| A_t(p) \|}{-\log\| B_t(p) \|}.
-\end{align}
+\end{align*}
 
 We say that a splitting is hyperbolic if 
-\begin{equation}
+\begin{equation*}
 	\lambda^u(p) < 1, \quad \nu^s(p) < 1, \quad \forall p \in M.
-\end{equation}
+\end{equation*}
 
 We list a couple of useful properties of generalized Lyapunov-type numbers.
 \begin{lem}\cite[Lem.~4.1.1]{wiggins1994normally}
@@ -111,9 +111,9 @@ We list a couple of useful properties of generalized Lyapunov-type numbers.
 \end{lem}
 \begin{lem}\cite[Lem.~3.1.2]{wiggins1994normally}
 	The generalized Lyapunov-type numbers are constant on orbits, i.e., 
-	\begin{equation}
+	\begin{equation*}
 		\lambda^u(\phi_{-t}(p)) = \lambda^u(p), \quad \nu^s(\phi_{-t}(p)) = \nu^s(p), \quad \sigma^s(p.)
-	\end{equation}
+	\end{equation*}
 \end{lem}
 
 Based on the above lemma, one might suspect that the backward limit of an orbit would have the same generalized Lyapunov-type numbers as the points on the orbit. While we do not show exact equality, the backward limit set does provide an upper bound on the numbers. A more narrow result of the kind was proved in \cite[Thm.~2.3]{dieci1997lyapunov}, where the backwards limit set was a single point. We will extend this result to the case where the backwards limit set is a compact set.
@@ -148,101 +148,101 @@ We have the following bounds on the generalized Lyapunov-type numbers.
 	and so we have \(t_{k+1}\) and \(\tau_{i_{k+1}}\) defined. Note that \(t_{k+1} - t_k = \tau_{i_k} \leq \tau_{m}\), so the distance between times does not grow too large. Furthermore, we also have \(t_{k+1} - t_k = \tau_{i_k} \geq \tau_1\) and so \(t_k \to \infty\) as \(k\to\infty.\)
 	
 	Now suppose \(t>0\) is fixed and arbitrary. There is some \(\ell\) such that \(t_\ell \leq t < t_{\ell+1}\). Then there is some \(s < \tau_m\) such that 
-	\begin{equation}
+	\begin{equation*}
 		\begin{aligned}
 			t &= t_\ell + s \\
 			&= \sum_{k=0}^{\ell - 1} \tau_{i_k} +s .
 		\end{aligned}
-	\end{equation}
+	\end{equation*}
 	Using this decomposition of \(t\) along with \cref{lemma2}, we get that
-	\begin{equation}
+	\begin{equation*}
 		\begin{aligned}
 			C_t(p) &= C_{t_\ell+s}(p) \\
 			&= C_s( \phi_{-t_\ell}(p) ) C_{t_\ell} (p) \\
 			&= C_s( \phi_{-t_\ell}(p) ) C_{\tau_{i_{\ell-1}}}(\phi_{-t_{\ell-1}}(p)) C_{\tau_{i_{\ell-2}}}(\phi_{-t_{\ell-2}}(p)) \cdots C_{\tau_{i_0}}(p).
 		\end{aligned}
-	\end{equation}
+	\end{equation*}
 	Thus we have
-	\begin{equation}
+	\begin{equation*}
 		\begin{aligned}
 			\| C_t(p) \| &\leq \| C_s(\phi_{-t_\ell}(p)) \| a^{\tau_{i_{\ell -1}}} \cdot a^{\tau_{i_{\ell-2}}} \cdots a^{\tau_{i_0}} \\
 			&= \| C_s(\phi_{-t_\ell}(p)) \| a^{t_\ell}.
 		\end{aligned}
-	\end{equation}
+	\end{equation*}
 	Defining a constant \(C_1\) by 
-	\begin{equation}
+	\begin{equation*}
 		C_1 = \max\{ a^{-s} \| C_s(q) \| : q\in \overline U , 0 \leq s \leq \tau_m\}
-	\end{equation}
+	\end{equation*}
 	we can write
-	\begin{equation}
+	\begin{equation*}
 		\|C_t(p) \| \leq C_1 a^s a^{t_\ell} = C_1 a^t.
-	\end{equation}
+	\end{equation*}
 	Since this \(C_1\) is independent of \(t\), raising both sides to \(1/t\) and taking the limit as \(t\to\infty\) gives us that 
-	\begin{equation}
+	\begin{equation*}
 		\limsup_{t \to \infty} \| C_t(p) \| ^{1/t} \leq a,
-	\end{equation}
+	\end{equation*}
 	and so \(\lambda^u(p) \leq a\) for each \(a > \lambda^u(K).\) This proves \(\lambda^u(p) \leq \lambda^u(K)\).
 	
 	\emph{(ii)} We follow a similar argument for \(\nu^s(p)\). Let \(a\in \R\) such that \(\nu^s(K) < a\). We can find an open cover of \(K\) given by \(\{U_i\}_{i=1}^m\) (with each \(U_i\) precompact) and positive numbers \(\tau_1 \leq \tau_2\leq \cdots \leq \tau_m\) such that
-	\begin{equation}
+	\begin{equation*}
 		\| B_{\tau_i}(q) \| < a^{\tau_i} \quad \text{for all } q\in U_i.
-	\end{equation}
+	\end{equation*}
 	The number \(\nu^s(p)\) is constant on orbits, so assume that \(\phi_{-t}(p) \in U := \cup_{i=1}^m U_i \) for all \(t\geq 0\). We can similarly construct the \(t_k\) and \(\tau_{i_k}\) inductively.
 	
 	Let \(t> 0\). Then there is an \(\ell\) such that \(t_\ell \leq t< t_{\ell +1}\), and we have \(0\leq s < \tau_m\) with 
-	\begin{equation}
+	\begin{equation*}
 		\begin{aligned}
 			t &= t_\ell + s \\
 			&= \sum_{k=0}^{\ell - 1} \tau_{i_k} +s .
 		\end{aligned}
-	\end{equation}
+	\end{equation*}
 	Thus
-	\begin{equation}
+	\begin{equation*}
 		B_t(p) = B_{\tau_{i_0}}(p) B_{\tau_{i_1}}(\phi_{-t_1}(p)) \cdots B_{\tau_{i_{\ell-1}}}(\phi_{-t_{\ell-1}}(p)) B_s(\phi_{-t_\ell}(p)).
-	\end{equation}
+	\end{equation*}
 	We can then get 
-	\begin{equation}
+	\begin{equation*}
 		\| B_t(p) \| \leq \| B_s(\phi_{-t_\ell}(p)) \| a^{t-s}.
-	\end{equation}
+	\end{equation*}
 	Defining a constant \(C_2\) by 
-	\begin{equation}
+	\begin{equation*}
 		C_2 = \max\{ a^{-s} \| B_s(q) \| : q\in \overline U , 0 \leq s \leq \tau_m\}
-	\end{equation}
+	\end{equation*}
 	we can write
-	\begin{equation}
+	\begin{equation*}
 		\|B_t(p) \| \leq C_2 a^s a^{t_\ell} = C_2 a^t.
-	\end{equation}
+	\end{equation*}
 	Taking limits gives us \(\nu^s(p) \leq a\) and thus \(\nu^s(p) \leq \nu^s(K).\)
 	
 	\emph{(iii)} Assume that \(\nu^p(K) < 1\). Let \(c > \sigma^s(K)\) be arbitrary. For each \(q\in K\), there is a \(\tau_q\) and a precompact, open neighborhood of \(q\), \(U_q\), such that 
-	\begin{equation}
+	\begin{equation*}
 		\|A_{\tau_q} (q')\|\, \|B_{\tau_q}(q')\|^c \leq \frac 12, \quad \text{for all } q'\in U_q.
-	\end{equation}
+	\end{equation*}
 	We again take a finite subcover \(\{U_i\}_{i=1}^m\) with corresponding \(\tau_1\leq \tau_2 \leq \cdots \leq \tau_m.\) The number \(\sigma^s(p)\) is constant on orbits so assume that \(\phi_{-t}(p) \in U := \cup_{i=1}^mU_i\) for all \(t\geq 0.\) The \(t_k\) and \(\tau_{i_k}\) values are constructed the same way as in \emph{(i)}.
 	
 	For \(t> 0\), we have \(t_\ell\leq t < t_{\ell+1}\) and we can write \(t\) as
-	\begin{equation}
+	\begin{equation*}
 		\begin{aligned}
 			t &= t_\ell + s \\
 			&= \sum_{k=0}^{\ell - 1} \tau_{i_k} +s 
 		\end{aligned}
-	\end{equation}
+	\end{equation*}
 	with \(0\leq s <\tau_m.\) By our product formulas,
-	\begin{equation}
+	\begin{equation*}
 		A_t(p) = A_s( \phi_{-t_\ell}(p) ) A_{\tau_{i_{\ell-1}}}(\phi_{-t_{\ell-1}}(p)) A_{\tau_{i_{\ell-2}}}(\phi_{-t_{\ell-2}}(p)) \cdots A_{\tau_{i_0}}(p)
-	\end{equation}
+	\end{equation*}
 	and 
-	\begin{equation}
+	\begin{equation*}
 		B_t(p) = B_{\tau_{i_0}}(p) B_{\tau_{i_1}}(\phi_{-t_1}(p)) \cdots B_{\tau_{i_{\ell-1}}}(\phi_{-t_{\ell-1}}(p)) B_s(\phi_{-t_\ell}(p)).
-	\end{equation}
+	\end{equation*}
 	Thus
-	\begin{equation}
+	\begin{equation*}
 		\| A_t(p) \| \, \| B_t(p)| \|^c \leq C_3 \left( \frac 1 2 \right)^\ell
-	\end{equation}
+	\end{equation*}
 	where 
-	\begin{equation}
+	\begin{equation*}
 		C_3 = \max\{ \| A_s(q) \| \, \| B_s(q) \|^c : q\in \overline U, 0 \leq s \leq \tau_m\}.
-	\end{equation}
+	\end{equation*}
 	As \(t\to\infty\), we have \(\ell \to \infty\). Therefore \( \| A_t(p) \| \, \| B_t(p)| \|^c\to 0\) as \(t\to\infty\) and \(\sigma^s(p) \leq c\). We can then conclude that \(\sigma^s(p) \leq \sigma^s(K).\)
 \end{proof}
 
@@ -255,9 +255,9 @@ At this point, we are nearly ready to state the main theorem concerning the exis
 		\{f^{ij}_1(p), \ldots, f^{ij}_k(p)\} \quad \text{for } N'|_{U^j_i} 
 	\end{align}
 	such that
-	\begin{equation}
+	\begin{equation*}
 		|e^{ij}_\ell(p) - f^{ij}_\ell(p) | < \epsilon, \quad \ell = 1,\ldots, k.
-	\end{equation}
+	\end{equation*}
 	The \(f^{ij}_\ell(p)\) can be chosen to be \(C^r\) functions of \(p \in U^j_i\)
 \end{prop}
 The main takeaway though is that replacing \(N^u\) and \(N^s\) with \({N'}^u\) and \({N'}^s\), respectively, allows us to increase the regularity of the vector bundles to \(C^r\). In order to find local coordinates around \(M_2\), we let 
@@ -266,29 +266,29 @@ The main takeaway though is that replacing \(N^u\) and \(N^s\) with \({N'}^u\) a
 	{N'_\epsilon}^ u&:= \{(p, v^u) \in {N'}^u: |v^u| \leq \epsilon\},
 \end{align}
 and set \(N'_\epsilon = {N'_\epsilon}^s \oplus {N'_\epsilon}^u\). Then for \(\epsilon_0>0\) suitably small, for any \(0< \epsilon \leq \epsilon_0\) the map
-\begin{equation}
+\begin{equation*}
 \begin{aligned}
 	h:\, &N'_\epsilon  \to \R^n \\
 	&(p, v^s, v^u) \mapsto p + v^s + v^u
 \end{aligned}
-\end{equation}
+\end{equation*}
 is \(C^r\) and has an image containing a neighborhood of \(M_2\). We also have local coordinates around the manifold given by
-\begin{equation}
+\begin{equation*}
 \begin{aligned}
 	(\sigma_i \times \tau_i^s \times \tau_i^u) : N'_\epsilon |_{\overline U_i^6}  \to &\R^{n-(s+u)} \times \R^s \times \R^u, \\
 	(\sigma_i \times \tau_i^s \times \tau_i^u) (p, v^s, v^u) &= (\sigma_i(p), \tau_i^s(p, v^s), \tau_i^u(p, v^u)) \\
 	&= (x,y,z)
 \end{aligned}
-\end{equation}
+\end{equation*}
 which are \(C^r\) diffeomorphisms.
 
 To describe the unstable manifold being tangent to \({N'_\epsilon}^u\), we define 
-\begin{equation}
+\begin{equation*}
 \begin{aligned}
 	h_u : {N'_\epsilon}^u &\to \R^n \\
 	(p, v^u) &\mapsto  p + v^u
 \end{aligned}
-\end{equation}
+\end{equation*}
 so that \(h_u({N'_\epsilon}^u) \subset \R^n\).
 
 %Wiggins Thm. 4.5.1 originally Fenichel 1971
@@ -328,33 +328,33 @@ The first lemma shows that for a family of discrete semi-dynamical system with u
 
 \begin{lem}\label{discrete-gronwall-estimate}
 	Suppose \(F(\mu, z)\) are a family of \(C^1\) functions from \(K \times [0,a]\) into \([0,a]\), where \(K\) is a compact set in \(\R^n\) and \(F(\mu, 0) = 0\) and \(F(\mu, z) > 0\). Furthermore, assume
-	\begin{equation}
+	\begin{equation*}
 		0< \frac{\partial F}{\partial z} (\mu , 0) < 1, \quad \forall \mu \in K.
-	\end{equation}
+	\end{equation*}
 	Then there exists \(z_0 \in (0,a]\) and constants \(C> 0\) and \(0<\rho< 1\) where the family of solutions to the recurrence equations
-	\begin{equation}
+	\begin{equation*}
 		z_{\mu, n+1} = F(\mu, z_{\mu, n})
-	\end{equation}
+	\end{equation*}
 	with initial values \(z_{\mu, 0}\) in the interval \([0,z_0]\) all approach \(0\) as \(n\to \infty\) and
-	\begin{equation}
+	\begin{equation*}
 		|z_{\mu_1,n} - z_{\mu_2,n} | \leq C \rho^n( |\mu_1- \mu_2| + |z_{\mu_1,0} - z_{\mu_2,0}|)
-	\end{equation}
+	\end{equation*}
 	for all \(\mu_1,\mu_2 \in K\) and \(n\geq 0\).
 \end{lem}
 
 \begin{proof}
 	Define 
-	\begin{equation}
+	\begin{equation*}
 		\alpha_0 := \min_{\mu\in K } \frac{\partial F}{\partial z} (\mu, 0) 
-	\end{equation} 
+	\end{equation*} 
 	and 
-	\begin{equation}
+	\begin{equation*}
 		M_0 := \max_{\mu\in K} \left| D_\mu F (\mu, 0) \right|
-	\end{equation}
+	\end{equation*}
 	Set \(\alpha = \frac{1 + \alpha_0}{2}\) and \(M = 2M_0\). Note that \(\alpha_0 < \alpha < 1\). Let \(z_0 > 0\) such that 
-	\begin{equation}
+	\begin{equation*}
 		0 < \frac{\partial F}{\partial z} (\mu, z) \leq \alpha \quad \text{and} \quad \left| D_\mu F (\mu, z) \right| \leq M
-	\end{equation}
+	\end{equation*}
 	for any \(z \in [0,z_0]\) and \(\mu \in K\). 
 	
 	Now fix \(\mu_1,\mu_2\in K\) and assume \(z_{\mu_1, 0}, z_{\mu_2,0} \in [0,z_0]\). Then we have that 
@@ -366,26 +366,26 @@ The first lemma shows that for a family of discrete semi-dynamical system with u
 		=\ &z_{\mu_1, 0}- z_{\mu_2, 0} + \sum_{k=0}^{n-1} (\alpha - 1) (z_{\mu_1, k}- z_{\mu_2, k}) +M|\mu_1 - \mu_2| n.
 	\end{align*}
 	Hence applying the discrete Gr\"onwall inequality gives us
-	\begin{equation}
+	\begin{equation*}
 		z_{\mu_1, n} - z_{\mu_2, n} \leq \alpha^n(z_{\mu_1, 0}- z_{\mu_2, 0} + M |\mu_1-\mu_2| n)
-	\end{equation}
+	\end{equation*}
 	We can then get the final result by choosing \(\rho \in (\alpha, 1)\) and \(C>0\) as large as we need.
 \end{proof}
 
 The next result shows that points on the unstable manifold approach their asymptotic limits at a uniform exponential rate that is continuous with respect to their initial conditions. This will ultimately gives us a way to control the difference of heteroclinic orbits found on the unstable manifold.
 \begin{prop}\label{distance-to-fixed-point}
 	Assume the conditions in \cref{foliation-of-unstable-manifold} hold and that \(r\geq 2\) and \(u = 1\). Let \(p \in {M}_1\) be a fixed point under the flow and assume that there is a neighborhood of \(p\) in \(M_1\) consisting of just fixed points. Then in some neighborhood of \(p\), \(U\), there is \(C> 0 \) and \(\lambda > 0\) such that for any fixed point \(p'\in U\cap M_1\) and any \(q \in f^u(p)\) and \(q'\in f^u(p')\) we have
-	\begin{equation}
+	\begin{equation*}
 		|(\phi_{-t}(q) - p) - (\phi_{-t}(q') - p')| \leq C e^{-\lambda t} | q - q'|
-	\end{equation}
+	\end{equation*}
 	for \(t\geq 0.\)
 \end{prop}
 
 \begin{proof}
 	We use the change of coordinates described before to prove the result. Choose \(U\) small enough so that the diffeomorphism is defined on all of \(U\). From \cref{foliation-of-unstable-manifold}, we have \(C^r\) functions \(f_1\) and \(f_2\) such that the unstable manifold is given by the graph
-	\begin{equation}
+	\begin{equation*}
 		(x,z) \mapsto (f_1(z; x),  f_2(z;x),  z)
-	\end{equation}
+	\end{equation*}
 	Here the point \((x,0,0)\) picks out a point on \( M_1\) and the one-dimensional foliation of the unstable manifold is parameterized by \(z\).
 	Let \(p'\) be an arbitrary fixed point on \( M_1\cap U\) and denote the local coordinates of \(p\) and \(p'\) by \((x,0,0)\) and \((x',0,0)\), respectively. Take \(q \in f^u(p)\) and \(q' \in f^u(p')\), and let there local coordinates be given by \((f_1(z;x), f_2(z; x), z)\) and \((f_1(z';x') , f_2(z';x'), z')\), respectively. 
 	
@@ -394,33 +394,33 @@ The next result shows that points on the unstable manifold approach their asympt
 		|z(-t) - z'(-t)| \leq C e^{-\lambda t} (|x- x'| + |z(0) - z'(0)|).
 	\end{equation}
 	The argument should be similar to the one given in \cite{wiggins1994normally} for part 4 of \cref{foliation-of-unstable-manifold}, but we use the Gr\"onwall estimate found before to get dependence on the initial conditions. Fix \(T>0\) and define \(z_n = z(-nT)\) and \(z'_{n} = z(-nT)\). These values can be found by iteratively applying the map
-	\begin{equation}
+	\begin{equation*}
 		z \mapsto h(z;x) := \tau^u \circ \phi_{-T} \circ (\sigma \times \tau^s \times \tau^u)^{-1}(f_1(z;x), f_2(x;z), z).
-	\end{equation}
+	\end{equation*}
 	Thus we have 
-	\begin{equation}
+	\begin{equation*}
 		z_{n+1} = h(z_{n}; x).
-	\end{equation}
+	\end{equation*}
 	The map \(h\) is \(C^2\) for \(x\in \overline {U\cap M_1}\) and \(z\) sufficiently small. We also have that \(0 < \frac{\partial h}{\partial z}(0;x) < 1\). A calculation of this type can be found in \cite{wiggins1994normally}. Therefore we can apply \cref{discrete-gronwall-estimate} to get 
-	\begin{equation}
+	\begin{equation*}
 		|z_n - z'_n| \leq C \rho^n (|x-x'| + |z_0 - z'_0|)
-	\end{equation}
+	\end{equation*}
 	for any choice of \(p'\).
 	
 	The same estimate will hold if we adjust the initial condition of the \(z_n\) and \(z_n'\). Thus for any \(t\in [0,T)\) we also have
-	\begin{equation}
+	\begin{equation*}
 		|z(-nT - t) - z'(-nT - t)| \leq C \rho^n (|x-x'| + |z(-t) - z'(-t)|).
-	\end{equation}
+	\end{equation*}
 	By the continuity of the flow, we can replace \(|z(-t) - z'(-t)|\) with \(C|z(0) - z'(0)|\) in the estimate above. Also, we can choose \(\lambda_0 > 0\) small enough so that
-	\begin{equation}
+	\begin{equation*}
 		\max_{0\leq t < T} e^{\lambda_0 (T + t)} \rho < 1
-	\end{equation}
+	\end{equation*}
 	so that \cref{z-estimate} holds.
 	
 	Now consider the map
-	\begin{equation}
+	\begin{equation*}
 		(x,z) \mapsto g(x,z) := (\sigma \times \tau^s \times \tau^u)^{-1}(f_1(x;z) , f_2(x;z), z) - (\sigma \times \tau^s \times \tau^u)^{-1}(x,0,0).
-	\end{equation}
+	\end{equation*}
 	This gives the difference between a point in \(f^u(p)\) and its limit point \(p\) when given its local coordinates. The map is \(C^2\) in its arguments. Also, since \(g(x,0)= 0\) for all \(x\) we have that
 	\begin{equation}\label{g-zero-derivative}
 		\frac{\partial g}{\partial x}(x,0) = 0.
@@ -451,33 +451,33 @@ This problem can be described more generally as finding solutions of
 which approach eigenvectors of \(A\) as \(t\to \infty\). The following theorem gives us a way to find those solutions \cite[Chp.~3, Thm.~8.1]{coddington1955theory}.
 \begin{theorem}\label{thm:coddington}
 	Let \(A\) be a constant matrix with characteristic roots \(\mu_j\), \(j=1,2,\ldots, n\), all of which are distinct. Let the matrix \(V\) be differentiable and satisfy
-	\begin{equation}
+	\begin{equation*}
 		\int_0^\infty |V'(t)|\, dt < \infty
-	\end{equation}
+	\end{equation*}
 	and let \(V(t) \to 0\) as \(t\to\infty\). Let the matrix \(R\) be integrable and let 
-	\begin{equation}
+	\begin{equation*}
 		\int_0^\infty |R(t)|\, dt < \infty.
-	\end{equation}
+	\end{equation*}
 	Let the roots of \(\det(A+V(t) -\lambda I) = 0\) be denoted by \(\lambda_j(t)\), \(j = 1,2 ,\ldots, n\). Clearly, by reordering the \(\mu_j\) if necessary, \(\lim_{t\to\infty} \lambda_j(t) = \mu_j\). For a given \(k\), let 
-	\begin{equation}
+	\begin{equation*}
 		D_{kj}(t) = \Re(\lambda_k(t) - \lambda_j(t)).
-	\end{equation}
+	\end{equation*}
 	Suppose all \(j\), \(1\leq j \leq n\), fall into one of two classes \(I_1\) and \(I_2\), where
-	\begin{equation}
+	\begin{equation*}
 		j \in I_1 \text{ if } \int_0^t D_{kj}\, d\tau \to \infty \text{ as } t\to\infty \text{ and } \int_{t_1}^{t_2} D_{kj}\, d\tau > -K \text{ for }t_2\geq t_1 \geq 0
-	\end{equation}
+	\end{equation*}
 	and 
-	\begin{equation}
+	\begin{equation*}
 		j \in I_2 \text{ if } \int_{t_1}^{t_2} D_{kj}(\tau) \, d\tau  < K \text{ for } t_2\geq t_1\geq 0
-	\end{equation}
+	\end{equation*}
 	where \(k\) is fixed and \(K\) is a constant. Let \(p_k\) be an eigenvector of \(A\) associated with \(\mu_k\), so that 
-	\begin{equation}
+	\begin{equation*}
 		Ap_k = \mu_k p_k
-	\end{equation}
+	\end{equation*}
 	Then there is a solution \(\varphi_k\) of \cref{linear-nonauto-ode} and a \(t_0\), \(0\leq t_0< \infty\), such that
-	\begin{equation}
+	\begin{equation*}
 		\lim_{t\to\infty} \varphi_k(t) \exp\left[ - \int_{t_0}^ t \lambda_k(\tau) \, d\tau \right] = p_k.
-	\end{equation}
+	\end{equation*}
 \end{theorem}
 
 We will first apply the above theorem to 
@@ -492,13 +492,13 @@ before returning to the full problem. Here \(F\) denotes the unperturbed vector 
 which is the same form as \cref{linear-nonauto-ode} with \(V(s) = DF(\tilde \phi_{-s}(p)) - A\). One can check that \(V\) is differentiable by noting the linearization as computed in \cref{linearization-flow} is \(C^1\) in space. One can also check that \(\int_{0}^\infty |V'(s)|\, ds < \infty\).
 
 There is a slight complication given from the need that the eigenvalues of \(A\) are distinct. In our case, we have two eigenvalues that are the same: the two zero eigenvalues. However, we can remove one of these eigenvalues. For the zero eigenvalue with corresponding eigenvector \(e_4 = (0, 0, 0, 1)\), we have the following spectral projection
-\begin{equation}
+\begin{equation*}
 	P v = (e_4 \cdot v) e_4.
-\end{equation}
+\end{equation*}
 The eigenvalue and eigenvector for \(A\) are the same as \(DF(q)\) for any \(q\) in our manifold, and \(P\) commutes with \(DF(q)\). This allows us to break up the solution \(\xi\) of \cref{ode-for-vector-bundles-unperturbed} into two components as such:
-\begin{equation}
+\begin{equation*}
 	\xi = P\xi + (I-P)\xi = \xi_P + \xi_Q
-\end{equation}
+\end{equation*}
 Then the ODE for \(\xi_Q\) is a three-dimensional ODE and \(A(I-P)\) has distinct eigenvalues. For simplicity of notation, we will assume that this reduction has been done and drop the subscript \(Q\) when talking about the reduced solution.
 
 The conditions on the eigenvalues of \(A+V(s) = DF(\tilde\phi_{-s}(p))\) follow from the fact that \(DF(q)\) has eigenvalues continuous in \(q\) and they are distinct.
@@ -508,21 +508,21 @@ Thus we can apply \cref{thm:coddington} to the reduction of \cref{ode-for-vector
 Firstly, one must check that the vector bundles defined this way are well-defined. For instance, one might get different vectors in the vector bundle depending on where the initial condition of the ODE is chosen. Starting at a point \(p\) and flowing the vector forward until time \(t_0\) can lead to a different solution than if the vector is assigned by starting at \(\tilde\phi_{-t_0}(p)\). This would not be unexpected, since there are infinitely many solutions of the linear ODE which approach the stable bundle in backward time. We sidestep the issue by only assigning a solution to one point in each possible orbit. For our case, we have a radial flow, and so we will assign the vector bundles on a circle in \(\overline M\) and choose \(\mathrm{span}\{\xi(0)\}\) at each point \(p\). The rest of the vector bundles will be defined by simply flowing the vector bundles on the circle backward in time. 
 
 Secondly, we need to check that the vector bundles are continuous. Certainly, along an orbit the solutions will be continuous but \cref{thm:coddington} does say whether solutions will be continuous in space. To answer this question, we must go the proof of \cref{thm:coddington}. Essentially, the proof is done by rewriting the ODE using a change of coordinates and variation of parameters and then applying a Picard iteration. We shall look into the details for our specific case. The eigenvalues and eigenvectors of \(DF(q)\) will be denoted by \(\lambda_k(q)\) and \(v_k(q)\), respectively. From the regularity in \(F\), we have that the eigenvectors and values are continuously differentiable in \(q\). Then we define the matrix
-\begin{equation}
+\begin{equation*}
 	S(q) = [v_1(q), v_2(q), \ldots, v_n(q)]
-\end{equation}
+\end{equation*}
 and make the change of coordinates
-\begin{equation}
+\begin{equation*}
 	\xi(s) = S(\tilde \phi_{-s} (p)) \varphi(s).
-\end{equation}
+\end{equation*}
 The matrix \(S(q)\) diagonalizes \(DF(q)\) and so 
-\begin{equation}
+\begin{equation*}
 	\varphi'(s) = \Lambda(s,p)\varphi + \underbrace{[S(\phi_{-s}(p))]' S(\phi_{-s}(q))^{-1}}_{=: R(s,p)} \varphi(s)
-\end{equation}
+\end{equation*}
 where 
-\begin{equation}
+\begin{equation*}
 	\Lambda(s,p) = \mathrm{diag} \left\{  \lambda_k(\tilde\phi_{-s}(p))\right\}.
-\end{equation}
+\end{equation*}
 Letting \(\Psi(s,p)\) be the fundamental matrix solution associated with \(\Lambda(s,p)\), the \(\varphi\) we are looking for is the solution to the following integral equation
 \begin{equation}\label{variation-of-constants}
 \begin{aligned}
@@ -531,56 +531,56 @@ Letting \(\Psi(s,p)\) be the fundamental matrix solution associated with \(\Lamb
 \end{aligned}
 \end{equation}
 At this point an iteration scheme can be set up, but to show regularity of the solution with respect to \(p\), we set it up as a fixed point problem. We will slightly alter the function on the right-hand side so that the function space for the solution does not depend on \(p\). Let 
-\begin{equation}
+\begin{equation*}
 	h_k(s,p) := \exp\left[\int_0^s \lambda_k(\sigma)\, d\sigma\right].
-\end{equation}
+\end{equation*}
 Then define
-\begin{equation}
+\begin{equation*}
 \begin{aligned}
 	\mcF_k[\varphi_0, p](s) :=& e_k + h_k(s,p)^{-1}\int_0^s \Psi_1(s, p) \Psi(\tau, p)^{-1}R(\tau, p) h_k(\tau,p)\varphi_0(\tau)\, d\tau \\
 	&\quad - h_k(s,p)^{-1}\int_s^\infty \Psi_2(s,p) \Psi(\tau, p)^{-1} R(\tau, p)h_k(\tau,p) \varphi_0(\tau)\, d\tau
 \end{aligned}
-\end{equation}
+\end{equation*}
 where \(\varphi^0\in C^0_b([0,\infty), \R^n)\). Then by multiplying the above equation through by \(h_k\), we can see that \(h_k(\cdot, p)\varphi^0\) is a solution of \cref{variation-of-constants} if \(\mcF_k[\varphi_0, p] = \varphi_0\). Choosing our initial condition \(p\) sufficiently close to its limit point guarantees that \(\mcF_k[\cdot, p]\) maps into \(C^0_b([0,\infty), \R^n)\) and
-\begin{equation}
+\begin{equation*}
 	|\mcF_k[\varphi_1, p](s) - \mcF_k[\varphi_2, p](s) | \leq \rho  |\varphi_1(s) - \varphi_2(s)| 
-\end{equation}
+\end{equation*}
 for some \(0< \rho < 1\). Thus by the Banach fixed point theorem, there is a unique solution in \(C^0_b\).
 
 The regularity of the solutions with respect to \(p\) follows from the continuity \(S\) and \(R\) with respect to \(p\). In particular, we have that \(\mcF_k\) is continuous in \(p\) and so the solutions to the fixed point problem \(\mcF_k[\varphi_k^0(\cdot, p) , p] = \varphi_k^0(\cdot, p)\) are continuous with respect to \(p\). This means that \(p\mapsto \varphi_k(0,p) = \varphi_k^0(0,p) \) is also continuous with respect to \(p\) and we can define the vector bundles smoothly. Furthermore, by applying the implicit function theorem, one can get that the regularity of the extended vector bundles is the same as the original vector bundles. That is, if the original bundles were \(C^k\), then the extensions are also \(C^k\).
 
 To summarize, we define the vector bundles on a small circle so that they are invariant under the flow given by \cref{flow-for-tangent-vectors-unperturbed}. We now return to the perturbed flow of the tangent vectors given by \cref{flow-tangent-vectors-perturbed}. The vector bundles do not remain invariant under the perturbed vector field, but \(TM_2 \oplus N^u\) and \(TM_2 \oplus N^s\) are both invariant. This is because the perturbation is only in the tangent direction on the \(M\) and so the ODE partially decouples. For example, if \(\xi(0) \in T_pM_2 \oplus N^u_p\), then we can define the solution to 
-\begin{equation}
+\begin{equation*}
 \begin{aligned}
 	u'(s) &= DF(\tilde \phi_{-s}(p)) u\\
 	u(0) &= \Pi^u_p \xi(0),
 \end{aligned}
-\end{equation}
+\end{equation*}
 which is guaranteed to be in \(N^u\) for all time, and 
-\begin{equation}
-x\begin{aligned}
+\begin{equation*}
+\begin{aligned}
 	v'(s) &= (D\tilde F(\tilde\phi_{-s}(p)) - DF(\tilde\phi_{-s}(p))) (v + u) \\
 	v(0) &= (I - \Pi^u_p) \xi(0)
 \end{aligned}
-\end{equation}
+\end{equation*}
 which is in \(TM_2\) for all time, so that \(u + v\) is a solution to \cref{flow-tangent-vectors-perturbed}.
 
 Finally, there is just to check that this construction does not affect the necessary bounds on the generalized Lyapunov-type numbers. As was stated in \cref{sec:manifolds}, we can use \cref{lyapunovbound} to show the bounds for \(\lambda^u\), \(\nu^s\), and \(\sigma^s\) are still satisfied. Thus we just need to check that \(\sigma^{cu}\) and \(\sigma^{su}\) are less than zero. Denote by \(\lambda_u(p)\) and \(-\lambda_s(p)\) positive and negative eigenvalues of \(DF(p)\) for \(p \in M\). From the construction of the vector bundles we have that for \(u_0\in N^u_p\) and \(w_0\in N^s_p\) the solutions of
-\begin{equation}
+\begin{equation*}
 	u_{-t} = \Pi^uD\phi_{-t}(p) u_0 \quad \text{and} \quad w_{-t} = \Pi^s D\phi_{-t} w_0
-\end{equation}
+\end{equation*}
 satisfy
-\begin{equation}
+\begin{equation*}
 	u_{-t} \exp\left[ \int_{-t}^0 \lambda_u(\phi_{-\tau}(p) ) \, d\tau\right] \to p_u \quad \text{and}\quad  w_{-t} \exp\left[ \int_{-t}^0 -\lambda_s(\phi_{-\tau}(p) ) \, d\tau\right] \to p_s
-\end{equation}
+\end{equation*}
 as \(t\to\infty\) for vectors \(p_u\) and \(p_s\). Since the orbit converges to a fixed point in backward time, the eigenvalues are bounded away from zero and we can choose \(\alpha> 0\) such that
-\begin{equation}
+\begin{equation*}
 	-(\lambda_u(\phi_{-t}(p)) + \lambda_s(\phi_{-t}(p)) < -\alpha < 0
-\end{equation}
+\end{equation*}
 for all \(t \geq 0 \) and so for \(\rho = e^{-\alpha}\) we have
-\begin{equation}
+\begin{equation*}
 	\frac{|u_{-t}|/|w_{-t}|}{|u_0|/|w_0|} \cdot \rho^{-t} \to 0
-\end{equation}
+\end{equation*}
 as \(t\to\infty\). Thus \(\sigma^{su}(p) \leq e^{-\alpha} < 1\), as desired.
 
 To compute \(\sigma^{cu}(p)\), one needs to find the flow of the tangent vectors along an orbit. Since the tangent vectors are the zero eigenvectors for the linearization of the unperturbed vector field, given by \(DF(\phi_{-t}(p))\), it suffices to look just at the linearization of the perturbation. That is, if \(\tilde F\) is the perturbed vector field, we shall look at the differential system
@@ -588,44 +588,44 @@ To compute \(\sigma^{cu}(p)\), one needs to find the flow of the tangent vectors
 	\dot v(t) = (DF(\phi_{t} (p)) - D\tilde F(\phi_t (p))) v(t).
 \end{equation}
 Recall that the perturbation is given by 
-\begin{equation}
+\begin{equation*}
 	\tilde F(\underline A, \underline B, \underline C, \epsilon) = \chi(|(\underline A-A_{-\infty} , B, C, \epsilon)|) \begin{bmatrix}
 		\underline A - A_{-\infty} \\ 0 \\ 0 \\ \epsilon
 	\end{bmatrix}.
-\end{equation}
+\end{equation*}
 The flow on the manifold ends up being radial. That is, setting \(r = |(\underline A-A_{-\infty}, 0, 0, \epsilon)|\), the dynamics remain on ray starting at \((A_{-\infty}, 0,0,0)\) and the distance from this point is given by 
-\begin{equation}
+\begin{equation*}
 	\dot r(t) = \chi(r) r.
-\end{equation}
+\end{equation*}
 The linearized equation nicely decouples. The linearization \(DF - D\tilde F\) has eigenvalues \(\chi(r) + \chi'(r)r\) and \(\chi(r)\) with corresponding normal eigenvectors
-\begin{equation}
+\begin{equation*}
 	v_1 = \frac 1 r\begin{bmatrix}
 		\underline A - A_{-\infty} \\ 0 \\ 0 \\ \epsilon 
 	\end{bmatrix} \quad \text{ and } \quad  v_2 = \frac 1 r \begin{bmatrix}
 	-\epsilon \\ 0 \\ 0 \\ \underline A - A_{-\infty}, 
 \end{bmatrix} 
-\end{equation}
+\end{equation*}
 respectively. Note that the eigenvectors are the radial component and an orthogonal vector to it. Since we stay on rays starting at \((A_{-\infty}, 0, 0, 0)\), the eigenspaces stay the same and so we can solve the linearized equation by looking at the flow on the eigenspaces. Namely, taking 
-\begin{equation}
+\begin{equation*}
 	v(t) = \alpha (t) v_1 + \beta(t) v_2
-\end{equation}
+\end{equation*}
 the solution to \cref{linearize-pertubation-ode} is given by 
-\begin{equation}
+\begin{equation*}
 	\begin{aligned}
 		\alpha(t) &= \alpha(0) \exp\left[ \int_0^t (\chi(r(\tau)) + \chi'(r(\tau))r(\tau) )\, d\tau\right]\\
 		\beta(t) &= \beta(0)\exp\left[\int_0^t \chi(r(\tau))\, d\tau\right]
 	\end{aligned}
-\end{equation}
+\end{equation*}
 Note that \(\chi(r(t)) ,\chi'(r(t)) \to 0\) as \(t\to-\infty\). Then we can choose \(\alpha > 0\) such that
-\begin{equation}
+\begin{equation*}
 	\lambda_u(\phi_{-t}(p)) + \alpha > \chi(r(-t)) + \chi'(r(-t))r(-t)
-\end{equation}
+\end{equation*}
 and 
-\begin{equation}
+\begin{equation*}
 	\lambda_u(\phi_{-t}(p)) + \alpha > \chi(r(-t)),
-\end{equation}
+\end{equation*}
 for sufficiently large \(t\). Then for \(\rho = e^{-\alpha}\) we have
-\begin{equation}
+\begin{equation*}
 	\frac{|u_{-t}|/|v_{-t}|}{|u_0|/|v_0|} \cdot \rho^{-t} \to 0
-\end{equation}
+\end{equation*}
 as \(t\to\infty\). Thus \(\sigma^{cu}(p) < 1\) as well.
