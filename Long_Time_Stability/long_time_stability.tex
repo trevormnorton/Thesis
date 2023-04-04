@@ -20,9 +20,9 @@ For the case where \(V\) is of the form \(V(u) = \frac 1 2 u^2 + \frac{\epsilon^
 	2 \partial_TW + \frac 1 {12} \partial_X^3 W + \partial_X(W^p) = 0,\quad X\in\R
 \end{equation} 
 serves as a modulation equation for solutions of \cref{fput-lattice-equations-strain-variables} \cite{bambusi2006metastability,friesecke1999solitary}. That is, for a local solution \(W\in C([-\tau_0,\tau_0],H^s(\R))\) of \cref{generalized-KdV} there exist positive constants \(\epsilon_0\) and \(C_0\) such that, for all \(\epsilon \in (0,\epsilon_0)\), when initial data \((u_{\mathrm{in} }, \dot u_{\mathrm{in}})\in\ell^2(\R)\) satisfy
-\begin{equation}
+\begin{equation*}
 	\|u_{\mathrm{in}} - W(\epsilon\cdot, 0) \|_{\ell^2} + \| \dot u_{\mathrm{in}} + \epsilon \partial_X W(\epsilon\cdot, 0) \|_{\ell^2} \leq \epsilon^{3/2},
-\end{equation}
+\end{equation*}
 the unique solution to \cref{fput-lattice-equations-strain-variables} with initial data \((u_{\mathrm{in} }, \dot u_{\mathrm{in}})\) belongs to \(C^1([-\tau_0\epsilon^{-3}, \tau_0 \epsilon^{-3}];\allowbreak \ell^2(\Z))\) and satisfies 
 \begin{multline}
 	\|u(t) - W(\epsilon (\cdot - t),\epsilon^3 t)\|_{\ell^2(\Z)} + \| \dot u(t) + \epsilon \partial_X W(\epsilon(\cdot - t), \epsilon^3 t) \|_{\ell^2(\Z)} \leq C_0 \epsilon^{3/2}, \\ t\in[-\tau_0 \epsilon^{-3},\tau_0 \epsilon^{-3}].
@@ -42,17 +42,17 @@ The technique of the proof follows from ideas in \cite{schneider2000counter,khan
 	\dot X(t) = J \mcH'(X)
 \end{equation}
 where \(J:H\to H\) is a skew symmetric operator and \(\mcH\) is the Hamiltonian such that \(\mcH'(X) = LX + N(X)\) with \(L:= \mcH'(0)\). We introduce some ansatz \(\tilde X_\epsilon\) which is an approximate solution to \cref{hamiltonian-system} in the sense that 
-\begin{equation}
+\begin{equation*}
 	\mathrm{Res}(t) := J[L\tilde X_\epsilon(t)  + N(\tilde X_\epsilon(t))] - \dot{\tilde {X_\epsilon}}(t) 
-\end{equation}
+\end{equation*}
 has norm of order \(\epsilon^\alpha\) for \(\alpha > 0\)  for all time \(t\). The approximate solution will be ``small-amplitude" in the sense that \(\| \tilde X_\epsilon \| = \mathcal O(\epsilon^k)\) for \(k > 0 \). Then we can write the evolution equation for the \(R(t) = X(t) - \tilde X_\epsilon(t)\) as 
 \begin{equation}\label{hamiltonian-system-2}
 	\dot R(t) = J[L + N'(\tilde X_\epsilon(t))]R(t) + \mathrm{Res}(t) + \mathcal N(\tilde X_\epsilon, R)
 \end{equation}
 with \(\mathcal N( X_\epsilon, R) := J[N(\tilde X_\epsilon +R) - N(\tilde X_\epsilon) - N'(\tilde X_\epsilon)R]\). The goal is then to show that \(R(t)\) remains small for long periods of time so that the approximation \(X \approx \tilde X_\epsilon\) is valid for that time. The standard way to prove this is to find a suitable energy function to control the norm of \(R\) with. If \(L + N'(\tilde X_\epsilon(t))\) is self-adjoint, then \cref{hamiltonian-system-2} is up to first order a linear, non-autonomous, Hamiltonian system with Hamiltonian \(\mcH_1(R, t) = \frac 1 2 \langle (L+N'(\tilde X_\epsilon)) R, R\rangle\). Therefore, \(\mcE(t) := \mcH_1(R(t),t)\) serves as a natural choice of energy function for \cref{hamiltonian-system-2}. Hence, if one shows that \( \| R\|^2\lesssim\mcE(t)\) and that  \(\|\mathcal N(\tilde X_\epsilon, R) \| \lesssim \epsilon^{k+2} \mcE(t)\), then can show that \(\mcS(t) = \mcE(t)^{1/2}\) satisfies
-\begin{equation}
+\begin{equation*}
 	|\dot \mcS (t) | \lesssim \epsilon^{\alpha} + \epsilon^{k+2}\mcS(t).
-\end{equation}
+\end{equation*}
 Intuitively, one would expect \(\mcS(t)\) to grow like \(\mcS(t) \sim \epsilon^\alpha t + e^{\epsilon^{k+2} t} \mcS(0)\). Taking \(\mcS(0) =\epsilon^\gamma\) for \(\gamma \geq 1\) and assuming \(\alpha > 2(k+2)\), we have \(\mcS(t) \sim \epsilon^\gamma \) for \(|t|\lesssim \epsilon^{-(k+2)}\). One can further the time where the approximation holds by relaxing how big \(\mcS(t)\) can get. Taking \(r>0\) small, one can show that \(\mcS(t) \sim \epsilon^{\gamma - r}\) for \(|t| \lesssim r \epsilon^{-(k+2)}|\log(\epsilon)|\).
 
 %Something about metastability here.
@@ -64,12 +64,12 @@ We make the assumption that solutions of \cref{fput-lattice-equations-strain-var
 \begin{equation}\label{ansatz}
 	u_n(t) \approx \epsilon f(\epsilon(n+t), \epsilon^3t) + \epsilon g(\epsilon(n-ct), \epsilon^3 t) + \epsilon^3\phi(\epsilon n, \epsilon t)
 \end{equation}
-where we allow \(f\) to have a fixed non-zero limits, \(f_{\pm\infty}\), at positive and negative infinity and \(\phi\) captures the interaction effects between \(f\) and \(g\). The wave speed of \(g\) is given by
+where we allow \(f\) to have fixed non-zero limits, \(f_{\pm\infty}\), at positive and negative infinity and \(\phi\) captures the interaction effects between \(f\) and \(g\). The wave speed of \(g\) is given by
 \begin{equation}\label{ansatz-wave-speed}
 	c = c(\epsilon, f_\infty) = 1 - \frac{\epsilon^2 f_\infty^2}{4}.
 \end{equation}
-Plugging in the ansatz in \cref{ansatz} back into \cref{fput-lattice-equations-strain-variables} and grouping terms of the same order \(\epsilon\) together gives
-\begin{equation}
+The choice of wave speed for \(f\) follows from the fact that we expect such solutions to have wave speeds near the speed of sound \(V''(0) = 1\), as found earlier. The wave speed of \(g\) results in part from the background of \(f_\infty\) creating a slight translation in \(g\). Plugging in the ansatz in \cref{ansatz} back into \cref{fput-lattice-equations-strain-variables} and grouping terms of the same order \(\epsilon\) together gives
+\begin{equation*}
 	\begin{aligned}
 		&\epsilon^3 \Big(\partial_1^2 f(\cdot, \epsilon^3 t) + \partial_1^2 g(\cdot, \epsilon^3 t)\Big) \\
 		&+ \epsilon^5 \Big( 2 \partial_1\partial_2 f(\cdot, \epsilon^3t) - 2 \partial_1\partial_2 g(\cdot, \epsilon^3 t) - \frac{f_\infty^2} 2 \partial_1^2 g + \partial_2^2 \phi(\epsilon x, \epsilon t)\Big) \\
@@ -80,7 +80,7 @@ Plugging in the ansatz in \cref{ansatz} back into \cref{fput-lattice-equations-s
 		&\qquad\qquad\qquad+ \frac 1 {12} \partial_1^4 f(\cdot, \epsilon^3 t) + \frac 1 {12} \partial_1^4 g(\cdot, \epsilon^3 t)\Big) \\
 		&\qquad\qquad+ \mathcal O(\epsilon^6).
 	\end{aligned}
-\end{equation}
+\end{equation*}
 Clearly the equation will hold up to order \(\epsilon^3\). For the order \(\epsilon^5\) terms, the equation will again hold if \(f\), \(g\), and \(\phi\) satisfy
 \begin{equation}\label{f-mKdV}
 	2 \partial_2 f = - \frac 1 6 \partial_1(f^3) + \frac 1 {12} \partial_1^3 f
@@ -101,18 +101,18 @@ Note that \cref{f-mKdV} is the defocusing mKdV equation and \cref{g-gKdV} is a t
 A natural choice of function space for \(g\) is a Sobolev space like \(H^k(\R)\). However, for \(f\), we want to allow the possibility of the function approaching a non-zero limit at positive and negative infinity while also having sufficient regularity. 
 \begin{defn}
 	For \(k\in\N\), let \(\mcX^k(\R)\) be the Banach space 
-	\begin{equation}
+	\begin{equation*}
 		\mcX^k(\R) := \{f \in L^\infty(\R) \mid f'\in H^{k-1}(\R)\}
-	\end{equation}
+	\end{equation*}
 	with norm
-	\begin{equation}
+	\begin{equation*}
 		\| f \|_{\mcX^k(\R)} := \| f \|_{L^\infty(\R)} + \| f' \|_{H^{k-1}(\R)}.
-	\end{equation}
+	\end{equation*}
 \end{defn}
 Then \(\mcX^k\) is the set of \(L^\infty\) functions which are \(k\) times weakly differentiable and whose derivatives are in \(L^2\). That this is a Banach space follows from the Banach space isomorphism
-\begin{equation}
+\begin{equation*}
 	\mcX^k(\R) \cong L^\infty(\R) \cap \dot H^1(\R) \cap \dot H^k(\R),
-\end{equation}
+\end{equation*}
 where \(\dot H^k(\R)\) denotes the homogeneous Sobolev spaces. For convenience, we let \(\mcX^0(\R)\) denote \(L^\infty(\R)\)
 
 Note that \cref{f-mKdV} has kink solutions of the form
@@ -120,9 +120,9 @@ Note that \cref{f-mKdV} has kink solutions of the form
 	f(X,T) = - \sqrt{12 v} \tanh\left( \sqrt{12v} (X-vT)\right).
 \end{equation}
 In particular, setting \(v = 24\) we get the approximate solution on the lattice given by
-\begin{equation}
+\begin{equation*}
 	- \frac \epsilon {\sqrt 2} \tanh\left(\frac \epsilon {\sqrt 2} \left(n + \left(1-\frac{\epsilon^2} {24}\right) t\right)\right),
-\end{equation} which seems to agree with the kink solution on the lattice for long periods of time (i.e.\ it should hold formally for \(t\) of order \(\mathcal O(\epsilon^{-4})\)). The space \(\mcX^k\) allows for \(f\) to be these kink solutions and thus allows us to study the kink solution of the lattice found previously. 
+\end{equation*} which seems to agree with the kink solution on the lattice for long periods of time (i.e.\ it should hold formally for \(t\) of order \(\mathcal O(\epsilon^{-4})\)). The space \(\mcX^k\) allows for \(f\) to be these kink solutions and thus allows us to study the kink solution of the lattice found previously. 
 
 We also have the following inequalities for products of functions in \(\mcX^k\) and \(H^k\) that will be useful. 
 
@@ -139,16 +139,16 @@ We also have the following inequalities for products of functions in \(\mcX^k\) 
 \begin{restatable}{lem}{prodruletwo}
 	\label{prod-rule-2-lem}
 	For non-negative integers \(k\), there is a \(C>0\) such that
-	\begin{equation}\label{prod_rule_2}
+	\begin{equation*}\label{prod_rule_2}
 		\| fg \|_{\mcX^k} \leq C \| f \|_{\mcX^k} \| h \|_{\mcX^k}
-	\end{equation}
+	\end{equation*}
 	for any \(f,g\in \mcX^k(\mathbb R)\).
 \end{restatable}
 See \cref{lemma-appendix} for proofs.
 
 However, for our main result, we require that \(\phi\), the term which captures the interaction effects, remains uniformly bounded for all time. Intuitively, if \(f\) and \(g\) are localized, the inhomogeneous term in \cref{phi-pde} will quickly go to zero, and the equation governing \(\phi\) \cref{phi-pde} will approach the homogeneous wave equation, for which Sobolev norms remain uniformly bounded. Since the two functions are localized and counter-propagating, their product will quickly decay in time as the two wave profiles move in opposite directions. Thus we require that \(f\) and \(g\) quickly decay to their respective limits at infinity. This is enforced by assuming the functions belong to appropriate weighted Banach spaces.
 
-\begin{figure}[h]
+	\begin{figure}[h]
 	\center
 	\begin{tikzpicture}[
 		scale=2,
@@ -167,8 +167,8 @@ However, for our main result, we require that \(\phi\), the term which captures 
 		\draw[domain=-.1:3, samples = 200, thick, dotted] plot (\x, {2* fun1(\x,1.25) * fun2(\x,1.75)});
 		
 		%arrows
-		\draw[->,line width=0.20mm,color=blue] (.9, 1) -- (0.1,1) {} node[above right] {\scriptsize\hspace{-1.5em} $f(\epsilon(x+t)) - f_\infty$};
-		\draw[->,line width=0.20mm,color=orange] (2.12, .66) -- (2.92,.66) {} node[above left] {\scriptsize $g(\epsilon(x-ct))$};
+		\draw[->,line width=0.20mm,color=blue] (.9, 1) -- (0.1,1) {} node[midway,above=1.2, fill=white] {\scriptsize$f(\epsilon(x+t)) - f_\infty$};
+		\draw[->,line width=0.20mm,color=orange] (2.12, .66) -- (2.92,.66) {} node[midway, above=1.2] {\scriptsize $g(\epsilon(x-ct))$};
 		
 		\begin{scope}[xshift=3.7cm]
 			%axis
@@ -181,59 +181,59 @@ However, for our main result, we require that \(\phi\), the term which captures 
 			\draw[domain=-.1:3, samples = 200, thick, dotted] plot (\x, {0.3 * sech((\x - 1.4)*2});
 			
 			%arrows
-			\draw[->,line width=0.20mm,color=blue] (.4, 1) -- (-0.4,1) {} node[above] {\scriptsize \hspace{5em} $f(\epsilon(x+t)) - f_\infty$};
-			\draw[->,line width=0.20mm,color=orange] (2.62, .66) -- (3.42,.66) {} node[above left] {\scriptsize $g(\epsilon(x-ct))$};
+			\draw[->,line width=0.20mm,color=blue] (.4, 1) -- (-0.4,1) {} node[midway,above=1.2, fill=white] {\scriptsize $f(\epsilon(x+t)) - f_\infty$};
+			\draw[->,line width=0.20mm,color=orange] (2.62, .66) -- (3.42,.66) {} node[midway, above = 1.2] {\scriptsize $g(\epsilon(x-ct))$};
 		\end{scope}
 	\end{tikzpicture}
 	\caption{\label{fig-counter-propogating-interaction} The function \(f(\epsilon(x+t)) -f_\infty\) (shown in blue) moves to the left while \(g(\epsilon(x-ct))\) (shown in orange) moves to the right. Since they are localized, the product (shown by the dotted line) will quickly decay in time.}
 \end{figure}
 
 A suitable choice of space for \(g\) is the weighted Sobolev spaces \(H^k_n(\R)\). Here, \(H^k_n\) for \(k,n\in\mathbb N\cup \{0\}\)
-\begin{equation}
+\begin{equation*}
 	H^k_n(\R) := \{ g\in H^k(\R) \mid   g\langle \cdot \rangle^n \in H^k \}
-\end{equation}
+\end{equation*}
 where \(\langle x \rangle = \sqrt{1+x^2}\). The norm on this space is
-\begin{equation}
+\begin{equation*}
 	\| g \|_{H^k_n(\R)} := \|  g \langle \cdot \rangle^n\|_{H^k(\R)}.
-\end{equation}
+\end{equation*}
 This space has the useful property that if \(g \in H^k_n\), then its Fourier transform, \(\hat g \), is in \(H^n_k\) and 
-\begin{equation}
+\begin{equation*}
 	c \| \hat g \|_{H^n_k} \leq \| g \|_{H^k_n} \leq C \| \hat g \|_{H^n_k}
-\end{equation}
+\end{equation*}
 for \(c,C>0\) independent of \(g\).
 
 We want an analogous space for \(f\), but allowing for non-zero limits at infinity. Let \(\langle\cdot \rangle_+ :\R \to \R\) be a smooth function such that
-\begin{equation}
+\begin{equation*}
 	\langle x \rangle_+ = \begin{cases} \langle x \rangle, & x>1 \\ 1, & x<0\end{cases}
-\end{equation}
+\end{equation*}
 and \(\langle \cdot \rangle_+\) continued smoothly between \(0\) and \(1\) such that it is always greater than or equal to \(1\). Thus \(\langle \cdot \rangle_+\) is a function that only acts like \(\langle \cdot \rangle\) for numbers greater than \(1\). The function \(\langle \cdot \rangle_-\) is similarly defined but for numbers less than \(-1\).
 
 \begin{defn}
 	Define \(\mcX^k_{n^+} (\R)\) to be the Banach space of functions where 
-	\begin{equation}
+	\begin{equation*}
 		\mcX^k_{n^+} (\R) := \{ f \in \mcX^k(\R) \mid \lim_{x\to\infty} f(x) = f_\infty\text{ and } (f-f_\infty)\langle\cdot\rangle_+^n \in \mcX^k(\R)\}
-	\end{equation}
+	\end{equation*}
 	with norm given by
-	\begin{equation}
+	\begin{equation*}
 		\| f \|_{\mcX^k_{n^+}(\R)} := |f_\infty| + \|(f-f_\infty) \langle \cdot \rangle_+^n \|_{\mathcal X^k(\R)}
-	\end{equation}
+	\end{equation*}
 	Similarly, 
-	\begin{equation}
+	\begin{equation*}
 		\mcX^k_{n^-} (\R) := \{ f \in \mcX^k(\R) \mid \lim_{x\to-\infty} f(x) = f_{-\infty}\text{ and } (f-f_{-\infty})\langle\cdot\rangle_-^n \in \mcX^k(\R)\}
-	\end{equation}
+	\end{equation*}
 	and 
-	\begin{equation}
+	\begin{equation*}
 		\| f \|_{\mcX^k_{n^-}(\R)} := |f_{-\infty}| + \|(f-f_{-\infty}) \langle \cdot \rangle_-^n \|_{\mathcal X^k(\R)}
-	\end{equation}
+	\end{equation*}
 	Define \(\mcX^k_n(\R)\) to be the intersection of these Banach spaces. That is,
-	\begin{equation}
+	\begin{equation*}
 		\mcX^k_n(\R) := \mcX^k_{n^+} (\R) \cap \mcX^k_{n^-} (\R), \quad \| f \|_{\mcX^k_{n} (\R)} := \|f\|_{\mcX^k_{n^+} (\R)} + \|f\|_{\mcX^k_{n^-} (\R)}.
-	\end{equation}
+	\end{equation*}
 \end{defn}
 	That \(\mcX^k_{n^\pm}\) are Banach spaces follows from the fact that there exists a linear isomorphism between the Banach space \(\R\times \mcX^k\) and these spaces, which is given by
-\begin{equation}
+\begin{equation*}
 	(\alpha, f) \mapsto \alpha + f \langle \cdot \rangle^{-n}_{\pm}.
-\end{equation}
+\end{equation*}
 One can show that the kink solutions as specified in \cref{kink-solutions} lie in \(\mcX^k_n\) for all \(k,n\geq 0\); the derivatives are smooth and decay exponentially to zero, and the kink solutions approach the limits \(\mp\sqrt{12v}\) exponentially fast. These spaces also contain bounded rational functions. For instance, the function \[1 + \frac 1 {x^2 +1}\] is in \(\mcX^k_2(\R)\) since it approaches its limit at infinity (which in this case is \(1\)) at a rate of \(\mathcal O(1/x^2)\), and its derivatives are in \(H^0_2(\R)\).
 
 The definitions above are used to prove that \(\phi\) remains bounded for all time. The idea behind the proof is similar to that of \cite[Lemma~3.1]{schneider2000counter}. The following lemma will be useful in showing the decay in products of \(f-f_\infty\) and \(g\).
@@ -264,20 +264,27 @@ We are now ready to prove that \(\phi\) (and its time derivative) remain uniform
 
 \begin{proof}
 	Set \(\partial_2 \phi = \psi\). Taking the Fourier transform \(\mathcal F\) on both sides of \cref{phi-pde} and writing the ODE as a first order system, we get that 
-	\begin{equation}
+	\begin{equation*}
 	\begin{aligned}
 		&\partial_2 \begin{bmatrix} \hat \phi(k,\tau) \\ \hat \psi(k,\tau) \end{bmatrix} = \begin{bmatrix}\hat \psi(k,\tau) \\ -k^2 \hat\phi(k,\tau) \end{bmatrix} \\ &+ \begin{bmatrix}
 			0 \\   \frac 1 2 k^2 \mathcal F[ (f^2(\cdot+\tau),\epsilon^2\tau)-f_\infty^2)g(\cdot-c\tau,\epsilon^2\tau) +(f(\cdot+\tau,\epsilon^2\tau)-f_\infty)g^2(\cdot-c\tau,\epsilon^2\tau)](k)
 		\end{bmatrix}.
 	\end{aligned}
-	\end{equation}
-	The semigroup generated by the linear part can be computed explicitly. Putting the solution into variation of constants form with initial conditions set to zero gives
-	\begin{equation}
+	\end{equation*}
+	The semigroup generated by the linear part can be computed explicitly to be
+	\begin{equation*}
+		\begin{bmatrix}
+			\cos(k\tau)  & \frac 1 k \sin(k \tau) \\
+			-k\sin(k\tau) & \cos(k\tau)
+		\end{bmatrix}.
+	\end{equation*} 
+	Putting the solution into variation of constants form with initial conditions set to zero gives
+	\begin{equation*}
 	\begin{aligned}
 		&\hat  \phi(k,T) = \frac 1 2 \int_0^Tk\sin(k(T-\tau)) \times\\
 		&\quad\mathcal F[ (f^2(\cdot+\tau),\epsilon^2\tau)-f_\infty^2)g(\cdot-c\tau,\epsilon^2\tau) +(f(\cdot+\tau,\epsilon^2\tau)-f_\infty)g^2(\cdot-c\tau,\epsilon^2\tau)](k)\, d\tau
 	\end{aligned}
-	\end{equation}
+	\end{equation*}
 	and 
 	\begin{equation}\label{psi-fourier-transform}
 	\begin{aligned}
@@ -308,19 +315,19 @@ The scalar second-order differential equation \cref{fput-lattice-equations-strai
 \end{equation}
 
 Recall that \(u_{n} = x_{n+1} - x_n\), so we have that \(u_n\) physically represents the displacement between two neighbors on the lattice and \(q_n\) is equal to 
-\begin{equation}
+\begin{equation*}
 	q_n(t) = \sum_{k=-\infty}^{n-1} \dot u_k(t) = \sum_{k=-\infty}^{n-1} [\dot x_{k+1}(t) - \dot x_k(t)] = \dot x_n(t)
-\end{equation}
+\end{equation*}
 and so represents the velocity at a lattice point (assuming that \(\dot x_k(t) \to 0\) as \(k\to-\infty\)). Note that we have the flexibility to add or subtract a constant from \(q\) without changing the dynamics on \(u\) (a fact that we use later to adjust the approximation and guarantee the error terms are in \(\ell^2(\Z)\)). Writing the equations for the FPUT lattice in the form given by \cref{first-order-lattice-eqns} also puts the system into a Hamiltonian framework (when \(u, q\in\ell^2(\Z)\)). Here the equations are of the form
-\begin{equation}
+\begin{equation*}
 	\dot U = J \mcH'(U)
-\end{equation}
+\end{equation*}
 where \(U = (u,q)\), \(J\) is the skew-symmetric operator given by
-\begin{equation}
+\begin{equation*}
 	J = \begin{bmatrix}
 		0 & e^\partial - 1 \\ 1 - e^{-\partial} & 0
 	\end{bmatrix}
-\end{equation}
+\end{equation*}
 and \(\mcH(U) = \sum_{n\in\Z} \frac 1 2 q_n^2 + V(u_n)\). The operators \(e^\partial\) and \(e^{-\partial}\) are the forward and backward shift operators, respectively. So we have \((e^\partial u)_n = u_{n+1}\) and \((e^{-\partial}u)_n = u_{n-1}\).
 
 We will now introduce the traveling wave ansatz for the system in \cref{first-order-lattice-eqns}, but we first must assume certain regularity and decay of \(f\) and \(g\).
@@ -339,22 +346,22 @@ and
 The wave speed \(c\) is again given by \cref{ansatz-wave-speed}. 
 
 The form that the ansatz takes for \(u_n(t)\) is clear. For \(q_n(t)\) we need to define \(F\), \(G\), and \(\Phi\) (where \(F_{-\infty}\) is a constant to specified shortly thereafter). One would expect  
-\begin{equation}
+\begin{equation*}
 	\begin{aligned}
 		q_n(t) &= \sum_{k=-\infty}^{n-1} \dot u_n(t) \\
 		&\approx \sum_{k=-\infty}^{n-1} [ \epsilon^2 \partial_1 f (\epsilon(k+t) ) + \epsilon^4 \partial_2 f(\epsilon(k+t)) \\
 		&\quad+ \epsilon^2 c \partial_1 g(\epsilon (k-ct))  +\epsilon^4 \partial_2 g(\epsilon(k-ct)) \\
 		&\quad+ \epsilon^4 \partial_2 \phi(\epsilon k) ].
 	\end{aligned}
-\end{equation}
+\end{equation*}
 However, the final summation does not have a simple closed form, and so would be difficult to use. Instead, the summation is approximated with simpler terms up to an appropriate order of \(\epsilon\). We choose \(F\), \(G\), and \(\Phi\) so that 
-\begin{equation}
+\begin{equation*}
 	\begin{aligned}
 		\epsilon F(\epsilon (n+1 + t)) - \epsilon F(\epsilon(n+t)) &= \epsilon^2 \partial_1 f(\epsilon(n+t)) + \epsilon^4 \partial_2 f(\epsilon (n+1)) + \mathcal O(\epsilon^6) \\
 		\epsilon G(\epsilon(n+1 -ct)) - \epsilon G(\epsilon(n-ct)) &=  \epsilon^2 c \partial_1 g(\epsilon (n-ct))  +\epsilon^4 \partial_2 g(\epsilon(n-ct)) + \mathcal O(\epsilon^6) \\
 		\epsilon^3 \Phi(\epsilon(n+1)) - \epsilon^3 \Phi(\epsilon(n)) &= \epsilon^4 \partial_2 \phi(\epsilon n) + \mathcal O(\epsilon^6) .
 	\end{aligned}
-\end{equation}
+\end{equation*}
 After this choice, the summation of the terms on the left has a simpler and explicit representation. Thus, following some calculations, we get the following:
 \begin{align}
 	F &:= f - \frac{\epsilon} 2 \partial_1 f + \frac{\epsilon^2} 8 \partial_1^2 f - \frac{\epsilon^2}{12} f^3  - \frac{\epsilon^3}{48} \partial_1^3 f + \frac{\epsilon^3} 8 f^2 \partial_1 f\\
@@ -363,16 +370,16 @@ After this choice, the summation of the terms on the left has a simpler and expl
 	\Phi &:=  \partial_1^{-1}\psi - \frac{\epsilon} 2 \psi.
 \end{align}
 Here \(\psi = \partial_2 \phi\) and \(\partial_1^{-1}\) is defined as a Fourier multiplier. That \(\partial_1^{-1}\psi\) is well-defined and in \(H^5(\R)\) follows from \cref{psi-fourier-transform}. Namely, we have that 
-\begin{equation}
+\begin{equation*}
 \begin{aligned}
 	&\mcF[\partial_1^{-1} \psi(\cdot, T)](k) = (ik)^{-1} \hat\psi(k,T) \\
 	&\quad = \frac{-i} 2 \int_0^T k \cos(k(T-\tau)) \times \\ &\quad \mcF[(f^2(\cdot+\tau,\epsilon^2\tau)-f_\infty^2)g(\cdot-c\tau,\epsilon^2\tau) +(f(\cdot+\tau,\epsilon^2\tau)-f_\infty)g^2(\cdot-c\tau,\epsilon^2\tau)](k) \, d\tau
 \end{aligned}
-\end{equation}
+\end{equation*}
 and (following the same calculations in \cref{phi-sobolev-bound}) 
-\begin{equation}
+\begin{equation*}
 	\| \partial_1^{-1}\psi(\cdot,T) \|_{H^5} \leq C \int_0^T \sup_{x\in\R} \frac 1 {\langle x + \tau\rangle_+^2 \langle x - c\tau\rangle^2} \times \Bigg( \|f\|^2_{\mathcal X^{6}_{2}} \| g \|_{H^{6}_2} + \|f\|_{\mathcal X^{6}_{2}} \| g \|^2_{H^{6}_2} \Bigg) \, \mathrm d \tau. 
-\end{equation}\Cref{assumption-1} implies that \(F\) has fixed limits in its spatial variable at \(\pm \infty\) given by \(F_{\pm\infty} = f_{\pm\infty} -\frac{\epsilon^2}{12} f^3_{\pm\infty}\).
+\end{equation*}\Cref{assumption-1} implies that \(F\) has fixed limits in its spatial variable at \(\pm \infty\) given by \(F_{\pm\infty} = f_{\pm\infty} -\frac{\epsilon^2}{12} f^3_{\pm\infty}\).
 
 We want \(\mcU(t)\) and \(\mcQ(t)\) to be elements of \(\ell^2(\Z)\) (at least locally in time). However, to satisfy \(\mcQ(0)\in\ell^2(\Z)\) and \(\dot u_n(0) = q_{n+1}(0) - q_n(0)\), a compatibility condition must hold.
 \begin{assum}\label{assumption-2}
@@ -391,7 +398,7 @@ An equivalent set of equations to \cref{first-order-lattice-eqns} are given by
 	\end{aligned} \right. \hspace{-0.5em}n\in\Z,
 \end{equation}
 where
-\begin{equation}
+\begin{equation*}
 \begin{aligned}
 	\ResnI =& \epsilon F(\epsilon(n+1+t)) - \epsilon F(\epsilon(n+t)) \\
 	&\quad + \epsilon G(\epsilon(n+1-c t) - \epsilon G(\epsilon(n-c t) + \epsilon^3 \Phi(\epsilon (n+1))   - \epsilon^3 \Phi(\epsilon n) \\
@@ -399,8 +406,8 @@ where
 	f(\epsilon(n+t)) \\
 	&\quad + \epsilon^2 c \partial_1 g(\epsilon(n-ct)) - \epsilon^4 \partial_2 g(\epsilon(n-ct)) - \epsilon^4 \partial_2 \phi(\epsilon n) ,
 \end{aligned}
-\end{equation}
-\begin{equation}
+\end{equation*}
+\begin{equation*}
 \begin{aligned}
 	\ResnII =& \epsilon f(\epsilon(n+t)) - \epsilon f(\epsilon(n-1+t)) \\
 	&\quad+ \epsilon g(\epsilon(n-c t)) - \epsilon g(\epsilon(n-1-c t) + \epsilon^3 \phi(\epsilon n) - \epsilon^3 \phi(\epsilon (n-1)) \\
@@ -410,16 +417,16 @@ where
 	&\quad - \frac 1 6 \Big( (\epsilon f(\epsilon(n+t)) + \epsilon g(\epsilon(n-c t)) + \epsilon^3 \phi(\epsilon n))^3 \\
 	&\hspace{6em} - (\epsilon f(\epsilon(n-1+t)) + \epsilon g(\epsilon(n-1-c t)) + \epsilon^3 \phi(\epsilon (n-1)))^3 \Big),
 \end{aligned}
-\end{equation}
+\end{equation*}
 and 
-\begin{equation}
+\begin{equation*}
 \begin{aligned}
 	&\mathcal B_n(\epsilon f + \epsilon g + \epsilon^3 \phi, \mathcal U) \\
 	&\quad= -\frac 1 6 \Big( 3(\epsilon f(\epsilon(n+t) + \epsilon g(\epsilon(n-ct)) + \epsilon^3 \phi(\epsilon n))  \mathcal U^2_n(t) \\
 	&\quad \qquad - 3(\epsilon f(\epsilon(n-1+t) + \epsilon g(\epsilon(n-1-ct)) + \epsilon^3 \phi(\epsilon (n-1)))  \mathcal U^2_{n-1}(t) \\
 	&\quad\qquad + \mathcal U_n^3(t)  - \mathcal U_{n-1}^3(t)\Big).
 \end{aligned}
-\end{equation}
+\end{equation*}
 The terms \(\mcU\) and \(\mcQ\) control the error associated with the ansatz in \cref{u-ansatz,q-ansatz}. Thus if these terms remain small in the \(\ell^2(\Z)\) norm, then the traveling wave ansatz will remain valid. In particular, if one has that \(\|\mcU\|_{\ell^2} \leq C\epsilon^{5/2}\), then the ansatz \(\epsilon f + \epsilon g\) is valid up to order \(\epsilon^{5/2}\) (since \(\phi\) is uniformly bounded in norm and is thus \(\mathcal O (1)\)). Similarly, if \(\mcQ\) is of order \(\epsilon^{5/2}\), then one can show that \(\dot u_n(t)\) is approximated by \(\epsilon^2 \partial_1 f + \epsilon^2 \partial_1 g\) up to order \(\epsilon^{5/2}\). Hence, controlling the norms of \(\mcU\) and \(\mcQ\) is sufficient in proving the approximation holds.
 
 \section{Preparatory Estimates}
@@ -475,7 +482,7 @@ To control the dynamics of \(\mcU\) and \(\mcQ\), we need estimates of the resid
 	Note that all the terms in \cref{F-res1} cancel except \(I_{f,1}\), and so we are only left with terms of order \(\epsilon^6\). Applying \cref{h1-ell2-ineq} (and \cref{prod-rule-1-lem,prod-rule-2-lem} when needed) to the terms in \cref{If1} gives that the \(\ell^2\) norm on the left-hand side of \cref{F-res1} can be bounded by \[C(\epsilon^{11/2}(\delta + \delta^3))\] for some choice of constant \(C>0\).
 	
 	Doing the same Taylor expansion for the \(g\) and \(G\) gives
-	\begin{equation}
+	\begin{equation*}
 		\begin{aligned}
 			&\epsilon G(\cdot + \epsilon) - \epsilon G + \epsilon^2c \partial_1 g - \epsilon^4 \partial_2 g  = \\
 			&\hspace{10em}\begin{aligned}
@@ -496,7 +503,7 @@ To control the dynamics of \(\mcU\) and \(\mcQ\), we need estimates of the resid
 				& & & & + & \frac{\epsilon^4}{24} \partial_1^3 g && &+ I_{g,1}(nt),
 			\end{aligned}
 		\end{aligned}
-	\end{equation}
+	\end{equation*}
 	where \(I_{g,1}\) contains the integral remainder terms.
 	\begin{equation}\label{Ig1}
 	\begin{aligned}
@@ -512,15 +519,15 @@ To control the dynamics of \(\mcU\) and \(\mcQ\), we need estimates of the resid
 
 	
 	Similarly we have
-	\begin{equation}
+	\begin{equation*}
 		\epsilon^3 \Phi(\epsilon(n+1), \epsilon t) - \epsilon^3\Phi(\epsilon n , \epsilon t) - \epsilon^4 \partial_2 \phi_2(\epsilon n, \epsilon t) =  \frac{\epsilon^6} 2 \int_0^1 \partial_1^2 \psi(\epsilon(n+s),\epsilon t)(1-s)^2\, ds,
-	\end{equation}
+	\end{equation*}
     so the \(\ell^2\) norm can also be controlled.
 	
 	Therefore we have 
-	\begin{equation}
+	\begin{equation*}
 		\| \ResI \|_{\ell^2} \leq C \epsilon^{11/2}(\delta + \delta^3)
-	\end{equation}
+	\end{equation*}
 
 	The bound on \(\ResII\) can be approached similarly. Focusing on the terms with \(f\) and \(F\) in \(\ResII\), we have 
 	\begin{equation}\label{F-res2}
@@ -580,9 +587,9 @@ To control the dynamics of \(\mcU\) and \(\mcQ\), we need estimates of the resid
 	Formally applying \(\partial_1\) implies that the above terms should be constant in space since \(\partial_2 \psi = \partial_2^2 \phi\) satisfies \cref{phi-pde}. However, one should be careful with this calculation due to the differences in scaling of the spatial variables: for example, \(\phi\) and \(\psi\)'s spatial variable is rescaled to \(\epsilon n\) while \(f\)'s is rescaled to \(\epsilon(n+t)\). Taking a derivative with respect to \(\xi = \epsilon x\) gives that \cref{psi-phi-remainder} must be constant. Since all the terms decay to zero at spatial infinity, \cref{psi-phi-remainder} is exactly zero.
 	
 	The terms of order \(\epsilon^5\) can be rewritten as
-	\begin{equation}
+	\begin{equation*}
 		\frac 1 4 \partial_1( - 2 \partial_2 g - \frac 1 {12} \partial_1^3 g + \frac 1 6 (g^3 + 3f_\infty g^2)) + \frac 1 2 (\partial_2^2\phi - \partial_1^2\phi + \frac 1 6 \partial_1^2(3(f-f_\infty )g^2 + 3 (f^2-f_\infty^2)g))
-	\end{equation}
+	\end{equation*}
 	which is equal to zero since \(g\) and \(\phi\) satisfy the PDEs in \cref{g-gKdV,phi-pde}. Thus the right-hand side of \cref{G-res2} is equal to \(I_{g,2}\). The integral terms in \cref{Ig2} are bounded as before. The remaining terms in \cref{Ig2} can be bounded by evaluating \(\partial_2 g\) using \cref{g-gKdV} and then applying \cref{h1-ell2-ineq}. We can the get the following bound: \[\| \mathrm{Res}^{(2)}(t) \|_{\ell^2} \leq C \epsilon^{11/2} (\delta + \delta^3 + \delta^5).\] Interpolating between powers of \(\delta\) gives the desired inequality \cref{res-ineq}.
 	
 	The proof of \cref{nonlinear-ineq} follows immediately.
@@ -599,67 +606,67 @@ The following lemma gives us that \(\mcE\) can be used to control \(\mcU\) and \
 		\|\mathcal Q(t) \|_{\ell^2}^2 + \| \mathcal U (t) \|_{\ell^2}^2 \leq  4 \mathcal E(t), \quad \text{for } t\in(-\tau_0\epsilon^{-3}, \tau_0\epsilon^{-3}).
 	\end{equation}
 	Moreover, there exists \(C> 0\) independent of \(\epsilon\) and \(\delta\) such that 
-	\begin{equation}
+	\begin{equation*}
 		\left|\frac{d\mathcal E}{dt} \right| \leq C \mathcal E^{1/2}\left[ \epsilon^{11/2} (\delta + \delta^5)  + \epsilon^3\delta^2\mathcal E^{1/2} + \epsilon(\delta + \mathcal{E}^{1/2})\mathcal E\right]
-	\end{equation}
+	\end{equation*}
 	for every \(t\in [-\tau_0\epsilon^{-3}, \tau_0\epsilon^{-3}]\) and \(\epsilon \in (0,\epsilon_0)\). 	  
 \end{lem}
 \begin{proof}
 	Note that \(\delta>0\) can be used to control the \(L^\infty(\R)\) norms of \(f\), \(g\), and \(\psi\). Thus we can choose \(\epsilon_0\) small enough so that for \(\epsilon \in (0,\epsilon_0)\) we have 
-	\begin{equation}
+	\begin{equation*}
 		1 - \frac 12 \left( \epsilon \| f\|_{L^\infty} + \epsilon \|g\|_{L^\infty} + \epsilon^3 \| \phi \|_{L^\infty} \right)^2 \geq \frac 12,
-	\end{equation}
-	independent on the particular choices of \(f\) and \(g\). 	Hence
-	\begin{equation}
+	\end{equation*}
+	independent of the particular choices of \(f\) and \(g\). 	Hence
+	\begin{equation*}
 		\mathcal E(t) \geq \frac 1 2 \| \mathcal Q \|_{\ell^2}^2 + \frac 1 4 \| \mathcal U\|_{\ell^2}^2 \geq \frac 1 4\| \mathcal Q \|_{\ell^2}^2 + \frac 1 4 \| \mathcal U\|_{\ell^2}^2
-	\end{equation}
+	\end{equation*}
 	and \cref{coercive-bound} follows.
 	
 	Now we take the time derivative of \(\mathcal E\) to get that 
-	\begin{equation}
+	\begin{equation*}
 	\begin{aligned}
 		\frac{d\mcE}{dt} = \sum_{n \in \Z} &\mathcal Q_n(t) \ResnII + \mathcal Q_n(t) 	\mathcal B_n(\epsilon f + \epsilon g + \epsilon^3 \phi, \mathcal U(t)) \\
 		&+ \mathcal U_n(t) \ResnI \left( 1 - \frac 12 (\epsilon f+ \epsilon g + \epsilon^3 \phi)^2  \right) \\
 		&+ \mathcal U_n^2(t)(\epsilon f + \epsilon g + \epsilon^3 \phi) \times (\epsilon^2\partial_1 f + \epsilon^4\partial_2 f -\epsilon^2 c \partial_1 g + \epsilon^4 \partial_2 g + \epsilon^4 \partial_2 \phi).
 	\end{aligned}
-	\end{equation}
+	\end{equation*}
 	Then using the Cauchy inequality and the H\"older inequality for \(p=1\) and \(q=\infty\) we get that
-	\begin{equation}
+	\begin{equation*}
 	\begin{aligned}
 		\left| \frac{d\mathcal E}{dt} \right| \leq& \| \mathcal Q \|_{\ell^2 }\times \|\ResII \|_{\ell^2} + \| \mathcal Q \|_{\ell^2} \times \| \mathcal B \|_{\ell^2}  + \|\mathcal U \|_{\ell^2} \times \| \ResnI \|_{\ell^2}\\
 		& + \|\mathcal U^2 \|_{\ell^1} \times  \| (\epsilon f+ \epsilon g + \epsilon^3 \phi)  \times  (\epsilon^2\partial_1 f + \epsilon^4\partial_2 f -\epsilon^2 c \partial_1 g + \epsilon^4 \partial_2 g + \epsilon^4 \partial_2 \phi )\|_{\ell^\infty} .
 	\end{aligned}
-	\end{equation}
+	\end{equation*}
 	Note that if \(a \in \ell^2\), then \(a\in \ell^\infty\) and \(\|a\|_{\ell^\infty} \leq \|a \|_{\ell^2}\). Thus we can replace the \(\ell^\infty\) norms above with \(\ell^2\) norms. Using the results in \cref{residual-nonlinearity-bounds}, we thus have 
-	\begin{equation}
+	\begin{equation*}
 	\begin{aligned}
 		\left| \frac{d\mathcal E}{dt} \right| \leq& C\Big[\mathcal E^{1/2} \epsilon^{11/2}(\delta + \delta^5) + \mathcal E^{1/2}\epsilon [(\delta + \epsilon^2 \delta^3)\mathcal E + \mathcal E^{3/2}]  \\
 		&\quad + \mathcal E(\epsilon^3 \delta^2 + \epsilon^5\delta^2 + \epsilon^5 \delta^4 + \epsilon^7\delta^4 + \epsilon^7 \delta^6) \Big],
 	\end{aligned}
-	\end{equation}
+	\end{equation*}
  	where the \(C>0\) is independent of \(\epsilon\) and \(\delta\). The right-hand side of the above inequality can be simplified by taking \(\epsilon_0\) smaller. That is, taking \(\epsilon_0\) sufficiently small (dependent on \(\delta\)), we can absorb higher orders of \(\epsilon\) into lower orders. For example, \(\epsilon^3 \delta^2 + \epsilon^5\delta^2 \leq 2 \epsilon^3 \delta^2\) for \(\epsilon\) small enough. Thus we arrive at  		
-	\begin{equation}
+	\begin{equation*}
 		\left|\frac{d\mathcal E}{dt} \right| \leq C \mathcal E^{1/2}\left[ \epsilon^{11/2} (\delta + \delta^5)  + \epsilon^3\delta^2\mathcal E^{1/2} + \epsilon(\delta + \mathcal{E}^{1/2})\mathcal E\right]
-	\end{equation}
+	\end{equation*}
 	as desired.
 \end{proof}
 
 
 Lastly, before we can prove our main result, we must show that for appropriate initial conditions that \(\mcU(0)\) and \(\mcQ(0)\) are suitably small. In particular, we want our initial conditions to be ``close to" the traveling wave ansatz in the sense that 
-\begin{equation}
+\begin{equation*}
 	u_n(0) \approx \epsilon f(\epsilon n , 0) + \epsilon g(\epsilon n , 0)
-\end{equation}
+\end{equation*}
 and 
-\begin{equation}
-	\dot u_n(0) \approx \epsilon \partial_1 f(\epsilon n , 0) -\epsilon^2 g(\epsilon n,0)
-\end{equation}
+\begin{equation*}
+	\dot u_n(0) \approx \epsilon \partial_1 f(\epsilon n , 0) -\epsilon^2 \partial_ 1 g(\epsilon n,0)
+\end{equation*}
 where the higher-order \(\epsilon\) terms are neglected. Recall that we assume \(\phi\) and \(\partial_1\phi\) to have initial conditions exactly equal to zero, so those terms drop. A seemingly appropriate notion of ``closeness" would be in the \(\ell^2\) norm, as used in \cite{khan2017long,schneider2000counter}. However, since \(q_n(0) = \sum_{k=-\infty}^{n-1} \dot u_{k}(0)\), we may lose some decay due to the summation and \(\mcQ(0)\) will not be in \(\ell^2\). To counter this, we need some extra localization assumptions on \(\dot u_n(0)\).
 
 \begin{assum}\label{assumption-3}
 	Suppose that the initial conditions for \(u\) satisfy
-	\begin{equation}
+	\begin{equation*}
 		\| u(0) - \epsilon f(\epsilon \cdot, 0) - \epsilon g(\epsilon \cdot, 0) \|_{\ell^2} + \| \dot u(0) - \epsilon^2 \partial_1 f(\epsilon \cdot, 0) + \epsilon^2 \partial_1 g (\epsilon \cdot , 0) \|_{\ell^2_2} \leq \epsilon^{5/2}
-	\end{equation}
+	\end{equation*}
 	and that \(f(\cdot, 0) \in \mcX^6_2\) and \(g(\cdot, 0) \in H^6_2\)
 \end{assum}
 
@@ -667,13 +674,13 @@ The \(\ell^2_2\) norm will be sufficient to get that the summation is in \(\ell^
 \begin{restatable}{lem}{elltwo}
 \label{ell22-lemma}
 	If \(a\in \ell^2_2(\Z)\) and 
-	\begin{equation}
-		\sum_{k=-\infty}^n a_k = 0,
-	\end{equation}
+	\begin{equation*}
+		\sum_{k=-\infty}^\infty a_k = 0,
+	\end{equation*}
 	then \(b_n = \sum_{k=-\infty}^n a_k\) is in \(\ell^2(\Z)\) and 
-	\begin{equation}
+	\begin{equation*}
 		\|b\|_{\ell^2} \leq C \|a\|_{\ell^2_2}
-	\end{equation}
+	\end{equation*}
 	for some \(C> 0\) independent of \(a\).
 \end{restatable} 
 See \cref{lemma-appendix} for proof.
@@ -682,10 +689,6 @@ See \cref{lemma-appendix} for proof.
 We can now show the following.
 \begin{lem}\label{initial-conditions-lem}
 	Let \cref{assumption-2,assumption-3} hold. Then \(\mcU(0),\mcQ(0) \in \ell^2(\Z)\) satisfy
-	\begin{equation}\label{diff-eqn}
-		\dot u_n(0) = q_{n+1}(0) - q_n(0)
-	\end{equation}
-	and 
 	\begin{equation}\label{initial-condition-ineq}
 		\| \mcU(0) \|_{\ell^2} + \|\mcQ(0)\|_{\ell^2} \leq C \epsilon^{5/2}
 	\end{equation}
@@ -695,6 +698,10 @@ We can now show the following.
 \begin{proof}
 	That \(\|\mcU(0)\|_{\ell^2}\leq C \epsilon^{5/2}\) follows immediately from applying \cref{assumption-3} to \cref{u-ansatz}.
 	
+	We have from the definition of \(u_n\) and \(q_n\) that
+	\begin{equation}\label{diff-eqn}
+		\dot u_n(0) = q_{n+1}(0) - q_n(0)
+	\end{equation}
 	For \(q_n(0)\) to satisfy \cref{diff-eqn}, it must equal \(\sum_{k=-\infty}^{n-1} \dot u_k(0)\) (modulo a constant which we assume without loss of generality to be zero). Thus we have
 	\begin{equation}\label{q0-summation}
 	\begin{aligned}	
@@ -706,13 +713,13 @@ We can now show the following.
 	\end{aligned}
 	\end{equation}
 	Comparing \cref{q0-summation} to \cref{q-ansatz}, we have that 
-	 \begin{equation}\label{mcq-zero}
+	 \begin{equation*}\label{mcq-zero}
 	 \begin{aligned}
 		\mcQ_n(0) =& \sum_{k=-\infty}^{n-1}\left[ \dot u_k(0) - \epsilon^2 \partial_1 f(\epsilon k,0) - \epsilon^4 \partial_1 f(\epsilon k,0) + \epsilon^2 c \partial_1 g(\epsilon k,0) - \epsilon^4 \partial_2g(\epsilon k,0)\right] \\
 		&+\sum_{k=-\infty}^{n-1}\left[  \epsilon^2 \partial_1 f(\epsilon k,0) +\epsilon^4 \partial_1 f(\epsilon k,0) - \epsilon F(\epsilon(k+1),0) +\epsilon F(\epsilon k ,0)  \right] \\
 		&+ \sum_{k=-\infty}^{n-1}\left[ - \epsilon^2 c\partial_1 g(\epsilon k,0) +\epsilon^4 \partial_1 g(\epsilon k,0) - \epsilon G(\epsilon(k+1),0) +\epsilon G(\epsilon k ,0)  \right].
 	\end{aligned}
-	\end{equation}
+	\end{equation*}
 	That \(\mcQ_n(0)\to 0\) as \(n\to\infty\) is guaranteed by \cref{assumption-2}. Now \cref{ell22-lemma} can be applied to get the result if the summands are in \(\ell^2_2\) and of order \(\epsilon^{5/2}\). The first summand satisfies this condition because of \cref{assumption-3}.  Note that the latter summands are equal to \(-I_{f,1}(k,0)\) and \(-I_{g,1}(k,0)\), as defined in \cref{If1,Ig1}. This follows from the earlier calculations in \cref{residual-nonlinearity-bounds}. That \(I_{f,1}(k,0)\) and \(I_{g,2}(k,0)\) are elements of \(\ell^2_2\) follows from \(f(\cdot, 0) \in \mcX^6_2\) and \(g(\cdot, 0) \in H^6_2\) and an application of \cref{h1-ell2-ineq}.
 	
 	Thus we have \cref{initial-condition-ineq} where the \(C>0\) can be chosen based on the norms of \(f\) and \(g\).
@@ -724,47 +731,47 @@ In this section, we prove that the solutions of the FPUT can be approximated by 
 
 \begin{theorem}
 	Let \cref{assumption-1} hold and set
-	\begin{equation}
+	\begin{equation*}
 		\delta = \max \left\{\sup_{\tau\in[-\tau_0, \tau_0]}\|f(\cdot,\tau)\|_{\mcX^6_2},\ \sup_{\tau\in[-\tau_0, \tau_0]} \|g(\cdot, \tau)\|_{H^6_2} \right\}
-	\end{equation}
+	\end{equation*}
 	There exists positive constants \(\epsilon_0\) and \(C\) such that for all \(\epsilon \in(0,\epsilon_0)\), when initial data \((u(0), \dot u(0))\) satisfy \cref{assumption-2,assumption-3}, the unique solution \((u,q)\) to the FPU equation \cref{first-order-lattice-eqns} belongs to 
-	\begin{equation}
+	\begin{equation*}
 		C^1([-t_0(\epsilon), t_0(\epsilon)], \ell^\infty(\mathbb Z))
-	\end{equation}
+	\end{equation*}
 	with \(t_0(\epsilon):= \epsilon^{-3}\tau_0 \) and satisfies
-	\begin{equation}
+	\begin{equation*}
 		\begin{aligned}
 			&\| u(t) - \epsilon f(\epsilon(\cdot+t), \epsilon^3 t) -\epsilon g(\epsilon(\cdot -ct) ,\epsilon^3 t) \|_{\ell^2} \\
 			&\quad + \| \dot u(t) - \epsilon \partial_1 f(\epsilon (\cdot +t),\epsilon^3t)  +\epsilon^2 \partial_1 g(\epsilon(\cdot - ct), \epsilon^3t)\|_{\ell^2} \leq C \epsilon^{5/2 }, \quad t\in[-t_0(\epsilon), t_0(\epsilon)].
 		\end{aligned}
-	\end{equation}
+	\end{equation*}
 \end{theorem}
 
 \begin{proof}
 	Set \(\mathcal S := \mathcal E ^{1/2}\) where \(\mathcal E\) is defined in \cref{energy-function}. From the results in \cref{initial-conditions-lem}, we get that \(\mathcal S(0) \leq C_0 \epsilon^{5/2}\) for some constant \(C_0 > 0\) and \(\epsilon_0\) as chosen in \cref{energy-coercive-bounds-lem}. For fixed constant \(C> 0\) define
-	\begin{equation}
+	\begin{equation*}
 		T_{C} := \sup \left\{T_0 \in (0,   \epsilon^{-3} \tau_0]: \mathcal S(t) \leq C \epsilon^{5/2},\, t\in [-T_0, T_0]\right\}.
-	\end{equation} 
+	\end{equation*} 
 	The goal is then to pick \(C\) so that \(T_{C} = \epsilon^{-3} \tau_0\).
 	
 	We have that
-	\begin{equation}
+	\begin{equation*}
 		\begin{aligned}
 			\left | \frac d {dt} \mathcal S(t) \right | &= \frac 1 {2 \mathcal E ^{1/2}} \left | \frac d {dt} \mathcal E(t) \right| \\
 			&\leq C_1(\delta + \delta^5) \epsilon^{11/2} + C_2 \epsilon^3\left[ \delta^2 + \epsilon^{-2}(\delta + \mathcal S) \mathcal S \right]\mathcal S
 		\end{aligned}
-	\end{equation}
+	\end{equation*}
 	where \(C_1, C_2 > 0\) are independent of \(\delta\) and \(\epsilon\). While \(|t| \leq T_{C}\),
-	\begin{equation}
+	\begin{equation*}
 		C_2 \left[ \delta^2 + \epsilon^{-2}(\delta + \mathcal S) \mathcal S \right] \leq C_2 \left[ \delta^2  + (\delta +  C\epsilon^{5/2}) C \epsilon^{1/2} \right],
-	\end{equation}
+	\end{equation*}
 	where the right-hand side is continuous in \(\epsilon \) for \(\epsilon \in [0,\epsilon_0]\) and \(C>0\). Furthermore, the right-hand side of the inequality above is increasing in both \(\epsilon\) and \(C\), and so we can uniformly bound the term by some fixed number. Set \(K(C,\epsilon_0)= K>0\) to be
-	\begin{equation}\label{K-def-2}
+	\begin{equation*}\label{K-def-2}
 		K :=  \left[ \delta^2  + (\delta +  C\epsilon_0^{5/2}) C \epsilon_0^{1/2} \right].
-	\end{equation}
+	\end{equation*}
 	
 	Hence, we can get that for \(t \in [-T_{C}, T_{C}]\) 
-	\begin{equation}
+	\begin{equation*}
 		\begin{aligned}
 			\frac d {dt} e^{-\epsilon^3 K t} \mathcal S(t) &= - \epsilon^3 K e^{-\epsilon^3 K t} \mathcal S  + e^{-\epsilon^3 K t} \frac d {dt} \mathcal S \\
 			&\leq - \epsilon^3 K e^{-\epsilon^3 K t} \mathcal S  + e^{-\epsilon^3 K t}C_1(\delta + \delta^5) \epsilon^{11/2} \\
@@ -772,27 +779,27 @@ In this section, we prove that the solutions of the FPUT can be approximated by 
 			&\leq - \epsilon^3 K e^{-\epsilon^3 K t} \mathcal S  +  e^{-\epsilon^3 K t}C_1(\delta + \delta^5) \epsilon^{11/2} + \epsilon^3 K e^{-\epsilon^3 K t}\mathcal S \\
 			&= e^{-\epsilon^3 K t}C_1(\delta + \delta^5) \epsilon^{11/2}.
 		\end{aligned}
-	\end{equation}
+	\end{equation*}
 	Integrating gives
-	\begin{equation} 
+	\begin{equation*} 
 		\begin{aligned}
 			\mathcal S(t) &\leq \left( \mathcal S(0) + K^{-1} C_1 (\delta+\delta^5) \epsilon^{5/2} \right) e^{\epsilon^3 K t} - \epsilon^{5/2} K^{-1} C_1 (\delta + \delta^5) \\
 			&\leq \left(C_0+ K^{-1} C_1 (\delta+\delta^5)  \right) \epsilon^{5/2}e^{\epsilon^3 K t} \\
 			&\leq (C_0 + K^{-1} C_1 (\delta+\delta^5) ) e^{K\tau_0} \epsilon^{5/2}
 		\end{aligned}
-	\end{equation}
+	\end{equation*}
 	for \(t \in [-T_{C}, T_{C}]\). If we have 
 	\begin{equation}\label{C-ineq-bound}
 		(C_0 + K^{-1} C_1 (\delta+\delta^5) ) e^{K\tau_0}  \leq C
 	\end{equation} 
 	then we can conclude that \(T_C = \epsilon^{-3}\tau_0.\) Note that the left-hand side of the inequality goes to 
-	\begin{equation}
+	\begin{equation*}
 		(C_0 + \delta^{-2} C_1 (\delta+\delta^5) ) e^{\delta^2\tau_0}
-	\end{equation}
+	\end{equation*}
 	as \(\epsilon \to 0\) for fixed values of \(C\). Thus choose \(C>0\) large enough so that
-	\begin{equation}
+	\begin{equation*}
 		(C_0 + \delta^{-2} C_1 (\delta+\delta^5) ) e^{\delta^2\tau_0} < C
-	\end{equation}
+	\end{equation*}
  	and then we can make \(\epsilon_0\) sufficiently small so that \cref{C-ineq-bound} holds for all \(\epsilon \in (0,\epsilon_0]\).
 \end{proof}
 
@@ -806,61 +813,61 @@ The localization assumption is only necessary to keep \(\phi\), the term coming 
 
 \begin{assum}\label{assumption-4}
 	Let \(f\) be a solution to \cref{f-mKdV} and set \(g = 0\). Assume that 
-	\begin{equation}
+	\begin{equation*}
 		f \in C_b(\R, \mcX^6(\R)).
-	\end{equation}
+	\end{equation*}
 	Furthermore, assume that \(f\) has fixed limits in its spatial variables at \(\pm \infty\) given by \(f_{\pm \infty}\).
 \end{assum}
 
 We will still need to assume that the initial condition of \(f\) is still localized as in \cref{assumption-3}, but this assumption holds for many solutions including the kink solutions of \cref{f-mKdV}.
 
-The following result and proof are analogous to those of \cite[Thm.~1]{khan2017long}.
+The following result and proof are analogous to those of \cite[Thm.~1]{khan2017long}. The idea behind the proof is to sacrifice some accuracy in the approximation (so that the error is \(\mcO(\epsilon^{5/2 - r})\)) in order to extend the time that the approximation holds (which will now be \(\mcO(\epsilon^{-3} |\log(\epsilon)|)\)).
 
 \begin{theorem}
 	Let \cref{assumption-4} hold and set 
-	\begin{equation}
+	\begin{equation*}
 		\delta =\sup_{\tau\in\R}\|f(\cdot,\tau)\|_{\mcX^6}
-	\end{equation}
+	\end{equation*}
 	For fixed \(r\in(0,1/2)\), there exists positive constants \(\epsilon_0\), \(C\), and \(K\) such that for all \(\epsilon \in(0,\epsilon_0)\), when initial data \((u(0), \dot u(0))\) satisfy \cref{assumption-2,assumption-3}, the unique solution \((u,q)\) to the FPU equation \cref{first-order-lattice-eqns} belongs to 
-	\begin{equation}
+	\begin{equation*}
 		C^1([-t_0(\epsilon), t_0(\epsilon)], \ell^\infty(\mathbb Z))
-	\end{equation}
+	\end{equation*}
 	with \(t_0(\epsilon):= r K^{-1} \epsilon^{-3} | \log (\epsilon) | \) and satisfies
-	\begin{equation}
+	\begin{equation*}
 	\begin{aligned}
 		&\| u(t) - \epsilon f(\epsilon(\cdot+t), \epsilon^3 t) \|_{\ell^2} \\
 		&\quad + \| \dot u(t) - \epsilon \partial_1 f(\epsilon (\cdot +t),\epsilon^3t)  \|_{\ell^2} \leq C \epsilon^{5/2 - r}, \quad t\in[-t_0(\epsilon), t_0(\epsilon)].
 	\end{aligned}
-	\end{equation}
+	\end{equation*}
 \end{theorem}
 
 \begin{proof}
 	%Need to show local existence of solutions
 	
 	Set \(\mathcal S := \mathcal E ^{1/2}\) where \(\mathcal E\) is defined in \cref{energy-function}. From the results in \cref{initial-conditions-lem}, we get that \(\mathcal S(0) \leq C_0 \epsilon^{5/2}\) for some constant \(C_0 > 0\) and \(\epsilon_0\) as chosen in \cref{energy-coercive-bounds-lem}. For fixed constants \(r\in(0,1/2)\), \(C> C_0\), and \(K > 0\), define the maximal continuation time by 
-	\begin{equation}
+	\begin{equation*}
 		T_{C,K,r} := \sup \left\{T_0 \in (0, r K^{-1} \epsilon^{-3} |\log(\epsilon)|]: \mathcal S(t) \leq C \epsilon^{5/2 -r}, t\in [-T_0, T_0]\right\}.
-	\end{equation} 
+	\end{equation*} 
 	We also define the maximal evolution time of the mKdV equation as \(\tau_0(\epsilon) = rK^{-1}|\log(\epsilon)|\). The goal is then to pick \(C\) and \(K\) so that \(T_{C,K,r} = \epsilon^{-3} \tau_0(\epsilon)\).
 	
 	We have that
-	\begin{equation}
+	\begin{equation*}
 	\begin{aligned}
 		\left | \frac d {dt} \mathcal S(t) \right | &= \frac 1 {2 \mathcal E ^{1/2}} \left | \frac d {dt} \mathcal E(t) \right| \\
 		&\leq C_1(\delta + \delta^5) \epsilon^{11/2} + C_2 \epsilon^3\left[ \delta^2 + \epsilon^{-2}(\delta + \mathcal S) \mathcal S \right]\mathcal S
 	\end{aligned}
-	\end{equation}
+	\end{equation*}
 	where \(C_1, C_2 > 0\) are independent of \(\delta\) and \(\epsilon\). While \(|t| \leq T_{C,K,r}\),
-	\begin{equation}
+	\begin{equation*}
 		C_2 \left[ \delta^2 + \epsilon^{-2}(\delta + \mathcal S) \mathcal S \right] \leq C_2 \left[ \delta^2  + \epsilon^{-2}(\delta +  C\epsilon^{5/2-r}) C \epsilon^{5/2-r} \right],
-	\end{equation}
+	\end{equation*}
 	where the right-hand side is continuous in \(\epsilon \) for \(\epsilon \in [0,\epsilon_0]\). Thus the right-hand side can be uniformly bounded by a constant independent of \(\epsilon\). Choose \(K>0\) (dependent on \(C\)) sufficiently large so that 
 	\begin{equation}\label{K-def}
 		C_2 \left[ \delta^2  + \epsilon^{-2}(\delta +  C\epsilon^{5/2-r}) C \epsilon^{5/2-r} \right] \leq K.
 	\end{equation}
 
 	Hence, we can get that for \(t \in [-T_{C,K,r}, T_{C,K,r}]\) 
-	\begin{equation}
+	\begin{equation*}
 	\begin{aligned}
 		\frac d {dt} e^{-\epsilon^3 K t} \mathcal S(t) &= - \epsilon^3 K e^{-\epsilon^3 K t} \mathcal S  + e^{-\epsilon^3 K t} \frac d {dt} \mathcal S \\
 		&\leq - \epsilon^3 K e^{-\epsilon^3 K t} \mathcal S  + e^{-\epsilon^3 K t}C_1(\delta + \delta^5) \epsilon^{11/2} \\
@@ -868,19 +875,19 @@ The following result and proof are analogous to those of \cite[Thm.~1]{khan2017l
 		&\leq - \epsilon^3 K e^{-\epsilon^3 K t} \mathcal S  +  e^{-\epsilon^3 K t}C_1(\delta + \delta^5) \epsilon^{11/2} + \epsilon^3 K e^{-\epsilon^3 K t}\mathcal S \\
 		&= e^{-\epsilon^3 K t}C_1(\delta + \delta^5) \epsilon^{11/2}.
 	\end{aligned}
-	\end{equation}
+	\end{equation*}
 	Integrating gives
-	\begin{equation} 
+	\begin{equation*} 
 	\begin{aligned}
 		\mathcal S(t) &\leq \left( \mathcal S(0) + K^{-1} C_1 (\delta+\delta^5) \epsilon^{5/2} \right) e^{\epsilon^3 K t} - \epsilon^{5/2} K^{-1} C_1 (\delta + \delta^5) \\
 		&\leq \left( \mathcal S(0) + K^{-1} C_1 (\delta+\delta^5) \epsilon^{5/2} \right) e^{\epsilon^3 K t} \\
 		&\leq \left( \mathcal S(0) + K^{-1} C_1 (\delta+\delta^5) \epsilon^{5/2} \right) e^{ K \tau_0(\epsilon)} \\
 		&\leq \left( C_0 + K^{-1} C_1 (\delta+\delta^5)  \right) \epsilon^{5/2 -r}
 	\end{aligned}
-	\end{equation}
+	\end{equation*}
 	for \(t \in [-T_{C,K,r}, T_{C,K,r}]\), where the last line follows in part from the definition of \(\tau_0(\epsilon)\). Now choose \(C> C_0\) sufficiently large so that 
-	\begin{equation}
+	\begin{equation*}
 		C_0 + K^{-1} C_1(\delta + \delta^5) \leq C.
-	\end{equation}
+	\end{equation*}
 	Note that our earlier choice of \(K\) can be enlarged so that \cref{K-def} still holds as well as the above inequality. Therefore, with these choices of \(C\) and \(K\), the maximal interval can be extended to \(T_{C,K,r} = \epsilon^{-3} \tau_0(\epsilon) \). 
 \end{proof}
