@@ -6,6 +6,8 @@
 \documentclass[12pt,letterpaper]{report}          % Single-sided printing for the library
 %\documentclass[12pt,twoside]{report} % Double-sided printing
 
+\usepackage{palatino}
+
 %\usepackage[intlimits]{amsmath}
 \usepackage{amsmath}
 \usepackage{amsfonts,amssymb,amsthm,mathtools}
@@ -81,7 +83,7 @@
 \newcommand{\rpt}[2][1]{%
 	\forloop{loopcntr}{0}{\value{loopcntr}<#1}{#2}%
 }
-%\usepackage[showframe]{geometry}
+\usepackage[bottom=1in, right =1in]{geometry}
 
 \crefname{lem}{lemma}{lemmas}
 \Crefname{lem}{Lemma}{Lemmas}

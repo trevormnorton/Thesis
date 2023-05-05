@@ -78,16 +78,17 @@
 
 \textwidth 6.0in               % Leaves 1.0in right margin (was 6.1875in)
 
-\topmargin 0.6875in            % Additional top margin (to the top of the header).
+\topmargin 0.5in            % Additional top margin (to the top of the header).
                                % Header height and header separator add 0.5in 
                                % Total top margin: 1in + 0.5in = 1.5in
 
+
 \headheight 12pt               % Header for numbering and running titles.
-\headsep 24pt                  % Separator between header and text.
+\headsep 0pt                  % Separator between header and text.
 
 \textheight 7.7in              % Leaves 1.0in bottom margin (was 8.4in)
 
-\footskip 0.25in                % Distance from bottom of text to bottom of foot,
+\footskip 0.4in                % Distance from bottom of text to bottom of foot,
                                % which is where page number goes for preliminary
                                % pages. Hence number will be 0.6" from bottom.
                                % [Trevor] Was .4 in but numbers on bottom were getting cut off
@@ -222,7 +223,6 @@
 % so I manually put a \vfill after each \par.
 \def\maketitle{\begin{titlepage}
 \pagenumbering{roman}
-\large
 \BU\\\CAS\par\vfill
 \ifcase\degree\or Thesis \or Dissertation \or Dissertation \fi\par\vfill
 \MakeUppercase{{\bf \@title}}\par\vfill
@@ -259,7 +259,7 @@ requirements for the \@degreeword\ of\\
 \begin{singlespace}
 
 \hspace{2in}
-\large \copyright \hspace{1ex} 
+ \copyright \hspace{1ex} 
 \begin{minipage}[t]{3in}
 \@degreeyear \ by \\
 \MakeUppercase{\@author}\\
@@ -274,7 +274,7 @@ All rights reserved
 % and the handbook will be updated.
 \def\approvalpage{\newpage\thispagestyle{empty}
 \def\baselinestretch{1.2}
-\begin{center}\large
+\begin{center}
 Approved by\\[2em]
 \unvbox\@approvalreader
 \end{center}\newpage}
@@ -285,7 +285,7 @@ Approved by\\[2em]
 \def\abstractpage{\newpage
 \begin{center}
 \begin{doublespace}
-{\large
+{
 \MakeUppercase{{\bf \@title}}\\[1em]%\par
 %\ifcase\degree\or\or
 %  (Order No. \hspace{1.0in})\\[1em] \or
@@ -426,9 +426,9 @@ ABSTRACT
 % Definition of 'myheadings' page style.
 %
 \def\ps@myheadings{\let\@mkboth\@gobbletwo
-\def\@oddhead{\hfil \rm\thepage \hfil}%
-\def\@oddfoot{}\def\@evenhead{\hfil\rm \thepage\hfil}%
-\def\@evenfoot{}\def\chaptermark##1{}\def\sectionmark##1{}%
+\def\@oddhead{}%
+\def\@oddfoot{\hfil \rm \thepage \hfil }\def\@evenhead{}%
+\def\@evenfoot{\hfile \rm \thepage \hfil}\def\chaptermark##1{}\def\sectionmark##1{}%
 \def\subsectionmark##1{}}
 
 % The \endofprelim command is used after all the preliminary pages.
@@ -449,17 +449,17 @@ ABSTRACT
 % command.
 %
 \def\@makechapterhead#1{             % Heading for \chapter command
-  \vspace*{32pt}                     % Space at top of text page.
+  \vspace*{-12pt}                     % Space at top of text page.
   { \parindent 0pt \raggedright
     \ifnum \c@secnumdepth >\m@ne     % IF secnumdepth > -1 THEN
     %\LARGE\bf \@chapapp{} \thechapter % Print 'Chapter' and number.
-    \Large\bf \@chapapp{} \thechapter % Print 'Chapter' and number.
+    \bf \MakeUppercase{\@chapapp{} \thechapter} % Print 'Chapter' and number.
     \par
     \vskip 12pt \fi                  % Space between number and
                                 % title.
     %\Large \bf                         % Title.
-    \LARGE \bf                         % Title.
-    #1\par
+    \bf                         % Title.
+    \MakeUppercase{#1}\par
     \nobreak                         % TeX penalty to prevent page
                                 % break.
     \vskip 24pt                      % Space between title and text.
@@ -471,7 +471,7 @@ ABSTRACT
   \vspace*{32pt}                     % Space at top of page.
   { \parindent 0pt \raggedright
     %\Large\bf                        % Title.
-    \LARGE\bf                        % Title.
+    \bf                        % Title.
     #1\par
     \nobreak                         % TeX penalty to prevent page
                                      % break.
@@ -481,10 +481,10 @@ ABSTRACT
 
 % Also tone down the section headings a bit.
 \def\section{\@startsection {section}{1}{\z@}{-3.5ex plus -1ex minus
-    -.2ex}{2.3ex plus .2ex}{\large\bf}}
+    -.2ex}{2.3ex plus .2ex}{\bf}}
 \def\subsection{\@startsection{subsection}{2}{\z@}{-3.25ex plus -1ex
 minus
-   -.2ex}{1.5ex plus .2ex}{\normalsize\bf}}
+   -.2ex}{1.5ex plus .2ex}{\bf}}
 
 % If using the report style, use \cdotinstead of . in the figure number.
 \@ifundefined{thechapter}{}{\def\thefigure{\thechapter$\cdot$\arabic{figure}}}
